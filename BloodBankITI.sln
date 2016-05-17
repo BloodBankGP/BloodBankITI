@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankITI", "BloodBankITI\BloodBankITI.csproj", "{E4E1643F-3DF1-42FE-AE24-7157F135D71B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankService", "BloodBankService\BloodBankService.csproj", "{3DEEC90D-B99B-4078-A710-DEB9968E9EBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E4E1643F-3DF1-42FE-AE24-7157F135D71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4E1643F-3DF1-42FE-AE24-7157F135D71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4E1643F-3DF1-42FE-AE24-7157F135D71B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DEEC90D-B99B-4078-A710-DEB9968E9EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DEEC90D-B99B-4078-A710-DEB9968E9EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DEEC90D-B99B-4078-A710-DEB9968E9EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DEEC90D-B99B-4078-A710-DEB9968E9EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
