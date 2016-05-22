@@ -24,7 +24,6 @@ namespace BloodBankService.Models
         public string Fname { get; set; }
         public string Lname { get; set; }
         public string Phone { get; set; }
-        public Nullable<System.DateTime> LastDonation { get; set; }
         public Nullable<int> BID { get; set; }
         public Nullable<int> CID { get; set; }
         public Nullable<int> LID { get; set; }
@@ -32,6 +31,8 @@ namespace BloodBankService.Models
         public Nullable<bool> Pending { get; set; }
         public Nullable<System.DateTime> DonationDate { get; set; }
         public Nullable<int> PAID { get; set; }
+        public Nullable<bool> PhoneStatus { get; set; }
+        public string DonorGender { get; set; }
     
         public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }

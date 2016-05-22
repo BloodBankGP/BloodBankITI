@@ -21,9 +21,7 @@ namespace BloodBankService.Models
         public int CID { get; set; }
         public string Name { get; set; }
         public bool Periodic { get; set; }
-        public int BID1 { get; set; }
         public string Type { get; set; }
-        public int CID1 { get; set; }
         public string CityName { get; set; }
     }
 }
