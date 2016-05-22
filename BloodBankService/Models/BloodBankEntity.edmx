@@ -42,8 +42,8 @@
           <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Fname" Type="nvarchar" MaxLength="50" />
           <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="DonorGender" Type="nchar" MaxLength="10" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastDonation" Type="date" />
           <Property Name="BID" Type="int" />
           <Property Name="CID" Type="int" />
           <Property Name="LID" Type="int" />
@@ -51,6 +51,7 @@
           <Property Name="Pending" Type="bit" />
           <Property Name="DonationDate" Type="date" />
           <Property Name="PAID" Type="int" />
+          <Property Name="PhoneStatus" Type="bit" />
         </EntityType>
         <EntityType Name="Hospitals">
           <Key>
@@ -361,6 +362,13 @@
           <Parameter Name="fname" Type="nvarchar" Mode="In" />
           <Parameter Name="lname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CheckName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Cities_DeleteCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CID" Type="int" Mode="In" />
         </Function>
@@ -378,14 +386,21 @@
         <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NID" Type="int" Mode="In" />
         </Function>
+        <Function Name="donor_updatepending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DonorBloodType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BID" Type="int" Mode="In" />
+          <Parameter Name="DonorID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DID" Type="int" Mode="In" />
         </Function>
         <Function Name="Donors_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Fname" Type="nvarchar" Mode="In" />
           <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
           <Parameter Name="phone" Type="nvarchar" Mode="In" />
-          <Parameter Name="LastDonation" Type="date" Mode="In" />
           <Parameter Name="BID" Type="int" Mode="In" />
           <Parameter Name="CID" Type="int" Mode="In" />
           <Parameter Name="LID" Type="int" Mode="In" />
@@ -393,6 +408,7 @@
           <Parameter Name="pending" Type="bit" Mode="In" />
           <Parameter Name="donationDate" Type="date" Mode="In" />
           <Parameter Name="PID" Type="int" Mode="In" />
+          <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
         </Function>
         <Function Name="Donors_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Donors_SelectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -404,7 +420,6 @@
           <Parameter Name="Fname" Type="nvarchar" Mode="In" />
           <Parameter Name="Lname" Type="nvarchar" Mode="In" />
           <Parameter Name="phone" Type="nvarchar" Mode="In" />
-          <Parameter Name="LastDonation" Type="date" Mode="In" />
           <Parameter Name="BID" Type="int" Mode="In" />
           <Parameter Name="CID" Type="int" Mode="In" />
           <Parameter Name="LID" Type="int" Mode="In" />
@@ -413,8 +428,16 @@
           <Parameter Name="donationDate" Type="date" Mode="In" />
           <Parameter Name="PID" Type="int" Mode="In" />
           <Parameter Name="DID" Type="int" Mode="In" />
+          <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="EmergencyToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DayID" Type="int" Mode="In" />
+          <Parameter Name="CityID" Type="int" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PAID" Type="int" Mode="In" />
+        </Function>
         <Function Name="Hospitals_DeleteHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="HID" Type="int" Mode="In" />
         </Function>
@@ -495,7 +518,10 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="NGO_selectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nid" Type="int" Mode="In" />
         </Function>
         <Function Name="NGO_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="NGO_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -749,7 +775,6 @@
           <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastDonation" Type="DateTime" Precision="0" />
           <Property Name="BID" Type="Int32" />
           <Property Name="CID" Type="Int32" />
           <Property Name="LID" Type="Int32" />
@@ -762,6 +787,8 @@
           <NavigationProperty Name="Location" Relationship="Self.FK_Donors_Locations" FromRole="Donors" ToRole="Locations" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_Donors_Partners" FromRole="Donors" ToRole="Partners" />
           <NavigationProperty Name="PartnersStatestics" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_Donors" FromRole="Donor" ToRole="PartnersStatestic" />
+          <Property Name="PhoneStatus" Type="Boolean" />
+          <Property Name="DonorGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -1143,8 +1170,8 @@
           <FunctionImport Name="Donors_Insert">
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
             <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="LastDonation" Mode="In" Type="DateTime" />
             <Parameter Name="BID" Mode="In" Type="Int32" />
             <Parameter Name="CID" Mode="In" Type="Int32" />
             <Parameter Name="LID" Mode="In" Type="Int32" />
@@ -1152,6 +1179,7 @@
             <Parameter Name="pending" Mode="In" Type="Boolean" />
             <Parameter Name="donationDate" Mode="In" Type="DateTime" />
             <Parameter Name="PID" Mode="In" Type="Int32" />
+            <Parameter Name="PhoneStatus" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Donors_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectAll_Result)" />
           <FunctionImport Name="Donors_SelectID" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectID_Result)">
@@ -1163,7 +1191,6 @@
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
             <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="LastDonation" Mode="In" Type="DateTime" />
             <Parameter Name="BID" Mode="In" Type="Int32" />
             <Parameter Name="CID" Mode="In" Type="Int32" />
             <Parameter Name="LID" Mode="In" Type="Int32" />
@@ -1172,6 +1199,7 @@
             <Parameter Name="donationDate" Mode="In" Type="DateTime" />
             <Parameter Name="PID" Mode="In" Type="Int32" />
             <Parameter Name="DID" Mode="In" Type="Int32" />
+            <Parameter Name="PhoneStatus" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Hospitals_DeleteHospital">
           <Parameter Name="HID" Mode="In" Type="Int32" />
@@ -1253,7 +1281,7 @@
             <Parameter Name="address" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_selectt" ReturnType="Collection(BloodBankDBITIModel.NGO_selectt_Result)" />
           <FunctionImport Name="NGO_update">
@@ -1385,6 +1413,30 @@
             <End Role="Partner" EntitySet="Partners" />
             <End Role="PartnersStatestic" EntitySet="PartnersStatestics" />
           </AssociationSet>
+          <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
+          <Parameter Name="nid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckLogin" ReturnType="Collection(BloodBankDBITIModel.CheckLogin_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CheckName" ReturnType="Collection(BloodBankDBITIModel.CheckName_Result)">
+          <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EmergencyToday" ReturnType="Collection(BloodBankDBITIModel.EmergencyToday_Result)">
+            <Parameter Name="DayID" Mode="In" Type="Int32" />
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="donor_updatepending" >
+          <Parameter Name="DID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPartnersDonor" ReturnType="Collection(BloodBankDBITIModel.GetPartnersDonor_Result)">
+          <Parameter Name="PAID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DonorBloodType">
+            <Parameter Name="BID" Mode="In" Type="Int32" />
+            <Parameter Name="DonorID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_select_Result">
           <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1447,7 +1499,6 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="Int32" Name="DayID" Nullable="true" />
-          <Property Type="Int32" Name="CID1" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Hospitals_SelectByCity_Result">
@@ -1457,21 +1508,18 @@
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="Int32" Name="DayID" Nullable="true" />
-          <Property Type="Int32" Name="CID1" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Locations_SelectAllByCityID_Result">
           <Property Type="Int32" Name="LID" Nullable="false" />
           <Property Type="Int32" Name="CID" Nullable="true" />
           <Property Type="String" Name="LocationName" Nullable="false" />
-          <Property Type="Int32" Name="CID1" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Locations_SelectBYCityID_LocationID_Result">
           <Property Type="Int32" Name="CID" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
           <Property Type="Int32" Name="LID" Nullable="false" />
-          <Property Type="Int32" Name="CID1" Nullable="true" />
           <Property Type="String" Name="LocationName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Login_select_Result">
@@ -1530,9 +1578,7 @@
           <Property Type="Int32" Name="CID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="Periodic" Nullable="false" />
-          <Property Type="Int32" Name="CID1" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
-          <Property Type="Int32" Name="BID1" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
         </ComplexType>
         <ComplexType Name="posts_SelectByBID_CID_Result">
@@ -1544,9 +1590,7 @@
           <Property Type="Int32" Name="CID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="Periodic" Nullable="false" />
-          <Property Type="Int32" Name="BID1" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="CID1" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Select_BloodTypes_Result">
@@ -1621,6 +1665,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="NGO_selectByID_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Approved" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="Status" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CheckLogin_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UID" Nullable="false" />
+          <Property Type="Int32" Name="UTID" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CheckName_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UID" Nullable="false" />
+          <Property Type="Int32" Name="UTID" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="EmergencyToday_Result">
+          <Property Type="Int32" Name="HID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="Int32" Name="DayID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPartnersDonor_Result">
+          <Property Type="Int32" Name="DID" Nullable="false" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DonorGender" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="true" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="Int32" Name="LID" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Boolean" Name="Pending" Nullable="true" />
+          <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+          <Property Type="Int32" Name="PAID" Nullable="true" />
+          <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1664,11 +1755,12 @@
           <EntitySetMapping Name="Donors">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.Donor">
               <MappingFragment StoreEntitySet="Donors">
+                <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+                <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
                 <ScalarProperty Name="DID" ColumnName="DID" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
                 <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="LastDonation" ColumnName="LastDonation" />
                 <ScalarProperty Name="BID" ColumnName="BID" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="LID" ColumnName="LID" />
@@ -1889,7 +1981,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DayID" ColumnName="DayID" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1903,7 +1994,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DayID" ColumnName="DayID" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1918,7 +2008,6 @@
                 <ScalarProperty Name="LID" ColumnName="LID" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1929,7 +2018,6 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
                 <ScalarProperty Name="LID" ColumnName="LID" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2032,9 +2120,7 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Periodic" ColumnName="Periodic" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="BID1" ColumnName="BID1" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2050,9 +2136,7 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Periodic" ColumnName="Periodic" />
-                <ScalarProperty Name="BID1" ColumnName="BID1" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="CID1" ColumnName="CID1" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -2133,6 +2217,75 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+          <FunctionImportMapping FunctionImportName="NGO_selectByID" FunctionName="BloodBankDBITIModel.Store.NGO_selectByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByID_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckLogin" FunctionName="BloodBankDBITIModel.Store.CheckLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.CheckLogin_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UTID" ColumnName="UTID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckName" FunctionName="BloodBankDBITIModel.Store.CheckName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.CheckName_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="UTID" ColumnName="UTID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmergencyToday" FunctionName="BloodBankDBITIModel.Store.EmergencyToday">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.EmergencyToday_Result">
+                <ScalarProperty Name="HID" ColumnName="HID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="donor_updatepending" FunctionName="BloodBankDBITIModel.Store.donor_updatepending" />
+          <FunctionImportMapping FunctionImportName="GetPartnersDonor" FunctionName="BloodBankDBITIModel.Store.GetPartnersDonor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetPartnersDonor_Result">
+                <ScalarProperty Name="DID" ColumnName="DID" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="LID" ColumnName="LID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Pending" ColumnName="Pending" />
+                <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+                <ScalarProperty Name="PAID" ColumnName="PAID" />
+                <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DonorBloodType" FunctionName="BloodBankDBITIModel.Store.DonorBloodType" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
