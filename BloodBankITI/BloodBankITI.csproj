@@ -159,10 +159,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\indexController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NGOController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,13 +178,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="css\animate.css" />
-    <Content Include="css\icomoon.css" />
-    <Content Include="css\magnific-popup.css" />
-    <Content Include="css\owl.carousel.min.css" />
-    <Content Include="css\owl.theme.default.min.css" />
-    <Content Include="css\simple-line-icons.css" />
-    <Content Include="css\style.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\icomoon.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\owl.theme.default.min.css" />
+    <Content Include="Content\simple-line-icons.css" />
+    <Content Include="Content\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -195,7 +197,6 @@
     <Content Include="fonts\icomoon\icomoon\style.css" />
     <Content Include="fonts\simple-line-icons\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\bg_1.jpg" />
     <Content Include="images\bg_2.jpg" />
     <Content Include="images\client_1.png" />
@@ -215,9 +216,6 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
-    <Content Include="index.html" />
-    <Content Include="index1.html" />
-    <Content Include="index2.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.countTo.js" />
     <Content Include="js\jquery.easing.1.3.js" />
@@ -228,12 +226,11 @@
     <Content Include="js\modernizr-2.6.2.min.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\respond.min.js" />
-    <Content Include="README.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include=".DS_Store" />
-    <Content Include="css\.DS_Store" />
-    <Content Include="css\style.css.map" />
+    <Content Include="Content\.DS_Store" />
+    <Content Include="Content\style.css.map" />
     <Content Include="js\.DS_Store" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
@@ -352,35 +349,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Index\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Donor\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\NGO\" />
+    <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

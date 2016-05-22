@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace BloodBankITI.Controllers
 {
-    public class HomeController : Controller
+    public class DonorController : Controller
     {
+        // GET: Donor
         public ActionResult Index()
         {
             return View();
         }
-
-        
     }
 }

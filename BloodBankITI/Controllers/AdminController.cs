@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace BloodBankITI.Controllers
 {
-    public class indexController : Controller
+    public class AdminController : Controller
     {
-        [HttpGet]
-        // GET: Index
+        // GET: Admin
         public ActionResult Index()
         {
             return View();
