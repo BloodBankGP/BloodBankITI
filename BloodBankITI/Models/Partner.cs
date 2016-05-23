@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankService.Models
+namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
