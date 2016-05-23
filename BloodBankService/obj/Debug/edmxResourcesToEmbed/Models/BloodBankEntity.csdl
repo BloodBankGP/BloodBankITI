@@ -773,7 +773,6 @@
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Int32" Name="DayID" Nullable="true" />
-    <Property Type="Int32" Name="CID1" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Hospitals_SelectByCity_Result">
@@ -783,21 +782,18 @@
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Int32" Name="DayID" Nullable="true" />
-    <Property Type="Int32" Name="CID1" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Locations_SelectAllByCityID_Result">
     <Property Type="Int32" Name="LID" Nullable="false" />
     <Property Type="Int32" Name="CID" Nullable="true" />
     <Property Type="String" Name="LocationName" Nullable="false" />
-    <Property Type="Int32" Name="CID1" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Locations_SelectBYCityID_LocationID_Result">
     <Property Type="Int32" Name="CID" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="Int32" Name="LID" Nullable="false" />
-    <Property Type="Int32" Name="CID1" Nullable="true" />
     <Property Type="String" Name="LocationName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Login_select_Result">
@@ -868,9 +864,7 @@
     <Property Type="Int32" Name="CID" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="Periodic" Nullable="false" />
-    <Property Type="Int32" Name="BID1" Nullable="false" />
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-    <Property Type="Int32" Name="CID1" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Select_BloodTypes_Result">

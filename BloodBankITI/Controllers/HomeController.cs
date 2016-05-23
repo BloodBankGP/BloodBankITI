@@ -13,6 +13,11 @@ namespace BloodBankITI.Controllers
             return View();
         }
 
-        
+        public ActionResult Vieeew()
+        {
+            return View();
+        }
+
+
     }
 }
