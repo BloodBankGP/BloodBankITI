@@ -25,6 +25,17 @@ namespace BloodBankService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "Default2Api",
+                routeTemplate: "api/{controller}/{id}/{id2}",
+                defaults: new { id = RouteParameter.Optional , id2 = RouteParameter.Optional }
+            );
+            config.Routes.MapHttpRoute(
+                name: "Default3Api",
+                routeTemplate: "api/{controller}/{id}/{id2}/{id3}",
+                defaults: new { id = RouteParameter.Optional, id2 = RouteParameter.Optional, id3 = RouteParameter.Optional }
+            );
         }
     }
 }
