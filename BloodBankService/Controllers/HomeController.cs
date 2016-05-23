@@ -7,16 +7,18 @@ using BloodBankService.Models;
 
 namespace BloodBankService.Controllers
 {
+    [RoutePrefix("Home")]
     public class HomeController : ApiController
     {
-        Models.BloodBankDBITIEntities db = new Models.BloodBankDBITIEntities();
-
+        Models.BloodBankDBITIEntities1 db = new Models.BloodBankDBITIEntities1();
+    
 
         /// <summary>
         ///Anonymous
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Route("AllPosts")]
         public List<Models.posts_SelectAll_Result> AllPosts ()
         {
             return  db.posts_SelectAll().ToList();   
@@ -29,23 +31,27 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
+        [Route("AllPosts/{bid:int}/{cid:int}")]
         public List<Models.posts_SelectByBID_CID_Result> AllPostsBySearch(int bid , int cid)
         {
             return db.posts_SelectByBID_CID(bid , cid).ToList();
         }
         [HttpGet]
+        [Route("DonorByID/{cid:int}/{bid:int}/{lid:int}")]
         public List<Models.Donors_SelectID_Result> DonorsSelectByID(int cid, int bid, int lid)
         {
             return db.Donors_SelectID(cid, bid, lid).ToList();
         }
 
         [HttpGet]
+        [Route("NgoSelect/{cid:int}")]
         public List<Models.NGO_select_Result> NgoSelectAllByCity(int cid)
         {
             return db.NGO_select(cid).ToList();
         }
 
         [HttpGet]
+        [Route("NgoByID/{nid:int}")]
         public Models.NGO_selectByID_Result NgoSelectById(int nid)
         {
             return db.NGO_selectByID(nid).FirstOrDefault();
@@ -67,6 +73,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
+        [Route("CheckLogin/{username:alpha}/{password:alpha}")]
         public Models.CheckLogin_Result CheckLogin(string username, string password)
         {
             return db.CheckLogin(username, password).FirstOrDefault();
@@ -92,6 +99,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
+        [Route("EmergencyToday/{cityid:int}/{dayid:int}")]
         public EmergencyToday_Result EmergencyToday(int cityid, int dayid)
         {
             return db.EmergencyToday(dayid, cityid).FirstOrDefault();
@@ -114,6 +122,7 @@ namespace BloodBankService.Controllers
 
         /////////////////////////////Partnar
         [HttpGet]
+        [Route("getPartnar_Donors/{paid:int}")]
         public List<GetPartnersDonor_Result> getPartnar_Donors(int paid)
         {
             return db.GetPartnersDonor(paid).ToList();
