@@ -9,9 +9,18 @@ namespace BloodBankITI.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(string username , string password)
+        {
+
+            return View();
+        }
+
     }
 }
