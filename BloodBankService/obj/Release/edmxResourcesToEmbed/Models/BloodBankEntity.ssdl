@@ -95,9 +95,9 @@
     <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CID" Type="int" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Approved" Type="binary" MaxLength="50" Nullable="false" />
-    <Property Name="Status" Type="binary" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Approved" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Partners">
