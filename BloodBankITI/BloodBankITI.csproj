@@ -397,13 +397,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\NGO\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Donor\" />
-    <Folder Include="Views\NGO\" />
     <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
