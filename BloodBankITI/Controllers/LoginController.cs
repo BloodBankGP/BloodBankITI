@@ -22,12 +22,12 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string username , string password)
+        public ActionResult Index(string UserName , string Password)
         {
             CheckLogin_Result login = new CheckLogin_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("CheckLogin/" + username+"/"+password).Result;
+            HttpResponseMessage response = client.GetAsync("CheckLogin/" + UserName+"/"+Password).Result;
             if (response.IsSuccessStatusCode)
             {
                 login = response.Content.ReadAsAsync<CheckLogin_Result>().Result;
