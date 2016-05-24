@@ -1,4 +1,5 @@
-﻿@model BloodBankService.Models.NGO_selectByID_Result
+﻿@model BloodBankITI.Models.NGO_selectByID_Result
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +8,10 @@
 <h2>Index</h2>
 
 Name : @Html.DisplayFor(N => N.Name)
-Name : @Html.DisplayFor(N => N.Address)
-Name : @Html.DisplayFor(N => N.Phone)
-Name : @Html.DisplayFor(N => N.CityName)
+Address : @Html.DisplayFor(N => N.Address)
+Phone : @Html.DisplayFor(N => N.Phone)
+City Name  : @Html.DisplayFor(N => N.CityName)
+
+@Html.ActionLink("Edit Profile","Edit",new {id = Model.NID })
+
 

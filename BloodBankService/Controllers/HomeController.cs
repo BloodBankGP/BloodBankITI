@@ -73,7 +73,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("CheckLogin/{username:alpha}/{password:alpha}")]
+        [Route("CheckLogin/{username}/{password}")]
         public Models.CheckLogin_Result CheckLogin(string username, string password)
         {
             return db.CheckLogin(username, password).FirstOrDefault();
