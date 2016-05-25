@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model BloodBankITI.Models.Followers
+
+<img src="~/images/ContactUs.png" />
+
+<form method="post" action="" novalidate="novalidate">
+    <div class="form-group">
+        @Html.DisplayNameFor(P => @Model.Name)<br />
+        @Html.EditorFor(P => @Model.Name, new { htmlAttributes = new {@class ="form-control"} })
+        @Html.ValidationMessageFor(P => @Model.Name, "", new
+   {
+       @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(P => @Model.Age)<br />
+        @Html.EditorFor(P => @Model.Age, new { htmlAttributes = new { @class ="form-control" } })
+        @Html.ValidationMessageFor(P => @Model.Age, "", new  {  @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(P => @Model.Email)<br />
+        @Html.EditorFor(P => @Model.Email, new { htmlAttributes = new { @class ="form-control"  } })
+        @Html.ValidationMessageFor(P => @Model.Email, "", new {  @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(P => @Model.City)<br />
+        @Html.EditorFor(P => @Model.City, new { htmlAttributes = new{ @class ="form-control" } })
+        @Html.ValidationMessageFor(P => @Model.City, "", new {@class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DisplayNameFor(P => @Model.Comments)<br />
+        @Html.TextAreaFor(P => @Model.Comments, new{  htmlAttributes = new  {  @class = "form-control"  } })
+        @Html.ValidationMessageFor(P => @Model.Comments, "", new{  @class ="text-danger" })
+    </div>
+
+
+    <div>
+        <input type="submit" value="إرسال" />
+    </div>
+</form>
+
