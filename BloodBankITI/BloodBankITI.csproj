@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\annonymousController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Donor.cs" />
+    <Compile Include="Models\donorinsertform.cs" />
     <Compile Include="Models\Donors_SelectAll_Result.cs" />
     <Compile Include="Models\Donors_SelectID_Result.cs" />
     <Compile Include="Models\EmergencyToday_Result.cs" />
@@ -191,7 +193,6 @@
     <Compile Include="Models\Hospitals_SelectAll_Result.cs" />
     <Compile Include="Models\Hospitals_SelectByCity_Result.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Index.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Locations_SelectAllByCityID_Result.cs" />
     <Compile Include="Models\Locations_SelectBYCityID_LocationID_Result.cs" />
@@ -445,6 +446,7 @@
     <Content Include="Views\NGO\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\annonymous\Donate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
