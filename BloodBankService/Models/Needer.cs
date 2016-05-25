@@ -20,6 +20,7 @@ namespace BloodBankService.Models
         public string Lname { get; set; }
         public int BID { get; set; }
         public int CID { get; set; }
+        public string Phone { get; set; }
     
         public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }

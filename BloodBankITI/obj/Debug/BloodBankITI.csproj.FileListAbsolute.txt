@@ -166,3 +166,6 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
+E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml

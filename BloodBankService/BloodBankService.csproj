@@ -328,6 +328,15 @@
     <Compile Include="Models\posts_SelectByBID_CID_Result.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\selectNeederByBlood_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectNeederByCityBlood_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectNeederByCity_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Select_BloodTypesID_Result.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
@@ -405,6 +414,7 @@
     <Content Include="Models\BloodBankEntity.edmx.diagram">
       <DependentUpon>BloodBankEntity.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\Service.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

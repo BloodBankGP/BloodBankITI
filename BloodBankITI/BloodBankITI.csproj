@@ -399,12 +399,13 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\NGO\Index.cshtml" />
     <Content Include="Views\NGO\Edit.cshtml" />
+    <None Include="Views\Donor\Index.cshtml" />
+    <None Include="Views\Home\AskForBlood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Donor\" />
     <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>

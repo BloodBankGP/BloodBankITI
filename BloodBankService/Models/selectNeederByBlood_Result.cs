@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankITI.Models
+namespace BloodBankService.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Needer
+    public partial class selectNeederByBlood_Result
     {
         public int NID { get; set; }
         public string Email { get; set; }
@@ -21,8 +20,5 @@ namespace BloodBankITI.Models
         public int BID { get; set; }
         public int CID { get; set; }
         public string Phone { get; set; }
-    
-        public virtual BloodType BloodType { get; set; }
-        public virtual City City { get; set; }
     }
 }

@@ -1,0 +1,16 @@
+﻿@model BloodBankITI.Models.Needer
+
+
+<h2>Ask for Blood</h2>
+
+<form method="POST" action="">
+    FirstName: @Html.EditorFor(n=> Model.Fname)<br/>
+    LastName: @Html.EditorFor(n => Model.Lname)<br/>
+    Email: @Html.EditorFor(n => Model.Email)<br/>
+    Phone: @Html.EditorFor(n => Model.Phone)<br/>
+    Blood: @Html.EditorFor(n => Model.BID)<br/>
+    City: @Html.EditorFor(n => Model.CID)<br/>
+    
+
+    <input type="submit" value="Ask"/>
+</form>
