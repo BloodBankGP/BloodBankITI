@@ -24,5 +24,10 @@ namespace BloodBankITI.Controllers
             }
             return View(ngo);
         }
+
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
     }
 }

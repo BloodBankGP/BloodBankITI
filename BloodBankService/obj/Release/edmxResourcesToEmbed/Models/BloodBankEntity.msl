@@ -89,6 +89,7 @@
     <EntitySetMapping Name="Needers">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer">
         <MappingFragment StoreEntitySet="Needer">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="NID" ColumnName="NID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Fname" ColumnName="Fname" />
@@ -571,5 +572,44 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+    <FunctionImportMapping FunctionImportName="selectNeederByBlood" FunctionName="BloodBankDBITIModel.Store.selectNeederByBlood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByBlood_Result">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectNeederByCity" FunctionName="BloodBankDBITIModel.Store.selectNeederByCity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByCity_Result">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectNeederByCityBlood" FunctionName="BloodBankDBITIModel.Store.selectNeederByCityBlood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByCityBlood_Result">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

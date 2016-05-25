@@ -73,7 +73,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("CheckLogin/{username:alpha}/{password:alpha}")]
+        [Route("CheckLogin/{username}/{password}")]
         public Models.CheckLogin_Result CheckLogin(string username, string password)
         {
             return db.CheckLogin(username, password).FirstOrDefault();
@@ -133,6 +133,36 @@ namespace BloodBankService.Controllers
         {
             db.DonorBloodType(bid, did);
         }
-        
+       
+        ///////////////Needer
+
+        [HttpPost]
+        public void insertNeeder(Needer n)
+        {
+            db.insert_needer(n.Email, n.Fname, n.Lname, n.BID, n.CID, n.Phone);
+        }
+
+        [HttpGet]
+        public List<Select_Needer_Result> selectNeeders()
+        {
+            return db.Select_Needer().ToList();
+        }
+
+        [HttpGet]
+        public List<selectNeederByBlood_Result> NeederByBlood(int bid)
+        {
+            return db.selectNeederByBlood(bid).ToList();
+        }
+
+        [HttpGet]
+        public List<selectNeederByCity_Result> NeederByCity(int cid)
+        {
+            return db.selectNeederByCity(cid).ToList();
+        }
+
+        [HttpGet] public List<selectNeederByCityBlood_Result> NeederByCityBlood(int cid, int bid)
+        {
+            return db.selectNeederByCityBlood(cid, bid).ToList();
+        }
     }
 }

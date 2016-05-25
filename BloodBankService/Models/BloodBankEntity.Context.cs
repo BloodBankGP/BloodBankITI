@@ -430,12 +430,8 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Hospitals_UpdateHospital", nameParameter, cIDParameter, phoneParameter, addressParameter, dayIDParameter, hIDParameter);
         }
     
-        public virtual int insert_needer(Nullable<int> nID, string email, string fname, string lname, Nullable<int> bID, Nullable<int> cID)
+        public virtual int insert_needer(string email, string fname, string lname, Nullable<int> bID, Nullable<int> cID, string phone)
         {
-            var nIDParameter = nID.HasValue ?
-                new ObjectParameter("NID", nID) :
-                new ObjectParameter("NID", typeof(int));
-    
             var emailParameter = email != null ?
                 new ObjectParameter("Email", email) :
                 new ObjectParameter("Email", typeof(string));
@@ -456,7 +452,11 @@ namespace BloodBankService.Models
                 new ObjectParameter("CID", cID) :
                 new ObjectParameter("CID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insert_needer", nIDParameter, emailParameter, fnameParameter, lnameParameter, bIDParameter, cIDParameter);
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insert_needer", emailParameter, fnameParameter, lnameParameter, bIDParameter, cIDParameter, phoneParameter);
         }
     
         public virtual int Locations_DeleteLocation(Nullable<int> cID, Nullable<int> lID)
@@ -1045,6 +1045,37 @@ namespace BloodBankService.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_update", typeParameter, idParameter);
+        }
+    
+        public virtual ObjectResult<selectNeederByBlood_Result> selectNeederByBlood(Nullable<int> bid)
+        {
+            var bidParameter = bid.HasValue ?
+                new ObjectParameter("bid", bid) :
+                new ObjectParameter("bid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectNeederByBlood_Result>("selectNeederByBlood", bidParameter);
+        }
+    
+        public virtual ObjectResult<selectNeederByCity_Result> selectNeederByCity(Nullable<int> cid)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectNeederByCity_Result>("selectNeederByCity", cidParameter);
+        }
+    
+        public virtual ObjectResult<selectNeederByCityBlood_Result> selectNeederByCityBlood(Nullable<int> cid, Nullable<int> bid)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var bidParameter = bid.HasValue ?
+                new ObjectParameter("bid", bid) :
+                new ObjectParameter("bid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectNeederByCityBlood_Result>("selectNeederByCityBlood", cidParameter, bidParameter);
         }
     }
 }

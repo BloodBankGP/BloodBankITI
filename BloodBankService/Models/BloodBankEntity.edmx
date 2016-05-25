@@ -86,12 +86,13 @@
           <Key>
             <PropertyRef Name="NID" />
           </Key>
-          <Property Name="NID" Type="int" Nullable="false" />
+          <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Fname" Type="nvarchar" MaxLength="50" />
           <Property Name="Lname" Type="nvarchar" MaxLength="50" />
           <Property Name="BID" Type="int" Nullable="false" />
           <Property Name="CID" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NGO">
           <Key>
@@ -461,12 +462,12 @@
           <Parameter Name="HID" Type="int" Mode="In" />
         </Function>
         <Function Name="insert_needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NID" Type="int" Mode="In" />
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
           <Parameter Name="Fname" Type="nvarchar" Mode="In" />
           <Parameter Name="Lname" Type="nvarchar" Mode="In" />
           <Parameter Name="BID" Type="int" Mode="In" />
           <Parameter Name="CID" Type="int" Mode="In" />
+          <Parameter Name="phone" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Locations_DeleteLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CID" Type="int" Mode="In" />
@@ -588,6 +589,16 @@
         <Function Name="Select_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="select_NeederID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectNeederByBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="bid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectNeederByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectNeederByCityBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cid" Type="int" Mode="In" />
+          <Parameter Name="bid" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -836,6 +847,7 @@
           <Property Name="CID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BloodType" Relationship="Self.FK_Needer_BloodTypes" FromRole="Needer" ToRole="BloodTypes" />
           <NavigationProperty Name="City" Relationship="Self.FK_Needer_Cities" FromRole="Needer" ToRole="Cities" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NGO">
           <Key>
@@ -1293,12 +1305,12 @@
             <Parameter Name="HID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="insert_needer">
-            <Parameter Name="NID" Mode="In" Type="Int32" />
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
             <Parameter Name="BID" Mode="In" Type="Int32" />
             <Parameter Name="CID" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Locations_DeleteLocation">
             <Parameter Name="CID" Mode="In" Type="Int32" />
@@ -1472,6 +1484,16 @@
           <FunctionImport Name="UserType_update">
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectNeederByBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByBlood_Result)">
+          <Parameter Name="bid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectNeederByCity" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCity_Result)">
+          <Parameter Name="cid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectNeederByCityBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCityBlood_Result)">
+            <Parameter Name="cid" Mode="In" Type="Int32" />
+            <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_select_Result">
@@ -1714,6 +1736,33 @@
           <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="UTID" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="selectNeederByBlood_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectNeederByCity_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="selectNeederByCityBlood_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1808,6 +1857,7 @@
           <EntitySetMapping Name="Needers">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer">
               <MappingFragment StoreEntitySet="Needer">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="NID" ColumnName="NID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
@@ -2290,6 +2340,45 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+          <FunctionImportMapping FunctionImportName="selectNeederByBlood" FunctionName="BloodBankDBITIModel.Store.selectNeederByBlood">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByBlood_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectNeederByCity" FunctionName="BloodBankDBITIModel.Store.selectNeederByCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByCity_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectNeederByCityBlood" FunctionName="BloodBankDBITIModel.Store.selectNeederByCityBlood">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.selectNeederByCityBlood_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -81,12 +81,13 @@
     <Key>
       <PropertyRef Name="NID" />
     </Key>
-    <Property Name="NID" Type="int" Nullable="false" />
+    <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Fname" Type="nvarchar" MaxLength="50" />
     <Property Name="Lname" Type="nvarchar" MaxLength="50" />
     <Property Name="BID" Type="int" Nullable="false" />
     <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="NGO">
     <Key>
@@ -456,12 +457,12 @@
     <Parameter Name="HID" Type="int" Mode="In" />
   </Function>
   <Function Name="insert_needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="NID" Type="int" Mode="In" />
     <Parameter Name="Email" Type="nvarchar" Mode="In" />
     <Parameter Name="Fname" Type="nvarchar" Mode="In" />
     <Parameter Name="Lname" Type="nvarchar" Mode="In" />
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Locations_DeleteLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CID" Type="int" Mode="In" />
@@ -583,6 +584,16 @@
   <Function Name="Select_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="select_NeederID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByCityBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
