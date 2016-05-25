@@ -137,6 +137,7 @@ namespace BloodBankService.Controllers
         ///////////////Needer
 
         [HttpPost]
+        [Route("insertNeeder/{n}")]
         public void insertNeeder(Needer n)
         {
             db.insert_needer(n.Email, n.Fname, n.Lname, n.BID, n.CID, n.Phone);

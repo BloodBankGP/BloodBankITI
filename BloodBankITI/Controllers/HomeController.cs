@@ -27,7 +27,7 @@ namespace BloodBankITI.Controllers
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder", n).Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
             string result;
             
             if (response.IsSuccessStatusCode)
