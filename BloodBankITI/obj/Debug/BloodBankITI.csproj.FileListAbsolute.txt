@@ -17,7 +17,6 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.OAuth.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Web.Infrastructure.dll
-E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Owin.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Helpers.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Mvc.dll
@@ -35,7 +34,6 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Deployment.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Razor.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Antlr3.Runtime.pdb
-E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\EntityFramework.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\EntityFramework.SqlServer.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.Core.xml
@@ -166,6 +164,5 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
-E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml

@@ -110,6 +110,7 @@
     <Property Name="CID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="BloodType" Relationship="Self.FK_Needer_BloodTypes" FromRole="Needer" ToRole="BloodTypes" />
     <NavigationProperty Name="City" Relationship="Self.FK_Needer_Cities" FromRole="Needer" ToRole="Cities" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="NGO">
     <Key>
@@ -567,12 +568,12 @@
       <Parameter Name="HID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="insert_needer">
-      <Parameter Name="NID" Mode="In" Type="Int32" />
       <Parameter Name="Email" Mode="In" Type="String" />
       <Parameter Name="Fname" Mode="In" Type="String" />
       <Parameter Name="Lname" Mode="In" Type="String" />
       <Parameter Name="BID" Mode="In" Type="Int32" />
       <Parameter Name="CID" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Locations_DeleteLocation">
       <Parameter Name="CID" Mode="In" Type="Int32" />
@@ -746,6 +747,16 @@
     <FunctionImport Name="UserType_update">
       <Parameter Name="type" Mode="In" Type="String" />
       <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="selectNeederByBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByBlood_Result)">
+      <Parameter Name="bid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="selectNeederByCity" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCity_Result)">
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="selectNeederByCityBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCityBlood_Result)">
+      <Parameter Name="cid" Mode="In" Type="Int32" />
+      <Parameter Name="bid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
@@ -987,5 +998,32 @@
   <ComplexType Name="UserType_selectt_Result">
     <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="UTID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="selectNeederByBlood_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="selectNeederByCity_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="selectNeederByCityBlood_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>
