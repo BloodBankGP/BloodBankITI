@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Web;
 using System.Web.Http;
 using BloodBankService.Models;
@@ -25,6 +26,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
+        [Route("CreatePost/{post}")]
         public void CreatePost(Models.Post post)
         {
             db.posts_InsertPost(post.Post1 ,post.Phone,post.BID,post.CID,post.Name,post.Periodic);
@@ -58,6 +60,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
+        [Route("NgoRequest/{ngo}")]
         public string NgoRequest(NGO ngo)
         {
             if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address) == 1)
@@ -80,6 +83,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
+        [Route("Signup/{donor}/ {login}")]
         public string Signup(Donor donor, Login login)
         {
             if (db.CheckName(login.UserName) == null)
@@ -108,16 +112,27 @@ namespace BloodBankService.Controllers
 
         ////////////////////////////Donor
         [HttpPut]
+        [Route("updatePending/{donorid}")]
         public void UpdatePending(int donorid)
         {
             db.donor_updatepending(donorid);
         }
 
         [HttpPut]
+        [Route ("donorupdate/{donor}")]
         public void donor_update(Donor donor)
         {
             db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone,donor.BID, donor.CID,
                 donor.LID, donor.Status, donor.Pending, donor.DonationDate, donor.PAID,donor.DID, donor.PhoneStatus);
+        }
+
+        [HttpPost]
+        [Route("donor_insert/{donor}")]
+        public void donor_insert(Models.Donor donor)
+        {
+            db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
+                donor.LID, donor.Status, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
+
         }
 
         /////////////////////////////Partnar
@@ -129,6 +144,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPut]
+        [Route("insertBloodType/{bid:int}/{did:int}")]
         public void insertBloodType(int bid, int did)
         {
             db.DonorBloodType(bid, did);
@@ -144,26 +160,74 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
+        [Route("selectneeders")]
         public List<Select_Needer_Result> selectNeeders()
         {
             return db.Select_Needer().ToList();
         }
 
         [HttpGet]
+        [Route("NeederByBlood")]
+
         public List<selectNeederByBlood_Result> NeederByBlood(int bid)
         {
             return db.selectNeederByBlood(bid).ToList();
         }
 
         [HttpGet]
+        [Route("NeederByCity")]
+
         public List<selectNeederByCity_Result> NeederByCity(int cid)
         {
             return db.selectNeederByCity(cid).ToList();
         }
 
-        [HttpGet] public List<selectNeederByCityBlood_Result> NeederByCityBlood(int cid, int bid)
+        [HttpGet]
+        [Route("NeederByCityBlood/{cid:int}/{bid:int}")]
+
+        public List<selectNeederByCityBlood_Result> NeederByCityBlood(int cid, int bid)
         {
             return db.selectNeederByCityBlood(cid, bid).ToList();
         }
+
+        //Blood Types 
+        [HttpGet]
+        [Route("AllBloodTypes")]
+        public List<Models.Select_BloodTypes_Result> AllBloodTypes()
+        {
+            return db.Select_BloodTypes().ToList();
+        }
+     
+        //Cities 
+        [HttpGet]
+        [Route("ALLCities")]
+        public List<Models.Cities_SelectAll_Result>  AllCitiesSelectAllResults()
+        {
+            return db.Cities_SelectAll().ToList();
+
+        }
+
+        [HttpGet]
+        [Route("LocationByCID/{Cid:int}")]
+        public List<Models.Locations_SelectAllByCityID_Result>LocationsSelectAllByCity(int Cid)
+        {
+            return db.Locations_SelectAllByCityID(Cid).ToList();
+        }
+
+        [HttpGet]
+        [Route("AllDays")]
+        public List<Models.Select_DaysALL_Result> DaysAllResults()
+        {
+            return db.Select_DaysALL().ToList();
+
+        }
+
+        [HttpGet]
+        [Route("ALLHospitals")]
+        public List<Models.Hospitals_SelectAll_Result> HospitalsSelectAllResults()
+        {
+            return db.Hospitals_SelectAll().ToList();
+        }
+
     }
 }
