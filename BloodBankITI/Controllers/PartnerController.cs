@@ -11,19 +11,18 @@ namespace BloodBankITI.Controllers
     public class PartnerController : Controller
     {
         // GET: Partner
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            //GetPartnersDonor_Result ngo = new GetPartnersDonor_Result();
-            //HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            //HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    ngo = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;
+            List<GetPartnersDonor_Result> Part_donor = new List<GetPartnersDonor_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("getPartnar_Donors/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Part_donor = response.Content.ReadAsAsync<List<GetPartnersDonor_Result>>().Result;
 
-            //}
-            //return View(ngo);
-            return View();
+            }
+            return View(Part_donor);
         }
     }
 }

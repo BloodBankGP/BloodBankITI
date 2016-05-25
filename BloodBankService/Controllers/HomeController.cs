@@ -167,7 +167,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("NeederByBlood")]
+        [Route("NeederByBlood/{bid:int}")]
 
         public List<selectNeederByBlood_Result> NeederByBlood(int bid)
         {
@@ -175,7 +175,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("NeederByCity")]
+        [Route("NeederByCity/{cid:int}")]
 
         public List<selectNeederByCity_Result> NeederByCity(int cid)
         {

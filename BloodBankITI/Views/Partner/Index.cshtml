@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered table-condensed table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Calories Per KG</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var food in Model)
+    {
+        <tr>
+            <td>@food.Id</td>
+            <td>@food.Name</td>
+            <td>@food.Code</td>
+            <td>@food.CaloriesPerKG</td>
+            <td>@Html.ActionLink("Delete Me", "Delete", new { Id = food.Id })</td>
+            <td>@Html.ActionLink("Edit Me", "Edit", new { Id = food.Id })</td>
+
+        </tr>
+    }
+
+</table>

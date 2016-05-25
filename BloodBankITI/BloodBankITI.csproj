@@ -445,13 +445,15 @@
     <Content Include="Views\NGO\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\Home\AskForBlood.cshtml" />
+    <Content Include="Views\NGO\Edit.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Donor\" />
-    <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
