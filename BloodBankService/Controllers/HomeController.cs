@@ -5,10 +5,12 @@ using System.Security.Cryptography.Xml;
 using System.Web;
 using System.Web.Http;
 using BloodBankService.Models;
+using System.Web.Http.Cors;
 
 namespace BloodBankService.Controllers
 {
     [RoutePrefix("Home")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class HomeController : ApiController
     {
         Models.BloodBankDBITIEntities1 db = new Models.BloodBankDBITIEntities1();
@@ -116,6 +118,13 @@ namespace BloodBankService.Controllers
         public void UpdatePending(int donorid)
         {
             db.donor_updatepending(donorid);
+        }
+
+        [HttpGet]
+        [Route("SelectDonorByDID/{donorid}")]
+        public donor_SelectByDID_Result SelectDonorByID(int donorid)
+        {
+           return db.donor_SelectByDID(donorid).FirstOrDefault();
         }
 
         [HttpPut]

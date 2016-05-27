@@ -168,3 +168,9 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+D:\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml

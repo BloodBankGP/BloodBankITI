@@ -1,0 +1,39 @@
+﻿@model BloodBankITI.Models.donorinsertform
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+<form action="" method="post" novalidate="novalidate">
+                <div class="form-group">
+                    @Html.DisplayNameFor(p => p.Donor.DID)
+                    @Html.DisplayFor(p => p.Donor.DID)
+                    <input type="hidden" name="DID" value=@Model.Donor.DID>
+                </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(p => p.Donor.Fname)
+            @Html.DisplayFor(p => p.Donor.Fname)
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(p => p.Donor.Lname)
+            @Html.DisplayFor(p => p.Donor.Lname)
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(p => p.Donor.BID)
+            <select name="BID">
+                <option value="0">Not Set</option>
+                @foreach (var item in Model.BloodTypesResults)
+                {
+                    <option value=@item.BID>@item.Type</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(p => p.Donor.BID, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+            <input type="submit" value="submit" />
+        </div>
+</form>

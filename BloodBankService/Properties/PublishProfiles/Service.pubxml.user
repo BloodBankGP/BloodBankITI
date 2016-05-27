@@ -76,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/15/2016 16:03:46</publishTime>
     </File>
     <File Include="bin/BloodBankService.dll">
-      <publishTime>05/25/2016 15:14:31</publishTime>
+      <publishTime>05/27/2016 03:26:36</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>05/15/2016 16:03:49</publishTime>
@@ -132,8 +132,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>05/16/2016 16:18:17</publishTime>
     </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>05/27/2016 02:58:48</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>05/15/2016 16:03:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>05/27/2016 02:58:49</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
       <publishTime>05/16/2016 16:18:18</publishTime>
@@ -196,10 +202,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2016 16:17:59</publishTime>
     </File>
     <File Include="Models/BloodBankEntity.edmx.diagram">
-      <publishTime>05/22/2016 15:04:15</publishTime>
+      <publishTime>05/27/2016 02:47:42</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>05/16/2016 16:18:24</publishTime>
+      <publishTime>05/27/2016 02:58:51</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/16/2016 16:18:03</publishTime>
@@ -256,7 +262,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2016 16:17:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/25/2016 15:14:32</publishTime>
+      <publishTime>05/27/2016 03:01:34</publishTime>
     </File>
   </ItemGroup>
 </Project>

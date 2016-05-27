@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,5 +25,53 @@ namespace BloodBankITI.Controllers
             }
             return View(Part_donor);
         }
+        [HttpGet]
+        public ActionResult Edit (int id)
+        {
+            donor_SelectByDID_Result donor = new donor_SelectByDID_Result();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("SelectDonorByDID/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
+
+            }
+
+            List<Select_BloodTypes_Result> Bloodtypes = new List<Select_BloodTypes_Result>();
+            response = client.GetAsync("AllBloodTypes").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Bloodtypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
+
+            }
+
+            donorinsertform don = new donorinsertform() { BloodTypesResults = Bloodtypes, Donor = new Donor() { Fname = donor.Fname, Lname = donor.Lname, DID = donor.DID }, CitiesSelectAllResults = null };
+
+            return View(don);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int BID , int DID)
+        {
+           var content = new FormUrlEncodedContent(
+                new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("bid", BID.ToString()),
+                    new KeyValuePair<string, string>("did", DID.ToString())
+                }
+                );
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PutAsync("insertBloodType/"+BID+"/"+DID+"",content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+              return  RedirectToAction("Index", new { id = 1 });
+
+            }
+
+            return RedirectToAction("Edit", new { id = DID });
+        }
+
     }
 }

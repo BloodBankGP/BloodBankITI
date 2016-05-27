@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BloodBankITI.Models.GetPartnersDonor_Result>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -8,22 +8,18 @@
 
 <table class="table table-bordered table-condensed table-striped">
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Calories Per KG</th>
-        <th>Delete</th>
-        <th>Edit</th>
+        <th>@Html.DisplayNameFor(d => d.DID)</th>
+        <th>@Html.DisplayNameFor(d => d.Fname)</th>
+        <th>@Html.DisplayNameFor(d => d.Lname)</th>
+        <th>أدخال فصيلة الدم</th>
     </tr>
-    @foreach (var food in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td>@food.Id</td>
-            <td>@food.Name</td>
-            <td>@food.Code</td>
-            <td>@food.CaloriesPerKG</td>
-            <td>@Html.ActionLink("Delete Me", "Delete", new { Id = food.Id })</td>
-            <td>@Html.ActionLink("Edit Me", "Edit", new { Id = food.Id })</td>
+            <td>@item.DID</td>
+            <td>@item.Fname</td>
+            <td>@item.Lname</td>
+            <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
 
         </tr>
     }
