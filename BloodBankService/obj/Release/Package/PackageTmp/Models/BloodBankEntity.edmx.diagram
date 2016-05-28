@@ -37,6 +37,7 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_Login_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Partners" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

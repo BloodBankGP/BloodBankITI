@@ -140,8 +140,36 @@ namespace BloodBankService.Controllers
         [Route("donor_insert/{donor}")]
         public void donor_insert(Models.Donor donor)
         {
+            if (donor.DonorGender == "Male")
+            {
+                TimeSpan s = DateTime.Now.Date - donor.DonationDate.Value;
+
+                if (s.Days >= 90)
+                {
+                    donor.Pending = true;
+                }
+                else
+                {
+                    donor.Pending = false;
+                }
+            }
+
+            if (donor.DonorGender == "Female")
+            {
+                TimeSpan s = DateTime.Now.Date - donor.DonationDate.Value;
+
+                if (s.Days >= 120)
+                {
+                    donor.Pending = true;
+                }
+                else
+                {
+                    donor.Pending = false;
+                }
+            }
+
             db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                donor.LID, donor.Status, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
+                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
 
         }
 
