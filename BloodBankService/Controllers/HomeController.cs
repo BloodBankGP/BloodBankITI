@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using BloodBankService.Models;
+using System.Web.Http.Cors;
 
 namespace BloodBankService.Controllers
 {
@@ -120,6 +121,13 @@ namespace BloodBankService.Controllers
             db.donor_updatepending(donorid);
         }
 
+        [HttpGet]
+        [Route("SelectDonorByDID/{donorid}")]
+        public donor_SelectByDID_Result SelectDonorByID(int donorid)
+        {
+           return db.donor_SelectByDID(donorid).FirstOrDefault();
+        }
+
         [HttpPut]
         [Route ("donorupdate/{donor}")]
         public void donor_update(Donor donor)
@@ -169,7 +177,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("NeederByBlood")]
+        [Route("NeederByBlood/{bid:int}")]
 
         public List<selectNeederByBlood_Result> NeederByBlood(int bid)
         {
@@ -177,7 +185,7 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("NeederByCity")]
+        [Route("NeederByCity/{cid:int}")]
 
         public List<selectNeederByCity_Result> NeederByCity(int cid)
         {

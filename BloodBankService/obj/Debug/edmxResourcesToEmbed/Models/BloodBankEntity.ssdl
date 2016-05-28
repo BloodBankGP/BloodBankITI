@@ -89,6 +89,19 @@
     <Property Name="CID" Type="int" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Needer_Donor">
+    <Key>
+      <PropertyRef Name="NID" />
+      <PropertyRef Name="DID" />
+      <PropertyRef Name="AskDate" />
+    </Key>
+    <Property Name="NID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="DID" Type="int" Nullable="false" />
+    <Property Name="AskDate" Type="date" Nullable="false" />
+    <Property Name="Accepted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="NGO">
     <Key>
       <PropertyRef Name="NID" />
@@ -342,6 +355,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="AcceptRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
   <Function Name="Admins_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
@@ -382,12 +399,19 @@
   <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
   </Function>
+  <Function Name="donor_SelectByDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
   <Function Name="donor_updatepending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
   </Function>
   <Function Name="DonorBloodType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="DonorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DonorByBloodCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
   </Function>
   <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
@@ -504,6 +528,21 @@
     <Parameter Name="type" Type="int" Mode="In" />
     <Parameter Name="user" Type="int" Mode="In" />
   </Function>
+  <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorNotAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
   <Function Name="NGO_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
@@ -572,6 +611,10 @@
   <Function Name="posts_SelectByBID_CID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="returDonorData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="nid" Type="int" Mode="In" />
   </Function>
   <Function Name="Select_BloodTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Select_BloodTypesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -657,6 +700,7 @@
     <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Needer" EntityType="Self.Needer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Needer_Donor" EntityType="Self.Needer_Donor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NGO" EntityType="Self.NGO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PartnersStatestics" EntityType="Self.PartnersStatestics" Schema="dbo" store:Type="Tables" />

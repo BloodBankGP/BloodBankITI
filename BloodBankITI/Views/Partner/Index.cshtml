@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BloodBankITI.Models.GetPartnersDonor_Result>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered table-condensed table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(d => d.DID)</th>
+        <th>@Html.DisplayNameFor(d => d.Fname)</th>
+        <th>@Html.DisplayNameFor(d => d.Lname)</th>
+        <th>أدخال فصيلة الدم</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DID</td>
+            <td>@item.Fname</td>
+            <td>@item.Lname</td>
+            <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
+
+        </tr>
+    }
+
+</table>
