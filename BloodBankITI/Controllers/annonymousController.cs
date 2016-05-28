@@ -29,7 +29,7 @@ namespace BloodBankITI.Controllers
 
             List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
 
-             response = client.GetAsync("AllBloodTypes").Result;
+            response = client.GetAsync("AllBloodTypes").Result;
             if (response.IsSuccessStatusCode)
             {
                 bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
@@ -47,18 +47,24 @@ namespace BloodBankITI.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult Donate(Donor donor)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert Donor";
+
+            return RedirectToAction("Index");
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-	}
+    }
 }

@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
+<head >
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> 
+</head>
+
+
+
 <h2>Donate</h2>
 
 <div class="form-group">
@@ -60,6 +67,22 @@
                 </select>
          
 
+        @Html.ValidationMessageFor(model => model.Donor.BID)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Donor.CID, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+
+        <select name="CID" id="CitiesID">
+            @foreach (var item in Model.CitiesSelectAllResults)
+            {
+                <option value="0">Not Set</option>
+                <option value=@item.CID>@item.CityName</option>
+            }
+        </select>
+
         @Html.ValidationMessageFor(model => model.Donor.CID)
     </div>
 </div>
@@ -68,16 +91,48 @@
     @Html.LabelFor(model => model.Donor.LID, new { @class = "control-label col-md-2" })
     <div class="col-md-10">
 
-        <select name="LID">
-
+        <select name="LID" id="locationID">
             <option> </option>
-
         </select>
 
         @Html.ValidationMessageFor(model => model.Donor.LID)
     </div>
 </div>
+<script> 
+    $('#CitiesID').change(function () {
+        var CityID = $('#CitiesID').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/LocationByCID/'+ CityID,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                WriteResponse(data);
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+        
+
+    });
+
+    function WriteResponse(data) {
+        var result;
+        $.each(data, function(index, locations) {
+            result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+        });
+        $('#locationID').html(result);
+
+    }
 
 
 
 
+
+
+</script>
+
+
+
+    <input type="submit" value="Ask" />

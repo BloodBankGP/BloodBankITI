@@ -4,11 +4,13 @@ using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BloodBankService.Models;
 
 namespace BloodBankService.Controllers
 {
     [RoutePrefix("Home")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class HomeController : ApiController
     {
         Models.BloodBankDBITIEntities1 db = new Models.BloodBankDBITIEntities1();

@@ -20,7 +20,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -33,32 +32,32 @@
             <ul class="sidebar-nav">
                 <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
                 <li class="sidebar-brand">
-                    <a href="#top" onclick=$("#menu-close").click();>
+                    <a href="#top" onclick="$('#menu-close').click()">
                     </a>
                 </li>
                 <li>
-                    <a href="#top" onclick=$("#menu-close").click();>الصفحة الرئيسية </a>
+                    <a href="#top" onclick="$('#menu-close').click()">الصفحة الرئيسية </a>
                 </li>
                 <li>
-                    <a href="#about" onclick=$("#menu-close").click();>الطوارىء</a>
+                    <a href="#about" onclick="$('#menu-close').click()">الطوارىء</a>
                 </li>
                 <li>
-                    <a href="#services" onclick=$("#menu-close").click();> اتبرع </a>
+                    <a href="#services" onclick="$('#menu-close').click()"> اتبرع </a>
                 </li>
                 <li>
-                    <a href="#portfolio" onclick=$("#menu-close").click();> أنا عايز دم </a>
+                    <a href="#portfolio" onclick="$('#menu-close').click()"> أنا عايز دم </a>
                 </li>
                 <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>posts</a>
+                    <a href="#contact" onclick="$('#menu-close').click()">posts</a>
                 </li>
                 <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>التبرع بالدم </a>
+                    <a href="#contact" onclick="$('#menu-close').click()">التبرع بالدم </a>
                 </li>
                 <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>عن الموقع </a>
+                    <a href="#contact" onclick="$('#menu-close').click()">عن الموقع </a>
                 </li>
                 <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>التواصل معنا </a>
+                    <a href="#contact" onclick="$('#menu-close').click()">التواصل معنا </a>
                 </li>
             </ul>
         </nav>
@@ -74,7 +73,7 @@
     <br />
     <br />
 
-        @RenderBody()
+    @RenderBody()
 
     <!-- Footer -->
     <footer>
@@ -82,7 +81,7 @@
             <span class="fa fa-facebook fa-2x"></span>
             <span class="fa fa-twitter fa-2x"></span>
             <span class="fa fa-youtube fa-2x"></span>
-       
+
 
             <br><br>
             <h6>Thanks for checking this pen<br><br><a href="http://manuelpinto.in" title="See More">www.manuelpinto.in</a></h6>
@@ -97,34 +96,34 @@
     <script src="~/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-
-    // Scrolls to the selected menu item on the page
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
         });
-    });
+
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+
+        // Scrolls to the selected menu item on the page
+        $(function () {
+            $('a[href*=#]:not([href=#])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
