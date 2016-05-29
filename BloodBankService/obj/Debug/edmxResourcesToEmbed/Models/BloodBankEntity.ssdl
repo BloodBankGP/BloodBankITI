@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Admins">
     <Key>
       <PropertyRef Name="AID" />
@@ -280,6 +280,18 @@
       </Principal>
       <Dependent Role="Needer">
         <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="BID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -746,6 +758,10 @@
     <AssociationSet Name="FK_Needer_Cities" Association="Self.FK_Needer_Cities">
       <End Role="Cities" EntitySet="Cities" />
       <End Role="Needer" EntitySet="Needer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="Self.FK_Needer_Donor_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
     </AssociationSet>
     <AssociationSet Name="FK_NGO_Cities" Association="Self.FK_NGO_Cities">
       <End Role="Cities" EntitySet="Cities" />

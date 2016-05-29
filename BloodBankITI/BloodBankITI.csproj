@@ -217,6 +217,7 @@
     <Compile Include="Models\Needer_DonorAccepted_Result.cs" />
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs" />
     <Compile Include="Models\NGO.cs" />
+    <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\NGO_selectByID_Result.cs" />
     <Compile Include="Models\NGO_selectt_Result.cs" />
     <Compile Include="Models\NGO_select_Result.cs" />
@@ -638,12 +639,13 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Partner\Edit.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
