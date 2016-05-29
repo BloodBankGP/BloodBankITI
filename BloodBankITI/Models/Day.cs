@@ -14,16 +14,7 @@ namespace BloodBankITI.Models
     
     public partial class Day
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Day()
-        {
-            this.Hospitals = new HashSet<Hospital>();
-        }
-    
         public int DayID { get; set; }
         public string Day1 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hospital> Hospitals { get; set; }
     }
 }

@@ -616,8 +616,6 @@
           <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
           <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="CityName" ColumnName="CityName" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -693,6 +691,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Hospitals">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Hospital">
+        <MappingFragment StoreEntitySet="Hospitals">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HID" ColumnName="HID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="EmergencyDelete" FunctionName="BloodBankDBITIModel.Store.EmergencyDelete" />
     <FunctionImportMapping FunctionImportName="EmergencyInsert" FunctionName="BloodBankDBITIModel.Store.EmergencyInsert" />
     <FunctionImportMapping FunctionImportName="EmergencySelectCityDay" FunctionName="BloodBankDBITIModel.Store.EmergencySelectCityDay">
@@ -707,16 +716,26 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="EmergencyUpdate" FunctionName="BloodBankDBITIModel.Store.EmergencyUpdate" />
-    <EntitySetMapping Name="Hospitals">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Hospital">
-        <MappingFragment StoreEntitySet="Hospitals">
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
+    <FunctionImportMapping FunctionImportName="Comments_SelectAllByPostID" FunctionName="BloodBankDBITIModel.Store.Comments_SelectAllByPostID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Comments_SelectAllByPostID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="HID" ColumnName="HID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Comments1">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Comments_insert2" FunctionName="BloodBankDBITIModel.Store.Comments_insert" />
   </EntityContainerMapping>
 </Mapping>

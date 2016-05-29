@@ -151,6 +151,7 @@
     <Property Name="Periodic" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="BloodType" Relationship="Self.FK_Posts_BloodTypes" FromRole="Posts" ToRole="BloodTypes" />
     <NavigationProperty Name="City" Relationship="Self.FK_Posts_Cities" FromRole="Posts" ToRole="Cities" />
+    <NavigationProperty Name="Comments" Relationship="BloodBankDBITIModel.FK_Comments_Posts" FromRole="Post" ToRole="Comment" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -749,9 +750,14 @@
       <End Role="Needer_Donor" EntitySet="Needer_Donor" />
     </AssociationSet>
     <EntitySet Name="Emergencies" EntityType="BloodBankDBITIModel.Emergency" />
+    <EntitySet Name="Hospitals" EntityType="BloodBankDBITIModel.Hospital" />
     <AssociationSet Name="FK_Emergency_Cities" Association="BloodBankDBITIModel.FK_Emergency_Cities">
       <End Role="City" EntitySet="Cities" />
       <End Role="Emergency" EntitySet="Emergencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hospitals_Cities" Association="BloodBankDBITIModel.FK_Hospitals_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Hospital" EntitySet="Hospitals" />
     </AssociationSet>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
@@ -771,11 +777,32 @@
       <Parameter Name="cid" Mode="In" Type="Int32" />
       <Parameter Name="hid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="Hospitals" EntityType="BloodBankDBITIModel.Hospital" />
-    <AssociationSet Name="FK_Hospitals_Cities" Association="BloodBankDBITIModel.FK_Hospitals_Cities">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Hospital" EntitySet="Hospitals" />
+    <FunctionImport Name="Comments_insert">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="comment" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Comments_SelectAllByPostID" ReturnType="Collection(BloodBankDBITIModel.Comments_SelectAllByPostID_Result)">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Comments1" EntityType="BloodBankDBITIModel.Comments" />
+    <AssociationSet Name="FK_Comments_Posts" Association="BloodBankDBITIModel.FK_Comments_Posts">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Comment" EntitySet="Comments1" />
     </AssociationSet>
+    <FunctionImport Name="Comments_insert1">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="comment" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Comments_insert2">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="comment" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1058,6 +1085,21 @@
     <Property Name="Accepted" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="Needer_Donor" ToRole="BloodType" />
   </EntityType>
+  <ComplexType Name="donor_SelectByDID_Result">
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DonorGender" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="true" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="Int32" Name="LID" Nullable="true" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Boolean" Name="Pending" Nullable="true" />
+    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+    <Property Type="Int32" Name="PAID" Nullable="true" />
+    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="DonorByBloodCity_Result">
     <Property Type="Int32" Name="DID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
@@ -1126,6 +1168,17 @@
     <Property Name="HID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Emergency_Cities" FromRole="Emergency" ToRole="City" />
   </EntityType>
+  <EntityType Name="Hospital">
+    <Key>
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="HID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Hospitals_Cities" FromRole="Hospital" ToRole="City" />
+  </EntityType>
   <Association Name="FK_Emergency_Cities">
     <End Type="BloodBankDBITIModel.City" Role="City" Multiplicity="1" />
     <End Type="BloodBankDBITIModel.Emergency" Role="Emergency" Multiplicity="*" />
@@ -1138,24 +1191,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="EmergencySelectCityDay_Result">
-    <Property Type="Int32" Name="HID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="CID" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Address" Nullable="true" />
-  </ComplexType>
-  <EntityType Name="Hospital">
-    <Key>
-      <PropertyRef Name="HID" />
-    </Key>
-    <Property Name="HID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CID" Type="Int32" />
-    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Hospitals_Cities" FromRole="Hospital" ToRole="City" />
-  </EntityType>
   <Association Name="FK_Hospitals_Cities">
     <End Type="BloodBankDBITIModel.City" Role="City" Multiplicity="0..1" />
     <End Type="BloodBankDBITIModel.Hospital" Role="Hospital" Multiplicity="*" />
@@ -1168,21 +1203,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="donor_SelectByDID_Result">
-    <Property Type="Int32" Name="DID" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="DonorGender" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="true" />
+  <ComplexType Name="EmergencySelectCityDay_Result">
+    <Property Type="Int32" Name="HID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="CID" Nullable="true" />
-    <Property Type="Int32" Name="LID" Nullable="true" />
-    <Property Type="Boolean" Name="Status" Nullable="true" />
-    <Property Type="Boolean" Name="Pending" Nullable="true" />
-    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
-    <Property Type="Int32" Name="PAID" Nullable="true" />
-    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="Comments_SelectAllByPostID_Result">
+    <Property Type="Int32" Name="ID" Nullable="true" />
+    <Property Type="Int32" Name="Post_ID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comment" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Post_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Post" Relationship="BloodBankDBITIModel.FK_Comments_Posts" FromRole="Comment" ToRole="Post" />
+  </EntityType>
+  <Association Name="FK_Comments_Posts">
+    <End Type="BloodBankDBITIModel.Post" Role="Post" Multiplicity="0..1" />
+    <End Type="BloodBankDBITIModel.Comments" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

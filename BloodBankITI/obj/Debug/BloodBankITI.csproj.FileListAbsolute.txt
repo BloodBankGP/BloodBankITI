@@ -50,7 +50,6 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 D:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config

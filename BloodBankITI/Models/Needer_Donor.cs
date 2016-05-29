@@ -20,5 +20,7 @@ namespace BloodBankITI.Models
         public int DID { get; set; }
         public System.DateTime AskDate { get; set; }
         public bool Accepted { get; set; }
+    
+        public virtual BloodType BloodType { get; set; }
     }
 }

@@ -11,13 +11,14 @@ namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class EmergencyToday_Result
+    public partial class selectNeederByCityBlood_Result
     {
-        public int HID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> CID { get; set; }
+        public int NID { get; set; }
+        public string Email { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public int BID { get; set; }
+        public int CID { get; set; }
         public string Phone { get; set; }
-        public string Address { get; set; }
-        public Nullable<int> DayID { get; set; }
     }
 }

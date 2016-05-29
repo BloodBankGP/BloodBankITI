@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="AID" />
+    </Key>
+    <Property Name="AID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BloodTypes">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Post_ID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Days">
+    <Key>
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="DayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Donors">
+    <Key>
+      <PropertyRef Name="DID" />
+    </Key>
+    <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DonorGender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="BID" Type="int" />
+    <Property Name="CID" Type="int" />
+    <Property Name="LID" Type="int" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Pending" Type="bit" />
+    <Property Name="DonationDate" Type="date" />
+    <Property Name="PAID" Type="int" />
+    <Property Name="PhoneStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Emergency">
+    <Key>
+      <PropertyRef Name="CID" />
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="DayID" Type="int" Nullable="false" />
+    <Property Name="HID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hospitals">
+    <Key>
+      <PropertyRef Name="HID" />
+    </Key>
+    <Property Name="HID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CID" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CID" Type="int" />
+    <Property Name="LocationName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="UTID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Needer">
+    <Key>
+      <PropertyRef Name="NID" />
+    </Key>
+    <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Needer_Donor">
+    <Key>
+      <PropertyRef Name="NID" />
+      <PropertyRef Name="DID" />
+      <PropertyRef Name="AskDate" />
+    </Key>
+    <Property Name="NID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="DID" Type="int" Nullable="false" />
+    <Property Name="AskDate" Type="date" Nullable="false" />
+    <Property Name="Accepted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NGO">
+    <Key>
+      <PropertyRef Name="NID" />
+    </Key>
+    <Property Name="NID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Approved" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Partners">
+    <Key>
+      <PropertyRef Name="PAID" />
+    </Key>
+    <Property Name="PAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="PartnersStatestics">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="Insert_Date" Type="date" Nullable="false" />
+    <Property Name="PID" Type="int" Nullable="false" />
+    <Property Name="DID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Post" Type="nvarchar(max)" />
+    <Property Name="Insert_date" Type="date" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Periodic" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UTID" />
+    </Key>
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="UTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Comments_Posts">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donors_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
+    <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donors_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donors_Locations">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="LID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="LID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donors_Partners">
+    <End Role="Partners" Type="Self.Partners" Multiplicity="0..1" />
+    <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="PAID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="PAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emergency_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Emergency" Type="Self.Emergency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Emergency">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hospitals_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Hospitals">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Locations">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UTID" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="UTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="Needer" Type="Self.Needer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Needer">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Needer" Type="Self.Needer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Needer">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NGO_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="NGO">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnersStatestics_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="PartnersStatestics" Type="Self.PartnersStatestics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="PartnersStatestics">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnersStatestics_Donors">
+    <End Role="Donors" Type="Self.Donors" Multiplicity="1" />
+    <End Role="PartnersStatestics" Type="Self.PartnersStatestics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donors">
+        <PropertyRef Name="DID" />
+      </Principal>
+      <Dependent Role="PartnersStatestics">
+        <PropertyRef Name="DID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnersStatestics_Partners">
+    <End Role="Partners" Type="Self.Partners" Multiplicity="1" />
+    <End Role="PartnersStatestics" Type="Self.PartnersStatestics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="PAID" />
+      </Principal>
+      <Dependent Role="PartnersStatestics">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AcceptRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Admins_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Admins_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Admins_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Admins_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Admins_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Cities_DeleteCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cities_InsertCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityName" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Cities_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Cities_SelectBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Cities_UpdateCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Comments_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="post_id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="comment" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Comments_SelectAllByPostID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="donor_SelectByDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
+  <Function Name="donor_updatepending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DonorBloodType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="DonorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DonorByBloodCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Donors_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="pending" Type="bit" Mode="In" />
+    <Parameter Name="donationDate" Type="date" Mode="In" />
+    <Parameter Name="PID" Type="int" Mode="In" />
+    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Donors_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Donors_SelectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Donors_UpdateID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="pending" Type="bit" Mode="In" />
+    <Parameter Name="donationDate" Type="date" Mode="In" />
+    <Parameter Name="PID" Type="int" Mode="In" />
+    <Parameter Name="DID" Type="int" Mode="In" />
+    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="hid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencySelectCityDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="hid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PAID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Hospitals_DeleteHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Hospitals_InsertHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DayID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Hospitals_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Hospitals_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Hospitals_UpdateHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DayID" Type="int" Mode="In" />
+    <Parameter Name="HID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insert_needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Locations_DeleteLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Locations_InsertLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="LocationName" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Locations_SelectAllByCityID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Locations_SelectBYCityID_LocationID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Locations_UpdateLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Login_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="int" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Login_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="user" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Login_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Login_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Login_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
+    <Parameter Name="type" Type="int" Mode="In" />
+    <Parameter Name="user" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorNotAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NGO_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NGO_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="int" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NGO_selectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="NGO_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="NGO_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="int" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Partners_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Partners_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Partners_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Partners_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Partners_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="PartnerStatestics_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PartnerStatestics_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="int" Mode="In" />
+    <Parameter Name="date" Type="date" Mode="In" />
+    <Parameter Name="pid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PartnerStatestics_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="date" Mode="In" />
+    <Parameter Name="partner" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PartnerStatestics_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="posts_DeletePost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="posts_InsertPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="periodic" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="posts_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="posts_SelectByBID_CID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="returDonorData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="nid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_BloodTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Select_BloodTypesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_Days" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Select_DaysALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Select_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="select_NeederID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="selectNeederByCityBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Update_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="BID" Type="int" Mode="In" />
+    <Parameter Name="CID" Type="int" Mode="In" />
+    <Parameter Name="NID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserType_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserType_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UserType_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UserType_selectt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UserType_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="nvarchar" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BloodBankDBITIModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodTypes" EntityType="Self.BloodTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donors" EntityType="Self.Donors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emergency" EntityType="Self.Emergency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Needer" EntityType="Self.Needer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Needer_Donor" EntityType="Self.Needer_Donor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGO" EntityType="Self.NGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartnersStatestics" EntityType="Self.PartnersStatestics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donors_BloodTypes" Association="Self.FK_Donors_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donors_Cities" Association="Self.FK_Donors_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donors_Locations" Association="Self.FK_Donors_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donors_Partners" Association="Self.FK_Donors_Partners">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emergency_Cities" Association="Self.FK_Emergency_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Emergency" EntitySet="Emergency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hospitals_Cities" Association="Self.FK_Hospitals_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Hospitals" EntitySet="Hospitals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Cities" Association="Self.FK_Locations_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_UserType" Association="Self.FK_Login_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_BloodTypes" Association="Self.FK_Needer_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Needer" EntitySet="Needer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Cities" Association="Self.FK_Needer_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Needer" EntitySet="Needer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="Self.FK_Needer_Donor_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NGO_Cities" Association="Self.FK_NGO_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="NGO" EntitySet="NGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnersStatestics_BloodTypes" Association="Self.FK_PartnersStatestics_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="PartnersStatestics" EntitySet="PartnersStatestics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnersStatestics_Donors" Association="Self.FK_PartnersStatestics_Donors">
+      <End Role="Donors" EntitySet="Donors" />
+      <End Role="PartnersStatestics" EntitySet="PartnersStatestics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnersStatestics_Partners" Association="Self.FK_PartnersStatestics_Partners">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="PartnersStatestics" EntitySet="PartnersStatestics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_BloodTypes" Association="Self.FK_Posts_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_Cities" Association="Self.FK_Posts_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
