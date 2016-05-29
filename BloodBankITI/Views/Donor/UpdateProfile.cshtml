@@ -1,0 +1,63 @@
+﻿@model BloodBankITI.Models.donorCityBlood
+
+@{
+    ViewBag.Title = "Update Profile";
+    Layout = "~/Views/Shared/_Layout2";
+}
+
+<h2>Update Profile</h2>
+
+<form action="" method="post">
+    <div class="form-group">
+        <label>First Name: </label><input type="text" value="@Model.Donor.Fname" name="Fname" />
+    </div>
+
+    <div class="form-group">
+        <label>Last Name: </label><input type="text" value="@Model.Donor.Lname" name="Lname" />
+    </div>
+
+    <div class="form-group">
+        <label>Gender: </label>
+        @if (Model.Donor.DonorGender == "male")
+        {
+            <input type="radio" name="DonorGender" value="Male" checked="" />
+            <input type="radio" name="DonorGender" value="Female" />
+        }
+
+        @if (Model.Donor.DonorGender == "female")
+        {
+            <input type="radio" name="DonorGender" value="Male" checked="" />
+            <input type="radio" name="DonorGender" value="Female" />
+        }
+    </div>
+
+    <div class="form-group">
+        <label>Blood Type: </label><select name="BID">
+            @foreach (var item in Model.BloodTypesResults)
+            {
+
+                <option value=@item.BID>@item.Type</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Blood Type: </label>
+        <select name="CID" id="CitiesID">
+            @foreach (var item in Model.CitiesSelectAllResults)
+            {
+                <option value="0">Not Set</option>
+                <option value=@item.CID>@item.CityName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Phone: </label><input type="number" value="@Model.Donor.Phone" name="Phone" />
+    </div>
+
+    <input type="submit" value="Save" />
+
+</form>
+
+@Html.ActionLink("Back", "Index")
