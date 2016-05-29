@@ -115,13 +115,6 @@ namespace BloodBankService.Controllers
             }            
         }
 
-        [HttpGet]
-        [Route("EmergencyToday/{cityid:int}/{dayid:int}")]
-        public EmergencyToday_Result EmergencyToday(int cityid, int dayid)
-        {
-            return db.EmergencyToday(dayid, cityid).FirstOrDefault();
-        }
-
 
         ////////////////////////////Donor
         [HttpGet]
@@ -138,12 +131,12 @@ namespace BloodBankService.Controllers
             db.donor_updatepending(donorid);
         }
 
-        [HttpGet]
-        [Route("SelectDonorByDID/{donorid}")]
-        public donor_SelectByDID_Result SelectDonorByID(int donorid)
-        {
-           return db.donor_SelectByDID(donorid).FirstOrDefault();
-        }
+        //[HttpGet]
+        //[Route("SelectDonorByDID/{donorid}")]
+        //public donor_SelectByDID_Result SelectDonorByID(int donorid)
+        //{
+        //   return db.donor_SelectByDID(donorid).FirstOrDefault();
+        //}
 
         [HttpPut]
         [Route ("donorupdate/{donor}")]
@@ -295,7 +288,7 @@ namespace BloodBankService.Controllers
         [Route("ALLCommentPerPost/{comment}")]
         public void Comments_Insert(Comments comment)
         {
-            db.Comments_insert(comment.ID, comment.Post_ID, comment.Name, comment.Comment);
+            db.Comments_insert(comment.Post_ID, comment.Name, comment.Comment);
         }
 
     }

@@ -27,7 +27,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Post_ID" Type="int" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Comment" Type="nvarchar(max)" />
@@ -44,15 +44,15 @@
       <PropertyRef Name="DID" />
     </Key>
     <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Fname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Lname" Type="nvarchar" MaxLength="50" />
-    <Property Name="DonorGender" Type="nchar" MaxLength="10" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="BID" Type="int" />
-    <Property Name="CID" Type="int" />
-    <Property Name="LID" Type="int" />
-    <Property Name="Status" Type="bit" />
-    <Property Name="Pending" Type="bit" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DonorGender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="LID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="DonationDate" Type="date" />
     <Property Name="PAID" Type="int" />
     <Property Name="PhoneStatus" Type="bit" />
@@ -193,7 +193,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -205,7 +205,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_Cities">
-    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cities">
@@ -217,7 +217,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_Locations">
-    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Locations">
@@ -438,7 +438,6 @@
     <Parameter Name="CID" Type="int" Mode="In" />
   </Function>
   <Function Name="Comments_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="post_id" Type="int" Mode="In" />
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
     <Parameter Name="comment" Type="nvarchar(max)" Mode="In" />

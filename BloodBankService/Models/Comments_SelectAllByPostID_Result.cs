@@ -13,7 +13,7 @@ namespace BloodBankService.Models
     
     public partial class Comments_SelectAllByPostID_Result
     {
-        public Nullable<int> ID { get; set; }
+        public int ID { get; set; }
         public Nullable<int> Post_ID { get; set; }
         public string Name { get; set; }
         public string Comment { get; set; }

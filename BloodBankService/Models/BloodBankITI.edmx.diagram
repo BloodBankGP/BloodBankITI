@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f97182a72d344f9b99b6369e388d0dcc" Name="Diagram1">
+      <Diagram DiagramId="f88ca2fc0408464689f88bf30863784f" Name="Diagram1">
         <EntityTypeShape EntityType="BloodBankDBITIModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.BloodType" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.City" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BloodBankDBITIModel.Comment" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Comments" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Day" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Donor" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Emergency" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />

@@ -18,12 +18,12 @@ namespace BloodBankService.Models
         public City()
         {
             this.Donors = new HashSet<Donor>();
+            this.Emergencies = new HashSet<Emergency>();
+            this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
             this.Needers = new HashSet<Needer>();
             this.NGOes = new HashSet<NGO>();
             this.Posts = new HashSet<Post>();
-            this.Emergencies = new HashSet<Emergency>();
-            this.Hospitals = new HashSet<Hospital>();
         }
     
         public int CID { get; set; }
@@ -32,6 +32,10 @@ namespace BloodBankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Emergency> Emergencies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Hospital> Hospitals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Location> Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Needer> Needers { get; set; }
@@ -39,9 +43,5 @@ namespace BloodBankService.Models
         public virtual ICollection<NGO> NGOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Emergency> Emergencies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hospital> Hospitals { get; set; }
     }
 }

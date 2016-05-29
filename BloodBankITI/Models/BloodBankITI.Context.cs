@@ -30,7 +30,7 @@ namespace BloodBankITI.Models
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<BloodType> BloodTypes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Comments> Comments1 { get; set; }
         public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
         public virtual DbSet<Emergency> Emergencies { get; set; }
@@ -179,12 +179,8 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_UpdateCity", cityNameParameter, cIDParameter);
         }
     
-        public virtual int Comments_insert(Nullable<int> id, Nullable<int> post_id, string name, string comment)
+        public virtual int Comments_insert(Nullable<int> post_id, string name, string comment)
         {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
             var post_idParameter = post_id.HasValue ?
                 new ObjectParameter("post_id", post_id) :
                 new ObjectParameter("post_id", typeof(int));
@@ -197,7 +193,7 @@ namespace BloodBankITI.Models
                 new ObjectParameter("comment", comment) :
                 new ObjectParameter("comment", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comments_insert", idParameter, post_idParameter, nameParameter, commentParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comments_insert", post_idParameter, nameParameter, commentParameter);
         }
     
         public virtual ObjectResult<Comments_SelectAllByPostID_Result> Comments_SelectAllByPostID(Nullable<int> post_id)

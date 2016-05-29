@@ -42,16 +42,50 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult WallPosts()
         {
-            List<posts_SelectAll_Result> post = new List<posts_SelectAll_Result>();
+            List<PostsComments> PostsComments = new List<Models.PostsComments>();
+
+            List<posts_SelectAll_Result> posts = new List<posts_SelectAll_Result>();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.GetAsync("AllPosts").Result;
             if (response.IsSuccessStatusCode)
             {
-                post = response.Content.ReadAsAsync<List<posts_SelectAll_Result>>().Result;
+                posts = response.Content.ReadAsAsync<List<posts_SelectAll_Result>>().Result;
 
             }
-            return View(post);
+
+            foreach (posts_SelectAll_Result item in posts)
+            {
+
+                List<Comments_SelectAllByPostID_Result> comments = new List<Comments_SelectAllByPostID_Result>();
+                response = client.GetAsync("ALLCommentPerPost/"+item.PID).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    comments = response.Content.ReadAsAsync<List<Comments_SelectAllByPostID_Result>>().Result;
+
+                }
+
+                PostsComments.Add(new PostsComments() { post = item, comments = comments});
+            }
+            return View(PostsComments);
+        }
+
+        [HttpPost]
+        public ActionResult InsertComment (Comments comment)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("ALLCommentPerPost/comment", comment).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert comment";
+
+            return RedirectToAction("WallPosts");
         }
     }
 }
