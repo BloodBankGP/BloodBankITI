@@ -32,7 +32,6 @@ namespace BloodBankService.Models
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
-        public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Needer> Needers { get; set; }
@@ -43,6 +42,8 @@ namespace BloodBankService.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
+        public virtual DbSet<Emergency> Emergencies { get; set; }
+        public virtual DbSet<Hospital> Hospitals { get; set; }
     
         public virtual int Admins_delete(Nullable<int> id)
         {
@@ -1176,6 +1177,66 @@ namespace BloodBankService.Models
                 new ObjectParameter("nid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<returDonorData_Result>("returDonorData", didParameter, nidParameter);
+        }
+    
+        public virtual int EmergencyDelete(Nullable<int> dayid, Nullable<int> cid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyDelete", dayidParameter, cidParameter);
+        }
+    
+        public virtual int EmergencyInsert(Nullable<int> dayid, Nullable<int> cid, Nullable<int> hid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var hidParameter = hid.HasValue ?
+                new ObjectParameter("hid", hid) :
+                new ObjectParameter("hid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyInsert", dayidParameter, cidParameter, hidParameter);
+        }
+    
+        public virtual ObjectResult<EmergencySelectCityDay_Result> EmergencySelectCityDay(Nullable<int> dayid, Nullable<int> cid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectCityDay_Result>("EmergencySelectCityDay", dayidParameter, cidParameter);
+        }
+    
+        public virtual int EmergencyUpdate(Nullable<int> dayid, Nullable<int> cid, Nullable<int> hid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var hidParameter = hid.HasValue ?
+                new ObjectParameter("hid", hid) :
+                new ObjectParameter("hid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyUpdate", dayidParameter, cidParameter, hidParameter);
         }
     }
 }

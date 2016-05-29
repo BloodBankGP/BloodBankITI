@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1d6681249cb54622aacb94d5150bcbbb" Name="Diagram1">
+      <Diagram DiagramId="1d6681249cb54622aacb94d5150bcbbb" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="BloodBankDBITIModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.BloodType" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.City" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Day" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Donor" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BloodBankDBITIModel.Hospital" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Location" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Login" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Needer" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
@@ -25,12 +24,10 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Posts_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Cities" ManuallyRouted="false" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Hospitals_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Locations_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_NGO_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Posts_Cities" ManuallyRouted="false" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Hospitals_Days" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Partners" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Donors" ManuallyRouted="false" />
@@ -38,6 +35,10 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Partners" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="5.375" PointY="6.75" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Emergency" Width="1.5" PointX="3" PointY="21.5" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Emergency_Cities" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Hospital" Width="1.5" PointX="3" PointY="11.25" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Hospitals_Cities" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

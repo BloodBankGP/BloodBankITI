@@ -41,6 +41,7 @@ namespace BloodBankService.Controllers
         {
             return db.posts_SelectByBID_CID(bid , cid).ToList();
         }
+
         [HttpGet]
         [Route("DonorByID/{cid:int}/{bid:int}/{lid:int}")]
         public List<Models.Donors_SelectID_Result> DonorsSelectByID(int cid, int bid, int lid)
@@ -74,8 +75,6 @@ namespace BloodBankService.Controllers
             {
                 return "Operation Falied";
             }
-
-
         }
 
         [HttpGet]
@@ -101,8 +100,7 @@ namespace BloodBankService.Controllers
             else
             {
                 return "Invalid Name";
-            }
-            
+            }            
         }
 
         [HttpGet]
@@ -114,6 +112,13 @@ namespace BloodBankService.Controllers
 
 
         ////////////////////////////Donor
+        [HttpGet]
+        [Route("ViewProfile/{did:int}")]
+        public donor_SelectByDID_Result selectDonorByID(int did)
+        {
+            return db.donor_SelectByDID(did).FirstOrDefault();
+        }
+        
         [HttpPut]
         [Route("updatePending/{donorid}")]
         public void UpdatePending(int donorid)

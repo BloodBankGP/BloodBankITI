@@ -165,7 +165,6 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml
-E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
@@ -173,3 +172,9 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache

@@ -189,3 +189,7 @@ E:\Graduation Project\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.p
 E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
 E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
 E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache

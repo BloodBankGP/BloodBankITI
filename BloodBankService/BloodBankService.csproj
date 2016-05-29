@@ -270,6 +270,12 @@
     <Compile Include="Models\donor_SelectByDID_Result.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Emergency.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmergencySelectCityDay_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EmergencyToday_Result.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
