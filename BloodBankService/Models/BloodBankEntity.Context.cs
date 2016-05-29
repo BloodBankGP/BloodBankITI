@@ -32,7 +32,6 @@ namespace BloodBankService.Models
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
-        public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Needer> Needers { get; set; }
@@ -43,6 +42,9 @@ namespace BloodBankService.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
+        public virtual DbSet<Emergency> Emergencies { get; set; }
+        public virtual DbSet<Hospital> Hospitals { get; set; }
+        public virtual DbSet<Comments> Comments1 { get; set; }
     
         public virtual int Admins_delete(Nullable<int> id)
         {
@@ -1176,6 +1178,138 @@ namespace BloodBankService.Models
                 new ObjectParameter("nid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<returDonorData_Result>("returDonorData", didParameter, nidParameter);
+        }
+    
+        public virtual int EmergencyDelete(Nullable<int> dayid, Nullable<int> cid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyDelete", dayidParameter, cidParameter);
+        }
+    
+        public virtual int EmergencyInsert(Nullable<int> dayid, Nullable<int> cid, Nullable<int> hid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var hidParameter = hid.HasValue ?
+                new ObjectParameter("hid", hid) :
+                new ObjectParameter("hid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyInsert", dayidParameter, cidParameter, hidParameter);
+        }
+    
+        public virtual ObjectResult<EmergencySelectCityDay_Result> EmergencySelectCityDay(Nullable<int> dayid, Nullable<int> cid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectCityDay_Result>("EmergencySelectCityDay", dayidParameter, cidParameter);
+        }
+    
+        public virtual int EmergencyUpdate(Nullable<int> dayid, Nullable<int> cid, Nullable<int> hid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var hidParameter = hid.HasValue ?
+                new ObjectParameter("hid", hid) :
+                new ObjectParameter("hid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyUpdate", dayidParameter, cidParameter, hidParameter);
+        }
+    
+        public virtual int Comments_insert(Nullable<int> id, Nullable<int> post_id, string name, string comment)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("comment", comment) :
+                new ObjectParameter("comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comments_insert", idParameter, post_idParameter, nameParameter, commentParameter);
+        }
+    
+        public virtual ObjectResult<Comments_SelectAllByPostID_Result> Comments_SelectAllByPostID(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Comments_SelectAllByPostID_Result>("Comments_SelectAllByPostID", post_idParameter);
+        }
+    
+        public virtual int Comments_insert1(Nullable<int> id, Nullable<int> post_id, string name, string comment)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("comment", comment) :
+                new ObjectParameter("comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comments_insert1", idParameter, post_idParameter, nameParameter, commentParameter);
+        }
+    
+        public virtual int Comments_insert2(Nullable<int> id, Nullable<int> post_id, string name, string comment)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var commentParameter = comment != null ?
+                new ObjectParameter("comment", comment) :
+                new ObjectParameter("comment", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comments_insert2", idParameter, post_idParameter, nameParameter, commentParameter);
         }
     }
 }

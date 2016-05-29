@@ -12,13 +12,11 @@ namespace BloodBankService.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Hospital
+    public partial class Emergency
     {
+        public int CID { get; set; }
+        public int DayID { get; set; }
         public int HID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> CID { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
     
         public virtual City City { get; set; }
     }

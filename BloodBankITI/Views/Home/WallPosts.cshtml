@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BloodBankITI.Models.posts_SelectAll_Result>
+@{
+    ViewBag.Title = "WallPosts";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>WallPosts</h2>
+
+@foreach (var post in Model)
+{
+    <h6>@post.Name</h6>
+    <h6>@post.Insert_date.Value.Date</h6>
+    <h6>@post.Post</h6> 
+     
+}
+

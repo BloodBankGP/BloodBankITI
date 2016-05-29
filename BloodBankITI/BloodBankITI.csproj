@@ -315,7 +315,6 @@
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include=".DS_Store" />
     <Content Include="Content\.DS_Store" />
     <Content Include="Content\style.css.map" />
     <Content Include="js\.DS_Store" />
@@ -638,6 +637,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Home\WallPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

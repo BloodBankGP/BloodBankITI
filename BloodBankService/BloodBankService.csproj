@@ -252,6 +252,12 @@
     <Compile Include="Models\City.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comments.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comments_SelectAllByPostID_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Day.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
@@ -268,6 +274,12 @@
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\donor_SelectByDID_Result.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Emergency.cs">
+      <DependentUpon>BloodBankEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmergencyToday_Result.cs">

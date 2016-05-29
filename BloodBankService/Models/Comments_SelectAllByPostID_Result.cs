@@ -10,16 +10,12 @@
 namespace BloodBankService.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Hospital
+    public partial class Comments_SelectAllByPostID_Result
     {
-        public int HID { get; set; }
+        public Nullable<int> ID { get; set; }
+        public Nullable<int> Post_ID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CID { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-    
-        public virtual City City { get; set; }
+        public string Comment { get; set; }
     }
 }

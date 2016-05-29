@@ -267,5 +267,19 @@ namespace BloodBankService.Controllers
             return db.Hospitals_SelectAll().ToList();
         }
 
+        [HttpGet]
+        [Route("ALLCommentPerPost/{post_id:int}")]
+        public List<Models.Comments_SelectAllByPostID_Result> CommentsSelectPerPostResults(int post_id)
+        {
+            return db.Comments_SelectAllByPostID(post_id).ToList();
+        }
+
+        [HttpPost]
+        [Route("ALLCommentPerPost/{comment}")]
+        public void Comments_Insert(Comments comment)
+        {
+            db.Comments_insert(comment.ID, comment.Post_ID, comment.Name, comment.Comment);
+        }
+
     }
 }

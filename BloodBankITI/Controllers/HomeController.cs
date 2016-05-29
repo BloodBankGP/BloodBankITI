@@ -38,5 +38,20 @@ namespace BloodBankITI.Controllers
                 result = "Failed to insert Needer";
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult WallPosts()
+        {
+            List<posts_SelectAll_Result> post = new List<posts_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("AllPosts").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                post = response.Content.ReadAsAsync<List<posts_SelectAll_Result>>().Result;
+
+            }
+            return View(post);
+        }
     }
 }

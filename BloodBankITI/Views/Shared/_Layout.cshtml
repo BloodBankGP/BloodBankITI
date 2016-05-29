@@ -54,6 +54,32 @@
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>posts</a>
             </li>
+            @if (Session["UserName"] != null && Session["UserId"] != null)
+            {
+                switch (Session["UserType"].ToString())
+                {
+                    case "1":
+                        <li>
+                            @Html.ActionLink("الصفحة الشخصية", "Index", "Admin")
+                        </li>
+                        break;
+                    case "2":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Donor")
+                    </li>
+                        break;
+                    case "3":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "NGO")
+                    </li>
+                        break;
+                    case "4":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Partner")
+                    </li>
+                        break;
+                }
+            }
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>التبرع بالدم </a>
             </li>
