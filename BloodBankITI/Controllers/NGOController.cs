@@ -13,21 +13,52 @@ namespace BloodBankITI.Controllers
         // GET: NGO
         public ActionResult Index(int id)
         {
-            NGO_selectByID_Result ngo = new NGO_selectByID_Result() ;
+            NGO_selectByID_Result ngo = new NGO_selectByID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("NgoByID/"+id).Result;
+            HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
                 ngo = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;
-                
+
             }
             return View(ngo);
         }
 
+        [HttpGet]
+
         public ActionResult Edit(int id)
         {
-            return View();
+
+            NGO_selectByID_Result ngo = new NGO_selectByID_Result();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                ngo = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;
+
+            }
+            return View(ngo);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(NGO ngo)
+        {
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("NGoUpdate/Ngo", ngo).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert Ngo";
+
+            return RedirectToAction("Index");
         }
     }
 }

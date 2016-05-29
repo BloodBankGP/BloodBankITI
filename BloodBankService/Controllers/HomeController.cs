@@ -76,7 +76,19 @@ namespace BloodBankService.Controllers
                 return "Operation Falied";
             }
         }
+        [HttpPut]
+        [Route("NGoUpdate/{Ngo}")]
+        public void NGO_update(NGO Ngo)
+        {
+            db.NGO_update(Ngo.NID, Ngo.Name,Ngo.CID,Ngo.Phone, Ngo.Address);
 
+        }
+
+
+
+
+
+        
         [HttpGet]
         [Route("CheckLogin/{username}/{password}")]
         public Models.CheckLogin_Result CheckLogin(string username, string password)
