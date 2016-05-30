@@ -14,25 +14,29 @@
 
 <form action="" method="POST">
     <div class="form-group">
-        <label>First Name: </label><input type="text" value="@Model.Donor.Fname" name="Donor.Fname" />
+        <input type="hidden" value="@Model.Donor.DID" name="Donor.DID" />
     </div>
 
     <div class="form-group">
-        <label>Last Name: </label><input type="text" value="@Model.Donor.Lname" name="Donor.Lname" />
+        <label>First Name: </label><input type="text" value="@Model.Donor.Fname" name="Donor.Fname"/>
+    </div>
+
+    <div class="form-group">
+        <label>Last Name: </label><input type="text" value="@Model.Donor.Lname" name="Donor.Lname"/>
     </div>
 
     <div class="form-group">
         <label>Gender: </label>
         @if (Model.Donor.DonorGender == "male")
         {
-            <input type="radio" name="Donor.DonorGender" value="Male" checked/>@("Male   ")
-            <input type="radio" name="Donor.DonorGender" value="Female" />@("Female")
+            <input type="radio" name="Donor.DonorGender" value="male" checked/>@("Male   ")
+            <input type="radio" name="Donor.DonorGender" value="female"/>@("Female")
         }
 
         @if (Model.Donor.DonorGender == "female")
         {
-            <input type="radio" name="Donor.DonorGender" value="Male"/>@("Male   ")
-            <input type="radio" name="Donor.DonorGender" value="Female" checked/>@("Female")
+            <input type="radio" name="Donor.DonorGender" value="male"/>@("Male   ")
+            <input type="radio" name="Donor.DonorGender" value="female" checked/>@("Female")
         }
     </div>
 
@@ -64,38 +68,38 @@
         </select>
     </div>
 
-        <div class="form-group">
-            <label>Phone: </label><input type="number" value="@Model.Donor.Phone" name="Donor.Phone" />
-        </div>
+    <div class="form-group">
+        <label>Phone: </label><input type="number" value="@Model.Donor.Phone" name="Donor.Phone"/>
+    </div>
 
-        <input type="submit" value="Save" />
+    <input type="submit" value="Save"/>
 
-        <script>
-            $('#CitiesID').change(function () {
-                var CityID = $('#CitiesID').val();
-                $.ajax({
-                    url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
+    <script>
+        $('#CitiesID').change(function() {
+            var CityID = $('#CitiesID').val();
+            $.ajax({
+                url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
 
-                        WriteResponse(data);
-                    },
-                    error: function (e) {
-                        alert(e.statusText);
-                    }
-                });
+                    WriteResponse(data);
+                },
+                error: function(e) {
+                    alert(e.statusText);
+                }
             });
+        });
 
-            function WriteResponse(data) {
-                var result;
-                $.each(data, function (index, locations) {
-                    result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
-                });
-                $('#locationID').html(result);
+        function WriteResponse(data) {
+            var result;
+            $.each(data, function(index, locations) {
+                result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+            });
+            $('#locationID').html(result);
 
-            }
-        </script>
+        }
+    </script>
 
 </form>
 
