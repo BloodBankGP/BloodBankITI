@@ -134,7 +134,7 @@ namespace BloodBankService.Controllers
         //   return db.donor_SelectByDID(donorid).FirstOrDefault();
         //}
 
-        [HttpPut]
+        [HttpPost]
         [Route ("donorupdate/{donor}")]
         public void donor_update(Donor donor)
         {
