@@ -24,6 +24,14 @@ Location: @Model.LocationName <br/>
 
 Phone: @Model.Phone <br/>
 
-@Html.ActionLink("Edit Profile", "UpdateProfile", new {id=Model.DID})
+@Html.ActionLink("Edit Profile", "UpdateProfile", new {id=Model.DID}) <br/>
+@if (Model.DonationDate == null)
+{
+    <form action="" method="POST">
+        <input type="hidden" value="@Model.DID" name="id"/>
+        <input type="submit" value="I Donated Today"/>
+    </form>
+}
+
 
 
