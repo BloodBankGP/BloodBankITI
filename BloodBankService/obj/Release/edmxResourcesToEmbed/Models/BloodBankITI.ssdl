@@ -492,12 +492,8 @@
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
     <Parameter Name="LID" Type="int" Mode="In" />
-    <Parameter Name="status" Type="bit" Mode="In" />
-    <Parameter Name="pending" Type="bit" Mode="In" />
-    <Parameter Name="donationDate" Type="date" Mode="In" />
-    <Parameter Name="PID" Type="int" Mode="In" />
     <Parameter Name="DID" Type="int" Mode="In" />
-    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
+    <Parameter Name="gender" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dayid" Type="int" Mode="In" />

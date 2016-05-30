@@ -27,31 +27,28 @@ namespace BloodBankITI.Controllers
 
         //UpdateProfile
         [HttpGet]
-        public ActionResult UpdateProfile(int did)
+        public ActionResult UpdateProfile(int id)
         {
-            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            donorCityBlood donor = new donorCityBlood();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+
+            //Get Cities
             HttpResponseMessage response = client.GetAsync("ALLCities").Result;
             if (response.IsSuccessStatusCode)
             {
-                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+                donor.CitiesSelectAllResults = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
             }
 
-
-            List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
-
+            //Get Blood Types
             response = client.GetAsync("AllBloodTypes").Result;
             if (response.IsSuccessStatusCode)
             {
-                bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
-
+                donor.BloodTypesResults = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
             }
 
-            donorCityBlood donor = new donorCityBlood();
-            HttpClient client1 = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response1 = client.GetAsync("ViewProfile/" + did).Result;
+            //Get Donor
+            response = client.GetAsync("ViewProfile/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
                 donor.Donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
@@ -62,17 +59,17 @@ namespace BloodBankITI.Controllers
 
 
         [HttpPost]
-        public ActionResult UpdateProfile(donorCityBlood donor)
+        public ActionResult UpdateProfile(Donor donor)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new {id = donor.DID});
             }
             else
-                return View();
+                return RedirectToAction("UpdateProfile", donor.DID);
         }
 
     }

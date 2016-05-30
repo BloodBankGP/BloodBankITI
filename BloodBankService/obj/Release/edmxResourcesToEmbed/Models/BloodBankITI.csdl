@@ -619,12 +619,8 @@
       <Parameter Name="BID" Mode="In" Type="Int32" />
       <Parameter Name="CID" Mode="In" Type="Int32" />
       <Parameter Name="LID" Mode="In" Type="Int32" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="pending" Mode="In" Type="Boolean" />
-      <Parameter Name="donationDate" Mode="In" Type="DateTime" />
-      <Parameter Name="PID" Mode="In" Type="Int32" />
       <Parameter Name="DID" Mode="In" Type="Int32" />
-      <Parameter Name="PhoneStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="gender" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />

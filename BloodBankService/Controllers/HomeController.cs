@@ -84,10 +84,6 @@ namespace BloodBankService.Controllers
 
         }
 
-
-
-
-
         
         [HttpGet]
         [Route("CheckLogin/{username}/{password}")]
@@ -142,8 +138,7 @@ namespace BloodBankService.Controllers
         [Route ("donorupdate/{donor}")]
         public void donor_update(Donor donor)
         {
-            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone,donor.BID, donor.CID,
-                donor.LID, donor.Status, donor.Pending, donor.DonationDate, donor.PAID,donor.DID, donor.PhoneStatus);
+            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender);
         }
 
         [HttpPost]

@@ -342,7 +342,7 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectID_Result>("Donors_SelectID", cIDParameter, bIDParameter, lIDParameter);
         }
     
-        public virtual int Donors_UpdateID(string fname, string lname, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<bool> status, Nullable<bool> pending, Nullable<System.DateTime> donationDate, Nullable<int> pID, Nullable<int> dID, Nullable<bool> phoneStatus)
+        public virtual int Donors_UpdateID(string fname, string lname, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<int> dID, string gender)
         {
             var fnameParameter = fname != null ?
                 new ObjectParameter("Fname", fname) :
@@ -368,31 +368,15 @@ namespace BloodBankService.Models
                 new ObjectParameter("LID", lID) :
                 new ObjectParameter("LID", typeof(int));
     
-            var statusParameter = status.HasValue ?
-                new ObjectParameter("status", status) :
-                new ObjectParameter("status", typeof(bool));
-    
-            var pendingParameter = pending.HasValue ?
-                new ObjectParameter("pending", pending) :
-                new ObjectParameter("pending", typeof(bool));
-    
-            var donationDateParameter = donationDate.HasValue ?
-                new ObjectParameter("donationDate", donationDate) :
-                new ObjectParameter("donationDate", typeof(System.DateTime));
-    
-            var pIDParameter = pID.HasValue ?
-                new ObjectParameter("PID", pID) :
-                new ObjectParameter("PID", typeof(int));
-    
             var dIDParameter = dID.HasValue ?
                 new ObjectParameter("DID", dID) :
                 new ObjectParameter("DID", typeof(int));
     
-            var phoneStatusParameter = phoneStatus.HasValue ?
-                new ObjectParameter("PhoneStatus", phoneStatus) :
-                new ObjectParameter("PhoneStatus", typeof(bool));
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_UpdateID", fnameParameter, lnameParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, statusParameter, pendingParameter, donationDateParameter, pIDParameter, dIDParameter, phoneStatusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_UpdateID", fnameParameter, lnameParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, dIDParameter, genderParameter);
         }
     
         public virtual int EmergencyDelete(Nullable<int> dayid, Nullable<int> cid)
