@@ -175,7 +175,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\annonymousController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -791,7 +790,7 @@
     <Content Include="Views\NGO\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Info.cshtml" />
-    <Content Include="Views\annonymous\Donate.cshtml" />
+    <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Donor\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
