@@ -69,7 +69,21 @@ namespace BloodBankITI.Controllers
                 return RedirectToAction("Index", new {id = donor.DID});
             }
             else
-                return RedirectToAction("UpdateProfile", donor.DID);
+                return RedirectToAction("UpdateProfile", new {id = donor.DID});
+        }
+
+        [HttpPost]
+        public ActionResult UpdateDonationDate(int id)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("updatePending/donorid", id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", new {id = id});
+            }
+            else
+                return RedirectToAction("UpdateProfile", new { id = id });
         }
 
     }
