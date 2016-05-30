@@ -120,11 +120,11 @@ namespace BloodBankService.Controllers
             return db.donor_SelectByDID(did).FirstOrDefault();
         }
         
-        [HttpPut]
-        [Route("updatePending/{donorid}")]
-        public void UpdatePending(int donorid)
+        [HttpPost]
+        [Route("updatePending/{donor}")]
+        public void UpdatePending(Donor donor)
         {
-            db.donor_updatepending(donorid);
+            db.donor_updatepending(donor.DID);
         }
 
         //[HttpGet]
