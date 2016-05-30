@@ -9,32 +9,39 @@
 @foreach (var post in Model)
 {
     <div id="post">
-        <h6>@post.post.Name</h6>
-        <h6>@post.post.Insert_date.Value.Date</h6>
-        <h6>@post.post.Post</h6>
+        <h4>@post.post.Name  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</h4>
+
+        <h5>@post.post.Post</h5>
     </div>
-   
-        foreach (var comment in post.comments)
+    
+    <div id="Comments">
+         @foreach (var comment in post.comments)
         {
         <h6>@comment.Name</h6>
         <h6>@comment.Comment</h6>
         }
-  
-    
+    </div>
 
-        <h6>Insert Comment</h6>
-        <form action="" method="post">
-            @if (Session["UserName"].ToString() != null)
-            { 
-                <input type="text" name="comment.Name" value=@Session["UserName"].ToString() />
-            }
-            else
-            {
-                <input type="text" name="comment.Name" />
-            }
-            <input type="text" name="c.Comment" />
-            <input type="submit" value="Insert" />
-        </form>
+        <div id="insertComment">
+            <h6>Insert Comment</h6>
+            <form action="InsertComment" method="post">
+
+                <input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>
+
+                @if (Session["UserName"] != null)
+                {
+                    @Session["UserName"].ToString()
+                    <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                }
+                else
+                {
+                    @("Name :")   <input type="text" name="comment.Name" />
+                }
+                <input type="text" name="comment.Comment" />
+                <input type="submit" value="Insert" />
+            </form>
+
+        </div>
 
 
 

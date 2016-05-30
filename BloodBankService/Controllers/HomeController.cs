@@ -286,5 +286,11 @@ namespace BloodBankService.Controllers
             db.Comments_insert(comment.Post_ID, comment.Name, comment.Comment);
         }
 
+        [HttpGet]
+        [Route("GetPost/{id:int}")]
+        public Posts_GetPostByID_Result Comments_Insert(int id)
+        {
+            return db.Posts_GetPostByID(id).FirstOrDefault();
+        }
     }
 }

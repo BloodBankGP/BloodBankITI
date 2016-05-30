@@ -658,6 +658,9 @@
   <Function Name="posts_DeletePost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PID" Type="int" Mode="In" />
   </Function>
+  <Function Name="Posts_GetPostByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="posts_InsertPost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="post" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="Phone" Type="nvarchar" Mode="In" />

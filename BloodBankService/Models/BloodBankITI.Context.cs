@@ -1236,5 +1236,14 @@ namespace BloodBankService.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_update", typeParameter, idParameter);
         }
+    
+        public virtual ObjectResult<Posts_GetPostByID_Result> Posts_GetPostByID(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Posts_GetPostByID_Result>("Posts_GetPostByID", post_idParameter);
+        }
     }
 }

@@ -742,5 +742,19 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+    <FunctionImportMapping FunctionImportName="Posts_GetPostByID" FunctionName="BloodBankDBITIModel.Store.Posts_GetPostByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Posts_GetPostByID_Result">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

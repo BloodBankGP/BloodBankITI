@@ -85,7 +85,37 @@ namespace BloodBankITI.Controllers
             else
                 result = "Failed to insert comment";
 
-            return RedirectToAction("WallPosts");
+            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
+        }
+
+        [HttpGet]
+        public ActionResult GetPostByID (int id)
+        {
+            PostComments PostComments = new PostComments();
+
+            Posts_GetPostByID_Result post = new Posts_GetPostByID_Result();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("GetPost/"+id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                post = response.Content.ReadAsAsync<Posts_GetPostByID_Result>().Result;
+
+            }
+
+            
+
+                List<Comments_SelectAllByPostID_Result> comments = new List<Comments_SelectAllByPostID_Result>();
+                response = client.GetAsync("ALLCommentPerPost/" + post.PID).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    comments = response.Content.ReadAsAsync<List<Comments_SelectAllByPostID_Result>>().Result;
+
+                }
+
+                PostComments = new PostComments() { post = post, comments = comments };
+
+            return View(PostComments);
         }
     }
 }

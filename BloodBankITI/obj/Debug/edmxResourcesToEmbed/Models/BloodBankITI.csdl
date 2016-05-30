@@ -879,6 +879,9 @@
       <Parameter Name="type" Mode="In" Type="String" />
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1217,5 +1220,15 @@
   <ComplexType Name="UserType_selectt_Result">
     <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="UTID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Posts_GetPostByID_Result">
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="Post" Nullable="true" />
+    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Periodic" Nullable="false" />
   </ComplexType>
 </Schema>
