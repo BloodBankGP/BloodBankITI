@@ -331,7 +331,11 @@
     <Compile Include="Models\Post.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostComments.cs" />
     <Compile Include="Models\PostsComments.cs" />
+    <Compile Include="Models\Posts_GetPostByID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\posts_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -796,6 +800,7 @@
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Home\WallPosts.cshtml" />
+    <Content Include="Views\Home\GetPostByID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
