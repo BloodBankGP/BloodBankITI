@@ -297,5 +297,12 @@ namespace BloodBankService.Controllers
         {
             return db.Posts_GetPostByID(id).FirstOrDefault();
         }
+
+        [HttpGet]
+        [Route("EmergencyToday/{id:int}")]
+        public EmergencySelectCityDay_Result EmergencyToday (int id)
+        {
+            return db.EmergencySelectCityDay ((int)DateTime.Now.DayOfWeek,id).FirstOrDefault();
+        }
     }
 }

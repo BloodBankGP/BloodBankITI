@@ -114,8 +114,24 @@ namespace BloodBankITI.Controllers
                 }
 
                 PostComments = new PostComments() { post = post, comments = comments };
+              
 
             return View(PostComments);
+        }
+
+        [HttpGet]
+        public ActionResult EmergencyToDay()
+        {
+            List<Cities_SelectAll_Result> Cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+
+            }
+            return View(Cities);
         }
     }
 }
