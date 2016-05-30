@@ -28,6 +28,23 @@
 
 </head>
 <body>
+    <script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '247072542325141',
+            xfbml: true,
+            version: 'v2.6'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle" style="color:aliceblue;"> MENU<i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
@@ -54,6 +71,32 @@
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>posts</a>
             </li>
+            @if (Session["UserName"] != null && Session["UserId"] != null)
+            {
+                switch (Session["UserType"].ToString())
+                {
+                    case "1":
+                        <li>
+                            @Html.ActionLink("الصفحة الشخصية", "Index", "Admin")
+                        </li>
+                        break;
+                    case "2":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Donor")
+                    </li>
+                        break;
+                    case "3":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "NGO")
+                    </li>
+                        break;
+                    case "4":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Partner")
+                    </li>
+                        break;
+                }
+            }
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>التبرع بالدم </a>
             </li>

@@ -19,5 +19,6 @@ namespace BloodBankITI.Models
         public string Lname { get; set; }
         public int BID { get; set; }
         public int CID { get; set; }
+        public string Phone { get; set; }
     }
 }

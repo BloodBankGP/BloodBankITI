@@ -19,9 +19,7 @@ namespace BloodBankService.Models
         public Nullable<int> CID { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public Nullable<int> DayID { get; set; }
     
         public virtual City City { get; set; }
-        public virtual Day Day { get; set; }
     }
 }

@@ -50,7 +50,6 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 D:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
@@ -160,6 +159,7 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Goog
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
@@ -172,4 +172,15 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
-E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+D:\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache

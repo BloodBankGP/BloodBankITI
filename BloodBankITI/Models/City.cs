@@ -18,6 +18,7 @@ namespace BloodBankITI.Models
         public City()
         {
             this.Donors = new HashSet<Donor>();
+            this.Emergencies = new HashSet<Emergency>();
             this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
             this.Needers = new HashSet<Needer>();
@@ -30,6 +31,8 @@ namespace BloodBankITI.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Emergency> Emergencies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hospital> Hospitals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -41,6 +41,7 @@ namespace BloodBankService.Controllers
         {
             return db.posts_SelectByBID_CID(bid , cid).ToList();
         }
+
         [HttpGet]
         [Route("DonorByID/{cid:int}/{bid:int}/{lid:int}")]
         public List<Models.Donors_SelectID_Result> DonorsSelectByID(int cid, int bid, int lid)
@@ -74,8 +75,6 @@ namespace BloodBankService.Controllers
             {
                 return "Operation Falied";
             }
-
-
         }
         [HttpPut]
         [Route("NGoUpdate/{Ngo}")]
@@ -84,10 +83,6 @@ namespace BloodBankService.Controllers
             db.NGO_update(Ngo.NID, Ngo.Name,Ngo.CID,Ngo.Phone, Ngo.Address);
 
         }
-
-
-
-
 
         
         [HttpGet]
@@ -113,39 +108,37 @@ namespace BloodBankService.Controllers
             else
             {
                 return "Invalid Name";
-            }
-            
-        }
-
-        [HttpGet]
-        [Route("EmergencyToday/{cityid:int}/{dayid:int}")]
-        public EmergencyToday_Result EmergencyToday(int cityid, int dayid)
-        {
-            return db.EmergencyToday(dayid, cityid).FirstOrDefault();
+            }            
         }
 
 
         ////////////////////////////Donor
-        [HttpPut]
-        [Route("updatePending/{donorid}")]
-        public void UpdatePending(int donorid)
-        {
-            db.donor_updatepending(donorid);
-        }
-
         [HttpGet]
-        [Route("SelectDonorByDID/{donorid}")]
-        public donor_SelectByDID_Result SelectDonorByID(int donorid)
+        [Route("ViewProfile/{did:int}")]
+        public donor_SelectByDID_Result selectDonorByID(int did)
         {
-           return db.donor_SelectByDID(donorid).FirstOrDefault();
+            return db.donor_SelectByDID(did).FirstOrDefault();
+        }
+        
+        [HttpPost]
+        [Route("updatePending/{donor}")]
+        public void UpdatePending(Donor donor)
+        {
+            db.donor_updatepending(donor.DID);
         }
 
-        [HttpPut]
+        //[HttpGet]
+        //[Route("SelectDonorByDID/{donorid}")]
+        //public donor_SelectByDID_Result SelectDonorByID(int donorid)
+        //{
+        //   return db.donor_SelectByDID(donorid).FirstOrDefault();
+        //}
+
+        [HttpPost]
         [Route ("donorupdate/{donor}")]
         public void donor_update(Donor donor)
         {
-            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone,donor.BID, donor.CID,
-                donor.LID, donor.Status, donor.Pending, donor.DonationDate, donor.PAID,donor.DID, donor.PhoneStatus);
+            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender);
         }
 
         [HttpPost]
@@ -279,5 +272,32 @@ namespace BloodBankService.Controllers
             return db.Hospitals_SelectAll().ToList();
         }
 
+        [HttpGet]
+        [Route("ALLCommentPerPost/{post_id:int}")]
+        public List<Models.Comments_SelectAllByPostID_Result> CommentsSelectPerPostResults(int post_id)
+        {
+            return db.Comments_SelectAllByPostID(post_id).ToList();
+        }
+
+        [HttpPost]
+        [Route("ALLCommentPerPost/{comment}")]
+        public void Comments_Insert(Comments comment)
+        {
+            db.Comments_insert(comment.Post_ID, comment.Name, comment.Comment);
+        }
+
+        [HttpGet]
+        [Route("GetPost/{id:int}")]
+        public Posts_GetPostByID_Result Comments_Insert(int id)
+        {
+            return db.Posts_GetPostByID(id).FirstOrDefault();
+        }
+
+        [HttpGet]
+        [Route("EmergencyToday/{id:int}")]
+        public EmergencySelectCityDay_Result EmergencyToday (int id)
+        {
+            return db.EmergencySelectCityDay ((int)DateTime.Now.DayOfWeek,id).FirstOrDefault();
+        }
     }
 }

@@ -13,9 +13,9 @@ namespace BloodBankITI.Models
     
     public partial class Locations_SelectBYCityID_LocationID_Result
     {
-        public int CID { get; set; }
-        public string CityName { get; set; }
         public int LID { get; set; }
+        public Nullable<int> CID { get; set; }
         public string LocationName { get; set; }
+        public string CityName { get; set; }
     }
 }
