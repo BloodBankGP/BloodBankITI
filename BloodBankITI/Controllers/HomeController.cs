@@ -148,5 +148,23 @@ namespace BloodBankITI.Controllers
             }
             return View(Cities);
         }
+
+        [HttpPost]
+        public ActionResult NgoRequest (NGO ngo)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("NgoRequest/ngo", ngo).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert NGO";
+
+            return RedirectToAction("Index");
+        }
     }
 }

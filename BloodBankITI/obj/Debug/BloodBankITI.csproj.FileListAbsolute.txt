@@ -183,3 +183,4 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
