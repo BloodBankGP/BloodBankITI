@@ -804,6 +804,7 @@
     <Content Include="Views\Home\WallPosts.cshtml" />
     <Content Include="Views\Home\GetPostByID.cshtml" />
     <Content Include="Views\Home\EmergencyToDay.cshtml" />
+    <Content Include="Views\Home\NgoRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
