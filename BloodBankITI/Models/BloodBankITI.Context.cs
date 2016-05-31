@@ -68,7 +68,7 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_delete", idParameter);
         }
     
-        public virtual int Admins_insert(string fname, string lname)
+        public virtual int Admins_insert(string fname, string lname, string username, string pw)
         {
             var fnameParameter = fname != null ?
                 new ObjectParameter("fname", fname) :
@@ -78,7 +78,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("lname", lname) :
                 new ObjectParameter("lname", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_insert", fnameParameter, lnameParameter);
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_insert", fnameParameter, lnameParameter, usernameParameter, pwParameter);
         }
     
         public virtual ObjectResult<Admins_select_Result> Admins_select(Nullable<int> id)
@@ -95,7 +103,7 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Admins_selectt_Result>("Admins_selectt");
         }
     
-        public virtual int Admins_update(Nullable<int> id, string fname, string lname)
+        public virtual int Admins_update(Nullable<int> id, string fname, string lname, string username, string pw)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -109,7 +117,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("lname", lname) :
                 new ObjectParameter("lname", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_update", idParameter, fnameParameter, lnameParameter);
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_update", idParameter, fnameParameter, lnameParameter, usernameParameter, pwParameter);
         }
     
         public virtual ObjectResult<CheckLogin_Result> CheckLogin(string username, string password)

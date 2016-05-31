@@ -1,0 +1,14 @@
+﻿@model BloodBankITI.Models.Admins_select_Result
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+
+Name: @(Model.Fname + " " + Model.Lname)
+UserName: @Model.UserName
+Password: @Model.Password
+
+@Html.ActionLink("Edit Profile", "")
