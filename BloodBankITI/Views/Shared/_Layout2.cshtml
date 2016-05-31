@@ -14,6 +14,14 @@
     <!-- Custom Fonts -->
     <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Compiled and minified CSS -->
+    @*<link href="~/Content/materialize.css" rel="stylesheet" />*@
+    @*<link href="~/Content/materialize.min.css" rel="stylesheet" />*@
+        @*<link href="~/Content/materialize-v0.97.5/material.min.css" rel="stylesheet" />*@
+    
+   
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,41 +35,53 @@
 </head>
 <body>
     <!-- Navigation -->
-    <div id="fixedbar">
-        <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle" style="color:aliceblue;"> MENU<i class="fa fa-bars"></i></a>
-        <nav id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-                <li class="sidebar-brand">
-                    <a href="#top" onclick=$("#menu-close").click();>
-                    </a>
-                </li>
-                <li>
-                    <a href="#top" onclick=$("#menu-close").click();>الصفحة الرئيسية </a>
-                </li>
-                <li>
-                    <a href="#about" onclick=$("#menu-close").click();>الطوارىء</a>
-                </li>
-                <li>
-                    <a href="#services" onclick=$("#menu-close").click();> اتبرع </a>
-                </li>
-                <li>
-                    <a href="#portfolio" onclick=$("#menu-close").click();> أنا عايز دم </a>
-                </li>
-                <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>posts</a>
-                </li>
-                <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>التبرع بالدم </a>
-                </li>
-                <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>عن الموقع </a>
-                </li>
-                <li>
-                    <a href="#contact" onclick=$("#menu-close").click();>التواصل معنا </a>
-                </li>
-            </ul>
-        </nav>
+   <div id="fixedbar">
+      @*  <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"> <i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top" onclick=$("#menu-close").click(); </a>
+            </li>
+            <li>
+                <a href="#top" onclick=$("#menu-close").click();>الصفحة الرئيسية </a>
+            </li>
+            <li>
+                <a href="#about" onclick=$("#menu-close").click();>الطوارىء</a>
+            </li>
+            <li>
+                <a href="#services" onclick=$("#menu-close").click();> اتبرع </a>
+            </li>
+            <li>
+                <a href="#portfolio" onclick=$("#menu-close").click();>انا عايز دم </a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>posts</a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();> </a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>Úä ÇáãæÞÚ </a>
+            </li>
+            <li>
+                <a href="#contact" onclick=$("#menu-close").click();>ÇáÊæÇÕá ãÚäÇ </a>
+            </li>
+        </ul>
+    </nav>*@
+
+       <div id="mySidenav" class="sidenav">
+           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+           <a href="#">About</a>
+           <a href="#">Services</a>
+           <a href="#">Clients</a>
+           <a href="#">Contact</a>
+       </div>
+
+       <div id="main">
+           @*<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>*@
+           <a href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"><i class="fa fa-bars"></i></a>
+       </div>
 
         <div id="headerlogo"></div>
 
@@ -74,16 +94,14 @@
     <br />
     <br />
 
-        @RenderBody()
+    @RenderBody()
 
     <!-- Footer -->
     <footer>
-        <div class="icons center-block">
+        <div class="icon center-block" >
             <span class="fa fa-facebook fa-2x"></span>
             <span class="fa fa-twitter fa-2x"></span>
             <span class="fa fa-youtube fa-2x"></span>
-       
-
             <br><br>
             <h6>Thanks for checking this pen<br><br><a href="http://manuelpinto.in" title="See More">www.manuelpinto.in</a></h6>
             <br><br>
@@ -96,35 +114,52 @@
 
     <script src="~/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
+
+    @*<script src="~/js/materialize.min.js"></script>*@
+    <!-- Compiled and minified JavaScript -->
+    @*<script src="~/js/forms.js"></script>*@
+
     <script>
-    // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    //// Closes the sidebar menu
+    //$("#menu-close").click(function(e) {
+    //    e.preventDefault();
+    //    $("#sidebar-wrapper").toggleClass("active");
+    //});
 
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    //// Opens the sidebar menu
+    //$("#menu-toggle").click(function(e) {
+    //    e.preventDefault();
+    //    $("#sidebar-wrapper").toggleClass("active");
+    //});
 
-    // Scrolls to the selected menu item on the page
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+    //// Scrolls to the selected menu item on the page
+    //$(function() {
+    //    $('a[href*=#]:not([href=#])').click(function() {
+    //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
 
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
+    //            var target = $(this.hash);
+    //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    //            if (target.length) {
+    //                $('html,body').animate({
+    //                    scrollTop: target.offset().top
+    //                }, 1000);
+    //                return false;
+    //            }
+    //        }
+    //    });
+    //});
+    </script>
+    <script>
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("main").style.marginLeft = "200px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

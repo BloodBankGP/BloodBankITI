@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using BloodBankITI.Models;
+using System.Net.Mail;
+using System.Text;
 
 namespace BloodBankITI.Controllers
 {
@@ -14,9 +16,30 @@ namespace BloodBankITI.Controllers
         {
             return View();
         }
+        public ActionResult Info()
+        {
+            return View();
+        }
+        //Register
+        public ActionResult Register()
+        {
+            return View();
+        }
 
-        //Ask For Blood
+      
         [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+       
+    
+ 
+  ////////////////////////////////////////////
+  
+    //Ask For Blood
+    [HttpGet]
         public ActionResult AskForBlood()
         {
             return View();
