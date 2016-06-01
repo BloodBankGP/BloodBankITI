@@ -26,8 +26,27 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+
 </head>
 <body>
+    <script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '247072542325141',
+            xfbml: true,
+            version: 'v2.6'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <!-- Navigation -->
     <!-- Navigation -->
     @*<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
@@ -52,6 +71,32 @@
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>posts</a>
             </li>
+            @if (Session["UserName"] != null && Session["UserId"] != null)
+            {
+                switch (Session["UserType"].ToString())
+                {
+                    case "1":
+                        <li>
+                            @Html.ActionLink("الصفحة الشخصية", "Index", "Admin")
+                        </li>
+                        break;
+                    case "2":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Donor")
+                    </li>
+                        break;
+                    case "3":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "NGO")
+                    </li>
+                        break;
+                    case "4":
+                    <li>
+                        @Html.ActionLink("الصفحة الشخصية", "Index", "Partner")
+                    </li>
+                        break;
+                }
+            }
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>ÇáÊÈÑÚ ÈÇáÏã </a>
             </li>
@@ -142,5 +187,9 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
 </body>
 </html>

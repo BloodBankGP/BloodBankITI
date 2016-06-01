@@ -41,7 +41,7 @@ namespace BloodBankITI.Controllers
                 Session["UserType"] = login.UTID;
 
 
-                return RedirectToAction("Index", "NGO",new {id=login.UID});
+                return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction("Index");

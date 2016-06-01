@@ -1,0 +1,148 @@
+﻿@model BloodBankITI.Models.donorinsertform
+@{
+    ViewBag.Title = "Donate";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head >
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> 
+</head>
+
+
+
+<h2>Donate</h2>
+<form method="POST" action="">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.Fname, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Donor.Fname)
+            @Html.ValidationMessageFor(model => model.Donor.Fname)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.Lname, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Donor.Lname)
+            @Html.ValidationMessageFor(model => model.Donor.Lname)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.DonorGender, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            Male:   @Html.RadioButton("Donor.DonorGender", "Male",true)
+            Female: @Html.RadioButton("Donor.DonorGender", "Female")
+            
+            @Html.ValidationMessageFor(model => model.Donor.DonorGender)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.Phone, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Donor.Phone)
+            @Html.ValidationMessageFor(model => model.Donor.Phone)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.PhoneStatus, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Donor.PhoneStatus)
+            @Html.ValidationMessageFor(model => model.Donor.PhoneStatus)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.BID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+
+            <select name="Donor.BID">
+
+                @foreach (var item in Model.BloodTypesResults)
+                {
+
+                    <option value=@item.BID>@item.Type</option>
+                }
+
+            </select>
+
+
+            @Html.ValidationMessageFor(model => model.Donor.BID)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.CID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <select name="Donor.CID" id="CitiesID">
+                @foreach (var item in Model.CitiesSelectAllResults)
+                {
+                    <option value="0">Not Set</option>
+                    <option value=@item.CID>@item.CityName</option>
+                }
+            </select>
+
+            @Html.ValidationMessageFor(model => model.Donor.CID)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.LID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <select name="Donor.LID" id="locationID">
+                <option> </option>
+            </select>
+
+            @Html.ValidationMessageFor(model => model.Donor.LID)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Donor.DonationDate, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model=>model.Donor.DonationDate)
+            @Html.ValidationMessageFor(model => model.Donor.LID)
+        </div>
+    </div>
+
+
+    <input type="submit" value="Ask" />
+    <script>
+        $('#CitiesID').change(function () {
+            var CityID = $('#CitiesID').val();
+            $.ajax({
+                url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    WriteResponse(data);
+                },
+                error: function (e) {
+                    alert(e.statusText);
+                }
+            });
+
+
+        });
+
+        function WriteResponse(data) {
+            var result;
+            $.each(data, function (index, locations) {
+                result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+            });
+            $('#locationID').html(result);
+
+        }
+
+
+
+
+
+
+    </script>
+</form>
+

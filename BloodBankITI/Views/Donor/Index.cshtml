@@ -1,8 +1,38 @@
-﻿@model BloodBankITI.Models.NGO_selectByID_Result
+﻿@model BloodBankITI.Models.donor_SelectByDID_Result
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Profile</h2>
+
+Name: @(Model.Fname + " " + Model.Lname) <br/>
+
+Gender: @Model.DonorGender <br/>
+
+@if (Model.DonationDate != null)
+{
+    @("Last Donation Date:") @Model.DonationDate <br/>
+}
+
+Blood Type: @Model.Type <br/>
+
+City: @Model.CityName <br/>
+
+Location: @Model.LocationName <br/>
+
+Phone: @Model.Phone <br/>
+
+@Html.ActionLink("Edit Profile", "UpdateProfile", new {id=Model.DID}) <br/>
+@if (Model.DonationDate == null)
+{
+    using (Html.BeginForm("UpdateDonationDate", "Donor", FormMethod.Post, new { id = @Model.DID}))
+    { 
+     <input type="hidden" value=@Model.DID name="Donor.DID" />
+     <input type="submit" value="I Donated Today" />
+    }
+}
+
+
+

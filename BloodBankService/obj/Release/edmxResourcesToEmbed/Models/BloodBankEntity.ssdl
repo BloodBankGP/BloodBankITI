@@ -23,6 +23,15 @@
     <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Post_ID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Days">
     <Key>
       <PropertyRef Name="DayID" />
@@ -35,18 +44,27 @@
       <PropertyRef Name="DID" />
     </Key>
     <Property Name="DID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Fname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Lname" Type="nvarchar" MaxLength="50" />
-    <Property Name="DonorGender" Type="nchar" MaxLength="10" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="BID" Type="int" />
-    <Property Name="CID" Type="int" />
-    <Property Name="LID" Type="int" />
-    <Property Name="Status" Type="bit" />
-    <Property Name="Pending" Type="bit" />
+    <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DonorGender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="LID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="DonationDate" Type="date" />
     <Property Name="PAID" Type="int" />
     <Property Name="PhoneStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="Emergency">
+    <Key>
+      <PropertyRef Name="CID" />
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="DayID" Type="int" Nullable="false" />
+    <Property Name="HID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Hospitals">
     <Key>
@@ -57,7 +75,6 @@
     <Property Name="CID" Type="int" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
     <Property Name="Address" Type="nvarchar(max)" />
-    <Property Name="DayID" Type="int" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -88,6 +105,19 @@
     <Property Name="BID" Type="int" Nullable="false" />
     <Property Name="CID" Type="int" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Needer_Donor">
+    <Key>
+      <PropertyRef Name="NID" />
+      <PropertyRef Name="DID" />
+      <PropertyRef Name="AskDate" />
+    </Key>
+    <Property Name="NID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="DID" Type="int" Nullable="false" />
+    <Property Name="AskDate" Type="date" Nullable="false" />
+    <Property Name="Accepted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="NGO">
     <Key>
@@ -150,8 +180,20 @@
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
     <Property Name="UTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Comments_Posts">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Donors_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -163,7 +205,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_Cities">
-    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cities">
@@ -175,7 +217,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_Locations">
-    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Locations">
@@ -198,6 +240,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Emergency_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Emergency" Type="Self.Emergency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Emergency">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Hospitals_Cities">
     <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
     <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="*" />
@@ -207,18 +261,6 @@
       </Principal>
       <Dependent Role="Hospitals">
         <PropertyRef Name="CID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Hospitals_Days">
-    <End Role="Days" Type="Self.Days" Multiplicity="0..1" />
-    <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Days">
-        <PropertyRef Name="DayID" />
-      </Principal>
-      <Dependent Role="Hospitals">
-        <PropertyRef Name="DayID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -267,6 +309,18 @@
       </Principal>
       <Dependent Role="Needer">
         <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_BloodTypes">
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodTypes">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="BID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -342,6 +396,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="AcceptRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
   <Function Name="Admins_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
@@ -379,8 +437,19 @@
     <Parameter Name="CityName" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
   </Function>
+  <Function Name="Comments_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="comment" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Comments_SelectAllByPostID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="post_id" Type="int" Mode="In" />
+  </Function>
   <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="donor_SelectByDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
   </Function>
   <Function Name="donor_updatepending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
@@ -388,6 +457,10 @@
   <Function Name="DonorBloodType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="DonorID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DonorByBloodCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
   </Function>
   <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
@@ -426,9 +499,23 @@
     <Parameter Name="DID" Type="int" Mode="In" />
     <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
   </Function>
-  <Function Name="EmergencyToday" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="DayID" Type="int" Mode="In" />
-    <Parameter Name="CityID" Type="int" Mode="In" />
+  <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="hid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencySelectCityDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EmergencyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dayid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="hid" Type="int" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -504,6 +591,21 @@
     <Parameter Name="type" Type="int" Mode="In" />
     <Parameter Name="user" Type="int" Mode="In" />
   </Function>
+  <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="bid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Needer_DonorNotAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
   <Function Name="NGO_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
@@ -572,6 +674,10 @@
   <Function Name="posts_SelectByBID_CID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="returDonorData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+    <Parameter Name="nid" Type="int" Mode="In" />
   </Function>
   <Function Name="Select_BloodTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Select_BloodTypesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -651,18 +757,25 @@
     <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BloodTypes" EntityType="Self.BloodTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donors" EntityType="Self.Donors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emergency" EntityType="Self.Emergency" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Needer" EntityType="Self.Needer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Needer_Donor" EntityType="Self.Needer_Donor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NGO" EntityType="Self.NGO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PartnersStatestics" EntityType="Self.PartnersStatestics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
     <AssociationSet Name="FK_Donors_BloodTypes" Association="Self.FK_Donors_BloodTypes">
       <End Role="BloodTypes" EntitySet="BloodTypes" />
       <End Role="Donors" EntitySet="Donors" />
@@ -679,12 +792,12 @@
       <End Role="Partners" EntitySet="Partners" />
       <End Role="Donors" EntitySet="Donors" />
     </AssociationSet>
+    <AssociationSet Name="FK_Emergency_Cities" Association="Self.FK_Emergency_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Emergency" EntitySet="Emergency" />
+    </AssociationSet>
     <AssociationSet Name="FK_Hospitals_Cities" Association="Self.FK_Hospitals_Cities">
       <End Role="Cities" EntitySet="Cities" />
-      <End Role="Hospitals" EntitySet="Hospitals" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Hospitals_Days" Association="Self.FK_Hospitals_Days">
-      <End Role="Days" EntitySet="Days" />
       <End Role="Hospitals" EntitySet="Hospitals" />
     </AssociationSet>
     <AssociationSet Name="FK_Locations_Cities" Association="Self.FK_Locations_Cities">
@@ -702,6 +815,10 @@
     <AssociationSet Name="FK_Needer_Cities" Association="Self.FK_Needer_Cities">
       <End Role="Cities" EntitySet="Cities" />
       <End Role="Needer" EntitySet="Needer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="Self.FK_Needer_Donor_BloodTypes">
+      <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
     </AssociationSet>
     <AssociationSet Name="FK_NGO_Cities" Association="Self.FK_NGO_Cities">
       <End Role="Cities" EntitySet="Cities" />

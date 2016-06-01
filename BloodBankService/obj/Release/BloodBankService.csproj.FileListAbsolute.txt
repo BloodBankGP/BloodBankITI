@@ -187,3 +187,12 @@ E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
 E:\Graduation Project\BloodBankITI\BloodBankService\obj\Release\BloodBankService.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankService\obj\Release\BloodBankService.dll
 E:\Graduation Project\BloodBankITI\BloodBankService\obj\Release\BloodBankService.pdb
+E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
+E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
+E:\Graduation Project\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
+D:\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
+D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
+D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
