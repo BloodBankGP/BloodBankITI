@@ -165,7 +165,6 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml
-D:\GRADUATION\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\GRADUATION\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\GRADUATION\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 D:\GRADUATION\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config

@@ -27,7 +27,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(int id, string fname, string lname, string username, string pw)
         {
-            db.Admins_update(id, fname, lname);
+            db.Admins_update(id, fname, lname , username , pw);
             return View("Index", new {id = id});
         }
 

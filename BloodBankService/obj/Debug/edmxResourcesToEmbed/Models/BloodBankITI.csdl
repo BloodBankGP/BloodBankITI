@@ -533,6 +533,8 @@
     <FunctionImport Name="Admins_insert">
       <Parameter Name="fname" Mode="In" Type="String" />
       <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -542,6 +544,18 @@
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="fname" Mode="In" Type="String" />
       <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypesEdit">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypeSelectByID" ReturnType="Collection(BloodBankDBITIModel.BloodTypeSelectByID_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypesInsert">
+      <Parameter Name="type" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="CheckLogin" ReturnType="Collection(BloodBankDBITIModel.CheckLogin_Result)">
       <Parameter Name="username" Mode="In" Type="String" />
@@ -619,12 +633,8 @@
       <Parameter Name="BID" Mode="In" Type="Int32" />
       <Parameter Name="CID" Mode="In" Type="Int32" />
       <Parameter Name="LID" Mode="In" Type="Int32" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="pending" Mode="In" Type="Boolean" />
-      <Parameter Name="donationDate" Mode="In" Type="DateTime" />
-      <Parameter Name="PID" Mode="In" Type="Int32" />
       <Parameter Name="DID" Mode="In" Type="Int32" />
-      <Parameter Name="PhoneStatus" Mode="In" Type="Boolean" />
+      <Parameter Name="gender" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
@@ -770,6 +780,7 @@
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="name" Mode="In" Type="String" />
       <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="PartnerStatestics_delete">
       <Parameter Name="sid" Mode="In" Type="Int32" />
@@ -787,6 +798,9 @@
     <FunctionImport Name="PartnerStatestics_selectt" />
     <FunctionImport Name="posts_DeletePost">
       <Parameter Name="PID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="posts_InsertPost">
       <Parameter Name="post" Mode="In" Type="String" />
@@ -871,7 +885,7 @@
     <FunctionImport Name="UserType_insert">
       <Parameter Name="type" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="UserType_select">
+    <FunctionImport Name="UserType_select" ReturnType="Collection(BloodBankDBITIModel.UserType_select_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="UserType_selectt" ReturnType="Collection(BloodBankDBITIModel.UserType_selectt_Result)" />
@@ -879,21 +893,24 @@
       <Parameter Name="type" Mode="In" Type="String" />
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
-      <Parameter Name="post_id" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="BloodTypeSelectByID_Result">
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
   </ComplexType>
   <ComplexType Name="CheckLogin_Result">
     <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -1115,6 +1132,16 @@
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Boolean" Name="Status" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="Posts_GetPostByID_Result">
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="Post" Nullable="true" />
+    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Periodic" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="posts_SelectAll_Result">
     <Property Type="Int32" Name="PID" Nullable="false" />
     <Property Type="String" Name="Post" Nullable="true" />
@@ -1217,18 +1244,12 @@
     <Property Type="Int32" Name="CID" Nullable="false" />
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="UserType_selectt_Result">
+  <ComplexType Name="UserType_select_Result">
     <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="UTID" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="Posts_GetPostByID_Result">
-    <Property Type="Int32" Name="PID" Nullable="false" />
-    <Property Type="String" Name="Post" Nullable="true" />
-    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Periodic" Nullable="false" />
+  <ComplexType Name="UserType_selectt_Result">
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UTID" Nullable="false" />
   </ComplexType>
 </Schema>

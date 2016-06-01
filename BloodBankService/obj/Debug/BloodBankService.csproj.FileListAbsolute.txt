@@ -183,6 +183,8 @@ D:\GRADUATION\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Google.x
 D:\GRADUATION\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Twitter.xml
 D:\GRADUATION\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\GRADUATION\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
-D:\GRADUATION\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache
 D:\GRADUATION\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.dll
 D:\GRADUATION\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.pdb
+D:\GRADUATION\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
+D:\GRADUATION\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
+D:\GRADUATION\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
