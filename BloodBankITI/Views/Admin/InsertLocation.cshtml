@@ -1,0 +1,16 @@
+﻿@model int?
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Insert New Location</h2>
+
+<form action="" method="POST">
+    <input type="hidden" name="Location.LID" value=@Model/>
+    Location Name: <input type="text" name="Location.LocationName"/><br/>
+    <input type="submit" value="Insert"/>
+</form>
+
+@Html.ActionLink("Cancel", "Cities")
