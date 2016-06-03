@@ -219,3 +219,11 @@ D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.OAuth.xml
 D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Google.xml
 D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
