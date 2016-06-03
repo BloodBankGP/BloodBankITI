@@ -911,12 +911,6 @@
     <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
     <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
   </EntityContainer>
-  <ComplexType Name="Admins_select_Result">
-    <Property Type="Int32" Name="AID" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Status" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -1277,11 +1271,6 @@
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="String" Name="CityName" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="SelectCityLocations_Result">
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="String" Name="CityName" Nullable="false" />
-    <Property Type="String" Name="LocationName" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="Needer_Donorall_Result">
     <Property Type="Int32" Name="NID" Nullable="false" />
     <Property Type="Int32" Name="BID" Nullable="false" />
@@ -1300,5 +1289,19 @@
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="Fullname" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="Admins_select_Result">
+    <Property Type="Int32" Name="AID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectCityLocations_Result">
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="LocationName" Nullable="false" />
+    <Property Type="Int32" Name="LID" Nullable="false" />
   </ComplexType>
 </Schema>

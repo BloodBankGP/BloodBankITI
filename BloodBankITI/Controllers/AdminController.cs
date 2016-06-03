@@ -21,15 +21,24 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult ViewProfile(int id)
         {
-            return View(db.Admins_select(id));
+            return View(db.Admins_select(id).FirstOrDefault());
+        }
+
+        [HttpGet]
+        public ActionResult UpdateProfile(int id)
+        {
+            return View(db.Admins_select(id).FirstOrDefault());
         }
 
         [HttpPost]
-        public ActionResult UpdateProfile(int id, string fname, string lname, string username, string pw)
+        public ActionResult UpdateProfile(Admin admin, Login login)
         {
-            db.Admins_update(id, fname, lname,username,pw);
-            return View("Index", new {id = id});
+            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
+            return View("Index", new { id = admin.AID });
+            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
+            return RedirectToAction("ViewProfile", new { id = admin.AID });
         }
+
 
         //Admins
         [HttpGet]
@@ -38,7 +47,7 @@ namespace BloodBankITI.Controllers
             return View(db.Admins_selectt().ToList());
         }
 
-        
+
         public ActionResult AdminDelete(int id)
         {
             db.Admins_delete(id);
@@ -52,24 +61,92 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdminInsert(Admin admin , Login login)
+        public ActionResult AdminInsert(Admin admin, Login login)
         {
             db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password);
             return RedirectToAction("AdminsView");
         }
 
+
+        //Blood Types
+        [HttpGet]
         public ActionResult BloodTypes()
         {
-            return View();
+            return View(db.Select_BloodTypes().ToList());
         }
 
+        [HttpGet]
+        public ActionResult BloodTypesEdit(int id)
+        {
+            return View(db.BloodTypeSelectByID(id).FirstOrDefault());
+        }
 
-        public ActionResult Cities()
+        [HttpPost]
+        public ActionResult BloodTypesEdit(BloodType bloodType)
+        {
+            db.BloodTypesEdit(bloodType.BID, bloodType.Type);
+            return View("BloodTypes", db.Select_BloodTypes().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult BloodTypesInsert()
         {
             return View();
         }
 
-        public ActionResult PostsComments()
+        [HttpPost]
+        public ActionResult BloodTypesInsert(BloodType bloodType)
+        {
+            db.BloodTypesInsert(bloodType.Type);
+            return View("BloodTypes", db.Select_BloodTypes().ToList());
+        }
+
+        //Cities
+        [HttpGet]
+        public ActionResult Cities()
+        {
+            List<CitiesLocations> citiesLocations = new List<CitiesLocations>();
+            List<Cities_SelectAll_Result> c = db.Cities_SelectAll().ToList();
+            List<SelectCityLocations_Result> l = new List<SelectCityLocations_Result>();
+
+            foreach (Cities_SelectAll_Result item in c)
+            {
+                l = db.SelectCityLocations(item.CID).ToList();
+                citiesLocations.Add(new CitiesLocations() { city = item, locations = l });
+            }
+
+            return View(citiesLocations);
+        }
+
+        [HttpGet]
+        public ActionResult InsertCity()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertCity(City City)
+        {
+            db.Cities_InsertCity(City.CityName);
+            return RedirectToAction("Cities");
+        }
+
+        [HttpGet]
+        public ActionResult InsertLocation(int CID)
+        {
+            return View(CID);
+        }
+
+        [HttpPost]
+        public ActionResult InsertLocation(Location Location, int CID)
+        {
+            db.Locations_InsertLocation(CID, Location.LocationName);
+            return RedirectToAction("Cities");
+        }
+
+
+
+    public ActionResult PostsComments()
         {
             return View();
         }
