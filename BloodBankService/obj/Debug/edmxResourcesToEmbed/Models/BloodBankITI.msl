@@ -206,6 +206,8 @@
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -220,6 +222,16 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Admins_update" FunctionName="BloodBankDBITIModel.Store.Admins_update" />
+    <FunctionImportMapping FunctionImportName="BloodTypesEdit" FunctionName="BloodBankDBITIModel.Store.BloodTypesEdit" />
+    <FunctionImportMapping FunctionImportName="BloodTypeSelectByID" FunctionName="BloodBankDBITIModel.Store.BloodTypeSelectByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.BloodTypeSelectByID_Result">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BloodTypesInsert" FunctionName="BloodBankDBITIModel.Store.BloodTypesInsert" />
     <FunctionImportMapping FunctionImportName="CheckLogin" FunctionName="BloodBankDBITIModel.Store.CheckLogin">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.CheckLogin_Result">
@@ -571,6 +583,20 @@
     <FunctionImportMapping FunctionImportName="PartnerStatestics_select" FunctionName="BloodBankDBITIModel.Store.PartnerStatestics_select" />
     <FunctionImportMapping FunctionImportName="PartnerStatestics_selectt" FunctionName="BloodBankDBITIModel.Store.PartnerStatestics_selectt" />
     <FunctionImportMapping FunctionImportName="posts_DeletePost" FunctionName="BloodBankDBITIModel.Store.posts_DeletePost" />
+    <FunctionImportMapping FunctionImportName="Posts_GetPostByID" FunctionName="BloodBankDBITIModel.Store.Posts_GetPostByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Posts_GetPostByID_Result">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="posts_InsertPost" FunctionName="BloodBankDBITIModel.Store.posts_InsertPost" />
     <FunctionImportMapping FunctionImportName="posts_SelectAll" FunctionName="BloodBankDBITIModel.Store.posts_SelectAll">
       <ResultMapping>
@@ -732,7 +758,14 @@
     <FunctionImportMapping FunctionImportName="Update_Needer" FunctionName="BloodBankDBITIModel.Store.Update_Needer" />
     <FunctionImportMapping FunctionImportName="UserType_delete" FunctionName="BloodBankDBITIModel.Store.UserType_delete" />
     <FunctionImportMapping FunctionImportName="UserType_insert" FunctionName="BloodBankDBITIModel.Store.UserType_insert" />
-    <FunctionImportMapping FunctionImportName="UserType_select" FunctionName="BloodBankDBITIModel.Store.UserType_select" />
+    <FunctionImportMapping FunctionImportName="UserType_select" FunctionName="BloodBankDBITIModel.Store.UserType_select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.UserType_select_Result">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UTID" ColumnName="UTID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_selectt" FunctionName="BloodBankDBITIModel.Store.UserType_selectt">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.UserType_selectt_Result">
@@ -742,19 +775,5 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
-    <FunctionImportMapping FunctionImportName="Posts_GetPostByID" FunctionName="BloodBankDBITIModel.Store.Posts_GetPostByID">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Posts_GetPostByID_Result">
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="Post" ColumnName="Post" />
-          <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Periodic" ColumnName="Periodic" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

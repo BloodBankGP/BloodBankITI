@@ -20,6 +20,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Compiled and minified CSS -->
+    @*<link href="~/Content/materialize.min.css" rel="stylesheet" />*@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -46,27 +48,25 @@
     }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle" style="color:aliceblue;"> MENU<i class="fa fa-bars"></i></a>
+    <!-- Navigation -->
+    @*<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();>
-
-                    <img src="~/img/logo2Start.png"  width="100" height="50"/>
-                </a>
+                <a href="#top" onclick=$("#menu-close").click();> </a>
             </li>
             <li>
-                <a href="#top" onclick=$("#menu-close").click();>الصفحة الرئيسية </a>
+                <a href="#top" onclick=$("#menu-close").click();>ÇáÕÝÍÉ ÇáÑÆíÓíÉ </a>
             </li>
             <li>
-                <a href="#about" onclick=$("#menu-close").click();>الطوارىء</a>
+                <a href="#about" onclick=$("#menu-close").click();>ÇáØæÇÑìÁ</a>
             </li>
             <li>
-                <a href="#services" onclick=$("#menu-close").click();> اتبرع </a>
+                <a href="#services" onclick=$("#menu-close").click();> الب </a>
             </li>
             <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();> أنا عايز دم </a>
+                <a href="#portfolio" onclick=$("#menu-close").click();> ÃäÇ ÚÇíÒ Ïã </a>
             </li>
             <li>
                 <a href="#contact" onclick=$("#menu-close").click();>posts</a>
@@ -98,22 +98,34 @@
                 }
             }
             <li>
-                <a href="#contact" onclick=$("#menu-close").click();>التبرع بالدم </a>
+                <a href="#contact" onclick=$("#menu-close").click();>ÇáÊÈÑÚ ÈÇáÏã </a>
             </li>
             <li>
-                <a href="#contact" onclick=$("#menu-close").click();>عن الموقع </a>
+                <a href="#contact" onclick=$("#menu-close").click();>Úä ÇáãæÞÚ </a>
             </li>
             <li>
-                <a href="#contact" onclick=$("#menu-close").click();>التواصل معنا </a>
+                <a href="#contact" onclick=$("#menu-close").click();>ÇáÊæÇÕá ãÚäÇ </a>
             </li>
         </ul>
-    </nav>
+    </nav>*@
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" >About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div id="main">
+        @*<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>*@
+        <a  href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"><i class="fa fa-bars"></i></a>
+    </div>
 
         @RenderBody()
 
     <!-- Footer -->
     <footer>
-        <div class="icons center-block">
+        <div class="icons center-block">;
             <span class="fa fa-facebook fa-2x"></span>
             <span class="fa fa-twitter fa-2x"></span>
             <span class="fa fa-youtube fa-2x"></span>
@@ -129,35 +141,48 @@
 
     <script src="~/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
+    <script src="~/js/menu.js"></script>
+    @*<script src="~/js/materialize.min.js"></script>*@
+    <!-- Compiled and minified JavaScript -->
+    @*<script src="~/js/forms.js"></script>*@
     <script>
     // Closes the sidebar menu
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    //$("#menu-close").click(function(e) {
+    //    e.preventDefault();
+    //    $("#sidebar-wrapper").toggleClass("active");
+    //});
 
-    // Opens the sidebar menu
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    //// Opens the sidebar menu
+    //$("#menu-toggle").click(function(e) {
+    //    e.preventDefault();
+    //    $("#sidebar-wrapper").toggleClass("active");
+        //});
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("main").style.marginLeft = "200px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
 
     // Scrolls to the selected menu item on the page
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
+    //$(function() {
+    //    $('a[href*=#]:not([href=#])').click(function() {
+    //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+    //            var target = $(this.hash);
+    //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    //            if (target.length) {
+    //                $('html,body').animate({
+    //                    scrollTop: target.offset().top
+    //                }, 1000);
+    //                return false;
+    //            }
+    //        }
+    //    });
+    //});
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

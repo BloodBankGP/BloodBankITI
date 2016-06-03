@@ -68,7 +68,7 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_delete", idParameter);
         }
     
-        public virtual int Admins_insert(string fname, string lname)
+        public virtual int Admins_insert(string fname, string lname, string username, string pw)
         {
             var fnameParameter = fname != null ?
                 new ObjectParameter("fname", fname) :
@@ -78,7 +78,15 @@ namespace BloodBankService.Models
                 new ObjectParameter("lname", lname) :
                 new ObjectParameter("lname", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_insert", fnameParameter, lnameParameter);
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_insert", fnameParameter, lnameParameter, usernameParameter, pwParameter);
         }
     
         public virtual ObjectResult<Admins_select_Result> Admins_select(Nullable<int> id)
@@ -95,7 +103,7 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Admins_selectt_Result>("Admins_selectt");
         }
     
-        public virtual int Admins_update(Nullable<int> id, string fname, string lname)
+        public virtual int Admins_update(Nullable<int> id, string fname, string lname, string username, string pw)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -109,7 +117,46 @@ namespace BloodBankService.Models
                 new ObjectParameter("lname", lname) :
                 new ObjectParameter("lname", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_update", idParameter, fnameParameter, lnameParameter);
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_update", idParameter, fnameParameter, lnameParameter, usernameParameter, pwParameter);
+        }
+    
+        public virtual int BloodTypesEdit(Nullable<int> id, string type)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BloodTypesEdit", idParameter, typeParameter);
+        }
+    
+        public virtual ObjectResult<BloodTypeSelectByID_Result> BloodTypeSelectByID(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BloodTypeSelectByID_Result>("BloodTypeSelectByID", idParameter);
+        }
+    
+        public virtual int BloodTypesInsert(string type)
+        {
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BloodTypesInsert", typeParameter);
         }
     
         public virtual ObjectResult<CheckLogin_Result> CheckLogin(string username, string password)
@@ -853,7 +900,7 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Partners_selectt_Result>("Partners_selectt");
         }
     
-        public virtual int Partners_update(Nullable<int> id, string name, string address)
+        public virtual int Partners_update(Nullable<int> id, string name, string address, Nullable<bool> status)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -867,7 +914,11 @@ namespace BloodBankService.Models
                 new ObjectParameter("address", address) :
                 new ObjectParameter("address", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Partners_update", idParameter, nameParameter, addressParameter);
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Partners_update", idParameter, nameParameter, addressParameter, statusParameter);
         }
     
         public virtual int PartnerStatestics_delete(Nullable<int> sid)
@@ -925,6 +976,15 @@ namespace BloodBankService.Models
                 new ObjectParameter("PID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("posts_DeletePost", pIDParameter);
+        }
+    
+        public virtual ObjectResult<Posts_GetPostByID_Result> Posts_GetPostByID(Nullable<int> post_id)
+        {
+            var post_idParameter = post_id.HasValue ?
+                new ObjectParameter("post_id", post_id) :
+                new ObjectParameter("post_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Posts_GetPostByID_Result>("Posts_GetPostByID", post_idParameter);
         }
     
         public virtual int posts_InsertPost(string post, string phone, Nullable<int> bID, Nullable<int> cID, string name, Nullable<bool> periodic)
@@ -1210,13 +1270,13 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_insert", typeParameter);
         }
     
-        public virtual int UserType_select(Nullable<int> id)
+        public virtual ObjectResult<UserType_select_Result> UserType_select(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_select", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UserType_select_Result>("UserType_select", idParameter);
         }
     
         public virtual ObjectResult<UserType_selectt_Result> UserType_selectt()
@@ -1235,15 +1295,6 @@ namespace BloodBankService.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_update", typeParameter, idParameter);
-        }
-    
-        public virtual ObjectResult<Posts_GetPostByID_Result> Posts_GetPostByID(Nullable<int> post_id)
-        {
-            var post_idParameter = post_id.HasValue ?
-                new ObjectParameter("post_id", post_id) :
-                new ObjectParameter("post_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Posts_GetPostByID_Result>("Posts_GetPostByID", post_idParameter);
         }
     }
 }
