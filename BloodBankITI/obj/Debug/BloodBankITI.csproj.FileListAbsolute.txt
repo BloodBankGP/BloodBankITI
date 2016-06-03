@@ -50,6 +50,7 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
+D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 D:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
@@ -159,28 +160,70 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Goog
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml
-E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+D:\GRADUATION\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\BloodBankITI.pdb
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Antlr3.Runtime.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\EntityFramework.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\EntityFramework.SqlServer.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.Core.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Cookies.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Facebook.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Google.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.OAuth.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Web.Infrastructure.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Owin.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Helpers.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Mvc.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Optimization.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Razor.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Deployment.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Razor.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\WebGrease.dll
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Helpers.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Mvc.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Optimization.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.Razor.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Deployment.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\System.Web.WebPages.Razor.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Antlr3.Runtime.pdb
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\EntityFramework.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\EntityFramework.SqlServer.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.Core.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Facebook.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Cookies.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.OAuth.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Google.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
+D:\GRADUATION\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.dll
-E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
-E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
-E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
-E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
-E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
-E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
-D:\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
-D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
-D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
-D:\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
-D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
-D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
-E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
