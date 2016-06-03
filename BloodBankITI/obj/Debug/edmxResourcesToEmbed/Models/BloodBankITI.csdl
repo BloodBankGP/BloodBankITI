@@ -910,6 +910,7 @@
     </FunctionImport>
     <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
     <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
+    <FunctionImport Name="selectneederallinfo" ReturnType="Collection(BloodBankDBITIModel.selectneederallinfo_Result)" />
   </EntityContainer>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1290,6 +1291,7 @@
     <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="Fullname" Nullable="false" MaxLength="101" />
   </ComplexType>
+<<<<<<< HEAD
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -1303,5 +1305,17 @@
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="LocationName" Nullable="false" />
     <Property Type="Int32" Name="LID" Nullable="false" />
+=======
+  <ComplexType Name="selectneederallinfo_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cityname" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
+>>>>>>> origin/master
   </ComplexType>
 </Schema>
