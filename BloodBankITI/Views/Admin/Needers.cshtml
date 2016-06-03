@@ -1,8 +1,47 @@
-﻿@model dynamic
-
+﻿@model List<BloodBankITI.Models.selectneederallinfo_Result>
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Needers";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Needers</h2>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th> Needer ID </th>
+      
+        <th>First Name </th>
+        <th>Last Name </th>
+        <th> Email </th>
+        <th> Blood Type  </th>
+        <th> City Name </th>
+        <th> Phone   </th>
+
+        <th> Edit  </th>
+        <th> Delete  </th>
+
+
+            
+        
+    </tr>
+   
+        @foreach (var a in Model)
+        {
+            <tr>
+                 <td>@(a.NID) </td>
+                 <td>@(a.Fname)</td>
+                 <td>@(a.Lname) </td>
+                 <td>@(a.Email)</td>
+                 <td>@(a.type)</td>
+                 <td>@(a.cityname)</td>
+                 <td>@(a.Phone)</td>
+                 
+
+
+                <td> @Html.ActionLink("Edit", "NeederEdit", new { id = a.NID })</td>
+                <td> @Html.ActionLink("Delete", "NeederDelete", new { id = a.NID })</td>
+
+             </tr>
+        }
+       
+   
+</table>

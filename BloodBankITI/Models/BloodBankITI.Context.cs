@@ -1357,5 +1357,10 @@ namespace BloodBankITI.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<neederdonorall_Result>("neederdonorall");
         }
+    
+        public virtual ObjectResult<selectneederallinfo_Result> selectneederallinfo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selectneederallinfo_Result>("selectneederallinfo");
+        }
     }
 }

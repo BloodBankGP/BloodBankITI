@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using BloodBankITI.Models;
+using Login = BloodBankITI.Models.Login;
 
 namespace BloodBankITI.Controllers
 {
@@ -100,8 +102,38 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Needers()
         {
-            return View(db.Select_Needer());
+            return View(db.selectneederallinfo().ToList());
         }
+
+        [HttpGet]
+        public ActionResult NeederEdit(int id)
+        {
+            select_NeederID_Result needer=db.select_NeederID(id).FirstOrDefault();
+            List <Cities_SelectAll_Result> cities=db.Cities_SelectAll().ToList();
+            List<Select_BloodTypes_Result> bloodTypes = db.Select_BloodTypes().ToList();
+            NeederCityBlood neederCityBlood = new NeederCityBlood()
+            {
+                Needer = needer,
+                CitiesSelectAllResults = cities,
+                BloodTypesResults = bloodTypes
+
+            };
+            return View(neederCityBlood);
+        }
+        [HttpPost]
+        public ActionResult NeederEdit(Needer needer)
+        {
+            db.Update_Needer(needer.Email, needer.Fname, needer.Lname, needer.BID, needer.CID, needer.NID);
+            return RedirectToAction("Needers");
+        }
+
+        public ActionResult NeederDelete(int id)
+        {
+            db.delete_Needer(id);
+            return RedirectToAction("Needers");
+        }
+
+
         //ViewRequests 
 
         [HttpGet]

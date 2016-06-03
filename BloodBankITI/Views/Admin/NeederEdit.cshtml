@@ -1,0 +1,65 @@
+﻿@model BloodBankITI.Models.NeederCityBlood
+@{
+    ViewBag.Title = "NeederEdit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>NeederEdit</h2>
+
+<form method="POST" action="">
+    <input type="hidden" name="needer.NID" value=@Model.Needer.NID />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Needer.Fname, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="needer.Fname" value=@Model.Needer.Fname />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Needer.Lname, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="needer.Lname" value=@Model.Needer.Lname />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Needer.Email, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="email" name="needer.Email" value=@Model.Needer.Email />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Needer.BID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+
+            <select name="Needer.BID">
+
+                @foreach (var item in Model.BloodTypesResults)
+                {
+
+                    <option value=@item.BID>@item.Type</option>
+                }
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Needer.CID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <select name="Needer.CID" id="CitiesID">
+                <option value="0">Not Set</option>
+                @foreach (var item in Model.CitiesSelectAllResults)
+                {
+                    
+                    <option value=@item.CID>@item.CityName</option>
+                }
+            </select>
+
+        </div>
+    </div>
+
+
+    <input type="submit" value="Edit" />
+</form>
