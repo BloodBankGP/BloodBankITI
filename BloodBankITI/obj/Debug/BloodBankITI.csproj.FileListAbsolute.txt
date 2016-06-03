@@ -159,7 +159,6 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Goog
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
-E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Net.Http.Formatting.dll
@@ -184,3 +183,4 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+E:\Graduation Project\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache

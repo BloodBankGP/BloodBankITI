@@ -27,7 +27,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(int id, string fname, string lname, string username, string pw)
         {
-            db.Admins_update(id, fname, lname);
+            db.Admins_update(id, fname, lname,username,pw);
             return View("Index", new {id = id});
         }
 
@@ -94,44 +94,155 @@ namespace BloodBankITI.Controllers
             return View();
         }
 
-        public ActionResult Locations()
-        {
-            return View();
-        }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+        //Needers
 
+        [HttpGet]
         public ActionResult Needers()
         {
-            return View();
+            return View(db.Select_Needer());
         }
+        //ViewRequests 
 
+        [HttpGet]
         public ActionResult NeederDonor()
         {
-            return View();
-        }
+            
+            return View(db.neederdonorall().ToList());
 
+        }
+        //NGO
+        [HttpGet]
         public ActionResult Ngo()
         {
+            return View(db.NGO_selectt().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult NGOEdit(int id)
+        {
+            NGO_selectByIDAll_Result ngo = db.NGO_selectByIDAll(id).FirstOrDefault();
+
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            NgoUpdate update = new NgoUpdate()
+            {
+                ngo =
+                    new NGO()
+                    {
+                        CID = ngo.CID,
+                        NID = ngo.NID,
+                        Name = ngo.Name,
+                        Phone = ngo.Phone,
+                        Address = ngo.Address,
+                        Status = ngo.Status,
+                        Approved = ngo.Approved
+                    },
+                CitiesSelectAllResults = cities
+            };
+
+            return View(update);
+        }
+
+        [HttpPost]
+        public ActionResult NGOEdit(NGO ngo)
+
+        {
+            db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved);
+            db.SaveChanges();
+
+           return RedirectToAction("Ngo");
+        }
+        
+
+        public ActionResult NGODelete(int id)
+        {
+            db.NGO_delete(id);
+            return RedirectToAction("Ngo");
+        }
+
+
+
+
+        //Partners
+        [HttpGet]
+        public ActionResult Partners()
+        {
+            return View(db.Partners_selectt().ToList());
+        }
+        
+        [HttpGet]
+        public ActionResult PartnersEdit(int id)
+        {
+
+            return View(db.Partners_select(id).FirstOrDefault());
+        }
+
+        [HttpPost]
+
+        public ActionResult PartnersEdit(Partner Partner)
+        {
+            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status);
+
+            return RedirectToAction("Partners");
+        }
+
+        [HttpGet]
+        public ActionResult PartnersInsert()
+        {
+
             return View();
         }
 
-        public ActionResult Partners()
+        [HttpPost]
+
+        public ActionResult PartnersInsert(Partner partner)
         {
-            return View();
+            db.Partners_insert( partner.Name, partner.Address);
+
+            return RedirectToAction("Partners");
         }
+
 
         public ActionResult PartnersStatestics()
         {
             return View();
         }
-
-        public ActionResult UserTypes()
+        //users 
+        //insert  New Users
+        [HttpPost]
+        public ActionResult UserTypesInsert(UserType userType)
         {
-            return View();
+            db.UserType_insert(userType.Type);
+            return RedirectToAction("UsersTypesView");
         }
+
+
+        [HttpGet]
+        public ActionResult UserTypesView()
+        {
+
+            return View(db.UserType_selectt().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult UserTypesEdit(int id)
+        {
+
+            return View(db.UserType_select(id).FirstOrDefault());
+        }
+
+        [HttpPost]
+
+        public ActionResult UserTypesEdit(UserType userType)
+        {
+            db.UserType_update(userType.Type, userType.UTID);
+
+            return RedirectToAction("UserTypesView");
+        }
+
+
+
+     
     }
 }
