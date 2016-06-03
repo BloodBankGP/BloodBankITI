@@ -21,20 +21,14 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult ViewProfile(int id)
         {
-            return View(db.Admins_select(id).FirstOrDefault());
-        }
-
-        [HttpGet]
-        public ActionResult UpdateProfile(int id)
-        {
-            return View(db.Admins_select(id).FirstOrDefault());
+            return View(db.Admins_select(id));
         }
 
         [HttpPost]
-        public ActionResult UpdateProfile(Admin admin, Login login)
+        public ActionResult UpdateProfile(int id, string fname, string lname, string username, string pw)
         {
-            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
-            return RedirectToAction("ViewProfile", new {id = admin.AID});
+            db.Admins_update(id, fname, lname,username,pw);
+            return View("Index", new {id = id});
         }
 
         //Admins
@@ -64,84 +58,17 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("AdminsView");
         }
 
-
-        //Blood Types
-        [HttpGet]
         public ActionResult BloodTypes()
         {
-            return View(db.Select_BloodTypes().ToList());
-        }
-
-        [HttpGet]
-        public ActionResult BloodTypesEdit(int id)
-        {
-            return View(db.BloodTypeSelectByID(id).FirstOrDefault());
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesEdit(BloodType bloodType)
-        {
-            db.BloodTypesEdit(bloodType.BID, bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
-
-        [HttpGet]
-        public ActionResult BloodTypesInsert()
-        {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult BloodTypesInsert(BloodType bloodType)
-        {
-            db.BloodTypesInsert(bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
 
-        //Cities
-        [HttpGet]
         public ActionResult Cities()
         {
-            List<CitiesLocations> citiesLocations = new List<CitiesLocations>();
-            List<Cities_SelectAll_Result> c = db.Cities_SelectAll().ToList();
-            List<SelectCityLocations_Result> l = new List<SelectCityLocations_Result>();
-
-            foreach (Cities_SelectAll_Result item in c)
-            {
-                l = db.SelectCityLocations(item.CID).ToList();
-                citiesLocations.Add(new CitiesLocations() {city = item, locations = l});
-            }
-
-            return View(citiesLocations);
-        }
-
-        [HttpGet]
-        public ActionResult InsertCity()
-        {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult InsertCity(City City)
-        {
-            db.Cities_InsertCity(City.CityName);
-            return RedirectToAction("Cities");
-        }
-
-        [HttpGet]
-        public ActionResult InsertLocation(int CID)
-        {
-            return View(CID);
-        }
-
-        [HttpPost]
-        public ActionResult InsertLocation(Location Location, int CID)
-        {
-            db.Locations_InsertLocation(CID, Location.LocationName);
-            return RedirectToAction("Cities");
-        }
-
-        //Posts
         public ActionResult PostsComments()
         {
             return View();
@@ -167,44 +94,155 @@ namespace BloodBankITI.Controllers
             return View();
         }
 
-        public ActionResult Locations()
-        {
-            return View();
-        }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+        //Needers
 
+        [HttpGet]
         public ActionResult Needers()
         {
-            return View();
+            return View(db.Select_Needer());
         }
+        //ViewRequests 
 
+        [HttpGet]
         public ActionResult NeederDonor()
         {
-            return View();
-        }
+            
+            return View(db.neederdonorall().ToList());
 
+        }
+        //NGO
+        [HttpGet]
         public ActionResult Ngo()
         {
+            return View(db.NGO_selectt().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult NGOEdit(int id)
+        {
+            NGO_selectByIDAll_Result ngo = db.NGO_selectByIDAll(id).FirstOrDefault();
+
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            NgoUpdate update = new NgoUpdate()
+            {
+                ngo =
+                    new NGO()
+                    {
+                        CID = ngo.CID,
+                        NID = ngo.NID,
+                        Name = ngo.Name,
+                        Phone = ngo.Phone,
+                        Address = ngo.Address,
+                        Status = ngo.Status,
+                        Approved = ngo.Approved
+                    },
+                CitiesSelectAllResults = cities
+            };
+
+            return View(update);
+        }
+
+        [HttpPost]
+        public ActionResult NGOEdit(NGO ngo)
+
+        {
+            db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved);
+            db.SaveChanges();
+
+           return RedirectToAction("Ngo");
+        }
+        
+
+        public ActionResult NGODelete(int id)
+        {
+            db.NGO_delete(id);
+            return RedirectToAction("Ngo");
+        }
+
+
+
+
+        //Partners
+        [HttpGet]
+        public ActionResult Partners()
+        {
+            return View(db.Partners_selectt().ToList());
+        }
+        
+        [HttpGet]
+        public ActionResult PartnersEdit(int id)
+        {
+
+            return View(db.Partners_select(id).FirstOrDefault());
+        }
+
+        [HttpPost]
+
+        public ActionResult PartnersEdit(Partner Partner)
+        {
+            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status);
+
+            return RedirectToAction("Partners");
+        }
+
+        [HttpGet]
+        public ActionResult PartnersInsert()
+        {
+
             return View();
         }
 
-        public ActionResult Partners()
+        [HttpPost]
+
+        public ActionResult PartnersInsert(Partner partner)
         {
-            return View();
+            db.Partners_insert( partner.Name, partner.Address);
+
+            return RedirectToAction("Partners");
         }
+
 
         public ActionResult PartnersStatestics()
         {
             return View();
         }
-
-        public ActionResult UserTypes()
+        //users 
+        //insert  New Users
+        [HttpPost]
+        public ActionResult UserTypesInsert(UserType userType)
         {
-            return View();
+            db.UserType_insert(userType.Type);
+            return RedirectToAction("UsersTypesView");
         }
+
+
+        [HttpGet]
+        public ActionResult UserTypesView()
+        {
+
+            return View(db.UserType_selectt().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult UserTypesEdit(int id)
+        {
+
+            return View(db.UserType_select(id).FirstOrDefault());
+        }
+
+        [HttpPost]
+
+        public ActionResult UserTypesEdit(UserType userType)
+        {
+            db.UserType_update(userType.Type, userType.UTID);
+
+            return RedirectToAction("UserTypesView");
+        }
+
+
+
+     
     }
 }

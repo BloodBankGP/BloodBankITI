@@ -10,7 +10,7 @@
 <form action="" method="post" novalidate="novalidate">
     <div class="form-group">
    
-        <input type="hidden" name="NID" value=@Model.ngo.NID>
+        <input type="hidden" name="ngo.NID" value=@Model.ngo.NID>
     </div>
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Name)
@@ -20,7 +20,7 @@
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Phone)
       
-        <input type="text" name="ngo.Phone"/>
+        <input type="text" name="ngo.Phone" value=@Model.ngo.Phone/>
     </div>
    
     <div class="form-group">
@@ -35,7 +35,7 @@
                     <option value="0">Not Set</option>
                     if (item.CID == Model.ngo.CID)
                     {
-                        <option value=@item.CID selected="true">@item.CityName</option>
+                        <option value=@item.CID selected>@item.CityName</option>
                     }
                     else
                     {
@@ -50,15 +50,8 @@
 
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Address)
-        <input type="text" name="ngo.Address"/>
+        <input type="text" name="ngo.Address" value=@Model.ngo.Address/>
     </div>
-    
-    
-
-    
-
-    
-    
 
     <div>
         <input type="submit" value="submit" />

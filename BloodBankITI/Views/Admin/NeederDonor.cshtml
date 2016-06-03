@@ -1,8 +1,45 @@
-﻿@model dynamic
-
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+﻿@model List<BloodBankITI.Models.neederdonorall_Result>
+   @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>NeederDonor</h2>
+
+               <table class="table table-bordered table-hover table-striped">
+                   <tr>
+
+                       <th> Needer ID </th>
+                       <th> Blood Type </th>
+                       <th> City </th>
+                       <th> FullName </th>
+                       <th> Ask Date </th>
+                      
+
+
+
+                   </tr>
+
+                   @foreach (var a in Model)
+                   {
+                       <tr>
+                           <td>@(a.NID) </td>
+                           <td>@(a.type) </td>
+                           <td>@(a.CityName) </td>
+                           <td>@(a.Fullname) </td>
+                           <td>@(a.AskDate) </td>
+                          
+
+
+
+
+
+                       </tr>
+
+                   }
+
+               </table>
+
+
+               @Html.ActionLink("Back To Home", "Index")
+
