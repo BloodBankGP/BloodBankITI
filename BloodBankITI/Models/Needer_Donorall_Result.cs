@@ -11,13 +11,13 @@ namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class Admins_select_Result
+    public partial class Needer_Donorall_Result
     {
-        public int AID { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public bool Status { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int NID { get; set; }
+        public int BID { get; set; }
+        public int CID { get; set; }
+        public int DID { get; set; }
+        public System.DateTime AskDate { get; set; }
+        public bool Accepted { get; set; }
     }
 }

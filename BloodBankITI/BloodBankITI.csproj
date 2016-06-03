@@ -211,6 +211,9 @@
     <Compile Include="Models\BloodType.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BloodTypeSelectByID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CheckLogin_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -293,10 +296,16 @@
     <Compile Include="Models\Needer.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\neederdonorall_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Needer_Donor.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Needer_DonorAccepted_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
@@ -306,6 +315,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NgoUpdate.cs" />
+    <Compile Include="Models\NGO_selectByIDAll_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NGO_selectByID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -330,6 +342,7 @@
     <Compile Include="Models\Post.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\PostComments.cs" />
     <Compile Include="Models\PostsComments.cs" />
     <Compile Include="Models\Posts_GetPostByID_Result.cs">
@@ -342,6 +355,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\returDonorData_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectCityLocations_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\selectNeederByBlood_Result.cs">
@@ -823,6 +839,11 @@
     <Content Include="Views\Admin\PostsComments.cshtml" />
     <Content Include="Views\Admin\UserTypes.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
+    <None Include="Views\Admin\BloodTypesEdit.cshtml" />
+    <None Include="Views\Admin\BloodTypesInsert.cshtml" />
+    <None Include="Views\Admin\InsertCity.cshtml" />
+    <None Include="Views\Admin\InsertLocation.cshtml" />
+    <None Include="Views\Admin\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
