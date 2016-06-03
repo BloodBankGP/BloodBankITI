@@ -406,6 +406,8 @@
   <Function Name="Admins_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fname" Type="nvarchar" Mode="In" />
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Admins_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -415,6 +417,18 @@
     <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="fname" Type="nvarchar" Mode="In" />
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BloodTypesEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="type" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BloodTypeSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BloodTypesInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
@@ -492,12 +506,8 @@
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="CID" Type="int" Mode="In" />
     <Parameter Name="LID" Type="int" Mode="In" />
-    <Parameter Name="status" Type="bit" Mode="In" />
-    <Parameter Name="pending" Type="bit" Mode="In" />
-    <Parameter Name="donationDate" Type="date" Mode="In" />
-    <Parameter Name="PID" Type="int" Mode="In" />
     <Parameter Name="DID" Type="int" Mode="In" />
-    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
+    <Parameter Name="gender" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dayid" Type="int" Mode="In" />
@@ -644,6 +654,7 @@
     <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="name" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
   </Function>
   <Function Name="PartnerStatestics_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="sid" Type="int" Mode="In" />

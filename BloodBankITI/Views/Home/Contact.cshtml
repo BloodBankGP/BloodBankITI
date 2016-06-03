@@ -1,49 +1,53 @@
 ﻿
 @{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@*<link href="~/Content/materialize.css" rel="stylesheet" />*@
+<div class="render">
+    <div class="container white z-depth-2">
+        <div class="card-panel red darken-4"><h5> للتواصل معنا </h5></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
+                            <label class="right-align" for="last_name"> الاسم الاخير  </label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="first_name" name="Fname" type="text" class="validate" style="text-align:right;">
+                            <label class="right-align" for="first_name">الاسم الاول </label>
+                        </div>
 
-@model BloodBankITI.Models.Followers
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="number" class="validate" name="Age" style="text-align:right;">
+                                <label class="right-align" for="Age">العمر </label>
 
-<img src="~/images/ContactUs.png" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" class="validate" name="City" style="text-align:right;" />
+                                <label class="right-align" for="City"> المدينة </label>
+                            </div>
+                        </div>
 
-<form method="post" action="" novalidate="novalidate">
-    <div class="form-group">
-        @Html.DisplayNameFor(P => @Model.Name)<br />
-        @Html.EditorFor(P => @Model.Name, new { htmlAttributes = new {@class ="form-control"} })
-        @Html.ValidationMessageFor(P => @Model.Name, "", new
-   {
-       @class = "text-danger" })
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @*<textarea class="validate" name="Message" style="width:470px; height:150px;text-align:right;" ></textarea>*@
+                                @*<textarea id="textarea1" class="materialize-textarea" style="text-align:right;"></textarea>*@
+                                <textarea class="materialize-textarea" style="text-align:right;"></textarea>
+                                <label class="right-align" for="Message">الرسالة</label>
+                            </div>
+                        </div>
+                        <center>
+                            <button class="btn-floating btn-large red darken-1" type="submit" name="action">إرسال</button>
+                        </center>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(P => @Model.Age)<br />
-        @Html.EditorFor(P => @Model.Age, new { htmlAttributes = new { @class ="form-control" } })
-        @Html.ValidationMessageFor(P => @Model.Age, "", new  {  @class = "text-danger" })
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(P => @Model.Email)<br />
-        @Html.EditorFor(P => @Model.Email, new { htmlAttributes = new { @class ="form-control"  } })
-        @Html.ValidationMessageFor(P => @Model.Email, "", new {  @class = "text-danger" })
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(P => @Model.City)<br />
-        @Html.EditorFor(P => @Model.City, new { htmlAttributes = new{ @class ="form-control" } })
-        @Html.ValidationMessageFor(P => @Model.City, "", new {@class = "text-danger" })
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(P => @Model.Comments)<br />
-        @Html.TextAreaFor(P => @Model.Comments, new{  htmlAttributes = new  {  @class = "form-control"  } })
-        @Html.ValidationMessageFor(P => @Model.Comments, "", new{  @class ="text-danger" })
-    </div>
-
-
-    <div>
-        <input type="submit" value="إرسال" />
-    </div>
-</form>
-
+</div>
