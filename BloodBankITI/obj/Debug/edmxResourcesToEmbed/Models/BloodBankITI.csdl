@@ -547,16 +547,6 @@
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="BloodTypesEdit">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="type" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="BloodTypeSelectByID" ReturnType="Collection(BloodBankDBITIModel.BloodTypeSelectByID_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="BloodTypesInsert">
-      <Parameter Name="type" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="CheckLogin" ReturnType="Collection(BloodBankDBITIModel.CheckLogin_Result)">
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="password" Mode="In" Type="String" />
@@ -799,9 +789,6 @@
     <FunctionImport Name="posts_DeletePost">
       <Parameter Name="PID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
-      <Parameter Name="post_id" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="posts_InsertPost">
       <Parameter Name="post" Mode="In" Type="String" />
       <Parameter Name="Phone" Mode="In" Type="String" />
@@ -885,32 +872,57 @@
     <FunctionImport Name="UserType_insert">
       <Parameter Name="type" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="UserType_select" ReturnType="Collection(BloodBankDBITIModel.UserType_select_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="UserType_selectt" ReturnType="Collection(BloodBankDBITIModel.UserType_selectt_Result)" />
     <FunctionImport Name="UserType_update">
       <Parameter Name="type" Mode="In" Type="String" />
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
+      <Parameter Name="post_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UserType_select" ReturnType="Collection(BloodBankDBITIModel.UserType_select_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypesEdit">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypeSelectByID" ReturnType="Collection(BloodBankDBITIModel.BloodTypeSelectByID_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BloodTypesInsert">
+      <Parameter Name="type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NGO_selectByIDAll" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByIDAll_Result)">
+      <Parameter Name="nid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCityLocations" ReturnType="Collection(BloodBankDBITIModel.SelectCityLocations_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NGOUPDATEADMIN">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="approved" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
+    <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
+    <FunctionImport Name="selectneederallinfo" ReturnType="Collection(BloodBankDBITIModel.selectneederallinfo_Result)" />
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
-    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="BloodTypeSelectByID_Result">
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
   </ComplexType>
   <ComplexType Name="CheckLogin_Result">
     <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -1132,16 +1144,6 @@
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Boolean" Name="Status" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="Posts_GetPostByID_Result">
-    <Property Type="Int32" Name="PID" Nullable="false" />
-    <Property Type="String" Name="Post" Nullable="true" />
-    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Periodic" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="posts_SelectAll_Result">
     <Property Type="Int32" Name="PID" Nullable="false" />
     <Property Type="String" Name="Post" Nullable="true" />
@@ -1244,12 +1246,71 @@
     <Property Type="Int32" Name="CID" Nullable="false" />
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="UserType_selectt_Result">
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="UTID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Posts_GetPostByID_Result">
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="Post" Nullable="true" />
+    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Periodic" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="UserType_select_Result">
     <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="UTID" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="UserType_selectt_Result">
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="UTID" Nullable="false" />
+  <ComplexType Name="BloodTypeSelectByID_Result">
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="NGO_selectByIDAll_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Approved" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectCityLocations_Result">
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="LocationName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Needer_Donorall_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="DateTime" Name="AskDate" Nullable="false" />
+    <Property Type="Boolean" Name="Accepted" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="neederdonorall_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="DateTime" Name="AskDate" Nullable="false" />
+    <Property Type="Boolean" Name="Accepted" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Fullname" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="selectneederallinfo_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cityname" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

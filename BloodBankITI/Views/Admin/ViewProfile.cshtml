@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "title";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <h2>Profile</h2>
 
-Name: @(Model.Fname + " " + Model.Lname)
-UserName: @Model.UserName
-Password: @Model.Password
+Name: @(Model.Fname + " " + Model.Lname)<br/>
+UserName: @Model.UserName<br/>
+Password: @Model.Password<br/>
 
-@Html.ActionLink("Edit Profile", "")
+@Html.ActionLink("Edit Profile", "UpdateProfile")

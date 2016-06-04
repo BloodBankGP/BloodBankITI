@@ -1,8 +1,23 @@
-﻿@model dynamic
+﻿@model IEnumerable<BloodBankITI.Models.CitiesLocations>
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Cities</h2>
+
+@foreach (var city in Model)
+{
+    <h2>@city.city.CityName</h2>
+    foreach (var loc in city.locations)
+    {
+        <p>
+            @loc.LocationName        
+        </p>
+    }
+
+    @Html.ActionLink("Insert New Location", "InsertLocation", new {CID = city.city.CID})
+}
+
+<br/>@Html.ActionLink("Insert New City","InsertCity")

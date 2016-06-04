@@ -1,0 +1,22 @@
+﻿@model BloodBankITI.Models.Partner
+@{
+    ViewBag.Title = "PartnersInsert";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>PartnersInsert</h2>
+
+<form action="" method="POST">
+    <div class="form-group">
+        Name: <input type="text" name="Partner.Fname" />
+    </div>
+    <div class="form-group">
+        Address: <input type="text" name="Partner.Lname" />
+    </div>
+
+
+    <input type="submit" value="Insert" />
+</form>
+
+@Html.ActionLink("Cancel", "Partners")
+

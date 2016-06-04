@@ -1,0 +1,34 @@
+﻿@model List<BloodBankITI.Models.UserType_selectt_Result>
+@{
+    ViewBag.Title = "UserTypesView";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>UserTypesView</h2>
+
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>Type</th>
+        <th> UserType ID </th>
+        <th> Edit </th>
+
+    </tr>
+
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@(a.Type) </td>
+            <td>@(a.UTID) </td>
+            <td> @Html.ActionLink("Edit", "UserTypesEdit", new { id = a.UTID })</td>
+
+
+
+        </tr>
+
+    }
+
+</table>
+
+
+@Html.ActionLink("Back To Home", "Index")

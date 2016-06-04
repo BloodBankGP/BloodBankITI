@@ -1,8 +1,43 @@
-﻿@model dynamic
+﻿@model List<BloodBankITI.Models.Partners_selectt_Result>
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Partners";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>View All Partners</h2>
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+       
+        <th> ID </th>
+        <th> Name </th>
+        <th> Address </th>
+        <th> Status </th>
+        <th> Edit </th>
+
+
+    </tr>
+
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@(a.PAID) </td>
+            <td>@(a.Name) </td>
+            <td>@(a.Address) </td>
+            <td>@(a.Status) </td>
+            
+
+            <td> @Html.ActionLink("Edit", "PartnersEdit", new { id = a.PAID })</td>
+
+
+
+
+        </tr>
+
+    }
+
+</table>
+
+
+@Html.ActionLink("Back To Home", "Index")

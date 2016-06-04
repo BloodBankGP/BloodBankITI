@@ -1,0 +1,15 @@
+﻿@model BloodBankITI.Models.City
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Insert New City</h2>
+<form action="" method="POST">
+    City Name: <input type="text" name="City.CityName"/><br/>
+    <input type="submit" value="Insert"/>
+</form>
+
+@Html.ActionLink("Cancel", "Cities")
+

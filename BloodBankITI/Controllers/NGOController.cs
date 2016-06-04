@@ -64,7 +64,8 @@ namespace BloodBankITI.Controllers
                         CID = ng.CID,
                         NID = ng.NID,
                         Phone = ng.Phone,
-                        Name = ng.Name, Status = ng.Status
+                        Name = ng.Name, 
+                        Status = ng.Status
                     }
             };
 
