@@ -48,72 +48,17 @@
     }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- Navigation -->
-    <!-- Navigation -->
-    @*<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top" onclick=$("#menu-close").click();> </a>
-            </li>
-            <li>
-                <a href="#top" onclick=$("#menu-close").click();>ÇáÕÝÍÉ ÇáÑÆíÓíÉ </a>
-            </li>
-            <li>
-                <a href="#about" onclick=$("#menu-close").click();>ÇáØæÇÑìÁ</a>
-            </li>
-            <li>
-                <a href="#services" onclick=$("#menu-close").click();> الب </a>
-            </li>
-            <li>
-                <a href="#portfolio" onclick=$("#menu-close").click();> ÃäÇ ÚÇíÒ Ïã </a>
-            </li>
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>posts</a>
-            </li>
-            @if (Session["UserName"] != null && Session["UserId"] != null)
-            {
-                switch (Session["UserType"].ToString())
-                {
-                    case "1":
-                        <li>
-                            @Html.ActionLink("الصفحة الشخصية", "Index", "Admin")
-                        </li>
-                        break;
-                    case "2":
-                    <li>
-                        @Html.ActionLink("الصفحة الشخصية", "Index", "Donor")
-                    </li>
-                        break;
-                    case "3":
-                    <li>
-                        @Html.ActionLink("الصفحة الشخصية", "Index", "NGO")
-                    </li>
-                        break;
-                    case "4":
-                    <li>
-                        @Html.ActionLink("الصفحة الشخصية", "Index", "Partner")
-                    </li>
-                        break;
-                }
-            }
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>ÇáÊÈÑÚ ÈÇáÏã </a>
-            </li>
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>Úä ÇáãæÞÚ </a>
-            </li>
-            <li>
-                <a href="#contact" onclick=$("#menu-close").click();>ÇáÊæÇÕá ãÚäÇ </a>
-            </li>
-        </ul>
-    </nav>*@
+    
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="#" >About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="http://localhost:7508/home/index" >الرئيسية</a>
+        <a href="#">لطوارىء</a>
+        <a href="#">  اتبرع </a>
+        <a href="http://localhost:7508/home/askfirblood">  دم</a>
+        <a href="#"> المشاركات</a>
+        <a href="http://localhost:7508/home/info"> معلومات   </a>
+        <a href="#"> احنا </a>
+        <a href="http://localhost:7508/home/contact">تواصل  </a>
     </div>
 
     <div id="main">
@@ -141,7 +86,6 @@
 
     <script src="~/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="~/js/menu.js"></script>
     @*<script src="~/js/materialize.min.js"></script>*@
     <!-- Compiled and minified JavaScript -->
     @*<script src="~/js/forms.js"></script>*@

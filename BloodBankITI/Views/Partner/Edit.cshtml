@@ -3,16 +3,33 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<head>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="~/Scripts/ngo.js"></script>
+    @*<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">*@
+    <script langauage="javascript">
+      function showMessage(value){
+         document.getElementById("message").innerHTML = value;
+      }
+    </script>
 
-<h2>Edit</h2>
+</head>
 
+<div class="render">
+    <h2>Edit Partner</h2>
 
-<form action="" method="post" novalidate="novalidate">
-                <div class="form-group">
-                    @Html.DisplayNameFor(p => p.Donor.DID)
-                    @Html.DisplayFor(p => p.Donor.DID)
-                    <input type="hidden" name="DID" value=@Model.Donor.DID>
-                </div>
+    @*<form action="" method="post" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(p => p.Donor.DID)
+            @Html.DisplayFor(p => p.Donor.DID)
+            <input type="hidden" name="DID" value=@Model.Donor.DID>
+        </div>
         <div class="form-group">
             @Html.DisplayNameFor(p => p.Donor.Fname)
             @Html.DisplayFor(p => p.Donor.Fname)
@@ -21,6 +38,7 @@
             @Html.DisplayNameFor(p => p.Donor.Lname)
             @Html.DisplayFor(p => p.Donor.Lname)
         </div>
+
         <div class="form-group">
             @Html.DisplayNameFor(p => p.Donor.BID)
             <select name="BID">
@@ -36,4 +54,54 @@
         <div>
             <input type="submit" value="submit" />
         </div>
-</form>
+    </form>*@
+    <form method="POST" action="" novalidate="novalidate">
+        <div class="form-container">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_name" type="text" class="validate" name="Donor.DID" style="text-align:right">
+                    <label class="right-align" for="first_name">رقم المتبرع   </label>
+                    <input type="hidden" name="DID" value=@Model.Donor.DID>
+                    <span class="mdl-textfield__error">Number required!</span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right">
+                    <label class="right-align" for="first_name"> الاسم الاول   </label>
+                    <span class="mdl-textfield__error">Number required!</span>
+
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right">
+                    <label class="right-align" for="last_name">  الاسم الثانى   </label>
+                    <span class="mdl-textfield__error">Number required!</span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="professsion" name="BID">
+                            <option value="0">Not Set</option>
+                            @foreach (var item in Model.BloodTypesResults)
+                            {
+                                <option value=@item.BID>@item.Type</option>
+                            }
+                        </select>
+                        <label class="mdl-select__label" for="professsion">نوع فصيلة الدم </label>
+                        <span class="mdl-textfield__error">Number required!</span>
+
+                    </div>
+                </div>
+            </div>
+            <center>
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">ارسال</button>
+            </center>
+        </div>
+    </form>
+</div>

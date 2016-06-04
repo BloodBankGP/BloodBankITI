@@ -5,6 +5,7 @@
  */
 
 /* Global Styles */
+@import url(http://fonts.googleapis.com/earlyaccess/thabit.css);
 
 html,
 body {
@@ -47,7 +48,7 @@ body {
 }
 
 /*logo2_layout2*/
-#logo2 {
+/*#logo2 {
     top: 0;
     padding: 9em 15em;
     position: relative;
@@ -59,7 +60,7 @@ body {
     -o-background-size: cover;
     background-size:cover;
 
-}
+}*/
 
 
 /*body {
@@ -399,28 +400,7 @@ h6 a:hover {
   user-select: none;
 }
 
-/*html {
-  width: 100%;
-  height: 100%;
-  perspective: 900;
-  overflow-y: scroll;
-  background-color: #dce7eb;
-  font-family: "Titillium Web", sans-serif;
-  color: rgba(48, 69, 92, 0.8);
-}
 
-body {
-  min-height: 0;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  margin: 90px 0;
-  transform: translate(-50%, 0);
-  box-shadow: 0 10px 0 0 #ff6873 inset;
-  background-color: #fefffa;
-  max-width: 450px;
-  padding: 30px;
-}*/
 @media (max-width: 550px) {
   body {
     box-sizing: border-box;
@@ -432,20 +412,24 @@ body {
   }
 }
 
-h1, h2 {
+h1, h2,h3 {
   color: brown;
 }
 
 h1 {
+    font-family: ' Thabit', serif !important;
   text-transform: uppercase;
   font-size: 36px;
   line-height: 42px;
-  letter-spacing: 3px;
+  /*letter-spacing: 3px;*/
   font-weight: 100;
   text-align:center;
-}
 
-h2 {
+font-family: 'Thabit', serif;
+       }
+
+
+h2,h3 {
   font-size: 26px;
   line-height: 34px;
   font-weight: 300;
@@ -496,6 +480,12 @@ ul li:nth-of-type(2) {
 }
 ul li:nth-of-type(3) {
   animation-delay: 1s;
+}
+ul li:nth-of-type(4) {
+  animation-delay: 1.25s;
+}
+ul li:nth-of-type(5) {
+  animation-delay: 1.5s;
 }
 ul li:last-of-type {
   padding-bottom: 0;
@@ -566,6 +556,13 @@ ul li input[type=checkbox]:checked ~ i:after {
     transform: rotateX(0deg);
   }
 }
+.info {
+    font-family:"Comic Sans MS", cursive, sans-serif;
+
+}
+
+
+
 
 /* Ask for Blood*/
 /*body
@@ -576,24 +573,22 @@ ul li input[type=checkbox]:checked ~ i:after {
 h5
 {
 	font-weight: 400;
-    text-align:center;
-    color:#fff;
+    color:white;
 }
 
 .container
 {
 	margin-top: 80px;
 	width: 400px;
-	height: 600px;
-    /*margin-right:200px;*/
+	height: 700px;
 }
 
-/*.tabs .indicator
+.tabs .indicator
 {
-	background-color: #e82727;
+	background-color: #e0f2f1;
 	height: 60px;
 	opacity: 0.3;
-}*/
+}
 
 .form-container
 {
@@ -601,24 +596,10 @@ h5
 	padding-top: 10px;
 }
 
-
-/*.confirmation-tabs-btn
+.confirmation-tabs-btn
 {
 	position: absolute;
-}*/
-/*Register */
-
-/*#donorimg{
-    float:left;
-    width:50px;
-    height:50px;
 }
-#ngoimg{
-    float:right;
-    width:60px;
-    height:60px;
-}*/
-
 
 /*register*/
 
@@ -687,4 +668,181 @@ h5
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+} 
+/*Contact us*/
+h6{
+    color:white;
+    text-align:center;
 }
+/*Wall Posts*/
+#post p{
+    color:firebrick;
+}
+#post p{
+    color:black;
+}
+#post hr{
+    width:20%;
+    float:right;
+}
+#Comments label{
+    float:right;
+}
+h4{
+    color:firebrick;
+    text-align:center;
+}
+/*LogIn*/
+.login{
+    text-align:center;
+    float:right;
+    width:700px;
+    height:700px;
+}
+#render h2{
+    text-align:left;
+}
+label{
+    text-align:right;
+    color:brown;
+
+}
+/*ngo*/
+              .mdl-select {
+          position: relative;
+          font-size: 16px;
+          display: inline-block;
+          box-sizing: border-box;
+          width: 300px;
+          max-width: 100%;
+          margin: 0;
+          padding: 20px 0;
+        }
+
+        .mdl-select__input {
+          border: none;
+          border-bottom: 1px solid rgba(0,0,0, 0.12);
+          display: inline-block;
+          font-size: 16px;
+          margin: 0;
+          padding: 4px 0;
+          width: 100%;
+          background: 16px;
+          text-align: left;
+          color: inherit;
+        }
+
+        .mdl-select.is-focused .mdl-select__input {	outline: none; }
+        .mdl-select.is-invalid .mdl-select__input { 
+          border-color: rgb(222, 50, 38);
+            box-shadow: none;
+          }
+
+        .mdl-select.is-disabled .mdl-select__input {
+          background-color: transparent;
+          border-bottom: 1px dotted rgba(0,0,0, 0.12);
+        }
+
+        .mdl-select__label {
+          bottom: 0;
+          color: rgba(0,0,0, 0.26);
+          font-size: 16px;
+          left: 0;
+          right: 0;
+          pointer-events: none;
+          position: absolute;
+          top: 24px;
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-align: left; 
+        }
+
+        .mdl-select.is-dirty .mdl-select__label { visibility: hidden; }
+
+        .mdl-select--floating-label .mdl-textfield__label {
+          -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+          -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mdl-select--floating-label.is-focused .mdl-select__label,
+        .mdl-select--floating-label.is-dirty .mdl-select__label {
+          color: rgb(63,81,181);
+          font-size: 12px;
+          top: 4px;
+          visibility: visible;
+        }
+
+        .mdl-select--floating-label.is-focused .mdl-select__expandable-holder .mdl-select__label,
+        .mdl-select--floating-label.is-dirty .mdl-select__expandable-holder .mdl-select__label {
+          top: -16px;
+        }
+
+        .mdl-select--floating-label.is-invalid .mdl-select__label {
+          color: rgb(222, 50, 38);
+          font-size: 12px;
+        }
+
+        .mdl-select__label:after {
+          background-color: rgb(63,81,181);
+          bottom: 20px;
+          content: '';
+          height: 2px;
+          left: 45%;
+          position: absolute;
+          -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+          -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          visibility: hidden;
+          width: 10px;
+        }
+
+        .mdl-select.is-focused .mdl-select__label:after {
+          left: 0;
+          visibility: visible;
+          width: 100%; 
+        }
+
+        .mdl-select.is-invalid .mdl-select__label:after {
+          background-color: rgb(222, 50, 38); 
+        }
+
+        .mdl-select__error {
+          color: rgb(222, 50, 38);
+          position: absolute;
+          font-size: 12px;
+          margin-top: 3px;
+          visibility: hidden;
+        }
+
+        .mdl-select.is-invalid .mdl-select__error {
+          visibility: visible;
+        }
+
+        .mdl-select__expandable-holder {
+          display: inline-block;
+          position: relative;
+          margin-left: 32px;
+          -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+          -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          display: inline-block;
+          max-width: 0.1px; 
+        }
+
+        .mdl-select.is-focused .mdl-select__expandable-holder, .mdl-select.is-dirty .mdl-select__expandable-holder {
+          max-width: 600px; 
+        }
+
+        .mdl-select__expandable-holder .mdl-select__label:after {
+          bottom: 0;
+        }
+ /*NGO index*/
+ 
+
+
+ /*table*/

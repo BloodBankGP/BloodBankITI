@@ -4,24 +4,34 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Index</h2>
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<table class="table table-bordered table-condensed table-striped">
-    <tr>
-        <th>@Html.DisplayNameFor(d => d.DID)</th>
-        <th>@Html.DisplayNameFor(d => d.Fname)</th>
-        <th>@Html.DisplayNameFor(d => d.Lname)</th>
-        <th>أدخال فصيلة الدم</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.DID</td>
-            <td>@item.Fname</td>
-            <td>@item.Lname</td>
-            <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
+<div class="render">
+    <h2>Index</h2>
+    <table class="responsive-table">
+        <thead>
+            <tr>
+                @*<th>@Html.DisplayNameFor(d => d.DID)</th>
+                <th>@Html.DisplayNameFor(d => d.Fname)</th>
+                <th>@Html.DisplayNameFor(d => d.Lname)</th>
+                <th>أدخال فصيلة الدم</th>*@
+                <th data-field="id">رقم المتبرع </th>
+                <th data-field="fname">الاسم الاول   </th>
+                <th data-field="lname">الاسم الثانى  </th>
+                <th data-field="type">ادخل فصيلة الدم  </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
-        </tr>
-    }
-
-</table>
+                <tr>
+                    <td>@item.DID</td>
+                    <td>@item.Fname</td>
+                    <td>@item.Lname</td>
+                    <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

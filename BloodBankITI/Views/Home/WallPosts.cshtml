@@ -3,47 +3,63 @@
     ViewBag.Title = "WallPosts";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>WallPosts</h2>
+<div class="render">
+
+<h4> <em>المشاركات</em> </h4>
 
 @foreach (var post in Model)
 {
     <div id="post">
-        <h4>@post.post.Name  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</h4>
-
-        <h5>@post.post.Post</h5>
+        <p>@post.post.Name  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p> 
+        <p>@post.post.Post</p>
     </div>
     <div class="fb-share-button" data-href="http://localhost:7508/home/GetPostByID/1" data-layout="button_count" data-mobile-iframe="false"></div>
     <div id="Comments">
          @foreach (var comment in post.comments)
-        {
-        <h6>@comment.Name</h6>
-        <h6>@comment.Comment</h6>
-        }
+         {
+            <label>  @comment.Name</label><br />
+            <p>  @comment.Comment</p>
+         }
     </div>
 
         <div id="insertComment">
             <h6>Insert Comment</h6>
             <form action="InsertComment" method="post">
 
-                <input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>
+                @*<input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>*@
+                <label name="comment.Post_ID" value=@post.post.PID.ToString()></label>
+
 
                 @if (Session["UserName"] != null)
                 {
                     @Session["UserName"].ToString()
-                    <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                    @*<input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />*@
+                    <label name="comment.Name" value=@Session["UserName"].ToString() > </label>
                 }
                 else
                 {
-                    @("Name :")   <input type="text" name="comment.Name" />
+                    @("Name :")   @*<input type="text" name="comment.Name" />*@
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;">
+                            <label class="right-align"> الاسم  </label>
+                        </div>
+                    </div>
                 }
-                <input type="text" name="comment.Comment" />
-                <input type="submit" value="Insert" />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" class="validate" name="NGO.Address" style="text-align:right;">
+                        <label class="right-align"> التعليق  </label>
+                    </div>
+                </div>
+                @*<input type="text" name="comment.Comment" />*@
+                @*<input type="submit" value="تعليق" />*@
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
+
             </form>
 
         </div>
-
-
-
 }
-
+    </div>
