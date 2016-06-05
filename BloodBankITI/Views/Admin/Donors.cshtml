@@ -1,8 +1,42 @@
-﻿@model dynamic
+﻿@model IEnumerable<BloodBankITI.Models.Donors_select_Result>
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Donors:</h2>
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>Blood Type</th>
+        <th>City</th>
+        <th>Location</th>
+        <th>Pending or not</th>
+        <th>Last Donation Date</th>
+        <th></th>
+    </tr>
+    @foreach (var donor in Model)
+    {
+        <tr>
+            <td>@(donor.Fname + " " + donor.Lname)</td>
+            <td>@donor.DonorGender</td>
+            <td>@donor.Phone</td>
+            <td>@donor.Type</td>
+            <td>@donor.CityName</td>
+            <td>@donor.locationName</td>
+            @if (donor.Pending != true)
+                {
+                    <td>Can donate now</td>
+                }
+            else
+            {
+                <td>Can't donate now</td>
+            }
+            <td>@donor.DonationDate</td>
+            <td>@Html.ActionLink("Delete", "DeleteDonor", new { DID = donor.DID })</td>
+        </tr>
+    }
+</table>

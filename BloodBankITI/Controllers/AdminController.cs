@@ -146,22 +146,49 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Cities");
         }
 
-
-
-    public ActionResult PostsComments()
+        //Posts and Comments
+        [HttpGet]
+        public ActionResult PostsComments()
         {
-            return View();
+            List<PostsComments> postsComments = new List<PostsComments>();
+            List<posts_SelectAll_Result> posts = db.posts_SelectAll().ToList();
+            List<Comments_SelectAllByPostID_Result> postComments = new List<Comments_SelectAllByPostID_Result>();
+
+            foreach (posts_SelectAll_Result p in posts)
+            {
+                postComments = db.Comments_SelectAllByPostID(p.PID).ToList();
+                postsComments.Add(new PostsComments() {post = p, comments = postComments});
+            }
+
+            return View(postsComments);
         }
 
-        public ActionResult Days()
+        public ActionResult DeletePost(Post post)
         {
-            return View();
+            db.posts_DeletePost(post.PID);
+            return RedirectToAction("PostsComments");
         }
 
+        public ActionResult DeleteComment(int CID)
+        {
+            db.CommentDelete(CID);
+            return RedirectToAction("PostsComments");
+        }
+
+        //Donors
+        [HttpGet]
         public ActionResult Donors()
         {
-            return View();
+            return View(db.Donors_select().ToList());
         }
+
+
+        public ActionResult DeleteDonor(int DID)
+        {
+            db.Donors_Delete(DID);
+            return RedirectToAction("Donors");
+        }
+
 
         public ActionResult Emergency()
         {
@@ -193,10 +220,10 @@ namespace BloodBankITI.Controllers
                 Needer = needer,
                 CitiesSelectAllResults = cities,
                 BloodTypesResults = bloodTypes
-
             };
             return View(neederCityBlood);
         }
+
         [HttpPost]
         public ActionResult NeederEdit(Needer needer)
         {

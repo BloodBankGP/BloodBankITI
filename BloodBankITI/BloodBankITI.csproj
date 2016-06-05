@@ -252,10 +252,16 @@
     <Compile Include="Models\Donors_SelectID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Donors_select_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\donor_SelectByDID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Emergency.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmergencySelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
@@ -271,6 +277,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hospitals_SelectByCity_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hospitals_SelectByID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -296,6 +305,7 @@
     <Compile Include="Models\Needer.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NeederCityBlood.cs" />
     <Compile Include="Models\neederdonorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -358,6 +368,12 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SelectCityLocations_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectHospitalByID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectneederallinfo_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\selectNeederByBlood_Result.cs">
@@ -928,7 +944,6 @@
     <Content Include="Views\Admin\AdminsView.cshtml" />
     <Content Include="Views\Admin\BloodTypes.cshtml" />
     <Content Include="Views\Admin\Cities.cshtml" />
-    <Content Include="Views\Admin\Days.cshtml" />
     <Content Include="Views\Admin\Donors.cshtml" />
     <Content Include="Views\Admin\Emergency.cshtml" />
     <Content Include="Views\Admin\Hospitals.cshtml" />
@@ -950,6 +965,7 @@
     <Content Include="Views\Admin\NGOEdit.cshtml" />
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
+    <Content Include="Views\Admin\NeederEdit.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
     <Content Include="Views\Partner\Edit.cshtml" />
