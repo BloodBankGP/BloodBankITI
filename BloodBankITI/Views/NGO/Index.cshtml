@@ -4,10 +4,45 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Index</h2>
+<div class="render">
+    <h1><em>الجمعيات الخيرية </em></h1>
+    <hr />
+    <label>الاســــــــــــم</label><br />
+   <p>@Html.DisplayFor(N => N.Name)</p><br />
+    <label>العنــــــــوان</label><br />
+     <p>@Html.DisplayFor(N => N.Address)</p><br />
+    <label>رقم الهـــاتف</label><br />
+    <p> @Html.DisplayFor(N => N.Phone)</p> <br />
+    <label> المدينـــــــــة </label><br />
+    <p>@Html.DisplayFor(N => N.CityName)</p><br />
+    @*<ul>
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h3> الاســــــــــــم</h3>
+            <p> @Html.DisplayFor(N => N.Name)</p>
+        </li>
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h3>العنـــــــــوان </h3>
+            <p>
+               @Html.DisplayFor(N => N.Address)
+            </p>
+        </li>
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h3>رقــم الهــاتف</h3>
+            @Html.DisplayFor(N => N.Phone)
+        </li>
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h3> المدينــــــــــة</h3>
+            <p> @Html.DisplayFor(N => N.CityName)</p>
+        </li>
+    </ul>*@
 
-Name : @Html.DisplayFor(N => N.Name)
-Address : @Html.DisplayFor(N => N.Address)
-Phone : @Html.DisplayFor(N => N.Phone)
-CityName : @Html.DisplayFor(N => N.CityName)
 
+</div>

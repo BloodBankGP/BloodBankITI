@@ -4899,16 +4899,20 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: none !important;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer;
 }
 
-.btn:hover, .btn-large:hover {
+/*.btn:hover, .btn-large:hover {
   background-color: #2bbbad;
+  }*/
+  .transparent{
+  background:rgba(255,255,255,0.5);
 }
+
 
 .btn-floating {
   display: inline-block;
@@ -5478,6 +5482,7 @@ button:focus {
 label {
   font-size: 0.8rem;
   color: brown;
+  float:right;
 }
 
 /* Text Inputs + Textarea
@@ -5792,6 +5797,7 @@ textarea.materialize-textarea + label:after {
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
+  padding-right:25px !important;
 }
 
 .input-field label.active {

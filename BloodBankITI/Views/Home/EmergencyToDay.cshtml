@@ -8,19 +8,19 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
+<div class="render">
+    <h2>EmergencyToDay</h2>
 
-<h2>EmergencyToDay</h2>
+    <select name="Donor.CID" id="CitiesID">
+        @foreach (var item in Model)
+        {
+            <option value="0">Not Set</option>
+            <option value=@item.CID>@item.CityName</option>
+        }
+    </select>
 
-<select name="Donor.CID" id="CitiesID">
-    @foreach (var item in Model)
-    {
-        <option value="0">Not Set</option>
-        <option value=@item.CID>@item.CityName</option>
-    }
-</select>
-
-<div id="hospital"></div>
-
+    <div id="hospital"></div>
+</div>
 <script>
         $('#CitiesID').change(function () {
             var CityID = $('#CitiesID').val();

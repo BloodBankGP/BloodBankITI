@@ -3,47 +3,57 @@
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-@*<link href="~/Content/materialize.css" rel="stylesheet" />*@
+<link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
     <div class="container white z-depth-2">
-        <div class="card-panel red darken-4"><h5> للتواصل معنا </h5></div>
+        <div class="card-panel red darken-4"><h6> للتواصل معنا </h6></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
-                            <label class="right-align" for="last_name"> الاسم الاخير  </label>
+                            <label class="right-align" for="last_name"> :الاسم الاخير </label>
                         </div>
                         <div class="input-field col s6">
                             <input id="first_name" name="Fname" type="text" class="validate" style="text-align:right;">
-                            <label class="right-align" for="first_name">الاسم الاول </label>
+                            <label class="right-align" for="first_name">:الاسم الاول </label>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="number" class="validate" name="Age" style="text-align:right;">
-                                <label class="right-align" for="Age">العمر </label>
-
+                                <label class="right-align" for="Age">:العمر </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" class="validate" name="City" style="text-align:right;" />
-                                <label class="right-align" for="City"> المدينة </label>
+                                <label class="right-align" for="City">: المدينة </label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                @*<textarea class="validate" name="Message" style="width:470px; height:150px;text-align:right;" ></textarea>*@
-                                @*<textarea id="textarea1" class="materialize-textarea" style="text-align:right;"></textarea>*@
-                                <textarea class="materialize-textarea" style="text-align:right;"></textarea>
-                                <label class="right-align" for="Message">الرسالة</label>
+                                <div class="validate">
+                                    <label class="right-align" for="Message" style="float:right; position:relative; margin-right:-13px;">:الرسالة </label>
+                                    <textarea id="textarea1" class="materialize-textarea" style="text-align:right;"></textarea>
+                                </div>
                             </div>
                         </div>
+
+
+                        @*<div class="row">
+                            <div class="input-field col s12">
+                                <div style="float:right; position:relative; margin-right:52px;"><label class="right-align" for="Message" style="float:right;">:الرسالة </label></div>
+                                <textarea class="materialize-textarea" style="text-align:right;"></textarea>
+                            </div>
+                        </div>*@
+
+
+
                         <center>
-                            <button class="btn-floating btn-large red darken-1" type="submit" name="action">إرسال</button>
+                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">إرسال</button>
                         </center>
                     </div>
                 </div>

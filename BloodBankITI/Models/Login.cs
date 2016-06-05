@@ -11,7 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Login
     {
         public string UserName { get; set; }
