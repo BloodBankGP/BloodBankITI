@@ -1,0 +1,38 @@
+﻿@model BloodBankITI.Models.HospitalsCity
+@{
+    ViewBag.Title = "HospitalsEdit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>HospitalsEdit</h2>
+
+<form action="" method="POST">
+    <input type="hidden" value=@Model.Hospital.HID name="Hospital.HID" />
+    
+    Name:
+    <input type="text" value=@Model.Hospital.Name name="Hospital.Name" />
+    
+    Phone:
+    <input type="text" value=@Model.Hospital.Phone name="Hospital.Phone" />
+    
+    Address:
+    <input type="text" value=@Model.Hospital.Address name="Hospital.Address" />
+    
+    City:
+    <select name="Hospital.CID">
+        <option>Not Set</option>
+        @foreach (var item in Model.CitiesSelectAllResults)
+        {
+            if (item.CID == Model.Hospital.CID)
+            {
+                <option selected="" value=@item.CID>@item.CityName</option>
+            }
+            else
+            {
+                <option value=@item.CID>@item.CityName</option>       
+            }
+        }
+    </select>
+    <input type="submit" value="Edit" />
+</form>
+
