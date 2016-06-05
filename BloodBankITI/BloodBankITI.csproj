@@ -261,6 +261,7 @@
     <Compile Include="Models\Emergency.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmergencyCityHospitals.cs" />
     <Compile Include="Models\EmergencySelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -273,6 +274,7 @@
     <Compile Include="Models\Hospital.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HospitalsCity.cs" />
     <Compile Include="Models\Hospitals_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -960,6 +962,9 @@
     <Content Include="Views\Admin\ViewProfile.cshtml" />
     <None Include="Views\Admin\BloodTypesEdit.cshtml" />
     <None Include="Views\Admin\BloodTypesInsert.cshtml" />
+    <Content Include="Views\Admin\EmergencyEdit.cshtml" />
+    <Content Include="Views\Admin\HospitalsEdit.cshtml" />
+    <Content Include="Views\Admin\HospitalsInsert.cshtml" />
     <None Include="Views\Admin\InsertCity.cshtml" />
     <None Include="Views\Admin\InsertLocation.cshtml" />
     <Content Include="Views\Admin\NGOEdit.cshtml" />

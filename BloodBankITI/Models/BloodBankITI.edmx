@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="AID" />
@@ -1530,10 +1530,6 @@
             <Parameter Name="cid" Mode="In" Type="Int32" />
             <Parameter Name="hid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="EmergencySelectCityDay" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectCityDay_Result)">
-            <Parameter Name="dayid" Mode="In" Type="Int32" />
-            <Parameter Name="cid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="EmergencyUpdate">
             <Parameter Name="dayid" Mode="In" Type="Int32" />
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -1807,13 +1803,17 @@
           <FunctionImport Name="CommentDelete">
           <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="EmergencySelectAll" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectAll_Result)" />
           <FunctionImport Name="Donors_select" ReturnType="Collection(BloodBankDBITIModel.Donors_select_Result)" />
           <FunctionImport Name="Hospitals_SelectByID" ReturnType="Collection(BloodBankDBITIModel.Hospitals_SelectByID_Result)">
-            <Parameter Name="hid" Mode="In" Type="Int32" />
+          <Parameter Name="hid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectHospitalByID" ReturnType="Collection(BloodBankDBITIModel.SelectHospitalByID_Result)">
-            <Parameter Name="hospitalID" Mode="In" Type="Int32" />
+          <Parameter Name="hospitalID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EmergencySelectAll" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectAll_Result)" />
+          <FunctionImport Name="EmergencySelectCityDay" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectCityDay_Result)">
+            <Parameter Name="dayid" Mode="In" Type="Int32" />
+            <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_selectt_Result">
@@ -1918,13 +1918,6 @@
           <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="CityName" Nullable="false" />
           <Property Type="String" Name="locationName" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="EmergencySelectCityDay_Result">
-          <Property Type="Int32" Name="HID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="CID" Nullable="true" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Address" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetPartnersDonor_Result">
           <Property Type="Int32" Name="DID" Nullable="false" />
@@ -2220,15 +2213,6 @@
           <Property Type="String" Name="cityname" Nullable="false" />
           <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
         </ComplexType>
-        <ComplexType Name="EmergencySelectAll_Result">
-          <Property Type="Int32" Name="HID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="CID" Nullable="true" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Address" Nullable="true" />
-          <Property Type="Int32" Name="DayID" Nullable="false" />
-          <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="Donors_select_Result">
           <Property Type="Int32" Name="DID" Nullable="false" />
           <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -2261,6 +2245,26 @@
           <Property Type="Int32" Name="CID" Nullable="true" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Address" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EmergencySelectAll_Result">
+          <Property Type="Int32" Name="HID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="Int32" Name="DayID" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="EmergencySelectCityDay_Result">
+          <Property Type="Int32" Name="HID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="Int32" Name="DayID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2634,17 +2638,6 @@
           <FunctionImportMapping FunctionImportName="Donors_UpdateID" FunctionName="BloodBankDBITIModel.Store.Donors_UpdateID" />
           <FunctionImportMapping FunctionImportName="EmergencyDelete" FunctionName="BloodBankDBITIModel.Store.EmergencyDelete" />
           <FunctionImportMapping FunctionImportName="EmergencyInsert" FunctionName="BloodBankDBITIModel.Store.EmergencyInsert" />
-          <FunctionImportMapping FunctionImportName="EmergencySelectCityDay" FunctionName="BloodBankDBITIModel.Store.EmergencySelectCityDay">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.EmergencySelectCityDay_Result">
-                <ScalarProperty Name="HID" ColumnName="HID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="EmergencyUpdate" FunctionName="BloodBankDBITIModel.Store.EmergencyUpdate" />
           <FunctionImportMapping FunctionImportName="GetPartnersDonor" FunctionName="BloodBankDBITIModel.Store.GetPartnersDonor">
             <ResultMapping>
@@ -3110,19 +3103,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CommentDelete" FunctionName="BloodBankDBITIModel.Store.CommentDelete" />
-          <FunctionImportMapping FunctionImportName="EmergencySelectAll" FunctionName="BloodBankDBITIModel.Store.EmergencySelectAll">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.EmergencySelectAll_Result">
-                <ScalarProperty Name="HID" ColumnName="HID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="DayID" ColumnName="DayID" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Donors_select" FunctionName="BloodBankDBITIModel.Store.Donors_select">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_select_Result">
@@ -3165,6 +3145,34 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmergencySelectAll" FunctionName="BloodBankDBITIModel.Store.EmergencySelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.EmergencySelectAll_Result">
+                <ScalarProperty Name="HID" ColumnName="HID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmergencySelectCityDay" FunctionName="BloodBankDBITIModel.Store.EmergencySelectCityDay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.EmergencySelectCityDay_Result">
+                <ScalarProperty Name="HID" ColumnName="HID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

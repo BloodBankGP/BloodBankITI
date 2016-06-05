@@ -425,19 +425,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmergencyInsert", dayidParameter, cidParameter, hidParameter);
         }
     
-        public virtual ObjectResult<EmergencySelectCityDay_Result> EmergencySelectCityDay(Nullable<int> dayid, Nullable<int> cid)
-        {
-            var dayidParameter = dayid.HasValue ?
-                new ObjectParameter("dayid", dayid) :
-                new ObjectParameter("dayid", typeof(int));
-    
-            var cidParameter = cid.HasValue ?
-                new ObjectParameter("cid", cid) :
-                new ObjectParameter("cid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectCityDay_Result>("EmergencySelectCityDay", dayidParameter, cidParameter);
-        }
-    
         public virtual int EmergencyUpdate(Nullable<int> dayid, Nullable<int> cid, Nullable<int> hid)
         {
             var dayidParameter = dayid.HasValue ?
@@ -1364,11 +1351,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CommentDelete", cidParameter);
         }
     
-        public virtual ObjectResult<EmergencySelectAll_Result> EmergencySelectAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectAll_Result>("EmergencySelectAll");
-        }
-    
         public virtual ObjectResult<Donors_select_Result> Donors_select()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_select_Result>("Donors_select");
@@ -1390,6 +1372,24 @@ namespace BloodBankITI.Models
                 new ObjectParameter("hospitalID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectHospitalByID_Result>("SelectHospitalByID", hospitalIDParameter);
+        }
+    
+        public virtual ObjectResult<EmergencySelectAll_Result> EmergencySelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectAll_Result>("EmergencySelectAll");
+        }
+    
+        public virtual ObjectResult<EmergencySelectCityDay_Result> EmergencySelectCityDay(Nullable<int> dayid, Nullable<int> cid)
+        {
+            var dayidParameter = dayid.HasValue ?
+                new ObjectParameter("dayid", dayid) :
+                new ObjectParameter("dayid", typeof(int));
+    
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmergencySelectCityDay_Result>("EmergencySelectCityDay", dayidParameter, cidParameter);
         }
     }
 }

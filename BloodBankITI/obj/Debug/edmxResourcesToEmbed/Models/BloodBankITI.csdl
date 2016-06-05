@@ -635,10 +635,6 @@
       <Parameter Name="cid" Mode="In" Type="Int32" />
       <Parameter Name="hid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="EmergencySelectCityDay" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectCityDay_Result)">
-      <Parameter Name="dayid" Mode="In" Type="Int32" />
-      <Parameter Name="cid" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="EmergencyUpdate">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
       <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -912,13 +908,17 @@
     <FunctionImport Name="CommentDelete">
       <Parameter Name="cid" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="EmergencySelectAll" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectAll_Result)" />
     <FunctionImport Name="Donors_select" ReturnType="Collection(BloodBankDBITIModel.Donors_select_Result)" />
     <FunctionImport Name="Hospitals_SelectByID" ReturnType="Collection(BloodBankDBITIModel.Hospitals_SelectByID_Result)">
       <Parameter Name="hid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="SelectHospitalByID" ReturnType="Collection(BloodBankDBITIModel.SelectHospitalByID_Result)">
       <Parameter Name="hospitalID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EmergencySelectAll" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectAll_Result)" />
+    <FunctionImport Name="EmergencySelectCityDay" ReturnType="Collection(BloodBankDBITIModel.EmergencySelectCityDay_Result)">
+      <Parameter Name="dayid" Mode="In" Type="Int32" />
+      <Parameter Name="cid" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_selectt_Result">
@@ -1023,13 +1023,6 @@
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="EmergencySelectCityDay_Result">
-    <Property Type="Int32" Name="HID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="CID" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Address" Nullable="true" />
   </ComplexType>
   <ComplexType Name="GetPartnersDonor_Result">
     <Property Type="Int32" Name="DID" Nullable="false" />
@@ -1325,15 +1318,6 @@
     <Property Type="String" Name="cityname" Nullable="false" />
     <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
   </ComplexType>
-  <ComplexType Name="EmergencySelectAll_Result">
-    <Property Type="Int32" Name="HID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
-    <Property Type="Int32" Name="CID" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Address" Nullable="true" />
-    <Property Type="Int32" Name="DayID" Nullable="false" />
-    <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
-  </ComplexType>
   <ComplexType Name="Donors_select_Result">
     <Property Type="Int32" Name="DID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -1366,5 +1350,25 @@
     <Property Type="Int32" Name="CID" Nullable="true" />
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Address" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="EmergencySelectAll_Result">
+    <Property Type="Int32" Name="HID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="Int32" Name="DayID" Nullable="false" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EmergencySelectCityDay_Result">
+    <Property Type="Int32" Name="HID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="Int32" Name="DayID" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>
