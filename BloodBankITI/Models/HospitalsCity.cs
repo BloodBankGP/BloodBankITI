@@ -5,10 +5,10 @@ using System.Web;
 
 namespace BloodBankITI.Models
 {
-    public class donorinsertform
+    public class HospitalsCity
     {
         public List<Cities_SelectAll_Result> CitiesSelectAllResults { get; set; }
-        public List<Select_BloodTypes_Result> BloodTypesResults { get; set; }
-        public Donor Donor { get; set; }
+
+        public Hospitals_SelectByID_Result Hospital { get; set; }
     }
 }

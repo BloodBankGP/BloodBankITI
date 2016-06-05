@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Cities</h2>
+<h2>المدن والمناطق</h2>
 
 @foreach (var city in Model)
 {
@@ -16,8 +16,9 @@
             @loc.LocationName        
         </p>
     }
-
-    @Html.ActionLink("Insert New Location", "InsertLocation", new {CID = city.city.CID})
+    <br/>
+    <p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>
 }
-
-<br/>@Html.ActionLink("Insert New City","InsertCity")
+<br/><br/>
+<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
+<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>

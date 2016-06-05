@@ -1,8 +1,50 @@
-﻿@model dynamic
+﻿@model List<BloodBankITI.Models.Hospitals_SelectAll_Result>
+    @{
+        ViewBag.Title = "Hospitals";
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
 
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-}
+<h2>Hospitals</h2>
+    
+@Html.ActionLink("Insert new Hospital", "HospitalsInsert")
 
-<h2>title</h2>
+<table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th> Hospital ID </th>
+            <th> Hospital Name </th>
+            <th> City Name </th>
+            <th>Phone </th>
+            <th> Address </th>
+            <th> Edit </th>
+            <th> Delete </th>
+        </tr>
+
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@(a.HID) </td>
+                <td>@(a.Name) </td>
+                <td>@(a.CityName) </td>
+                <td>@(a.Phone) </td>
+                <td>@(a.Address) </td>
+
+
+
+
+                <td> @Html.ActionLink("Edit", "HospitalsEdit", new { id = a.HID })</td>
+                <td> @Html.ActionLink("Delete", "HospitalsDelete", new { id = a.HID })</td>
+
+
+
+
+
+            </tr>
+
+        }
+
+
+
+    </table>
+
+
+    @Html.ActionLink("Back To Home", "Index")

@@ -11,13 +11,14 @@ namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class Admins_select_Result
+    public partial class EmergencySelectAll_Result
     {
-        public int AID { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public bool Status { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int HID { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CID { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public int DayID { get; set; }
+        public string Day { get; set; }
     }
 }

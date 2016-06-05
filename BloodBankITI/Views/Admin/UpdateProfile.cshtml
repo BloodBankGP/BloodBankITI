@@ -9,10 +9,12 @@
 
 <form action="" method="POST">
     First Name: <input type="text" value=@Model.Fname name="Admin.Fname"/><br/>
-    Last Name: <input type="text" value=@Model.Lname name="Admin.Lname" /><br/>
-    UserName: <input type="text" value=@Model.UserName name="Login.UserName" /><br/>
+    Last Name: <input type="text" value=@Model.Lname name="Admin.Lname"/><br/>
+    UserName: <input type="text" value=@Model.UserName name="Login.UserName"/><br/>
     Password: <input type="text" value=@Model.Password name="Login.Password"/><br/>
     <input type="hidden" value=@Model.AID name="Admin.AID"/>
 
     <input type="submit" value="Save"/>
 </form>
+
+@Html.ActionLink("Cancel", "ViewProfile", new {id= @Model.AID})

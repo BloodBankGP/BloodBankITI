@@ -1,8 +1,21 @@
-﻿@model dynamic
+﻿@model IEnumerable<BloodBankITI.Models.PostsComments>
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Wall Posts</h2>
+
+@foreach (var post in Model)
+{
+    <h2>@(post.post.Name + " from " + post.post.CityName + " with blood type " + post.post.Type +" "+post.post.Phone + ": " )</h2>
+    <h3>@post.post.Post</h3><p>@post.post.Insert_date</p>
+    <p>@Html.ActionLink("حذف", "DeletePost", new { PID = post.post.PID })</p>
+    <h3>Comments:</h3>
+    foreach (var comment in post.comments)
+    {
+        <p>@(comment.Name + ": " + comment.Comment)</p>
+        <p>@Html.ActionLink("حذف", "DeleteComment", new { CID = comment.ID })</p>
+    }
+}

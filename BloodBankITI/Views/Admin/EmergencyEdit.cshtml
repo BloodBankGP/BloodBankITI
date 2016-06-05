@@ -1,0 +1,33 @@
+﻿@model BloodBankITI.Models.EmergencyCityHospitals
+@{
+    ViewBag.Title = "EmergencyEdit";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>EmergencyEdit</h2>
+
+<form action="" method="POST">
+    City :@Model.emergency.CityName 
+    <input type="hidden" value=@Model.emergency.CID name="emergency.CID" />
+    
+    Day :@Model.emergency.Day
+    
+    <input type="hidden" value=@Model.emergency.DayID name="emergency.DayID" />
+    Hospital: 
+    <select name="emergency.HID">
+        <option>Not Set</option>
+        @foreach (var item in Model.Hospitals)
+        {
+            if (item.HID == Model.emergency.HID)
+            {
+                <option selected value=@item.HID>@item.Name</option>
+            }
+            else
+            {
+                <option value=@item.HID>@item.Name</option>
+            }
+        }
+    </select>
+    <input type="submit" value="Edit" />
+</form>
+

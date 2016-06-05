@@ -1,8 +1,29 @@
-﻿@model dynamic
-
+﻿
+@model List<BloodBankITI.Models.EmergencySelectAll_Result>
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Emergency";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
+<h2>Emergency</h2>
+
+@foreach (var id in Model.Select(d => d.CID).Distinct())
+{
+    <h4>@(Model.Where(i => i.CID == id).FirstOrDefault().CityName)</h4>
+    <table class="table table-bordered table-hover table-striped">
+        <tr>
+            <th>Day</th>
+            <th>Hospital Name</th>
+            <th>Edit</th>
+        </tr>
+        @foreach (var item in Model.Where(i => i.CID == id))
+        {
+            <tr>
+                <td>@item.Day</td>
+                <td>@item.Name</td>
+                <td>@Html.ActionLink("Edit", "EmergencyEdit",new {did = item.DayID , cid = item.CID})</td>
+            </tr>
+        }
+    </table>
+}
+
