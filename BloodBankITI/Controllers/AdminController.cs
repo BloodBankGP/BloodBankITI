@@ -86,17 +86,93 @@ namespace BloodBankITI.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Emergency()
         {
-            return View();
+            return View(db.EmergencySelectAll().ToList());
         }
 
+        [HttpGet]
+        public ActionResult EmergencyEdit(int did,int cid)
+        {
+            EmergencySelectCityDay_Result emergency = db.EmergencySelectCityDay(did, cid).FirstOrDefault();
+
+            List<Hospitals_SelectByCity_Result> hospitals = db.Hospitals_SelectByCity(cid).ToList();
+
+            EmergencyCityHospitals emergencyCityHospitals = new EmergencyCityHospitals()
+            {
+                emergency = emergency,
+                Hospitals = hospitals
+            };
+            return View(emergencyCityHospitals);
+
+        }
+        [HttpPost]
+        public ActionResult EmergencyEdit(Emergency emergency)
+        {
+            db.EmergencyUpdate(emergency.DayID, emergency.CID, emergency.HID);
+            return RedirectToAction("Emergency");
+        }
+
+        //Hospitals 
+        [HttpGet]
         public ActionResult Hospitals()
         {
-            return View();
+            return View(db.Hospitals_SelectAll().ToList());
         }
 
+        [HttpGet]
+        public ActionResult HospitalsEdit(int id )
+        {
+            Hospitals_SelectByID_Result hospital = db.Hospitals_SelectByID(id).FirstOrDefault();
 
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            HospitalsCity hospitalsCity = new HospitalsCity()
+            {
+                Hospital = hospital,
+                CitiesSelectAllResults = cities
+            };
+
+            return View(hospitalsCity);
+        }
+
+        [HttpPost]
+        public ActionResult HospitalsEdit(Hospital hospital)
+        {
+            db.Hospitals_UpdateHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address, hospital.HID);
+
+            return RedirectToAction("Hospitals");
+        }
+
+        public ActionResult HospitalsDelete(int id)
+        {
+            db.Hospitals_DeleteHospital(id);
+            return RedirectToAction("Hospitals");            
+        }
+
+        [HttpGet]
+        public ActionResult HospitalsInsert()
+        {
+
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            HospitalsCity hospitalsCity = new HospitalsCity()
+            {
+                Hospital = null,
+                CitiesSelectAllResults = cities
+            };
+
+            return View(hospitalsCity);
+        }
+
+        [HttpPost]
+        public ActionResult HospitalsInsert(Hospital hospital)
+        {
+            db.Hospitals_InsertHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address);
+
+            return RedirectToAction("Hospitals");
+        }
         //Needers
 
         [HttpGet]
@@ -192,8 +268,6 @@ namespace BloodBankITI.Controllers
             db.NGO_delete(id);
             return RedirectToAction("Ngo");
         }
-
-
 
 
         //Partners

@@ -10,14 +10,16 @@
 namespace BloodBankITI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Emergency
+    public partial class EmergencySelectAll_Result
     {
-        public int CID { get; set; }
-        public int DayID { get; set; }
         public Nullable<int> HID { get; set; }
-    
-        public virtual City City { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CID { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public int DayID { get; set; }
+        public string Day { get; set; }
+        public string CityName { get; set; }
     }
 }

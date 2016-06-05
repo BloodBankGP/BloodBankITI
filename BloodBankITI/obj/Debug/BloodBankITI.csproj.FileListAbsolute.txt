@@ -227,3 +227,8 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
