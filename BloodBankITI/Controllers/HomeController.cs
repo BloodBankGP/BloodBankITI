@@ -241,8 +241,28 @@ namespace BloodBankITI.Controllers
             }
             else
                 result = "Failed to insert Donor";
-
+            if (donor.BID == 0)
+            {
+                return RedirectToAction("selectPartner",new {id=donor.DID});
+            }
+    
             return RedirectToAction("Index");
         }
+
+        [HttpGet] 
+        public ActionResult selectPartner(int id)
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
     }
 }

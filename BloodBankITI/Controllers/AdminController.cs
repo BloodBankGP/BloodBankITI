@@ -192,7 +192,7 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Emergency()
         {
-            return View(db.EmergencySelectAll().ToList());
+            return View(db.EmergencySelectAll().ToList());  
         }
         [HttpGet]
         public ActionResult EmergencyEdit(int did , int cid)
