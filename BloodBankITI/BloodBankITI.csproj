@@ -970,7 +970,6 @@
     <Content Include="Views\Admin\Partners.cshtml" />
     <Content Include="Views\Admin\PartnersStatistics.cshtml" />
     <Content Include="Views\Admin\PostsComments.cshtml" />
-    <Content Include="Views\Admin\UserTypes.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
     <None Include="Views\Admin\AllStatistics.cshtml" />
     <None Include="Views\Admin\BloodTypesEdit.cshtml" />
