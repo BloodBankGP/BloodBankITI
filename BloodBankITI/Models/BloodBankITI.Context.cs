@@ -1432,5 +1432,46 @@ namespace BloodBankITI.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllTodayStatestics_Result>("GetAllTodayStatestics");
         }
+    
+        public virtual int Donor_insertPartner(Nullable<int> pAID, Nullable<int> dID)
+        {
+            var pAIDParameter = pAID.HasValue ?
+                new ObjectParameter("PAID", pAID) :
+                new ObjectParameter("PAID", typeof(int));
+    
+            var dIDParameter = dID.HasValue ?
+                new ObjectParameter("DID", dID) :
+                new ObjectParameter("DID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donor_insertPartner", pAIDParameter, dIDParameter);
+        }
+    
+        public virtual ObjectResult<GetAllLabStatestics_Result> GetAllLabStatestics(Nullable<int> pid)
+        {
+            var pidParameter = pid.HasValue ?
+                new ObjectParameter("pid", pid) :
+                new ObjectParameter("pid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllLabStatestics_Result>("GetAllLabStatestics", pidParameter);
+        }
+    
+        public virtual ObjectResult<GetAllTodayStatestics_Result> GetAllTodayStatestics()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllTodayStatestics_Result>("GetAllTodayStatestics");
+        }
+    
+        public virtual ObjectResult<GetStatestics_Result> GetStatestics()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStatestics_Result>("GetStatestics");
+        }
+    
+        public virtual ObjectResult<GetTodayStatestics_Result> GetTodayStatestics(Nullable<int> pid)
+        {
+            var pidParameter = pid.HasValue ?
+                new ObjectParameter("pid", pid) :
+                new ObjectParameter("pid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTodayStatestics_Result>("GetTodayStatestics", pidParameter);
+        }
     }
 }
