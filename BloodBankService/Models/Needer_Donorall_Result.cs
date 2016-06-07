@@ -10,14 +10,14 @@
 namespace BloodBankService.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Emergency
+    public partial class Needer_Donorall_Result
     {
+        public int NID { get; set; }
+        public int BID { get; set; }
         public int CID { get; set; }
-        public int DayID { get; set; }
-        public Nullable<int> HID { get; set; }
-    
-        public virtual City City { get; set; }
+        public int DID { get; set; }
+        public System.DateTime AskDate { get; set; }
+        public bool Accepted { get; set; }
     }
 }

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankITI.Models
+namespace BloodBankService.Models
 {
     using System;
     
-    public partial class Donors_SelectAll_Result
+    public partial class Donors_select_Result
     {
         public int DID { get; set; }
         public string Fname { get; set; }

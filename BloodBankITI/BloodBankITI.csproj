@@ -769,13 +769,6 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
-    <EntityDeploy Include="Models\BloodBankITI.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BloodBankITI.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\BloodBankITI.edmx.diagram">
-      <DependentUpon>BloodBankITI.edmx</DependentUpon>
-    </Content>
     <Content Include="font\material-design-icons\Material-Design-Icons.eot" />
     <Content Include="font\material-design-icons\Material-Design-Icons.ttf" />
     <Content Include="font\material-design-icons\Material-Design-Icons.woff" />
@@ -839,6 +832,13 @@
     <Content Include="sass\components\_variables.scss" />
     <Content Include="sass\components\_waves.scss" />
     <Content Include="sass\materialize.scss" />
+    <EntityDeploy Include="Models\BloodBankITI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BloodBankITI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BloodBankITI.edmx.diagram">
+      <DependentUpon>BloodBankITI.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -968,9 +968,10 @@
     <Content Include="Views\Admin\Needers.cshtml" />
     <Content Include="Views\Admin\Ngo.cshtml" />
     <Content Include="Views\Admin\Partners.cshtml" />
-    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
+    <Content Include="Views\Admin\PartnersStatistics.cshtml" />
     <Content Include="Views\Admin\PostsComments.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
+    <None Include="Views\Admin\AllStatistics.cshtml" />
     <None Include="Views\Admin\BloodTypesEdit.cshtml" />
     <None Include="Views\Admin\BloodTypesInsert.cshtml" />
     <Content Include="Views\Admin\EmergencyEdit.cshtml" />
@@ -982,6 +983,7 @@
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
+    <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
     <Content Include="Views\Partner\Edit.cshtml" />

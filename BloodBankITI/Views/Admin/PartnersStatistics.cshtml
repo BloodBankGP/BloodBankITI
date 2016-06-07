@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>عرض الإحصائيات</h2>
+<p>@Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics")</p>
+<p>@Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics")</p>
+

@@ -18,7 +18,7 @@ namespace BloodBankService.Models
         public string Lname { get; set; }
         public string DonorGender { get; set; }
         public string Phone { get; set; }
-        public int BID { get; set; }
+        public Nullable<int> BID { get; set; }
         public int CID { get; set; }
         public int LID { get; set; }
         public bool Status { get; set; }
