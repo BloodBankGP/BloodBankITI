@@ -11,16 +11,16 @@ namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class EmergencySelectCityDay_Result
+    public partial class GetAllTodayStatestics_Result
     {
-        public Nullable<int> HID { get; set; }
+        public int SID { get; set; }
+        public Nullable<int> BID { get; set; }
+        public Nullable<System.DateTime> Insert_Date { get; set; }
+        public int PID { get; set; }
+        public int DID { get; set; }
+        public string Type { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CID { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public int DayID { get; set; }
-        public int CID1 { get; set; }
-        public string CityName { get; set; }
-        public string Day { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
     }
 }

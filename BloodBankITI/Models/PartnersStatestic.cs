@@ -15,8 +15,8 @@ namespace BloodBankITI.Models
     public partial class PartnersStatestic
     {
         public int SID { get; set; }
-        public int BID { get; set; }
-        public System.DateTime Insert_Date { get; set; }
+        public Nullable<int> BID { get; set; }
+        public Nullable<System.DateTime> Insert_Date { get; set; }
         public int PID { get; set; }
         public int DID { get; set; }
     

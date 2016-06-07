@@ -410,10 +410,26 @@ namespace BloodBankITI.Controllers
         }
 
 
-        public ActionResult PartnersStatestics()
+        //Statistics
+        [HttpGet]
+        public ActionResult PartnersStatistics()
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult TodayStatistics()
+        {
+            return View(db.GetAllTodayStatestics().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult AllStatistics()
+        {
+            return View(db.GetStatestics().ToList());
+        }
+
+
         //users 
         //insert  New Users
         [HttpPost]

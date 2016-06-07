@@ -13,10 +13,14 @@ namespace BloodBankService.Models
     
     public partial class EmergencySelectCityDay_Result
     {
-        public int HID { get; set; }
+        public Nullable<int> HID { get; set; }
         public string Name { get; set; }
         public Nullable<int> CID { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public int DayID { get; set; }
+        public int CID1 { get; set; }
+        public string CityName { get; set; }
+        public string Day { get; set; }
     }
 }
