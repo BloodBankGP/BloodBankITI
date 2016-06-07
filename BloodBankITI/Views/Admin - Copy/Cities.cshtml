@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BloodBankITI.Models.CitiesLocations>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>المدن والمناطق</h2>
+
+@foreach (var city in Model)
+{
+    <h2>@city.city.CityName</h2>
+    foreach (var loc in city.locations)
+    {
+        <p>
+            @loc.LocationName        
+        </p>
+    }
+    <br/>
+    <p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>
+}
+<br/><br/>
+<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
+<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>

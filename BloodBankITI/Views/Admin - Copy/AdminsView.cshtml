@@ -1,0 +1,26 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.Admins_selectt_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Control Admins</h2>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@(a.Fname + " " + a.Lname) </td>
+                <td>@Html.ActionLink("Delete", "AdminDelete", new { id = a.AID })</td>
+            </tr>
+        }
+            
+</table>
+
+@Html.ActionLink("Insert New Admin", "AdminInsert") <br/>
+@Html.ActionLink("Back To Home", "Index")

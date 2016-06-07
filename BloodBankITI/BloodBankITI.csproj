@@ -210,6 +210,7 @@
     <Compile Include="Models\CheckName_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\Cities_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -242,12 +243,15 @@
     <Compile Include="Models\Donors_SelectID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Donors_select_Result.cs" />
     <Compile Include="Models\donor_SelectByDID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Emergency.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmergencyCityHospitals.cs" />
+    <Compile Include="Models\EmergencySelectAll_Result.cs" />
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -257,12 +261,14 @@
     <Compile Include="Models\Hospital.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HospitalsCity.cs" />
     <Compile Include="Models\Hospitals_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hospitals_SelectByCity_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Hospitals_SelectByID_Result.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
@@ -286,12 +292,15 @@
     <Compile Include="Models\Needer.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NeederCityBlood.cs" />
+    <Compile Include="Models\neederdonorall_Result.cs" />
     <Compile Include="Models\Needer_Donor.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Needer_DonorAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Needer_Donorall_Result.cs" />
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -299,6 +308,7 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NgoUpdate.cs" />
+    <Compile Include="Models\NGO_selectByIDAll_Result.cs" />
     <Compile Include="Models\NGO_selectByID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -337,6 +347,9 @@
     <Compile Include="Models\returDonorData_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SelectCityLocations_Result.cs" />
+    <Compile Include="Models\SelectHospitalByID_Result.cs" />
+    <Compile Include="Models\selectneederallinfo_Result.cs" />
     <Compile Include="Models\selectNeederByBlood_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -420,6 +433,7 @@
     <Content Include="img\callout.jpg" />
     <Content Include="img\cut.jpg" />
     <Content Include="img\DONOR.png" />
+    <Content Include="img\download.jpg" />
     <Content Include="img\finaallogo.png" />
     <Content Include="img\homebackground.jpg" />
     <Content Include="img\logo.jpg" />
@@ -427,6 +441,7 @@
     <Content Include="img\logo2Start.png" />
     <Content Include="img\NGO.png" />
     <Content Include="img\resala.jpg" />
+    <Content Include="img\sona3.jpg" />
     <Content Include="js\animation.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -886,6 +901,21 @@
     <Content Include="Views\Admin\PostsComments.cshtml" />
     <Content Include="Views\Admin\UserTypes.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
+    <Content Include="Views\Admin\BloodTypesEdit.cshtml" />
+    <Content Include="Views\Admin\BloodTypesInsert.cshtml" />
+    <Content Include="Views\Admin\EmergencyEdit.cshtml" />
+    <Content Include="Views\Admin\HospitalsEdit.cshtml" />
+    <Content Include="Views\Admin\HospitalsInsert.cshtml" />
+    <Content Include="Views\Admin\InsertCity.cshtml" />
+    <Content Include="Views\Admin\InsertLocation.cshtml" />
+    <Content Include="Views\Admin\NeederEdit.cshtml" />
+    <Content Include="Views\Admin\NGOEdit.cshtml" />
+    <Content Include="Views\Admin\PartnersEdit.cshtml" />
+    <Content Include="Views\Admin\PartnersInsert.cshtml" />
+    <Content Include="Views\Admin\UpdateProfile.cshtml" />
+    <Content Include="Views\Admin\UserTypesEdit.cshtml" />
+    <Content Include="Views\Admin\UserTypesInsert.cshtml" />
+    <Content Include="Views\Admin\UserTypesView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
