@@ -65,6 +65,7 @@
             <div class="col-md-12">
                 <div class="mdl-select mdl-js-select mdl-select--floating-label">
                     <select name="Donor.BID" class="mdl-select__input" id="professsion">
+                      <option value="0" selected="" > Not Set</option>
                         @foreach (var item in Model.BloodTypesResults)
                         {
                             <option value=@item.BID>@item.Type</option>
@@ -111,7 +112,7 @@
         </div>
 
 
-        <input type="submit" value="Ask" />
+        <input type="submit" value="Ask" id="submit" />
         <script>
             $('#CitiesID').change(function () {
                 var CityID = $('#CitiesID').val();
@@ -139,9 +140,7 @@
                 $('#locationID').html(result);
 
             }
-
-
-
+          
 
 
 

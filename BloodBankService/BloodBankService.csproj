@@ -276,16 +276,28 @@
     <Compile Include="Models\Donors_SelectID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Donors_select_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\donor_SelectByDID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Emergency.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmergencySelectAll_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetPartnersDonor_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetStatestics_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetTodayStatestics_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hospital.cs">
@@ -295,6 +307,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hospitals_SelectByCity_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hospitals_SelectByID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -319,16 +334,25 @@
     <Compile Include="Models\Needer.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\neederdonorall_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Needer_Donor.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Needer_DonorAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Needer_Donorall_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NGO_selectByIDAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO_selectByID_Result.cs">
@@ -365,6 +389,15 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\returDonorData_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectCityLocations_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectHospitalByID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\selectneederallinfo_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\selectNeederByBlood_Result.cs">

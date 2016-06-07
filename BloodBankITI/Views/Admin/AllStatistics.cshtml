@@ -1,0 +1,33 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.GetStatestics_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>الإحصائيات الكلية</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <td>مسلسل</td>
+        <td>اسم المعمل</td>
+        <td>اسم المتبرع</td>
+        <td>فصيلة دمه</td>
+        <td>تاريخ التحليل</td>
+    </tr>
+
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.SID</td>
+            <td>@s.Name</td>
+            <td>@(s.Fname + " " + s.Lname)</td>
+            <td>@s.Type</td>
+            <td>@s.Insert_Date</td>
+        </tr>
+    }
+</table>
+
+<p>@Html.ActionLink("العودة للإحصائيات", "PartnersStatistics")</p>
+
+<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>

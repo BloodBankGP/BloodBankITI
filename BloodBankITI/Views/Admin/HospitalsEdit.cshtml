@@ -7,17 +7,17 @@
 <h2>HospitalsEdit</h2>
 
 <form action="" method="POST">
-    <input type="hidden" value=@Model.Hospital.HID name="Hospital.HID" />
-    
+    <input type="hidden" value=@Model.Hospital.HID name="Hospital.HID"/>
+
     Name:
-    <input type="text" value=@Model.Hospital.Name name="Hospital.Name" />
-    
+    <input type="text" value=@Model.Hospital.Name name="Hospital.Name"/>
+
     Phone:
-    <input type="text" value=@Model.Hospital.Phone name="Hospital.Phone" />
-    
+    <input type="text" value=@Model.Hospital.Phone name="Hospital.Phone"/>
+
     Address:
-    <input type="text" value=@Model.Hospital.Address name="Hospital.Address" />
-    
+    <input type="text" value=@Model.Hospital.Address name="Hospital.Address"/>
+
     City:
     <select name="Hospital.CID">
         <option>Not Set</option>
@@ -29,10 +29,13 @@
             }
             else
             {
-                <option value=@item.CID>@item.CityName</option>       
+                <option value=@item.CID>@item.CityName</option>
             }
         }
     </select>
-    <input type="submit" value="Edit" />
+    <input type="submit" value="Edit"/>
 </form>
+
+@Html.ActionLink("Cancel", "Hospitals")
+
 
