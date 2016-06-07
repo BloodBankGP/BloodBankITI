@@ -21,20 +21,20 @@
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Phone)
 
-        <input type="text" name="ngo.Phone" value=@Model.ngo.Phone />
+        <input type="text" name="ngo.Phone" value=@Model.ngo.Phone/>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ngo.CID, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ngo.CID, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
 
             <select name="ngo.CID" id="CitiesID">
-                
+
                 <option value="0">Not Set</option>
                 @foreach (var item in Model.CitiesSelectAllResults)
                 {
 
-                    
+
                     if (item.CID == Model.ngo.CID)
                     {
                         <option value=@item.CID selected="true">@item.CityName</option>
@@ -52,15 +52,15 @@
 
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Address)
-        <input type="text" name="ngo.Address" value=@Model.ngo.Address />
+        <input type="text" name="ngo.Address" value=@Model.ngo.Address/>
     </div>
 
     <div class="form-group">
         @Html.DisplayNameFor(p => p.ngo.Status)
         <select name="ngo.status">
-            @if(@Model.ngo.Status == true)
+            @if (@Model.ngo.Status == true)
             {
-                <option selected value="1" >True</option>
+                <option selected value="1">True</option>
                 <option value="0"> False </option>
             }
             else
@@ -71,22 +71,22 @@
 
         </select>
     </div>
-    
+
     <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Approved)  
-    <select name="ngo.approved">
-        @if(@Model.ngo.Approved == true)
-        {
-        <option selected value="1">True</option>
-        <option value="0"> False </option>
-        }
-        else
-        {
-        <option value="1">True</option>
-        <option selected value="0"> False </option>
-        }
+        @Html.DisplayNameFor(p => p.ngo.Approved)
+        <select name="ngo.approved">
+            @if (@Model.ngo.Approved == true)
+            {
+                <option selected value="1">True</option>
+                <option value="0"> False </option>
+            }
+            else
+            {
+                <option value="1">True</option>
+                <option selected value="0"> False </option>
+            }
         </select>
-</div>
+    </div>
 
 
 
@@ -94,6 +94,8 @@
 
 
     <div>
-        <input type="submit" value="submit" />
+        <input type="submit" value="submit"/>
     </div>
 </form>
+
+@Html.ActionLink("Cancel", "Ngo")
