@@ -413,7 +413,7 @@
     <EntitySet Name="Admins" EntityType="BloodBankDBITIModel.Admin" />
     <EntitySet Name="BloodTypes" EntityType="BloodBankDBITIModel.BloodType" />
     <EntitySet Name="Cities" EntityType="BloodBankDBITIModel.City" />
-    <EntitySet Name="Comments" EntityType="BloodBankDBITIModel.Comment" />
+    <EntitySet Name="Comments1" EntityType="BloodBankDBITIModel.Comments" />
     <EntitySet Name="Days" EntityType="BloodBankDBITIModel.Day" />
     <EntitySet Name="Donors" EntityType="BloodBankDBITIModel.Donor" />
     <EntitySet Name="Emergencies" EntityType="BloodBankDBITIModel.Emergency" />
@@ -470,7 +470,7 @@
     </AssociationSet>
     <AssociationSet Name="FK_Comments_Posts" Association="BloodBankDBITIModel.FK_Comments_Posts">
       <End Role="Post" EntitySet="Posts" />
-      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Comment" EntitySet="Comments1" />
     </AssociationSet>
     <AssociationSet Name="FK_Donors_Locations" Association="BloodBankDBITIModel.FK_Donors_Locations">
       <End Role="Location" EntitySet="Locations" />
@@ -1030,14 +1030,14 @@
     <NavigationProperty Name="NGOes" Relationship="BloodBankDBITIModel.FK_NGO_Cities" FromRole="City" ToRole="NGO" />
     <NavigationProperty Name="Posts" Relationship="BloodBankDBITIModel.FK_Posts_Cities" FromRole="City" ToRole="Post" />
   </EntityType>
-  <EntityType Name="Comment">
+  <EntityType Name="Comments">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Post_ID" Type="Int32" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Comment1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Post" Relationship="BloodBankDBITIModel.FK_Comments_Posts" FromRole="Comment" ToRole="Post" />
   </EntityType>
   <EntityType Name="Day">
@@ -1333,7 +1333,7 @@
   </Association>
   <Association Name="FK_Comments_Posts">
     <End Type="BloodBankDBITIModel.Post" Role="Post" Multiplicity="0..1" />
-    <End Type="BloodBankDBITIModel.Comment" Role="Comment" Multiplicity="*" />
+    <End Type="BloodBankDBITIModel.Comments" Role="Comment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Post">
         <PropertyRef Name="PID" />

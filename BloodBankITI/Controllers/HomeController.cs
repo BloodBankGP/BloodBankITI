@@ -227,32 +227,30 @@ namespace BloodBankITI.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Donate(Donor donor)
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
-            string result;
+        //[HttpPost]
+        //public ActionResult Donate(Donor donor)
+        //{
+        //    HttpClient client = new HttpClient();
+        //    client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+        //    HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
+        //    string result;
 
-            if (response.IsSuccessStatusCode)
-            {
-                result = "Done";
-            }
-            else
-                result = "Failed to insert Donor";
-            if (donor.BID == 0)
-            {
-                return RedirectToAction("selectPartner",new {id=donor.DID});
-            }
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        result = "Done";
+        //    }
+        //    else
+        //        result = "Failed to insert Donor";
+        //    if (donor.BID == 0)
+        //    {
+        //        return RedirectToAction("selectPartner",new {id=donor.DID});
+        //    }
     
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
-        [HttpGet] 
-        public ActionResult selectPartner(int id)
-
-
+        //[HttpGet] 
+        //public ActionResult selectPartner(int id)
 
 
 
@@ -263,6 +261,7 @@ namespace BloodBankITI.Controllers
 
 
 
-        [HttpPost]
+
+
     }
 }

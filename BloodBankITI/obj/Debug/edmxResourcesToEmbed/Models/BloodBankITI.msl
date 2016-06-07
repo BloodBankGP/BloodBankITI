@@ -797,10 +797,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Comment">
+    <EntitySetMapping Name="Comments1">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Comments">
         <MappingFragment StoreEntitySet="Comments">
-          <ScalarProperty Name="Comment1" ColumnName="Comment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
