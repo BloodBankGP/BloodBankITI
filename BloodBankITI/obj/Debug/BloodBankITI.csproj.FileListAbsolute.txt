@@ -1,4 +1,3 @@
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
 D:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
@@ -232,3 +231,9 @@ E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
 E:\Graduation Project\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.dll
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.dll
+D:\BloodBankITI\BloodBankITI\bin\Newtonsoft.Json.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.xml
+D:\BloodBankITI\BloodBankITI\bin\System.Web.Http.Cors.xml

@@ -1,6 +1,201 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BloodBankDBITIModelStoreContainer" CdmEntityContainer="BloodBankDBITIEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="AID" ColumnName="AID" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodTypes">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
+        <MappingFragment StoreEntitySet="BloodTypes">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments1">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Comments">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Days">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Day">
+        <MappingFragment StoreEntitySet="Days">
+          <ScalarProperty Name="DayID" ColumnName="DayID" />
+          <ScalarProperty Name="Day1" ColumnName="Day" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donors">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Donor">
+        <MappingFragment StoreEntitySet="Donors">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pending" ColumnName="Pending" />
+          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emergencies">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Emergency">
+        <MappingFragment StoreEntitySet="Emergency">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="DayID" ColumnName="DayID" />
+          <ScalarProperty Name="HID" ColumnName="HID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hospitals">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Hospital">
+        <MappingFragment StoreEntitySet="Hospitals">
+          <ScalarProperty Name="HID" ColumnName="HID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="UTID" ColumnName="UTID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Needers">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer">
+        <MappingFragment StoreEntitySet="Needer">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Needer_Donor">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer_Donor">
+        <MappingFragment StoreEntitySet="Needer_Donor">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="AskDate" ColumnName="AskDate" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGOes">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
+        <MappingFragment StoreEntitySet="NGO">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partners">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Partner">
+        <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnersStatestics">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.PartnersStatestic">
+        <MappingFragment StoreEntitySet="PartnersStatestics">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Post">
+        <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Post1" ColumnName="Post" />
+          <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UTID" ColumnName="UTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="AcceptRequest" FunctionName="BloodBankDBITIModel.Store.AcceptRequest" />
     <FunctionImportMapping FunctionImportName="Admins_delete" FunctionName="BloodBankDBITIModel.Store.Admins_delete" />
     <FunctionImportMapping FunctionImportName="Admins_insert" FunctionName="BloodBankDBITIModel.Store.Admins_insert" />
@@ -772,261 +967,5 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Donor_insertPartner" FunctionName="BloodBankDBITIModel.Store.Donor_insertPartner" />
-    <FunctionImportMapping FunctionImportName="GetAllLabStatestics" FunctionName="BloodBankDBITIModel.Store.GetAllLabStatestics">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetAllLabStatestics_Result">
-          <ScalarProperty Name="SID" ColumnName="SID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetAllTodayStatestics" FunctionName="BloodBankDBITIModel.Store.GetAllTodayStatestics">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetAllTodayStatestics_Result">
-          <ScalarProperty Name="SID" ColumnName="SID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetStatestics" FunctionName="BloodBankDBITIModel.Store.GetStatestics">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetStatestics_Result">
-          <ScalarProperty Name="SID" ColumnName="SID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetTodayStatestics" FunctionName="BloodBankDBITIModel.Store.GetTodayStatestics">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetTodayStatestics_Result">
-          <ScalarProperty Name="SID" ColumnName="SID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="Admins">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
-        <MappingFragment StoreEntitySet="Admins">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="AID" ColumnName="AID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BloodTypes">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
-        <MappingFragment StoreEntitySet="BloodTypes">
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Cities">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
-        <MappingFragment StoreEntitySet="Cities">
-          <ScalarProperty Name="CityName" ColumnName="CityName" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Comments">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Comment">
-        <MappingFragment StoreEntitySet="Comments">
-          <ScalarProperty Name="Comment1" ColumnName="Comment" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Days">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Day">
-        <MappingFragment StoreEntitySet="Days">
-          <ScalarProperty Name="Day1" ColumnName="Day" />
-          <ScalarProperty Name="DayID" ColumnName="DayID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Donors">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Donor">
-        <MappingFragment StoreEntitySet="Donors">
-          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
-          <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
-          <ScalarProperty Name="Pending" ColumnName="Pending" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="LID" ColumnName="LID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Emergencies">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Emergency">
-        <MappingFragment StoreEntitySet="Emergency">
-          <ScalarProperty Name="HID" ColumnName="HID" />
-          <ScalarProperty Name="DayID" ColumnName="DayID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Hospitals">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Hospital">
-        <MappingFragment StoreEntitySet="Hospitals">
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="HID" ColumnName="HID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Locations">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Location">
-        <MappingFragment StoreEntitySet="Locations">
-          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="LID" ColumnName="LID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Logins">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Login">
-        <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="UTID" ColumnName="UTID" />
-          <ScalarProperty Name="UID" ColumnName="UID" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Needers">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer">
-        <MappingFragment StoreEntitySet="Needer">
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Lname" ColumnName="Lname" />
-          <ScalarProperty Name="Fname" ColumnName="Fname" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="NID" ColumnName="NID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Needer_Donor">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer_Donor">
-        <MappingFragment StoreEntitySet="Needer_Donor">
-          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
-          <ScalarProperty Name="AskDate" ColumnName="AskDate" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="NID" ColumnName="NID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NGOes">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
-        <MappingFragment StoreEntitySet="NGO">
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Approved" ColumnName="Approved" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="NID" ColumnName="NID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Partners">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Partner">
-        <MappingFragment StoreEntitySet="Partners">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="PAID" ColumnName="PAID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PartnersStatestics">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.PartnersStatestic">
-        <MappingFragment StoreEntitySet="PartnersStatestics">
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="SID" ColumnName="SID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Posts">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Post">
-        <MappingFragment StoreEntitySet="Posts">
-          <ScalarProperty Name="Periodic" ColumnName="Periodic" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Insert_date" ColumnName="Insert_date" />
-          <ScalarProperty Name="Post1" ColumnName="Post" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserTypes">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.UserType">
-        <MappingFragment StoreEntitySet="UserType">
-          <ScalarProperty Name="UTID" ColumnName="UTID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

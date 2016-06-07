@@ -249,8 +249,11 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet] 
-        public ActionResult selectPartner(int id)
+        //[HttpGet] 
+        //public ActionResult selectPartner(int id)
+        //{
+
+        //}
 
 
 
@@ -260,9 +263,5 @@ namespace BloodBankITI.Controllers
 
 
 
-
-
-
-        [HttpPost]
     }
 }
