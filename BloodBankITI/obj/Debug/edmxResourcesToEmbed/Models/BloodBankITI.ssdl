@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Admins">
     <Key>
       <PropertyRef Name="AID" />
@@ -48,7 +48,7 @@
     <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DonorGender" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" />
     <Property Name="CID" Type="int" Nullable="false" />
     <Property Name="LID" Type="int" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -145,8 +145,8 @@
       <PropertyRef Name="SID" />
     </Key>
     <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BID" Type="int" Nullable="false" />
-    <Property Name="Insert_Date" Type="date" Nullable="false" />
+    <Property Name="BID" Type="int" />
+    <Property Name="Insert_Date" Type="date" />
     <Property Name="PID" Type="int" Nullable="false" />
     <Property Name="DID" Type="int" Nullable="false" />
   </EntityType>
@@ -193,7 +193,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -337,7 +337,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PartnersStatestics_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
     <End Role="PartnersStatestics" Type="Self.PartnersStatestics" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -465,6 +465,10 @@
   <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
   </Function>
+  <Function Name="Donor_insertPartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PAID" Type="int" Mode="In" />
+    <Parameter Name="DID" Type="int" Mode="In" />
+  </Function>
   <Function Name="donor_SelectByDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="did" Type="int" Mode="In" />
   </Function>
@@ -533,8 +537,16 @@
     <Parameter Name="hid" Type="int" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllLabStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllTodayStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PAID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetTodayStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
   </Function>
   <Function Name="Hospitals_DeleteHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="HID" Type="int" Mode="In" />

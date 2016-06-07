@@ -268,7 +268,19 @@
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllLabStatestics_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllTodayStatestics_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetPartnersDonor_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetStatestics_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetTodayStatestics_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hospital.cs">
@@ -327,6 +339,7 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NgoUpdate.cs" />
+    <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -354,7 +367,6 @@
     <Compile Include="Models\Post.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\PostComments.cs" />
     <Compile Include="Models\PostsComments.cs" />
     <Compile Include="Models\Posts_GetPostByID_Result.cs">
