@@ -190,13 +190,17 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_DeleteCity", cIDParameter);
         }
     
-        public virtual int Cities_InsertCity(string cityName)
+        public virtual int Cities_InsertCity(string cityName, string logo)
         {
             var cityNameParameter = cityName != null ?
                 new ObjectParameter("CityName", cityName) :
                 new ObjectParameter("CityName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter);
+            var logoParameter = logo != null ?
+                new ObjectParameter("logo", logo) :
+                new ObjectParameter("logo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter, logoParameter);
         }
     
         public virtual ObjectResult<Cities_SelectAll_Result> Cities_SelectAll()
@@ -1458,6 +1462,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("bid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorByBid_Result>("DonorByBid", bidParameter);
+        }
+    
+        public virtual ObjectResult<DonorRequests_Result> DonorRequests(Nullable<int> did)
+        {
+            var didParameter = did.HasValue ?
+                new ObjectParameter("did", did) :
+                new ObjectParameter("did", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorRequests_Result>("DonorRequests", didParameter);
         }
     }
 }

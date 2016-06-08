@@ -104,7 +104,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertCity(City City)
         {
-            db.Cities_InsertCity(City.CityName);
+            db.Cities_InsertCity(City.CityName, City.Logo);
             return RedirectToAction("Cities");
         }
 
