@@ -351,9 +351,9 @@ a:focus {
   outline-offset: -2px;
 }
 
-img {
+/*img {
   vertical-align: middle;
-}
+}*/
 
 .img-responsive {
   display: block;
