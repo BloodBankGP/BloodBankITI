@@ -4,30 +4,43 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h4 style="font-size:45px; color:firebrick; font-family:'Myriad عربي';">الإحصائيات الكلية</h4>
 
-<h2>الإحصائيات الكلية</h2>
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+            <tr >
+                
+                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">تاريخ التحليل</td>
+                
+                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">اسم المعمل</td>
+                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">اسم المتبرع</td>
+                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">فصيلة دمه</td>
+                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">مسلسل</td>
+            </tr>
 
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <td>مسلسل</td>
-        <td>اسم المعمل</td>
-        <td>اسم المتبرع</td>
-        <td>فصيلة دمه</td>
-        <td>تاريخ التحليل</td>
-    </tr>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.Insert_Date</td>
+                    <td>@s.Name</td>
+                    <td>@(s.Fname + " " + s.Lname)</td>
+                    <td>@s.Type</td>
+                    <td>@s.SID</td>
+                </tr>
+            }
+        </table>
+        </div>
 
-    @foreach (var s in Model)
-    {
-        <tr>
-            <td>@s.SID</td>
-            <td>@s.Name</td>
-            <td>@(s.Fname + " " + s.Lname)</td>
-            <td>@s.Type</td>
-            <td>@s.Insert_Date</td>
-        </tr>
-    }
-</table>
+    <center>
+        <a href="http://localhost:7508/Home/Index"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>
+        <a href="http://localhost:7508/Admin/PartnersStatistics"><button class="btn waves-effect waves-light red darken-4" type="submit" name="action">العودة للإحصائيات</button></a>
 
-<p>@Html.ActionLink("العودة للإحصائيات", "PartnersStatistics")</p>
 
-<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>
+    </center>
+
+        @*<p>@Html.ActionLink("العودة للإحصائيات", "PartnersStatistics")</p>
+
+        <p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
+    </div>

@@ -4,21 +4,19 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
-<h2>Blood Types</h2>
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <th>Type</th>
-        <th></th>
-    </tr>
-    @foreach (var b in Model)
-    {
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+   
+    <h2>Blood Types</h2>
+    @*<table class="table table-bordered table-striped table-hover">
         <tr>
-            <td>@b.Type</td>
-            <td>@Html.ActionLink("Edit", "BloodTypesEdit", new {id = b.BID})</td>
-        </tr>
-    }
-</table>
+            <h2>Type</h2>
+        </tr>*@
+        @foreach (var b in Model)
+        {
+                <p>@b.Type</p>
+        }
+    @*</table>*@
 
-@Html.ActionLink("Insert New", "BloodTypesInsert")<br/>
-@Html.ActionLink("Back to Home", "Index")
+    @Html.ActionLink("Back to Home", "Index")
+</div>
