@@ -4,31 +4,38 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>UserTypesView</h2>
+<div class="render">
+    <h2>UserTypesView</h2>
+    @Html.ActionLink("ادخال مستخدم جديد", "UserTypesInsert")
+<br />
 
-
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-        <th>Type</th>
-        <th> UserType ID </th>
-        <th> Edit </th>
-
-    </tr>
-
-    @foreach (var a in Model)
-    {
+    <table class="table table-bordered table-hover table-striped">
         <tr>
-            <td>@(a.Type) </td>
-            <td>@(a.UTID) </td>
-            <td> @Html.ActionLink("Edit", "UserTypesEdit", new { id = a.UTID })</td>
-
+            <th>النوع </th>
+            <th> الرقم المسلسل  </th>
+            <th> تعديل  </th>
 
 
         </tr>
 
-    }
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@(a.Type) </td>
+                <td>@(a.UTID) </td>
+                <td> @Html.ActionLink("تعديل", "UserTypesEdit", new { id = a.UTID })</td>
 
-</table>
 
 
-@Html.ActionLink("Back To Home", "Index")
+
+            </tr>
+
+        }
+
+    </table>
+
+
+    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index")
+
+
+</div>
