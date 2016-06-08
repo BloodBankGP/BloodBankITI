@@ -7,22 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankITI.Models
+namespace BloodBankService.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PartnersStatestic
+    public partial class GetAllTodayStatestics_Result
     {
         public int SID { get; set; }
+        public Nullable<int> BID { get; set; }
         public Nullable<System.DateTime> Insert_Date { get; set; }
         public int PID { get; set; }
         public int DID { get; set; }
-        public Nullable<int> BID { get; set; }
-    
-        public virtual BloodType BloodType { get; set; }
-        public virtual Donor Donor { get; set; }
-        public virtual Partner Partner { get; set; }
-        public virtual BloodType BloodType1 { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
     }
 }

@@ -10,19 +10,21 @@
 namespace BloodBankITI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PartnersStatestic
+    public partial class AskForBlood_Result
     {
-        public int SID { get; set; }
-        public Nullable<System.DateTime> Insert_Date { get; set; }
-        public int PID { get; set; }
         public int DID { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string DonorGender { get; set; }
+        public string Phone { get; set; }
         public Nullable<int> BID { get; set; }
-    
-        public virtual BloodType BloodType { get; set; }
-        public virtual Donor Donor { get; set; }
-        public virtual Partner Partner { get; set; }
-        public virtual BloodType BloodType1 { get; set; }
+        public int CID { get; set; }
+        public int LID { get; set; }
+        public bool Status { get; set; }
+        public bool Pending { get; set; }
+        public Nullable<System.DateTime> DonationDate { get; set; }
+        public Nullable<int> PAID { get; set; }
+        public Nullable<bool> PhoneStatus { get; set; }
     }
 }

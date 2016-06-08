@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
+﻿@using System.Web.Mvc
+@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
 
 @{
     ViewBag.Title = "title";
@@ -6,19 +7,16 @@
 }
 
 <h2>Blood Types</h2>
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <th>Type</th>
-        <th></th>
-    </tr>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+    <br/>
     @foreach (var b in Model)
     {
-        <tr>
-            <td>@b.Type</td>
-            <td>@Html.ActionLink("Edit", "BloodTypesEdit", new {id = b.BID})</td>
-        </tr>
+        @Html.ActionLink(@b.Type, "DonorsByBID", new {bid= @b.BID})<br/>
     }
-</table>
 
-@Html.ActionLink("Insert New", "BloodTypesInsert")<br/>
 @Html.ActionLink("Back to Home", "Index")

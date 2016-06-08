@@ -77,31 +77,6 @@ namespace BloodBankITI.Controllers
             return View(db.Select_BloodTypes().ToList());
         }
 
-        [HttpGet]
-        public ActionResult BloodTypesEdit(int id)
-        {
-            return View(db.BloodTypeSelectByID(id).FirstOrDefault());
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesEdit(BloodType bloodType)
-        {
-            db.BloodTypesEdit(bloodType.BID, bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
-
-        [HttpGet]
-        public ActionResult BloodTypesInsert()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesInsert(BloodType bloodType)
-        {
-            db.BloodTypesInsert(bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
 
         //Cities
         [HttpGet]
@@ -182,6 +157,12 @@ namespace BloodBankITI.Controllers
             return View(db.Donors_select().ToList());
         }
 
+        [HttpGet]
+        public ActionResult DonorsByBID(Donor donor)
+        {
+            List<DonorByBid_Result> donors = db.DonorByBid(donor.BID).ToList();
+            return View(donors);
+        }
 
         public ActionResult DeleteDonor(int DID)
         {
@@ -388,7 +369,7 @@ namespace BloodBankITI.Controllers
 
         public ActionResult PartnersEdit(Partner Partner)
         {
-            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status);
+            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status, Partner.CID);
 
             return RedirectToAction("Partners");
         }
@@ -404,7 +385,7 @@ namespace BloodBankITI.Controllers
 
         public ActionResult PartnersInsert(Partner partner)
         {
-            db.Partners_insert( partner.Name, partner.Address);
+            db.Partners_insert( partner.Name, partner.Address, partner.CID);
 
             return RedirectToAction("Partners");
         }

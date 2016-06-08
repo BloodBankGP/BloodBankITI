@@ -299,5 +299,9 @@ namespace BloodBankService.Controllers
         {
             return db.EmergencySelectCityDay ((int)DateTime.Now.DayOfWeek,id).FirstOrDefault();
         }
+
+        //////Ask For Blood
+        //[HttpPost]
+        //[Route("AskForBlood/{}")]
     }
 }

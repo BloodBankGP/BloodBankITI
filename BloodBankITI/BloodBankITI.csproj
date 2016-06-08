@@ -193,6 +193,9 @@
     <Compile Include="Models\Admins_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AskForBlood_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BloodBankITI.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,6 +242,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Donor.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonorByBid_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DonorByBloodCity_Result.cs">
@@ -362,6 +368,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partners_select_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Partner_SelectByCity_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
@@ -970,11 +979,10 @@
     <Content Include="Views\Admin\PostsComments.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
     <None Include="Views\Admin\AllStatistics.cshtml" />
-    <None Include="Views\Admin\BloodTypesEdit.cshtml" />
-    <None Include="Views\Admin\BloodTypesInsert.cshtml" />
     <Content Include="Views\Admin\EmergencyEdit.cshtml" />
     <Content Include="Views\Admin\HospitalsEdit.cshtml" />
     <Content Include="Views\Admin\HospitalsInsert.cshtml" />
+    <None Include="Views\Admin\DonorsByBID.cshtml" />
     <None Include="Views\Admin\InsertCity.cshtml" />
     <None Include="Views\Admin\InsertLocation.cshtml" />
     <Content Include="Views\Admin\NGOEdit.cshtml" />

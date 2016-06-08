@@ -41,6 +41,8 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Donors" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Login_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Partners" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Partners_Cities" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
