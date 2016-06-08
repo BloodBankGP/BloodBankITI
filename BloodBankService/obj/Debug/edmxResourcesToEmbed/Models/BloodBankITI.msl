@@ -145,6 +145,7 @@
     <EntitySetMapping Name="Partners">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.Partner">
         <MappingFragment StoreEntitySet="Partners">
+          <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Address" ColumnName="Address" />
@@ -937,5 +938,88 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+    <FunctionImportMapping FunctionImportName="AskForBlood" FunctionName="BloodBankDBITIModel.Store.AskForBlood">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.AskForBlood_Result">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pending" ColumnName="Pending" />
+          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllLabStatestics" FunctionName="BloodBankDBITIModel.Store.GetAllLabStatestics">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetAllLabStatestics_Result">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllTodayStatestics" FunctionName="BloodBankDBITIModel.Store.GetAllTodayStatestics">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.GetAllTodayStatestics_Result">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Partner_SelectByCity" FunctionName="BloodBankDBITIModel.Store.Partner_SelectByCity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Partner_SelectByCity_Result">
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DonorByBid" FunctionName="BloodBankDBITIModel.Store.DonorByBid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.DonorByBid_Result">
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pending" ColumnName="Pending" />
+          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="locationName" ColumnName="locationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

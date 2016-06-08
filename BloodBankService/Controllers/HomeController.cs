@@ -301,7 +301,22 @@ namespace BloodBankService.Controllers
         }
 
         //////Ask For Blood
-        //[HttpPost]
-        //[Route("AskForBlood/{}")]
+        [Route("AskForBlood/{cid:int}/{bid:int}/{nid:int}")]
+        public void AskForBlood(int cid, int bid, int nid)
+        {
+            List<AskForBlood_Result> donors = db.AskForBlood(cid, bid).ToList();
+
+            foreach (var d in donors)
+            {
+                db.Needer_DonorInsert(nid, bid, cid, d.DID);
+            }
+        } 
+
+        /////Donor Requests
+        [Route("DonorRequests/{did:int}")]
+        public List<DonorRequests_Result> DonorRequests(int did)
+        {
+            return db.DonorRequests(did).ToList();
+        } 
     }
 }
