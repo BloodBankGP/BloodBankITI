@@ -16,7 +16,8 @@
     <br/>
     @foreach (var b in Model)
     {
-        @Html.ActionLink(@b.Type, "DonorsByBID", new {bid= @b.BID})<br/>
+        @Html.ActionLink(@b.Type, "DonorsByBID", new {bid = @b.BID})<br/>
+        <img src=@b.Logo/>
     }
 
 @Html.ActionLink("Back to Home", "Index")

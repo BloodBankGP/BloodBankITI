@@ -27,6 +27,7 @@ namespace BloodBankITI.Models
     
         public int BID { get; set; }
         public string Type { get; set; }
+        public string Logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
