@@ -190,13 +190,17 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_DeleteCity", cIDParameter);
         }
     
-        public virtual int Cities_InsertCity(string cityName)
+        public virtual int Cities_InsertCity(string cityName, string logo)
         {
             var cityNameParameter = cityName != null ?
                 new ObjectParameter("CityName", cityName) :
                 new ObjectParameter("CityName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter);
+            var logoParameter = logo != null ?
+                new ObjectParameter("logo", logo) :
+                new ObjectParameter("logo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter, logoParameter);
         }
     
         public virtual ObjectResult<Cities_SelectAll_Result> Cities_SelectAll()

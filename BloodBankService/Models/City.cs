@@ -29,6 +29,7 @@ namespace BloodBankService.Models
     
         public int CID { get; set; }
         public string CityName { get; set; }
+        public string Logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }

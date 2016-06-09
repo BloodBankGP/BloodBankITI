@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="AID" />
@@ -20,6 +20,7 @@
           </Key>
           <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Cities">
           <Key>
@@ -27,6 +28,7 @@
           </Key>
           <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -464,6 +466,7 @@
         </Function>
         <Function Name="Cities_InsertCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CityName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="logo" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="Cities_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Cities_SelectBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -956,6 +959,7 @@
           <NavigationProperty Name="Needer_Donor" Relationship="Self.FK_Needer_Donor_BloodTypes" FromRole="BloodTypes" ToRole="Needer_Donor" />
           <NavigationProperty Name="PartnersStatestics" Relationship="Self.FK_PartnersStatestics_BloodTypes" FromRole="BloodTypes" ToRole="PartnersStatestics" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_BloodTypes" FromRole="BloodTypes" ToRole="Posts" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -971,6 +975,7 @@
           <NavigationProperty Name="NGOes" Relationship="Self.FK_NGO_Cities" FromRole="Cities" ToRole="NGO" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Cities" FromRole="Cities" ToRole="Posts" />
           <NavigationProperty Name="Partners" Relationship="BloodBankDBITIModel.FK_Partners_Cities" FromRole="City" ToRole="Partner" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -1508,6 +1513,7 @@
           </FunctionImport>
           <FunctionImport Name="Cities_InsertCity">
           <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="logo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Cities_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Cities_SelectAll_Result)" />
           <FunctionImport Name="Cities_SelectBYID" ReturnType="Collection(BloodBankDBITIModel.Cities_SelectBYID_Result)">
@@ -1885,7 +1891,7 @@
           <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
-            <Parameter Name="did" Mode="In" Type="Int32" />
+          <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_select_Result">
@@ -2478,6 +2484,7 @@
           <EntitySetMapping Name="BloodTypes">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
               <MappingFragment StoreEntitySet="BloodTypes">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="BID" ColumnName="BID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
@@ -2486,6 +2493,7 @@
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
               <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
               </MappingFragment>
