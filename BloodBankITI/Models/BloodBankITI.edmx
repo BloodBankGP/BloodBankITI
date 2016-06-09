@@ -20,6 +20,7 @@
           </Key>
           <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Cities">
           <Key>
@@ -959,6 +960,7 @@
           <NavigationProperty Name="PartnersStatestics" Relationship="Self.FK_PartnersStatestics_BloodTypes" FromRole="BloodTypes" ToRole="PartnersStatestics" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_BloodTypes" FromRole="BloodTypes" ToRole="Posts" />
           <NavigationProperty Name="PartnersStatestics1" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" FromRole="BloodType" ToRole="PartnersStatestic" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -2281,6 +2283,7 @@
         <ComplexType Name="Select_BloodTypes_Result">
           <Property Type="Int32" Name="BID" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Logo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Select_BloodTypesID_Result">
           <Property Type="Int32" Name="BID" Nullable="false" />
@@ -2500,6 +2503,7 @@
           <EntitySetMapping Name="BloodTypes">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
               <MappingFragment StoreEntitySet="BloodTypes">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="BID" ColumnName="BID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
@@ -3270,6 +3274,7 @@
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Select_BloodTypes_Result">
                 <ScalarProperty Name="BID" ColumnName="BID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

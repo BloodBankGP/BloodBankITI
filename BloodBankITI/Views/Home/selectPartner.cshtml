@@ -1,0 +1,35 @@
+﻿@model BloodBankITI.Models.donorpartner
+@{
+    ViewBag.Title = "selectPartner";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>selectPartner</h2>
+
+<form action="" method="POST">
+    <input type="hidden" value=@Model.donor.Fname name="donor.Fname" />
+    <input type="hidden" value=@Model.donor.Lname name="donor.Lname" />
+    <input type="hidden" value=@Model.donor.LID name="donor.LID" />
+    <input type="hidden" value=@Model.donor.CID name="donor.CID" />
+    <input type="hidden" value=@Model.donor.DonorGender name="donor.DonorGender" />
+    <input type="hidden" value=@Model.donor.DID name="donor.DID" />
+    <input type="hidden" value=@Model.donor.BID name="donor.BID" />
+    <input type="hidden" value=@Model.donor.Phone name="donor.Phone" />
+    <input type="hidden" value=@Model.donor.PhoneStatus name="donor.PhoneStatus" />
+    <input type="hidden" value=@Model.donor.Status name="donor.Status" />
+    <input type="hidden" value=@Model.donor.DonationDate name="donor.DonationDate" />
+    <input type="hidden" value=@Model.donor.Pending name="donor.Pending" />
+    
+    <select name="Donor.PAID">
+        <option value="0" selected=""> Not Set</option>
+        @foreach (var item in Model.partnerSelectByCity)
+        {
+            <option value=@item.PAID>@item.Name</option>
+        }
+    </select>
+
+    <input type="submit" value="Select"/>
+
+</form>
+
+

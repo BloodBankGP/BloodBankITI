@@ -948,6 +948,9 @@
     <FunctionImport Name="DonorByBid" ReturnType="Collection(BloodBankDBITIModel.DonorByBid_Result)">
       <Parameter Name="bid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
+      <Parameter Name="did" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1496,5 +1499,28 @@
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="DonorRequests_Result">
+    <Property Type="DateTime" Name="AskDate" Nullable="false" />
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="String" Name="Fname1" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname1" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Phone1" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="BID1" Nullable="true" />
+    <Property Type="Int32" Name="CID1" Nullable="false" />
+    <Property Type="Int32" Name="LID" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="Pending" Nullable="false" />
+    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+    <Property Type="Int32" Name="PAID" Nullable="true" />
+    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
   </ComplexType>
 </Schema>

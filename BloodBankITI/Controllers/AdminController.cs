@@ -361,9 +361,18 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersEdit(int id)
         {
+            Partners_select_Result partner = db.Partners_select(id).FirstOrDefault();
 
-            return View(db.Partners_select(id).FirstOrDefault());
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            PartnerCities partnerCities = new PartnerCities()
+            {
+                cities = cities,
+                partnersSelectResult = partner
+            };
+            return View(partnerCities);
         }
+
 
         [HttpPost]
 
@@ -377,8 +386,9 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersInsert()
         {
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
-            return View();
+            return View(cities);
         }
 
         [HttpPost]

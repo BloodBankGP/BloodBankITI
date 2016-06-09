@@ -192,7 +192,7 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+            [HttpGet]
         public ActionResult Donate()
         {
 
@@ -227,32 +227,94 @@ namespace BloodBankITI.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Donate(Donor donor)
-        //{
-        //    HttpClient client = new HttpClient();
-        //    client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-        //    HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
-        //    string result;
+        [HttpPost]
+        public ActionResult Donate(Donor donor)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
+            string result;
 
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        result = "Done";
-        //    }
-        //    else
-        //        result = "Failed to insert Donor";
-        //    if (donor.BID == 0)
-        //    {
-        //        return RedirectToAction("selectPartner",new {id=donor.DID});
-        //    }
-    
-        //    return RedirectToAction("Index");
-        //}
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+                int id = response.Content.ReadAsAsync<int>().Result;
+                if (donor.BID == null)
+                {
+                    return RedirectToAction("selectPartner", new { id = id });
+                }
+            }
+            else
+                result = "Failed to insert Donor";
+            
 
-        //[HttpGet] 
-        //public ActionResult selectPartner(int id)
+            return RedirectToAction("Index");
+        }
+
+       [HttpGet] 
+        public ActionResult selectPartner(int id) //donor id
+        {
+            
+            donor_SelectByDID_Result donor = new donor_SelectByDID_Result();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ViewProfile/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
+            }
 
 
+            List<Partner_SelectByCity_Result> partner = new List<Partner_SelectByCity_Result>();
+             response = client.GetAsync("getPartnar_City/" + donor.CID).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                partner = response.Content.ReadAsAsync<List<Partner_SelectByCity_Result>>().Result;
+            }
+
+
+            donorpartner donorpartner = new donorpartner()
+            {
+                donor =donor,
+                partnerSelectByCity = partner
+            }
+                ;
+
+            return View(donorpartner);
+
+            
+        }
+
+        [HttpPost]
+        public ActionResult selectPartner(Donor  donor) 
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                PartnersStatestic partnersStatestic = new PartnersStatestic()
+                {
+                    PID = Int32.Parse(donor.PAID.ToString()),
+                    DID = donor.DID
+                };
+
+                response = client.PostAsJsonAsync("PartnersStatesticInsert/PartnersStatestic", partnersStatestic).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("selectPartner", new { id = donor.DID });
+                }
+            }
+            else
+                return RedirectToAction("selectPartner", new { id = donor.DID });
+            
+
+        }
 
 
 

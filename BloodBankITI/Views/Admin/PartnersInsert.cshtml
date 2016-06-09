@@ -1,20 +1,32 @@
-﻿@model BloodBankITI.Models.Partner
+﻿@model List<BloodBankITI.Models.Cities_SelectAll_Result>
 @{
     ViewBag.Title = "PartnersInsert";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <h2>PartnersInsert</h2>
-
+<br/> <br /> <br /> <br /> 
 <form action="" method="POST">
     <div class="form-group">
-        Name: <input type="text" name="Partner.Fname" />
+        Name: <input type="text" name="Partner.Name" />
     </div>
     <div class="form-group">
-        Address: <input type="text" name="Partner.Lname" />
+        Address: <input type="text" name="Partner.Address" />
     </div>
 
+    City:<select class="mdl-select__input" id="professsion" name="partner.CID">
+        <option value="0">غير محدد</option>
+        @foreach (var item in Model)
+        {
 
+            <option value=@item.CID>@item.CityName</option>
+        }
+
+    </select>
+
+
+
+    
     <input type="submit" value="Insert" />
 </form>
 
