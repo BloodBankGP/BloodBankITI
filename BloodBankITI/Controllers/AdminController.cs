@@ -432,6 +432,12 @@ namespace BloodBankITI.Controllers
 
         //users 
         //insert  New Users
+        [HttpGet]
+        public ActionResult UserTypesInsert()
+        {
+            
+            return View();
+        }
         [HttpPost]
         public ActionResult UserTypesInsert(UserType userType)
         {

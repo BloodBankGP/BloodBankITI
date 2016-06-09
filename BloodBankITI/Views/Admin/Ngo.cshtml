@@ -3,55 +3,56 @@
     ViewBag.Title = "Ngo";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
-<h2>Ngo</h2>
-
-
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-
-        <th> NID </th>
-        <th> Name </th>
-        <th> City </th>
-        <th> Phone </th>
-        <th> Address </th>
-        <th> Approved </th>
-        <th> Status </th>
-       
-        <th> Edit </th>
-        <th> Delete </th>
+<div class="render">
+    <h2>Ngo</h2>
 
 
-
-    </tr>
-
-    @foreach (var a in Model)
-    {
+    <table class="table table-bordered table-hover table-striped">
         <tr>
-            <td>@(a.NID) </td>
-            <td>@(a.Name) </td>
-            <td>@(a.CityName) </td>
-            <td>@(a.Phone) </td>
-            <td>@(a.Address) </td>
-            <td>@(a.Approved) </td>
 
-            <td>@(a.Status) </td>
-            
+            <th> NID </th>
+            <th> Name </th>
+            <th> City </th>
+            <th> Phone </th>
+            <th> Address </th>
+            <th> Approved </th>
+            <th> Status </th>
 
-
-
-            <td> @Html.ActionLink("Edit", "NGOEDIT", new { id = a.NID })</td>
-            <td> @Html.ActionLink("Delete", "NGODelete", new { id = a.NID })</td>
-
-
+            <th> Edit </th>
+            <th> Delete </th>
 
 
 
         </tr>
 
-    }
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@(a.NID) </td>
+                <td>@(a.Name) </td>
+                <td>@(a.CityName) </td>
+                <td>@(a.Phone) </td>
+                <td>@(a.Address) </td>
+                <td>@(a.Approved) </td>
 
-</table>
+                <td>@(a.Status) </td>
 
 
-@Html.ActionLink("Back To Home", "Index")
+
+
+                <td> @Html.ActionLink("Edit", "NGOEDIT", new { id = a.NID })</td>
+                <td> @Html.ActionLink("Delete", "NGODelete", new { id = a.NID })</td>
+
+
+
+
+
+            </tr>
+
+        }
+
+    </table>
+
+
+    @Html.ActionLink("Back To Home", "Index")
+</div>

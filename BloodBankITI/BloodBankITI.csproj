@@ -255,9 +255,13 @@
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllLabStatestics_Result.cs" />
+    <Compile Include="Models\GetAllTodayStatestics_Result.cs" />
     <Compile Include="Models\GetPartnersDonor_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetStatestics_Result.cs" />
+    <Compile Include="Models\GetTodayStatestics_Result.cs" />
     <Compile Include="Models\Hospital.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -419,6 +423,7 @@
     <Content Include="Content\materialize\font\material-design-icons\LICENSE.txt" />
     <Content Include="Content\materialize\font\material-design-icons\Material-Design-Icons.svg" />
     <Content Include="Content\register.css" />
+    <Content Include="Content\reset.css" />
     <Content Include="Content\stylish-portfolio.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
@@ -897,9 +902,7 @@
     <Content Include="Views\Admin\Needers.cshtml" />
     <Content Include="Views\Admin\Ngo.cshtml" />
     <Content Include="Views\Admin\Partners.cshtml" />
-    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <Content Include="Views\Admin\PostsComments.cshtml" />
-    <Content Include="Views\Admin\UserTypes.cshtml" />
     <Content Include="Views\Admin\ViewProfile.cshtml" />
     <Content Include="Views\Admin\BloodTypesEdit.cshtml" />
     <Content Include="Views\Admin\BloodTypesInsert.cshtml" />
@@ -916,6 +919,9 @@
     <Content Include="Views\Admin\UserTypesEdit.cshtml" />
     <Content Include="Views\Admin\UserTypesInsert.cshtml" />
     <Content Include="Views\Admin\UserTypesView.cshtml" />
+    <Content Include="Views\Admin\AllStatistics.cshtml" />
+    <Content Include="Views\Admin\PartnersStatistics.cshtml" />
+    <Content Include="Views\Admin\TodayStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

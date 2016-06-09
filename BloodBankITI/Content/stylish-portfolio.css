@@ -12,12 +12,12 @@ body {
     width: 100%;
     height: 100%;
     background-color:rgba(255,255,255,0.8);
-   	font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif,"Titillium Web";
+   	font-family:Myriad عربي;
 }
 
 .render{
     width:800px;
-    height:800px;
+    height:auto;
     margin-top:8em;
     margin-right:auto;
     margin-left:auto;
@@ -306,7 +306,7 @@ footer , #fixedbar ,#layoutone{
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
-    text-align:center;
+    text-align:center;    
 }
 
 @-webkit-keyframes Gradient {
@@ -417,16 +417,14 @@ h1, h2,h3 {
 }
 
 h1 {
-    font-family: ' Thabit', serif !important;
+    font-family: Myriad عربي;
   text-transform: uppercase;
   font-size: 36px;
   line-height: 42px;
   /*letter-spacing: 3px;*/
   font-weight: 100;
   text-align:center;
-
-font-family: 'Thabit', serif;
-       }
+}
 
 
 h2,h3 {
@@ -439,6 +437,7 @@ h2,h3 {
   margin: 0;
   cursor: pointer;
     text-align:right;
+    font-family:Myriad عربي;
    
 }
 
@@ -455,6 +454,7 @@ p {
   margin-top: 14px;
   z-index: 2;
     text-align:right;
+    font-family:Myriad عربي;
 
 }
 
@@ -705,10 +705,10 @@ h4{
 label{
     text-align:right;
     color:brown;
-
+      font-family:Myriad عربي;
 }
 /*ngo*/
-              .mdl-select {
+          .mdl-select {
           position: relative;
           font-size: 16px;
           display: inline-block;
@@ -717,6 +717,7 @@ label{
           max-width: 100%;
           margin: 0;
           padding: 20px 0;
+         right: -400px !important;
         }
 
         .mdl-select__input {
@@ -769,10 +770,13 @@ label{
 
         .mdl-select--floating-label.is-focused .mdl-select__label,
         .mdl-select--floating-label.is-dirty .mdl-select__label {
-          color: rgb(63,81,181);
+          /*color: rgb(63,81,181);*/
+          color:red;
           font-size: 12px;
           top: 4px;
           visibility: visible;
+          text-align:right;
+          left: 23px;
         }
 
         .mdl-select--floating-label.is-focused .mdl-select__expandable-holder .mdl-select__label,
@@ -851,4 +855,19 @@ label{
 
 
  /*table*/
- 
+
+ /*LOGIN*/
+ /* Form */
+ footer{
+     position:absolute;
+     bottom:0px;
+     width:100%;
+
+ }
+
+ /*postcomments*/
+ div.outset {
+     border-style: outset;
+     padding:15px;
+     background-color:antiquewhite;
+ }

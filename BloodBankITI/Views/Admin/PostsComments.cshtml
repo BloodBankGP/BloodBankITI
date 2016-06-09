@@ -5,19 +5,37 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Wall Posts</h2>
+<div class="render">
 
-@foreach (var post in Model)
-{
-    <h2>@(post.post.Name + " from " + post.post.CityName + " with blood type " + post.post.Type +" "+post.post.Phone + ": " )</h2>
-    <h3>@post.post.Post</h3><p>@post.post.Insert_date</p>
-    <p>@Html.ActionLink("حذف", "DeletePost", new { PID = post.post.PID })</p>
-    <h3>Comments:</h3>
-    foreach (var comment in post.comments)
-    {
-        <p>@(comment.Name + ": " + comment.Comment)</p>
-        <p>@Html.ActionLink("حذف", "DeleteComment", new { CID = comment.ID })</p>
-    }
-}
 
-<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>
+    <h3>مشاركات الحائط </h3>
+        @foreach (var post in Model)
+        {
+            <div class="outset">
+                <label style="text-align:right">@(post.post.Name)</label><br /><br />
+                <p style="font-family:Myriad عربي">@(  " من  " + post.post.CityName)</p><br />
+                <p>@(   post.post.Type + " فصيلة الدم  ")</p><br />
+                <p>@(  "  رقم التليفون  " + post.post.Phone)</p><br />
+
+                <label>@post.post.Post</label><br />
+                <p style="text-align:left;color:black;">@post.post.Insert_date</p>
+
+            </div>
+            <br />
+            <p style="text-align:left;">@Html.ActionLink("حذف", "DeletePost", new { PID = post.post.PID }, new { @class = "btn btn-danger" })</p>
+            <hr />
+            <h3>التعليقات </h3>
+            foreach (var comment in post.comments)
+            {
+                @*<p>@(comment.Name + ": " + comment.Comment)</p>*@
+                <label>@(":" + comment.Name) </label>
+                <br />
+                <p>@(comment.Comment)</p>
+                <br /> <br />
+                <p style="text-align:left;">@Html.ActionLink("حذف", "DeleteComment", new { CID = comment.ID }, new { @class = "btn btn-danger" })</p>
+            }
+        }
+        <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index",null, new { @class = "btn btn-danger" })</p>
+
+
+</div>

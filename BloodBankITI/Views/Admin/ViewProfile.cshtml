@@ -4,12 +4,15 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<div class="render">
 
-<h2>Profile</h2>
 
-Name: @(Model.Fname + " " + Model.Lname)<br/>
-UserName: @Model.UserName<br/>
-Password: @Model.Password<br/>
+    <h2>Profile</h2>
 
-@Html.ActionLink("Edit Profile", "UpdateProfile")<br/>
-@Html.ActionLink("Back to Home", "Index")
+    Name: @(Model.Fname + " " + Model.Lname)<br />
+    UserName: @Model.UserName<br />
+    Password: @Model.Password<br />
+
+    @Html.ActionLink("Edit Profile", "UpdateProfile")<br />
+    @Html.ActionLink("Back to Home", "Index")
+</div>
