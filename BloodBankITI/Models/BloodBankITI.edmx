@@ -1935,6 +1935,7 @@
         <ComplexType Name="Cities_SelectAll_Result">
           <Property Type="Int32" Name="CID" Nullable="false" />
           <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Logo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Cities_SelectBYID_Result">
           <Property Type="Int32" Name="CID" Nullable="false" />
@@ -2753,6 +2754,7 @@
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Cities_SelectAll_Result">
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

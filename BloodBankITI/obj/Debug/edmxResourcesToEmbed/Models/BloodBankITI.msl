@@ -14,6 +14,7 @@
     <EntitySetMapping Name="BloodTypes">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
         <MappingFragment StoreEntitySet="BloodTypes">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="BID" ColumnName="BID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
@@ -22,6 +23,7 @@
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
         <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
         </MappingFragment>
@@ -262,6 +264,7 @@
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.Cities_SelectAll_Result">
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -783,6 +786,7 @@
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.Select_BloodTypes_Result">
           <ScalarProperty Name="BID" ColumnName="BID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1018,6 +1022,33 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="locationName" ColumnName="locationName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DonorRequests" FunctionName="BloodBankDBITIModel.Store.DonorRequests">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.DonorRequests_Result">
+          <ScalarProperty Name="AskDate" ColumnName="AskDate" />
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="Fname1" ColumnName="Fname1" />
+          <ScalarProperty Name="Lname1" ColumnName="Lname1" />
+          <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="BID1" ColumnName="BID1" />
+          <ScalarProperty Name="CID1" ColumnName="CID1" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Pending" ColumnName="Pending" />
+          <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+          <ScalarProperty Name="PAID" ColumnName="PAID" />
+          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
