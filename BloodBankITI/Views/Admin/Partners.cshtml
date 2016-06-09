@@ -4,40 +4,47 @@
     ViewBag.Title = "Partners";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>View All Partners</h2>
+<div class="render">
+    <div class="render">
+        <h4 style="font-family:'Myriad عربي';text-align:center;">عرض كل الشركاء</h4>
 
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-       
-        <th> ID </th>
-        <th> Name </th>
-        <th> Address </th>
-        <th> Status </th>
-        <th> Edit </th>
+        <div class="table-responsive">
+            <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+                <tr>
+                    <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">تعديل</th>
 
+                    <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الحالة</th>
+                    <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">العنوان</th>
+                    <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الإسم</th>
+                    <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الرقم المسلسل</th>
+                    @*<table class="table table-bordered table-hover table-striped">
+                        <tr class="th_style">
+                            <th style="text-align:center;"> تعديل </th>
 
-    </tr>
+                            <th  style="text-align:center;"> الحالة </th>
+                            <th  style="text-align:center;"> العنوان </th>
+                            <th  style="text-align:center;"> الإسم </th>
+                            <th  style="text-align:center;"> الرقم المسلسل </th>
+                        </tr>*@
+                    </tr>
+                    @foreach (var a in Model)
+                    {
+                    <tr>
+                        <td style="text-align:center;"> @Html.ActionLink("تعديل", "PartnersEdit", new { id = a.PAID })</td>
 
-    @foreach (var a in Model)
-    {
-        <tr>
-            <td>@(a.PAID) </td>
-            <td>@(a.Name) </td>
-            <td>@(a.Address) </td>
-            <td>@(a.Status) </td>
-            
+                        <td style="text-align:center;">@(a.Status) </td>
+                        <td style="text-align:center;">@(a.Address) </td>
+                        <td style="text-align:center;">@(a.Name) </td>
+                        <td style="text-align:center;">@(a.PAID) </td>
+                    </tr>
 
-            <td> @Html.ActionLink("Edit", "PartnersEdit", new { id = a.PAID })</td>
+                    }
 
+                </table>
+            </div>
 
-
-
-        </tr>
-
-    }
-
-</table>
-
-
-@Html.ActionLink("Back To Home", "Index")
+        <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index",null, new { @class = "btn btn-danger" })</p>
+      </div>
+    </div>

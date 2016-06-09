@@ -37,11 +37,11 @@
                 <div class="input-field col s12">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select name="ngo.CID" id="CitiesID" class="mdl-select__input">
-
+                            <option value="0">Not Set</option>
                             @foreach (var item in Model.CitiesSelectAllResults)
                             {
 
-                                <option value="0">Not Set</option>
+                                
                                 if (item.CID == Model.ngo.CID)
                                 {
                                     <option value=@item.CID selected="true">@item.CityName</option>

@@ -3,99 +3,126 @@
     ViewBag.Title = "NGOEdit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render" style="height:1050px;">
+    <div class="container white z-depth-5" style="height:950px;" >
+        <div class="card-panel red darken-4"><h6>تعديل معلومات الجمعيات الخيرية</h6></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post" novalidate="novalidate">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="hidden" class="validate" name="ngo.NID" style="text-align:right" value=@Model.ngo.NID>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:right;">
+                            <label class="right-align" for="ngo.Name">الاسم </label>
+                        </div>
+                    </div>
+                     
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:right;">
+                            <label class="right-align" for="ngo.Phone">رقم التلفون </label>
+                        </div>
+                    </div>   
+       
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                            </div>
 
-<h2>NGOEdit</h2>
+                            <br />
+                            <br />
+                            <div dir="rtl">
+                                <select class="mdl-select__input" name="ngo.CID" id="CitiesID">
+                                    <option value="0">Not Set</option>
+                                    @foreach (var item in Model.CitiesSelectAllResults)
+                                    {
 
 
+                                        if (item.CID == Model.ngo.CID)
+                                        {
+                                            <option value=@item.CID selected="selected">@item.CityName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value=@item.CID>@item.CityName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                         </div>
+                    </div>   
 
-<form action="" method="post" novalidate="novalidate">
-    <div class="form-group">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:right;">
+                            <label class="right-align" for="ngo.Address">العنوان </label>
+                        </div>
+                    </div>   
+                        
 
-        <input type="hidden" name="ngo.NID" value=@Model.ngo.NID>
-    </div>
-    <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Name)
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label class="right-align" for="Message" style="text-align:right; width:460px;">الحالة</label>
+                            </div>
 
-        <input type="text" name="ngo.Name" value=@Model.ngo.Name>
-    </div>
-    <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Phone)
+                 
+                            <div dir="rtl">
+                                <select class="mdl-select__input" id="professsion" name="ngo.status">
+                                    @if (@Model.ngo.Status == true)
+                                    {
+                                        <option selected value="1">True</option>
+                                        <option value="0"> False </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">True</option>
+                                        <option selected value="0"> False </option>
+                                    }
 
-        <input type="text" name="ngo.Phone" value=@Model.ngo.Phone/>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ngo.CID, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-
-            <select name="ngo.CID" id="CitiesID">
-
-                <option value="0">Not Set</option>
-                @foreach (var item in Model.CitiesSelectAllResults)
-                {
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    if (item.CID == Model.ngo.CID)
-                    {
-                        <option value=@item.CID selected="true">@item.CityName</option>
-                    }
-                    else
-                    {
-                        <option value=@item.CID>@item.CityName</option>
-                    }
-                }
-            </select>
+                    <div class="row" >
+                        <div class="input-field col s12" >
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="Message" style="text-align:right; width:460px;">الموافقة</label>
+                            </div>
 
-            @Html.ValidationMessageFor(model => model.ngo.CID)
+                            <br />
+                            <br />
+                            <div dir="rtl">
+                                <select class="mdl-select__input" id="professsion" name="ngo.approved">
+                                    @if (@Model.ngo.Approved == true)
+                                    {
+                                        <option selected value="1">True</option>
+                                        <option value="0"> False </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">True</option>
+                                        <option selected value="0"> False </option>
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <center>
+                        <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
+                    </center>
+                    </div>
+</form>
+        </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Address)
-        <input type="text" name="ngo.Address" value=@Model.ngo.Address/>
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Status)
-        <select name="ngo.status">
-            @if (@Model.ngo.Status == true)
-            {
-                <option selected value="1">True</option>
-                <option value="0"> False </option>
-            }
-            else
-            {
-                <option value="1">True</option>
-                <option selected value="0"> False </option>
-            }
-
-        </select>
-    </div>
-
-    <div class="form-group">
-        @Html.DisplayNameFor(p => p.ngo.Approved)
-        <select name="ngo.approved">
-            @if (@Model.ngo.Approved == true)
-            {
-                <option selected value="1">True</option>
-                <option value="0"> False </option>
-            }
-            else
-            {
-                <option value="1">True</option>
-                <option selected value="0"> False </option>
-            }
-        </select>
-    </div>
-
-
-
-
-
-
-    <div>
-        <input type="submit" value="submit"/>
-    </div>
-</form>
-
-@Html.ActionLink("Cancel", "Ngo")
