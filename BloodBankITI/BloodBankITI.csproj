@@ -253,9 +253,6 @@
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
     <Compile Include="Models\donorpartner.cs" />
-    <Compile Include="Models\DonorRequests_Result.cs">
-      <DependentUpon>BloodBankITI.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Donors_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -1030,6 +1027,9 @@
     <Content Include="Views\Admin\UserTypesEdit.cshtml" />
     <Content Include="Views\Admin\UserTypesInsert.cshtml" />
     <Content Include="Views\Admin\UserTypesView.cshtml" />
+    <Content Include="Views\Donor\ViewProfile.cshtml" />
+    <Content Include="Views\Donor\Requests.cshtml" />
+    <Content Include="Views\Home\selectPartner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

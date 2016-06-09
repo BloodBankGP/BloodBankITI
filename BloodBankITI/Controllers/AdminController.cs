@@ -16,29 +16,40 @@ namespace BloodBankITI.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             return View();
         }
 
         //View Profile
         [HttpGet]
-        public ActionResult ViewProfile(int id)
+        public ActionResult ViewProfile()
         {
-            return View(db.Admins_select(id).FirstOrDefault());
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.Admins_select(Int32.Parse(Session["UserId"].ToString())).FirstOrDefault());
         }
 
         [HttpGet]
-        public ActionResult UpdateProfile(int id)
+        public ActionResult UpdateProfile()
         {
-            return View(db.Admins_select(id).FirstOrDefault());
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.Admins_select(Int32.Parse(Session["UserId"].ToString())).FirstOrDefault());
         }
 
         [HttpPost]
         public ActionResult UpdateProfile(Admin admin, Login login)
         {
             db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
-            return View("Index", new { id = admin.AID });
-            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
-            return RedirectToAction("ViewProfile", new { id = admin.AID });
+            return View("Index");
         }
 
 
@@ -46,6 +57,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult AdminsView()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                RedirectToAction("Index", "Login");
+            }
             return View(db.Admins_selectt().ToList());
         }
 
@@ -59,9 +74,13 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult AdminInsert()
         {
-            return View();
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View()
+;
         }
-
         [HttpPost]
         public ActionResult AdminInsert(Admin admin, Login login)
         {
@@ -74,6 +93,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult BloodTypes()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Select_BloodTypes().ToList());
         }
 
@@ -82,6 +105,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Cities()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<CitiesLocations> citiesLocations = new List<CitiesLocations>();
             List<Cities_SelectAll_Result> c = db.Cities_SelectAll().ToList();
             List<SelectCityLocations_Result> l = new List<SelectCityLocations_Result>();
@@ -98,6 +125,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult InsertCity()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -111,6 +142,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult InsertLocation(int CID)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(CID);
         }
 
@@ -125,6 +160,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PostsComments()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<PostsComments> postsComments = new List<PostsComments>();
             List<posts_SelectAll_Result> posts = db.posts_SelectAll().ToList();
             List<Comments_SelectAllByPostID_Result> postComments = new List<Comments_SelectAllByPostID_Result>();
@@ -154,12 +193,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Donors()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Donors_select().ToList());
         }
 
         [HttpGet]
         public ActionResult DonorsByBID(Donor donor)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<DonorByBid_Result> donors = db.DonorByBid(donor.BID).ToList();
             return View(donors);
         }
@@ -173,11 +220,19 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Emergency()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.EmergencySelectAll().ToList());  
         }
         [HttpGet]
         public ActionResult EmergencyEdit(int did , int cid)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             EmergencySelectCityDay_Result emergency = db.EmergencySelectCityDay(did, cid).FirstOrDefault();
 
             List<Hospitals_SelectByCity_Result> hospitals = db.Hospitals_SelectByCity(cid).ToList();
@@ -200,12 +255,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Hospitals()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Hospitals_SelectAll().ToList());
         }
 
         [HttpGet]
         public ActionResult HospitalsEdit(int id)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Hospitals_SelectByID_Result hospitals = db.Hospitals_SelectByID(id).FirstOrDefault();
 
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
@@ -228,6 +291,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult HospitalsInsert()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
@@ -257,12 +324,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Needers()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.selectneederallinfo().ToList());
         }
 
         [HttpGet]
         public ActionResult NeederEdit(int id)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             select_NeederID_Result needer=db.select_NeederID(id).FirstOrDefault();
             List <Cities_SelectAll_Result> cities=db.Cities_SelectAll().ToList();
             List<Select_BloodTypes_Result> bloodTypes = db.Select_BloodTypes().ToList();
@@ -294,7 +369,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult NeederDonor()
         {
-            
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.neederdonorall().ToList());
 
         }
@@ -302,12 +380,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Ngo()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.NGO_selectt().ToList());
         }
 
         [HttpGet]
         public ActionResult NGOEdit(int id)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             NGO_selectByIDAll_Result ngo = db.NGO_selectByIDAll(id).FirstOrDefault();
 
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
@@ -355,12 +441,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Partners()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Partners_selectt().ToList());
         }
         
         [HttpGet]
         public ActionResult PartnersEdit(int id)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Partners_select_Result partner = db.Partners_select(id).FirstOrDefault();
 
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
@@ -386,6 +480,10 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersInsert()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
             return View(cities);
@@ -405,18 +503,30 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersStatistics()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
         [HttpGet]
         public ActionResult TodayStatistics()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.GetAllTodayStatestics().ToList());
         }
 
         [HttpGet]
         public ActionResult AllStatistics()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.GetStatestics().ToList());
         }
 
@@ -434,14 +544,20 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult UserTypesView()
         {
-
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.UserType_selectt().ToList());
         }
 
         [HttpGet]
         public ActionResult UserTypesEdit(int id)
         {
-
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.UserType_select(id).FirstOrDefault());
         }
 

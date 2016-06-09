@@ -256,10 +256,10 @@ D:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Google.xml
 D:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Twitter.xml
 D:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
-D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache
 D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.dll
 D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.pdb
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache

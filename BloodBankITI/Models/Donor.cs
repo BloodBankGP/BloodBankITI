@@ -18,6 +18,7 @@ namespace BloodBankITI.Models
         public Donor()
         {
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
+            this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
         public int DID { get; set; }
@@ -40,5 +41,7 @@ namespace BloodBankITI.Models
         public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }
