@@ -252,6 +252,7 @@
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\donorpartner.cs" />
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -364,6 +365,7 @@
     <Compile Include="Models\Partner.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartnerCities.cs" />
     <Compile Include="Models\PartnersStatestic.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>

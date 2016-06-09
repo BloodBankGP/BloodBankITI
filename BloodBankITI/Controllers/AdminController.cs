@@ -386,7 +386,7 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersInsert()
         {
-List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
             return View(cities);
         }
