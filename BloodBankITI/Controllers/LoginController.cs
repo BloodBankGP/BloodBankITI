@@ -34,7 +34,7 @@ namespace BloodBankITI.Controllers
 
             }
 
-            if (login.UserName != null && login.Password != null)
+            if (login != null)
             {
                 Session["UserId"] = login.UID;
                 Session["UserName"] = login.UserName;

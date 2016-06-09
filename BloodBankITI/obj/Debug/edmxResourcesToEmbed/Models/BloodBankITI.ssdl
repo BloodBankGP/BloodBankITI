@@ -15,6 +15,7 @@
     </Key>
     <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="10" />
+    <Property Name="Logo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Cities">
     <Key>
@@ -22,6 +23,7 @@
     </Key>
     <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Logo" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Comments">
     <Key>
@@ -48,7 +50,7 @@
     <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DonorGender" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="BID" Type="int" Nullable="false" />
+    <Property Name="BID" Type="int" />
     <Property Name="CID" Type="int" Nullable="false" />
     <Property Name="LID" Type="int" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -139,14 +141,15 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Status" Type="bit" />
+    <Property Name="CID" Type="int" />
   </EntityType>
   <EntityType Name="PartnersStatestics">
     <Key>
       <PropertyRef Name="SID" />
     </Key>
     <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BID" Type="int" Nullable="false" />
-    <Property Name="Insert_Date" Type="date" Nullable="false" />
+    <Property Name="BID" Type="int" />
+    <Property Name="Insert_Date" Type="date" />
     <Property Name="PID" Type="int" Nullable="false" />
     <Property Name="DID" Type="int" Nullable="false" />
   </EntityType>
@@ -193,7 +196,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Donors_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
     <End Role="Donors" Type="Self.Donors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -336,8 +339,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Partners_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Partners">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PartnersStatestics_BloodTypes">
-    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="1" />
+    <End Role="BloodTypes" Type="Self.BloodTypes" Multiplicity="0..1" />
     <End Role="PartnersStatestics" Type="Self.PartnersStatestics" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BloodTypes">
@@ -420,6 +435,10 @@
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="AskForBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="int" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
   <Function Name="BloodTypesEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
     <Parameter Name="type" Type="nvarchar" Mode="In" />
@@ -442,6 +461,7 @@
   </Function>
   <Function Name="Cities_InsertCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CityName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="logo" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="Cities_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Cities_SelectBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -465,6 +485,10 @@
   <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
   </Function>
+  <Function Name="Donor_insertPartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PAID" Type="int" Mode="In" />
+    <Parameter Name="DID" Type="int" Mode="In" />
+  </Function>
   <Function Name="donor_SelectByDID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="did" Type="int" Mode="In" />
   </Function>
@@ -475,9 +499,15 @@
     <Parameter Name="BID" Type="int" Mode="In" />
     <Parameter Name="DonorID" Type="int" Mode="In" />
   </Function>
+  <Function Name="DonorByBid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
   <Function Name="DonorByBloodCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cid" Type="int" Mode="In" />
     <Parameter Name="bid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DonorRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
   </Function>
   <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
@@ -533,8 +563,16 @@
     <Parameter Name="hid" Type="int" Mode="In" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAllLabStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllTodayStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PAID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetTodayStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pid" Type="int" Mode="In" />
   </Function>
   <Function Name="Hospitals_DeleteHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="HID" Type="int" Mode="In" />
@@ -617,7 +655,6 @@
     <Parameter Name="bid" Type="int" Mode="In" />
     <Parameter Name="cid" Type="int" Mode="In" />
     <Parameter Name="did" Type="int" Mode="In" />
-    <Parameter Name="date" Type="date" Mode="In" />
   </Function>
   <Function Name="Needer_DonorNotAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nid" Type="int" Mode="In" />
@@ -659,12 +696,16 @@
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="approved" Type="bit" Mode="In" />
   </Function>
+  <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cid" Type="int" Mode="In" />
+  </Function>
   <Function Name="Partners_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
   <Function Name="Partners_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="name" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
   </Function>
   <Function Name="Partners_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -675,13 +716,12 @@
     <Parameter Name="name" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="cid" Type="int" Mode="In" />
   </Function>
   <Function Name="PartnerStatestics_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="sid" Type="int" Mode="In" />
   </Function>
   <Function Name="PartnerStatestics_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="bid" Type="int" Mode="In" />
-    <Parameter Name="date" Type="date" Mode="In" />
     <Parameter Name="pid" Type="int" Mode="In" />
     <Parameter Name="did" Type="int" Mode="In" />
   </Function>
@@ -864,6 +904,10 @@
     <AssociationSet Name="FK_NGO_Cities" Association="Self.FK_NGO_Cities">
       <End Role="Cities" EntitySet="Cities" />
       <End Role="NGO" EntitySet="NGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Partners_Cities" Association="Self.FK_Partners_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Partners" EntitySet="Partners" />
     </AssociationSet>
     <AssociationSet Name="FK_PartnersStatestics_BloodTypes" Association="Self.FK_PartnersStatestics_BloodTypes">
       <End Role="BloodTypes" EntitySet="BloodTypes" />

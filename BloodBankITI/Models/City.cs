@@ -24,10 +24,12 @@ namespace BloodBankITI.Models
             this.Needers = new HashSet<Needer>();
             this.NGOes = new HashSet<NGO>();
             this.Posts = new HashSet<Post>();
+            this.Partners = new HashSet<Partner>();
         }
     
         public int CID { get; set; }
         public string CityName { get; set; }
+        public string Logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
@@ -43,5 +45,7 @@ namespace BloodBankITI.Models
         public virtual ICollection<NGO> NGOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Partner> Partners { get; set; }
     }
 }

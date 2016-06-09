@@ -3,27 +3,29 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+
 <div class="render">
     <h2><em> تسجيل الدخول</em></h2>
     <div class="login">
         <div class="row">
             <div class="col-lg-8 text-center">
                 <div id="loginForm">
-                    @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+                    @*@using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
+                      @* { *@
+                    <form action="" method="post">
                         <hr />
                         @Html.ValidationSummary(true)
                         <div class="form-group text-center">
-                            @*@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })*@
-                            <label class="col-md-2 control-label"> اسم_المستخدم</label>
+                            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                            @*<label class="col-md-2 control-label"> اسم_المستخدم</label>*@
                             <div class="col-md-10">
                                 @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.UserName)
                             </div>
                         </div>
                         <div class="form-group  text-center">
-                            @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
-                            <label class="col-md-2 control-label"> كلمة_المرور</label>
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            @*<label class="col-md-2 control-label"> كلمة_المرور</label>*@
                             <div class="col-md-10">
                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(m => m.Password)
@@ -35,10 +37,11 @@
                                 <input type="submit" value="دخول" class="btn btn-default" />
                             </div>
                         </div>
-
-                    }
+                        </form>
+                    @* } *@
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+   </div>

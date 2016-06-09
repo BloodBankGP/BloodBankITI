@@ -22,10 +22,12 @@ namespace BloodBankITI.Models
             this.Needer_Donor = new HashSet<Needer_Donor>();
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Posts = new HashSet<Post>();
+            this.PartnersStatestics1 = new HashSet<PartnersStatestic>();
         }
     
         public int BID { get; set; }
         public string Type { get; set; }
+        public string Logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
@@ -37,5 +39,7 @@ namespace BloodBankITI.Models
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PartnersStatestic> PartnersStatestics1 { get; set; }
     }
 }

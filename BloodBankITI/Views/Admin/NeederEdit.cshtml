@@ -7,28 +7,28 @@
 <h2>NeederEdit</h2>
 
 <form method="POST" action="">
-    <input type="hidden" name="needer.NID" value=@Model.Needer.NID />
+    <input type="hidden" name="needer.NID" value=@Model.Needer.NID/>
     <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Fname, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Needer.Fname, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            <input type="text" name="needer.Fname" value=@Model.Needer.Fname />
+            <input type="text" name="needer.Fname" value=@Model.Needer.Fname/>
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Lname, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Needer.Lname, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            <input type="text" name="needer.Lname" value=@Model.Needer.Lname />
+            <input type="text" name="needer.Lname" value=@Model.Needer.Lname/>
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Email, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Needer.Email, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
-            <input type="email" name="needer.Email" value=@Model.Needer.Email />
+            <input type="email" name="needer.Email" value=@Model.Needer.Email/>
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Needer.BID, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Needer.BID, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
 
 
@@ -45,14 +45,14 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Needer.CID, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Needer.CID, new {@class = "control-label col-md-2"})
         <div class="col-md-10">
 
             <select name="Needer.CID" id="CitiesID">
                 <option value="0">Not Set</option>
                 @foreach (var item in Model.CitiesSelectAllResults)
                 {
-                    
+
                     <option value=@item.CID>@item.CityName</option>
                 }
             </select>
@@ -61,5 +61,8 @@
     </div>
 
 
-    <input type="submit" value="Edit" />
+    <input type="submit" value="Edit"/>
 </form>
+
+@Html.ActionLink("Cancel", "Needers")
+

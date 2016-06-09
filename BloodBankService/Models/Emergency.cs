@@ -16,7 +16,7 @@ namespace BloodBankService.Models
     {
         public int CID { get; set; }
         public int DayID { get; set; }
-        public int HID { get; set; }
+        public Nullable<int> HID { get; set; }
     
         public virtual City City { get; set; }
     }

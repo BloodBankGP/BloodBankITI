@@ -7,13 +7,13 @@
 <h2>EmergencyEdit</h2>
 
 <form action="" method="POST">
-    City :@Model.emergency.CityName 
-    <input type="hidden" value=@Model.emergency.CID name="emergency.CID" />
-    
+    City :@Model.emergency.CityName
+    <input type="hidden" value=@Model.emergency.CID name="emergency.CID"/>
+
     Day :@Model.emergency.Day
-    
-    <input type="hidden" value=@Model.emergency.DayID name="emergency.DayID" />
-    Hospital: 
+
+    <input type="hidden" value=@Model.emergency.DayID name="emergency.DayID"/>
+    Hospital:
     <select name="emergency.HID">
         <option>Not Set</option>
         @foreach (var item in Model.Hospitals)
@@ -28,6 +28,9 @@
             }
         }
     </select>
-    <input type="submit" value="Edit" />
+    <input type="submit" value="Edit"/>
 </form>
+
+@Html.ActionLink("Cancel", "Emergency")
+
 

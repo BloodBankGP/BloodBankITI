@@ -77,31 +77,6 @@ namespace BloodBankITI.Controllers
             return View(db.Select_BloodTypes().ToList());
         }
 
-        [HttpGet]
-        public ActionResult BloodTypesEdit(int id)
-        {
-            return View(db.BloodTypeSelectByID(id).FirstOrDefault());
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesEdit(BloodType bloodType)
-        {
-            db.BloodTypesEdit(bloodType.BID, bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
-
-        [HttpGet]
-        public ActionResult BloodTypesInsert()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesInsert(BloodType bloodType)
-        {
-            db.BloodTypesInsert(bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
 
         //Cities
         [HttpGet]
@@ -129,7 +104,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertCity(City City)
         {
-            db.Cities_InsertCity(City.CityName);
+            db.Cities_InsertCity(City.CityName, City.Logo);
             return RedirectToAction("Cities");
         }
 
@@ -182,6 +157,12 @@ namespace BloodBankITI.Controllers
             return View(db.Donors_select().ToList());
         }
 
+        [HttpGet]
+        public ActionResult DonorsByBID(Donor donor)
+        {
+            List<DonorByBid_Result> donors = db.DonorByBid(donor.BID).ToList();
+            return View(donors);
+        }
 
         public ActionResult DeleteDonor(int DID)
         {
@@ -189,18 +170,88 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Donors");
         }
 
-
+        [HttpGet]
         public ActionResult Emergency()
         {
-            return View();
+            return View(db.EmergencySelectAll().ToList());  
+        }
+        [HttpGet]
+        public ActionResult EmergencyEdit(int did , int cid)
+        {
+            EmergencySelectCityDay_Result emergency = db.EmergencySelectCityDay(did, cid).FirstOrDefault();
+
+            List<Hospitals_SelectByCity_Result> hospitals = db.Hospitals_SelectByCity(cid).ToList();
+
+            EmergencyCityHospitals emergencyCityHospitals = new EmergencyCityHospitals()
+            {
+                emergency = emergency,
+                Hospitals = hospitals
+            };
+            return View(emergencyCityHospitals);
         }
 
+        [HttpPost]
+        public ActionResult EmergencyEdit(Emergency emergency)
+        {
+            db.EmergencyUpdate(emergency.DayID, emergency.CID, emergency.HID);
+            return RedirectToAction("Emergency");
+        }
+
+        [HttpGet]
         public ActionResult Hospitals()
         {
-            return View();
+            return View(db.Hospitals_SelectAll().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult HospitalsEdit(int id)
+        {
+            Hospitals_SelectByID_Result hospitals = db.Hospitals_SelectByID(id).FirstOrDefault();
+
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            HospitalsCity hospitalsCity = new HospitalsCity()
+            {
+                Hospital = hospitals,
+                CitiesSelectAllResults = cities
+            };
+            return View(hospitalsCity);
+        }
+
+        [HttpPost]
+        public ActionResult HospitalsEdit(Hospital hospital)
+        {
+            db.Hospitals_UpdateHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address, hospital.HID);
+            return RedirectToAction("Hospitals");
+        }
+
+        [HttpGet]
+        public ActionResult HospitalsInsert()
+        {
+
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            HospitalsCity hospitalsCity = new HospitalsCity()
+            {
+                Hospital = null,
+                CitiesSelectAllResults = cities
+            };
+            return View(hospitalsCity);
+        }
+
+        [HttpPost]
+        public ActionResult HospitalsInsert(Hospital hospital)
+        {
+            db.Hospitals_InsertHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address);
+            return RedirectToAction("Hospitals");
         }
 
 
+        public ActionResult HospitalsDelete(int id)
+        {
+            db.Hospitals_DeleteHospital(id);
+            return RedirectToAction("Hospitals");
+        }
         //Needers
 
         [HttpGet]
@@ -310,15 +361,24 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersEdit(int id)
         {
+            Partners_select_Result partner = db.Partners_select(id).FirstOrDefault();
 
-            return View(db.Partners_select(id).FirstOrDefault());
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            PartnerCities partnerCities = new PartnerCities()
+            {
+                cities = cities,
+                partnersSelectResult = partner
+            };
+            return View(partnerCities);
         }
+
 
         [HttpPost]
 
         public ActionResult PartnersEdit(Partner Partner)
         {
-            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status);
+            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status, Partner.CID);
 
             return RedirectToAction("Partners");
         }
@@ -326,26 +386,49 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersInsert()
         {
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
-            return View();
+            return View(cities);
         }
 
         [HttpPost]
 
         public ActionResult PartnersInsert(Partner partner)
         {
-            db.Partners_insert( partner.Name, partner.Address);
+            db.Partners_insert( partner.Name, partner.Address, partner.CID);
 
             return RedirectToAction("Partners");
         }
 
 
-        public ActionResult PartnersStatestics()
+        //Statistics
+        [HttpGet]
+        public ActionResult PartnersStatistics()
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult TodayStatistics()
+        {
+            return View(db.GetAllTodayStatestics().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult AllStatistics()
+        {
+            return View(db.GetStatestics().ToList());
+        }
+
+
         //users 
         //insert  New Users
+        [HttpGet]
+        public ActionResult UserTypesInsert()
+        {
+            
+            return View();
+        }
         [HttpPost]
         public ActionResult UserTypesInsert(UserType userType)
         {
