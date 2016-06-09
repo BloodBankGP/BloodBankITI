@@ -1,4 +1,4 @@
-﻿@model BloodBankITI.Models.Partners_select_Result
+﻿@model BloodBankITI.Models.PartnerCities
 @{
     ViewBag.Title = "PartnersEdit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -9,38 +9,35 @@
 <form action="" method="post" novalidate="novalidate">
     <div class="form-group">
 
-        <input type="hidden" name="Partner.PAID" value=@Model.PAID />
+        <input type="hidden" name="Partner.PAID" value=@Model.partnersSelectResult.PAID />
     </div>
     <div class="form-group">
         Name :
 
-        <input type="text" name="Partner.Name" value=@Model.Name>
+        <input type="text" name="Partner.Name" value=@Model.partnersSelectResult.Name>
     </div>
     <div class="form-group">
         Address :
 
-        <input type="text" name="Partner.Address" value=@Model.Address>
+        <input type="text" name="Partner.Address" value=@Model.partnersSelectResult.Address>
     </div>
     <div class="form-group">
-        Status :
-
-        <select name="Partner.Status">
-            @if (@Model.Status == true)
-            {
-                <option selected value="true">True</option>
-                <option value="false"> False </option>
-            }
-            else
-            {
-                <option value="true">True</option>
-                <option selected value="false"> False </option>
-            }
-        </select>
+        Status:
+        <select name="Partner.status"></select>
+        @if (@Model.partnersSelectResult.Status == true)
+        {
+            <option selected="" value="true"> True </option>
+            <option  value="false"> False </option>
+        }
+        else
+        {
+   
+            <option selected="" value="false"> False </option>
+            <option  value="True"> True </option>
+        }
+    </select>
+    
     </div>
-
-    <div>
-        <input type="submit" value="edit" />
-    </div>
-</form>
-
+    
+  </form> 
 @Html.ActionLink("Cancel", "Partners")

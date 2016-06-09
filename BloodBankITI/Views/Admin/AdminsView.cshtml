@@ -4,23 +4,35 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>Control Admins</h2>
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-        <th>Name</th>
-        <th></th>
-    </tr>
-    
-        @foreach (var a in Model)
-        {
+<div class="render">
+    <h4 style="font-family:'Myriad عربي';">المشرفون</h4>
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
             <tr>
-                <td>@(a.Fname + " " + a.Lname) </td>
-                <td>@Html.ActionLink("Delete", "AdminDelete", new { id = a.AID })</td>
+                <th></th>
+                <th style="text-align:right; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الإسم</th>
             </tr>
-        }
-            
-</table>
 
-@Html.ActionLink("Insert New Admin", "AdminInsert") <br/>
-@Html.ActionLink("Back To Home", "Index")
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink("حذف", "AdminDelete", new { id = a.AID })</td>
+                    <td>@(a.Fname + " " + a.Lname) </td>
+
+                </tr>
+            }
+
+        </table>
+        </div>
+        <center>
+            <a href="http://localhost:7508/Home/Index"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>
+            <a href="http://localhost:7508/Admin/AdminInsert"><button class="btn waves-effect waves-light red darken-4" type="submit" name="action">إضافة</button></a>
+
+
+        </center>
+
+        @*@Html.ActionLink("Insert New Admin", "AdminInsert") <br />
+            @Html.ActionLink("Back To Home", "Index")*@
+    </div>

@@ -77,31 +77,6 @@ namespace BloodBankITI.Controllers
             return View(db.Select_BloodTypes().ToList());
         }
 
-        [HttpGet]
-        public ActionResult BloodTypesEdit(int id)
-        {
-            return View(db.BloodTypeSelectByID(id).FirstOrDefault());
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesEdit(BloodType bloodType)
-        {
-            db.BloodTypesEdit(bloodType.BID, bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
-
-        [HttpGet]
-        public ActionResult BloodTypesInsert()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult BloodTypesInsert(BloodType bloodType)
-        {
-            db.BloodTypesInsert(bloodType.Type);
-            return View("BloodTypes", db.Select_BloodTypes().ToList());
-        }
 
         //Cities
         [HttpGet]
@@ -129,7 +104,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertCity(City City)
         {
-            db.Cities_InsertCity(City.CityName);
+            db.Cities_InsertCity(City.CityName, City.Logo);
             return RedirectToAction("Cities");
         }
 
@@ -182,6 +157,12 @@ namespace BloodBankITI.Controllers
             return View(db.Donors_select().ToList());
         }
 
+        [HttpGet]
+        public ActionResult DonorsByBID(Donor donor)
+        {
+            List<DonorByBid_Result> donors = db.DonorByBid(donor.BID).ToList();
+            return View(donors);
+        }
 
         public ActionResult DeleteDonor(int DID)
         {
@@ -380,15 +361,24 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersEdit(int id)
         {
+            Partners_select_Result partner = db.Partners_select(id).FirstOrDefault();
 
-            return View(db.Partners_select(id).FirstOrDefault());
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
+
+            PartnerCities partnerCities = new PartnerCities()
+            {
+                cities = cities,
+                partnersSelectResult = partner
+            };
+            return View(partnerCities);
         }
+
 
         [HttpPost]
 
         public ActionResult PartnersEdit(Partner Partner)
         {
-            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status);
+            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status, Partner.CID);
 
             return RedirectToAction("Partners");
         }
@@ -396,15 +386,16 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult PartnersInsert()
         {
+            List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
-            return View();
+            return View(cities);
         }
 
         [HttpPost]
 
         public ActionResult PartnersInsert(Partner partner)
         {
-            db.Partners_insert( partner.Name, partner.Address);
+            db.Partners_insert( partner.Name, partner.Address, partner.CID);
 
             return RedirectToAction("Partners");
         }

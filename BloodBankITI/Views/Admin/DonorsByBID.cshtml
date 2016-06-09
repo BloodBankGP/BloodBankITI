@@ -1,0 +1,41 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.DonorByBid_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Donors of BloodType @(Model.Select(a => a.Type).FirstOrDefault())</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <tr>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Location</th>
+        <th>Pending or not</th>
+        <th>Last Donation Date</th>
+    </tr>
+    @foreach (var donor in Model)
+    {
+        <tr>
+            <td>@(donor.Fname + " " + donor.Lname)</td>
+            <td>@donor.DonorGender</td>
+            <td>@donor.Phone</td>
+            <td>@donor.CityName</td>
+            <td>@donor.locationName</td>
+            @if (donor.Pending != true)
+            {
+                <td>Can donate now</td>
+            }
+            else
+            {
+                <td>Can't donate now</td>
+            }
+            <td>@donor.DonationDate</td>
+        </tr>
+    }
+</table>
+
+<p>@Html.ActionLink("عرض فصائل الدم", "BloodTypes")</p>
