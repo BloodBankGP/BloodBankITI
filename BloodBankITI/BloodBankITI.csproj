@@ -183,6 +183,7 @@
     <Compile Include="Models\Admins_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AskForBlood_Result.cs" />
     <Compile Include="Models\BloodBankITI.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,11 +233,14 @@
     <Compile Include="Models\Donor.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DonorByBid_Result.cs" />
     <Compile Include="Models\DonorByBloodCity_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\donorpartner.cs" />
+    <Compile Include="Models\DonorRequests_Result.cs" />
     <Compile Include="Models\Donors_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -255,9 +259,13 @@
     <Compile Include="Models\EmergencySelectCityDay_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetAllLabStatestics_Result.cs" />
+    <Compile Include="Models\GetAllTodayStatestics_Result.cs" />
     <Compile Include="Models\GetPartnersDonor_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetStatestics_Result.cs" />
+    <Compile Include="Models\GetTodayStatestics_Result.cs" />
     <Compile Include="Models\Hospital.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -321,6 +329,7 @@
     <Compile Include="Models\Partner.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartnerCities.cs" />
     <Compile Include="Models\PartnersStatestic.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -330,6 +339,7 @@
     <Compile Include="Models\Partners_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partner_SelectByCity_Result.cs" />
     <Compile Include="Models\Post.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -985,6 +995,11 @@
     <Content Include="Views\Admin\UserTypesView.cshtml" />
     <Content Include="Views\Admin\BloodTypesEdit.cshtml" />
     <Content Include="Views\Admin\BloodTypesInsert.cshtml" />
+    <Content Include="Views\Admin\PartnersStatistics.cshtml" />
+    <Content Include="Views\Admin\TodayStatistics.cshtml" />
+    <Content Include="Views\Home\selectPartner.cshtml" />
+    <Content Include="Views\Admin\DonorsByBID.cshtml" />
+    <Content Include="Views\Admin\AllStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
