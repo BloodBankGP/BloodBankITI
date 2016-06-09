@@ -12,9 +12,10 @@
     <h2>EmergencyToDay</h2>
 
     <select name="Donor.CID" id="CitiesID">
+        <option value="0">Not Set</option>
         @foreach (var item in Model)
         {
-            <option value="0">Not Set</option>
+            
             <option value=@item.CID>@item.CityName</option>
         }
     </select>

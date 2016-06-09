@@ -3,44 +3,65 @@
     ViewBag.Title = "PartnersEdit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render" style="height:1050px;">
+    <div class="container white z-depth-5">
+        <div class="card-panel red darken-4"><h6>تعديل معلومات الشركاء</h6></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post" novalidate="novalidate">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="hidden" class="validate" name="Partner.PAID" value=@Model.PAID style="text-align:right">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="Partner.Name" value=@Model.Name style="text-align:right;">
+                            <label class="right-align" for="Partner.Name">الاسم </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="Partner.Address" value=@Model.Address style="text-align:right;">
+                            <label class="right-align" for="Partner.Address">العنوان</label>
+                        </div>
+                    </div>
 
-<h2>PartnersEdit</h2>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label class="right-align" for="Message" style="text-align:right; width:460px;">الحالة</label>
+                            </div>
 
-<form action="" method="post" novalidate="novalidate">
-    <div class="form-group">
 
-        <input type="hidden" name="Partner.PAID" value=@Model.PAID />
+                            <div dir="rtl">
+                                <select class="mdl-select__input" id="professsion" name="Partner.Status">
+                                    @if (@Model.Status == true)
+                                    {
+                                        <option selected value="true">True</option>
+                                        <option value="false"> False </option>
+                                    }
+                                    else
+                                    {
+                                        <option value="true">True</option>
+                                        <option selected value="false"> False </option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                   </div>
+
+                    <center>
+                        @Html.ActionLink("إلغاء", "Partners", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                        <button style="text-align:center;position:center;" class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
+                    </center>   
+                    </div>
+            </form>
+           
+        </div>       
     </div>
-    <div class="form-group">
-        Name :
+</div>
 
-        <input type="text" name="Partner.Name" value=@Model.Name>
-    </div>
-    <div class="form-group">
-        Address :
 
-        <input type="text" name="Partner.Address" value=@Model.Address>
-    </div>
-    <div class="form-group">
-        Status :
-
-        <select name="Partner.Status">
-            @if (@Model.Status == true)
-            {
-                <option selected value="true">True</option>
-                <option value="false"> False </option>
-            }
-            else
-            {
-                <option value="true">True</option>
-                <option selected value="false"> False </option>
-            }
-        </select>
-    </div>
-
-    <div>
-        <input type="submit" value="edit" />
-    </div>
-</form>
-
-@Html.ActionLink("Cancel", "Partners")

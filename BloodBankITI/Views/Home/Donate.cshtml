@@ -4,148 +4,191 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
-
-<head >
-    @*<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>*@ 
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+<head>
+    <!-- Material Design Lite -->
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="~/Scripts/ngo.js"></script>
+    <script src="~/Scripts/FormsDropDwon.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+
+
 </head>
+<div class="render" style="height:1250px;">
+    <div class="container white z-depth-2" style="height:auto;">
+        <div class="card-panel red darken-4"><h6> لو عايز تتبرع </h6></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
+                            <label class="right-align" for="last_name"> الاسم الاخير </label>
+                            @Html.ValidationMessageFor(model => model.Donor.Lname)
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="first_name" name="Fname" type="text" class="validate" style="text-align:right;">
+                            <label class="right-align" for="first_name">الاسم الاول </label>
+                            @Html.ValidationMessageFor(model => model.Donor.Fname)
+                        </div>
+                    </div>
+                    <div class="row" style="float:right;">
+                        <div class="input-field col s12">
+                            <div style="float:right; position:relative; margin-right:52px;">
+                                <label class="right-align" style="float:right;">النوع</label>
+                            </div>
+                            <br />
+                            <p>
+                                <input class="with-gap" name="DonorGender" type="radio" id="Male" />
+                                <label for="Male">ذكر</label>
+                            </p>
+                            <p>
+                                <input class="with-gap" name="DonorGender" type="radio" id="Female" />
+                                <label for="Female">أنثى</label>
+                            </p>
+
+                            @Html.ValidationMessageFor(model => model.Donor.DonorGender)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="number" class="validate" name="Phone" style="text-align:right;" />
+                            <label class="right-align" for="Phone"> رقم التلفون </label>
+                            @Html.ValidationMessageFor(model => model.Donor.Phone)
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="checkbox" class="validate" name="PhoneStatus" onselect="true" style="text-align:right;" />
+                            <label class="right-align" for="PhoneStatus">إظهار الرقم </label>
+                            <select class="mdl-select__input" name="Donor.PhoneStatus" id="CitiesID">
+                                @foreach (var item in Model.CitiesSelectAllResults)
+                                {
+                                <option value="0">Not Set</option>
+                                <option value=@item.CID>@item.CityName</option>
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Donor.PhoneStatus)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
+                            </div>
+
+                            <br />
+                            <br />
+                            <div dir="rtl">
+                                <select class="mdl-select__input" id="professsion" name="Donor.BID">
+                                    @foreach (var item in Model.BloodTypesResults)
+                                    {
+
+                                    <option value=@item.BID>@item.Type</option>
+                                    }
+
+                                </select>
+                            </div>
 
 
-<div class="render">
+                                @Html.ValidationMessageFor(model => model.Donor.BID)
+                            </div>
 
-    <h2>Donate</h2>
-    <form method="POST" action="">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.Fname, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Donor.Fname)
-                @Html.ValidationMessageFor(model => model.Donor.Fname)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.Lname, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Donor.Lname)
-                @Html.ValidationMessageFor(model => model.Donor.Lname)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.DonorGender, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                Male:   @Html.RadioButton("Donor.DonorGender", "Male", true)
-                Female: @Html.RadioButton("Donor.DonorGender", "Female")
-
-                @Html.ValidationMessageFor(model => model.Donor.DonorGender)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.Phone, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Donor.Phone)
-                @Html.ValidationMessageFor(model => model.Donor.Phone)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.PhoneStatus, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Donor.PhoneStatus)
-                @Html.ValidationMessageFor(model => model.Donor.PhoneStatus)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.BID, new { @class = "control-label col-md-2" })
-            <div class="col-md-12">
-                <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                    <select name="Donor.BID" class="mdl-select__input" id="professsion">
-                        @foreach (var item in Model.BloodTypesResults)
-                        {
-                            <option value=@item.BID>@item.Type</option>
-                        }
-                    </select>
-                    @Html.ValidationMessageFor(model => model.Donor.BID)
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.CID, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                <select name="Donor.CID" id="CitiesID">
-                    @foreach (var item in Model.CitiesSelectAllResults)
-                    {
-                        <option value="0">Not Set</option>
-                        <option value=@item.CID>@item.CityName</option>
-                    }
-                </select>
-
-                @Html.ValidationMessageFor(model => model.Donor.CID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.LID, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                <select name="Donor.LID" id="locationID">
-                    <option> </option>
-                </select>
-
-                @Html.ValidationMessageFor(model => model.Donor.LID)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Donor.DonationDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Donor.DonationDate)
-                @Html.ValidationMessageFor(model => model.Donor.LID)
-            </div>
-        </div>
-
-
-        <input type="submit" value="Ask" />
-        <script>
-            $('#CitiesID').change(function () {
-                var CityID = $('#CitiesID').val();
-                $.ajax({
-                    url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-
-                        WriteResponse(data);
-                    },
-                    error: function (e) {
-                        alert(e.statusText);
-                    }
-                });
-
-
-            });
-
-            function WriteResponse(data) {
-                var result;
-                $.each(data, function (index, locations) {
-                    result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
-                });
-                $('#locationID').html(result);
-
-            }
+                     </div>
 
 
 
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                            <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                        </div>
+
+                                        <br />
+                                        <br />
+                                        <div dir="rtl">
+                                            <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
+
+                                                @*@foreach (var item in Model.CitiesSelectAllResults)
+                                                {
 
 
+                                                if (item.CID == Model.ngo.CID)
+                                                {
+                                                <option value=@item.CID selected="selected">@item.CityName</option>
+                                                }
+                                                else
+                                                {
+                                                <option value=@item.CID>@item.CityName</option>
+                                                }
+                                                }*@
+                                                @foreach (var item in Model.CitiesSelectAllResults)
+                                                {
+                                                <option value="0">Not Set</option>
+                                                <option value=@item.CID>@item.CityName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
 
-        </script>
-    </form>
+                                <div class="row">
+                                    <div class="input-field col s12 ">
+                                        <label class="right-align" for="LID">المنطقة </label>
+                                        <select class="mdl-select__input" name="Donor.LID" id="locationID">
+                                            <option> </option>
+                                        </select>
+                                        @Html.ValidationMessageFor(model => model.Donor.CID)
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input type="date" class="validate" name="DonationDate" style="text-align:right;" />
+                                        <label class="right-align" for="DonationDate">تاريخ التبرع </label>
+                                        @Html.ValidationMessageFor(model => model.Donor.LID)
+                                    </div>
+                                </div>
+                                <center>
+                                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
+                                </center>
+
+                            </div>
+</form>
+    </div>
 </div>
+</div>
+<script>
+    $('#CitiesID').change(function () {
+        var CityID = $('#CitiesID').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                WriteResponse(data);
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+
+
+    });
+
+    function WriteResponse(data) {
+        var result;
+        $.each(data, function (index, locations) {
+            result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+        });
+        $('#locationID').html(result);
+
+    }
+</script>
+
+
+
