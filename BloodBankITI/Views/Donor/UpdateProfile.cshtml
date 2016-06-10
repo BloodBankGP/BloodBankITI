@@ -15,6 +15,8 @@
 <form action="" method="POST">
     <div class="form-group">
         <input type="hidden" value="@Model.Donor.DID" name="Donor.DID" />
+        <input type="hidden" value="@Model.Donor.DonationDate" name="Donor.DonationDate" />
+        <input type="hidden" value="@Model.Donor.DonorGender" name="Donor.DonorGender" />
     </div>
 
     <div class="form-group">
@@ -55,8 +57,14 @@
         <select name="Donor.CID" id="CitiesID">
             @foreach (var item in Model.CitiesSelectAllResults)
             {
-                <option value="0">Select a City</option>
-                <option value=@item.CID>@item.CityName</option>
+                if (Model.Donor.CID == item.CID)
+                { 
+                   <option selected="" value=@item.CID>@item.CityName</option>
+                }
+                else
+                {
+                    <option value=@item.CID>@item.CityName</option>
+                }
             }
         </select>
     </div>
@@ -64,7 +72,17 @@
     <div class="form-group">
         <label>Location:</label>
         <select name="Donor.LID" id="locationID">
-            <option> </option>
+            @foreach (var item in Model.Locations)
+            {
+                if (Model.Donor.LID == item.LID)
+                {
+                    <option selected="" value=@item.LID>@item.LocationName</option>
+                }
+                else
+                {
+                    <option value=@item.LID>@item.LocationName</option>
+                }
+            }
         </select>
     </div>
 
@@ -75,7 +93,8 @@
     <input type="submit" value="Save"/>
 
     <script>
-        $('#CitiesID').change(function() {
+        $('#CitiesID').change(function () {
+            $('#locationID').html("");
             var CityID = $('#CitiesID').val();
             $.ajax({
                 url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
@@ -91,10 +110,17 @@
             });
         });
 
+        var model = @Html.Encode(Json.Encode(Model.Donor.LID))
         function WriteResponse(data) {
             var result;
-            $.each(data, function(index, locations) {
-                result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+            $.each(data, function (index, locations) {
+                if (locations.LID == model) {
+                    result += "<option selected value=" + locations.LID + ">" + locations.LocationName + "</option>";
+                }
+                else
+                {
+                    result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+                }
             });
             $('#locationID').html(result);
 
@@ -103,4 +129,4 @@
 
 </form>
 
-@Html.ActionLink("Back", "Index", new {id=Model.Donor.DID})
+@Html.ActionLink("Back", "Index")

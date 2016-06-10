@@ -1,34 +1,54 @@
-﻿@model List<BloodBankITI.Models.Cities_SelectAll_Result>
+﻿@model BloodBankITI.Models.Partner
 @{
     ViewBag.Title = "PartnersInsert";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@*<div class="render">
+    <h2>PartnersInsert</h2>
+    <form action="" method="POST">
+        <div class="form-group">
+            First Name: <input type="text" name="Partner.Fname" />
+        </div>
+        <div class="form-group">
+            Last Name: <input type="text" name="Partner.Lname" />
+        </div>
 
-<h2>PartnersInsert</h2>
-<br/> <br /> <br /> <br /> 
-<form action="" method="POST">
-    <div class="form-group">
-        Name: <input type="text" name="Partner.Name" />
+
+        <input type="submit" value="Insert" />
+    </form>
+    @Html.ActionLink("Cancel", "Partners")
+</div>*@
+
+<link href="~/Content/materialize.css" rel="stylesheet" />
+
+<div class="render">
+    <div class="container white z-depth-5">
+        <div class="card-panel red darken-4"><h6>إضافة شركاء</h6></div>
+        <br /><br /><br />
+        <div  class="col s12">
+            <form class="col s12" action="" method="post" novalidate="novalidate">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="Partner.Name" value=@Model.Name style="text-align:right;">
+                            <label class="right-align" for="Partner.Name"> الإسم </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="validate" name="Partner.Address" value=@Model.Address style="text-align:right;">
+                            <label class="right-align" for="Partner.Address">العنوان</label>
+                        </div>
+                    </div>
+
+                    <center>
+                        <a href="http://localhost:7508/admin/Partners"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>
+                    </center>
+                </div>
+            </form>
+
+        </div>
+       
     </div>
-    <div class="form-group">
-        Address: <input type="text" name="Partner.Address" />
-    </div>
-
-    City:<select class="mdl-select__input" id="professsion" name="partner.CID">
-        <option value="0">غير محدد</option>
-        @foreach (var item in Model)
-        {
-
-            <option value=@item.CID>@item.CityName</option>
-        }
-
-    </select>
-
-
-
-    
-    <input type="submit" value="Insert" />
-</form>
-
-@Html.ActionLink("Cancel", "Partners")
-
+</div>

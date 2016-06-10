@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="BloodBankDBITIModel.Location" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Login" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Needer" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.NGO" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Partner" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.PartnersStatestic" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
@@ -25,7 +24,6 @@
         <EntityTypeShape EntityType="BloodBankDBITIModel.UserType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_BloodTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Posts_BloodTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Cities" ManuallyRouted="false" />
@@ -43,6 +41,11 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Partners" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Partners_Cities" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="10.5" PointY="12.25" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Cities" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Donors" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Needer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

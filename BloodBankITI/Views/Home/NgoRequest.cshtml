@@ -78,7 +78,7 @@
                     <label class="right-align">المدينة  </label>
                 </div>
             </div>*@
-                    <div class="row">
+                    @*<div class="row">
                         <div class="input-field col s12">
                             
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
@@ -89,10 +89,54 @@
                                         <option value="item.CID">@item.CityName</option>
                                     }
                                 </select>
-                                <label class="mdl-select__label" for="professsion">المدينة </label>
+                                <label class="mdl-select__label" for="professsion" style="text-align:right;">المدينة </label>
                             </div>
                        </div>
-                  </div>
+                  </div>*@
+
+
+
+
+                    @*<div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                            </div>
+
+                            <br />
+                            <br />
+                            <div dir="rtl">
+                                <select class="mdl-select__input" name="ngo.CID" id="CitiesID">
+                                    <option value="0">Not Set</option>
+                                    @foreach (var item in Model)
+                                    {
+                                            <option value="item.CID">@item.CityName</option>
+                                    }
+                                </select>
+                                <label class="mdl-select__label" for="professsion" style="text-align:right;">المدينة </label>
+
+                            </div>
+                        </div>
+                    </div>*@
+
+
+                    <div class="row">
+                        <label style="color:red; margin-right:20px;font-size:14px" for="CID"> المدينة </label>
+                        <div class="input-field col s12">
+                                <div dir="rtl">
+                                    <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
+                                        <option value="0">Not Set</option>
+                                        @foreach (var item in Model)
+                                        {
+                                            <option value="item.CID">@item.CityName</option>
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+
                             <center>
                                 <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">ارسال</button>
                             </center>
@@ -100,4 +144,4 @@
 </form>
         </div>
     </div>
-</div>
+    </div>

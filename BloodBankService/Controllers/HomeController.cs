@@ -300,6 +300,7 @@ namespace BloodBankService.Controllers
             return db.EmergencySelectCityDay ((int)DateTime.Now.DayOfWeek,id).FirstOrDefault();
         }
 
+        [HttpGet]
         //////Ask For Blood
         [Route("AskForBlood/{cid:int}/{bid:int}/{nid:int}")]
         public void AskForBlood(int cid, int bid, int nid)
@@ -312,11 +313,28 @@ namespace BloodBankService.Controllers
             }
         } 
 
+        [HttpGet]
         /////Donor Requests
         [Route("DonorRequests/{did:int}")]
         public List<DonorRequests_Result> DonorRequests(int did)
         {
             return db.DonorRequests(did).ToList();
+        }
+
+        [HttpPost]
+        /////Donor Requests
+        [Route("DonorAcceptRequest/{did:int}/{nid:int}")]
+        public void DonorAcceptRequest(int did,int nid)
+        {
+            db.AcceptRequest(nid, did);
+        }
+
+        [HttpPost]
+        /////Donor Requests
+        [Route("DonorCancelRequest/{did:int}/{nid:int}")]
+        public void DonorCancelRequest(int did, int nid)
+        {
+            db.CancelRequest(nid, did);
         } 
     }
 }

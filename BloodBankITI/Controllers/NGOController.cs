@@ -11,12 +11,17 @@ namespace BloodBankITI.Controllers
     public class NGOController : Controller
     {
         // GET: NGO
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             NGO_selectByID_Result ngo = new NGO_selectByID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("NgoByID/" + Int32.Parse(Session["UserId"].ToString())).Result;
             if (response.IsSuccessStatusCode)
             {
                 ngo = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;
@@ -27,13 +32,17 @@ namespace BloodBankITI.Controllers
 
         [HttpGet]
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
             NGO_selectByID_Result ng = new NGO_selectByID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("NgoByID/" + Int32.Parse(Session["UserId"].ToString())).Result;
             if (response.IsSuccessStatusCode)
             {
                 ng = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;

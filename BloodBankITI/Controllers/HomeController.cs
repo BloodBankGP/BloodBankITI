@@ -26,6 +26,13 @@ namespace BloodBankITI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+           return RedirectToAction("Index");
+        }
+
      
 
 
@@ -58,6 +65,17 @@ namespace BloodBankITI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 result = "Done";
+
+
+                response = client.PostAsJsonAsync("AskForBlood/"+n.CID+"/"+n.BID+"/"+n.NID,"").Result;
+            
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = "Done";
+                }
+                else
+                    result = "Failed to insert Needer Donor";
             }
             else
                 result = "Failed to insert Needer";

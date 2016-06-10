@@ -1,0 +1,46 @@
+﻿@model Int32
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<h2>Requests</h2>
+
+<div id="requests">
+
+</div>
+
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+    setInterval(ajax, 1000);
+    function ajax(){
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/DonorRequests/' + model ,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                WriteResponse(data);
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+
+
+    };
+
+    function WriteResponse(data) {
+        var result= "";
+        $.each(data, function (index, requests) {
+            result += "<div>"+ requests.Fname+" "+requests.Lname+" with the same blood type ask for Blood <br> Phone : "+requests.Phone+" <br> Email : "+requests.Email+" <br> Ask Date : "+requests.AskDate+"<br><a href='/Donor/AcceptRequest/"+requests.NID+"/"+model+"'>Accept Request</a><br><a href='/Donor/CancelRequest/"+requests.NID+"/"+model+"'>Cancel Request</a></div>";
+        });
+        $('#requests').html(result);
+
+    }
+</script>

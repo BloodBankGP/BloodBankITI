@@ -5,7 +5,6 @@
  */
 
 /* Global Styles */
-@import url(http://fonts.googleapis.com/earlyaccess/thabit.css);
 
 html,
 body {
@@ -17,11 +16,20 @@ body {
 
 .render{
     width:800px;
-    height:800px;
+    height:auto;
     margin-top:8em;
     margin-right:auto;
     margin-left:auto;
     background-color:#fff;
+     
+}
+table .th_style
+{
+    text-align:center; 
+    font-size:25px;
+    color:firebrick;
+    font-family:'Myriad عربي';
+
 }
 /*header logo */
 #headerlogo {
@@ -29,13 +37,14 @@ body {
     position: absolute;
     width: 250px;
     height: 250px;
-    background-image: url('../img/llogo.png');
+    background: url(../img/finaallogo.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     margin-left: -3em;
-    margin-top: -8.6em !important;
-    margin-bottom: 7em !important;
+    margin-top: -8.6em!important;
+    margin-bottom: 7em!important;
+   
 }
 
 /*fixed bar*/
@@ -47,7 +56,7 @@ body {
 }
 
 /*logo2_layout2*/
-/*#logo2 {
+#logo2 {
     top: 0;
     padding: 9em 15em;
     position: relative;
@@ -59,7 +68,7 @@ body {
     -o-background-size: cover;
     background-size:cover;
 
-}*/
+}
 
 
 /*body {
@@ -348,7 +357,6 @@ footer , #fixedbar ,#layoutone{
 	text-align: center;
 	max-width: 500px;
 	max-height: 300px;
-    margin-left: 675px;
    
     /*align-content:center;*/
 }
@@ -400,7 +408,28 @@ h6 a:hover {
   user-select: none;
 }
 
+/*html {
+  width: 100%;
+  height: 100%;
+  perspective: 900;
+  overflow-y: scroll;
+  background-color: #dce7eb;
+  font-family: "Titillium Web", sans-serif;
+  color: rgba(48, 69, 92, 0.8);
+}
 
+body {
+  min-height: 0;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 90px 0;
+  transform: translate(-50%, 0);
+  box-shadow: 0 10px 0 0 #ff6873 inset;
+  background-color: #fefffa;
+  max-width: 450px;
+  padding: 30px;
+}*/
 @media (max-width: 550px) {
   body {
     box-sizing: border-box;
@@ -412,24 +441,20 @@ h6 a:hover {
   }
 }
 
-h1, h2,h3 {
+h1, h2 {
   color: brown;
 }
 
 h1 {
-    font-family: ' Thabit', serif !important;
   text-transform: uppercase;
   font-size: 36px;
   line-height: 42px;
-  /*letter-spacing: 3px;*/
+  letter-spacing: 3px;
   font-weight: 100;
   text-align:center;
+}
 
-font-family: 'Thabit', serif;
-       }
-
-
-h2,h3 {
+h2 {
   font-size: 26px;
   line-height: 34px;
   font-weight: 300;
@@ -480,12 +505,6 @@ ul li:nth-of-type(2) {
 }
 ul li:nth-of-type(3) {
   animation-delay: 1s;
-}
-ul li:nth-of-type(4) {
-  animation-delay: 1.25s;
-}
-ul li:nth-of-type(5) {
-  animation-delay: 1.5s;
 }
 ul li:last-of-type {
   padding-bottom: 0;
@@ -556,13 +575,6 @@ ul li input[type=checkbox]:checked ~ i:after {
     transform: rotateX(0deg);
   }
 }
-.info {
-    font-family:"Comic Sans MS", cursive, sans-serif;
-
-}
-
-
-
 
 /* Ask for Blood*/
 /*body
@@ -668,47 +680,15 @@ h5
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
-} 
+}
 /*Contact us*/
 h6{
     color:white;
     text-align:center;
 }
-/*Wall Posts*/
-#post p{
-    color:firebrick;
-}
-#post p{
-    color:black;
-}
-#post hr{
-    width:20%;
-    float:right;
-}
-#Comments label{
-    float:right;
-}
-h4{
-    color:firebrick;
-    text-align:center;
-}
-/*LogIn*/
-.login{
-    text-align:center;
-    float:right;
-    width:700px;
-    height:700px;
-}
-#render h2{
-    text-align:left;
-}
-label{
-    text-align:right;
-    color:brown;
 
-}
-/*ngo*/
-              .mdl-select {
+/*Forms Drop Dwon List Style*/
+.mdl-select {
           position: relative;
           font-size: 16px;
           display: inline-block;
@@ -841,14 +821,10 @@ label{
         .mdl-select__expandable-holder .mdl-select__label:after {
           bottom: 0;
         }
- /*NGO index*/
- /*.NGO a img{
-     float:left;
-  
-     top:60em;
-
- }*/
 
 
- /*table*/
- 
+
+    /*5-6-2016*/
+    th{
+        text-align:center;
+    }

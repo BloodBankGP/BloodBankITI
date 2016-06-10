@@ -1411,6 +1411,7 @@ table {
 
 th {
   text-align: left;
+  color:brown;
 }
 
 .table {
@@ -1482,6 +1483,7 @@ th {
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
+  text-align:center!important;
 }
 
 .table-hover > tbody > tr:hover > td,

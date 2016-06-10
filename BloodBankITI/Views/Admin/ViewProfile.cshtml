@@ -5,11 +5,20 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Profile</h2>
+<div class="render">
+    <h2 style="font-family:'Myriad عربي';text-align:center;">الصفحة الشخصية</h2>
+    <br />
+    <label  style="float:right;"> :الإسم</label>
+    <div style="float:right;">@(Model.Fname + " " + Model.Lname)</div><br />
 
-Name: @(Model.Fname + " " + Model.Lname)<br/>
-UserName: @Model.UserName<br/>
-Password: @Model.Password<br/>
+    <label class="right-align" > :اسم المستخدم</label>
+    <div class="right-align" style="float:right;"> @Model.UserName </div> <br />
 
-@Html.ActionLink("Edit Profile", "UpdateProfile")<br/>
-@Html.ActionLink("Back to Home", "Index")
+    <label class="right-align" style="float:right;"> :كلمة المرور</label>
+    <div class="right-align" style="float:right;"> @Model.Password </div> <br />
+
+    <div class="right-align" style="float:right;">
+        @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile")</div><br />
+    <div class="right-align" style="float:right;">
+        @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index")</div>
+</div>
