@@ -545,6 +545,9 @@
     <Parameter Name="cid" Type="int" Mode="In" />
     <Parameter Name="bid" Type="int" Mode="In" />
   </Function>
+  <Function Name="DonorRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
   <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
   </Function>

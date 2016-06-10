@@ -959,6 +959,16 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Admin\BloodTypes\A+.png" />
+    <Content Include="Views\Admin\BloodTypes\A-.png" />
+    <Content Include="Views\Admin\BloodTypes\AB+.png" />
+    <Content Include="Views\Admin\BloodTypes\AB-.png" />
+    <Content Include="Views\Admin\BloodTypes\B+.png" />
+    <Content Include="Views\Admin\BloodTypes\B-.png" />
+    <Content Include="Views\Admin\BloodTypes\O+.png" />
+    <Content Include="Views\Admin\BloodTypes\O-.png" />
+    <Content Include="Views\Admin\CitiesLogos\Ismailia.png" />
+    <Content Include="Views\Admin\CitiesLogos\Portsaid.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1018,6 +1028,7 @@
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
+    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
