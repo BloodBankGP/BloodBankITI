@@ -38,13 +38,13 @@ namespace BloodBankService.Models
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Needer> Needers { get; set; }
-        public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
         public virtual DbSet<NGO> NGOes { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<PartnersStatestic> PartnersStatestics { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
     
         public virtual int AcceptRequest(Nullable<int> nid, Nullable<int> did)
         {
@@ -190,13 +190,17 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_DeleteCity", cIDParameter);
         }
     
-        public virtual int Cities_InsertCity(string cityName)
+        public virtual int Cities_InsertCity(string cityName, string logo)
         {
             var cityNameParameter = cityName != null ?
                 new ObjectParameter("CityName", cityName) :
                 new ObjectParameter("CityName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter);
+            var logoParameter = logo != null ?
+                new ObjectParameter("logo", logo) :
+                new ObjectParameter("logo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cities_InsertCity", cityNameParameter, logoParameter);
         }
     
         public virtual ObjectResult<Cities_SelectAll_Result> Cities_SelectAll()
@@ -819,19 +823,6 @@ namespace BloodBankService.Models
                 new ObjectParameter("did", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Needer_DonorInsert", nidParameter, bidParameter, cidParameter, didParameter);
-        }
-    
-        public virtual ObjectResult<Needer_DonorNotAccepted_Result> Needer_DonorNotAccepted(Nullable<int> nid, Nullable<int> cid)
-        {
-            var nidParameter = nid.HasValue ?
-                new ObjectParameter("nid", nid) :
-                new ObjectParameter("nid", typeof(int));
-    
-            var cidParameter = cid.HasValue ?
-                new ObjectParameter("cid", cid) :
-                new ObjectParameter("cid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Needer_DonorNotAccepted_Result>("Needer_DonorNotAccepted", nidParameter, cidParameter);
         }
     
         public virtual ObjectResult<neederdonorall_Result> neederdonorall()
@@ -1458,6 +1449,32 @@ namespace BloodBankService.Models
                 new ObjectParameter("bid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorByBid_Result>("DonorByBid", bidParameter);
+        }
+    
+        public virtual ObjectResult<Needer_DonorNotAccepted_Result> Needer_DonorNotAccepted(Nullable<int> nid, Nullable<int> did)
+        {
+            var nidParameter = nid.HasValue ?
+                new ObjectParameter("nid", nid) :
+                new ObjectParameter("nid", typeof(int));
+    
+            var didParameter = did.HasValue ?
+                new ObjectParameter("did", did) :
+                new ObjectParameter("did", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Needer_DonorNotAccepted_Result>("Needer_DonorNotAccepted", nidParameter, didParameter);
+        }
+    
+        public virtual int CancelRequest(Nullable<int> nid, Nullable<int> did)
+        {
+            var nidParameter = nid.HasValue ?
+                new ObjectParameter("nid", nid) :
+                new ObjectParameter("nid", typeof(int));
+    
+            var didParameter = did.HasValue ?
+                new ObjectParameter("did", did) :
+                new ObjectParameter("did", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CancelRequest", nidParameter, didParameter);
         }
     
         public virtual ObjectResult<DonorRequests_Result> DonorRequests(Nullable<int> did)

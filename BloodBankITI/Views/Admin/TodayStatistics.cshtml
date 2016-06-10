@@ -4,28 +4,33 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>إحصائيات اليوم</h2>
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <td>مسلسل</td>
-        <td>اسم المعمل</td>
-        <td>اسم المتبرع</td>
-        <td>فصيلة دمه</td>
-        <td>تاريخ التحليل</td>
-    </tr>
+<div class="render">
 
-    @foreach (var s in Model)
-    {
+    <h3>إحصائيات اليوم</h3>
+    <table class="table table-bordered table-striped table-hover" style="text-align:center;background-color:wheat;">
         <tr>
-            <td>@s.SID</td>
-            <td>@s.Name</td>
-            <td>@(s.Fname + " " + s.Lname)</td>
-            <td>@s.Type</td>
-            <td>@s.Insert_Date</td>
+            <td>تاريخ التحليل</td>
+            <td>فصيلة دمه</td>
+            <td>اسم المتبرع</td>
+            <td>اسم المعمل</td>
+            <td>مسلسل</td>
         </tr>
-    }
-</table>
 
-<p>@Html.ActionLink("العودة للإحصائيات", "PartnersStatistics")</p>
-<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.SID</td>
+                <td>@s.Name</td>
+                <td>@(s.Fname + " " + s.Lname)</td>
+                <td>@s.Type</td>
+                <td>@s.Insert_Date</td>
+            </tr>
+        }
+    </table>
+    <center>
+        @Html.ActionLink("العودة للإحصائيات", "PartnersStatistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
+</div>

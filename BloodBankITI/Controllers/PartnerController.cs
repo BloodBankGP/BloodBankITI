@@ -12,12 +12,17 @@ namespace BloodBankITI.Controllers
     public class PartnerController : Controller
     {
         // GET: Partner
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             List<GetPartnersDonor_Result> Part_donor = new List<GetPartnersDonor_Result>();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("getPartnar_Donors/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("getPartnar_Donors/" + Int32.Parse(Session["UserId"].ToString())).Result;
             if (response.IsSuccessStatusCode)
             {
                 Part_donor = response.Content.ReadAsAsync<List<GetPartnersDonor_Result>>().Result;
@@ -28,6 +33,11 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult Edit (int id)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             donor_SelectByDID_Result donor = new donor_SelectByDID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -66,7 +76,7 @@ namespace BloodBankITI.Controllers
             HttpResponseMessage response = client.PutAsync("insertBloodType/"+BID+"/"+DID+"",content).Result;
             if (response.IsSuccessStatusCode)
             {
-              return  RedirectToAction("Index", new { id = 1 });
+              return  RedirectToAction("Index");
 
             }
 

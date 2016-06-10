@@ -4,38 +4,38 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<div class="render">
-    <h2>UserTypesView</h2>
-    @Html.ActionLink("ادخال مستخدم جديد", "UserTypesInsert")
-<br />
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-    <table class="table table-bordered table-hover table-striped">
+<div class="render">
+    <h3> عرض أنواع المستخدمين </h3>
+
+<br />
+    <br />
+
+    <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
         <tr>
+          
+            <th> تعديل  </th>
             <th>النوع </th>
             <th> الرقم المسلسل  </th>
-            <th> تعديل  </th>
-
-
         </tr>
 
         @foreach (var a in Model)
         {
             <tr>
-                <td>@(a.Type) </td>
-                <td>@(a.UTID) </td>
-                <td> @Html.ActionLink("تعديل", "UserTypesEdit", new { id = a.UTID })</td>
-
-
-
-
+          
+                <td  style="text-align:center;"> @Html.ActionLink("تعديل", "UserTypesEdit", new { id = a.UTID })</td>
+                <td  style="text-align:center;">@(a.Type) </td>
+                <td  style="text-align:center;">@(a.UTID) </td>
             </tr>
 
         }
 
     </table>
 
+    <center>
+          @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("ادخال مستخدم جديد", "UserTypesInsert", null, new { @class = "btn waves-effect waves-light red darken-4" })
 
-    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index")
-
-
+    </center>
 </div>

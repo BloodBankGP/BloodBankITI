@@ -76,14 +76,37 @@
     
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="http://localhost:7508/home/index" style="font-family:'Myriad عربي'; font-size:25px;">الصفحةالرئيسية</a>
+        <a href="/home/index" style="font-family:'Myriad عربي'; font-size:25px;">الصفحةالرئيسية</a>
         <a href="#" style="font-family:'Myriad عربي';font-size:25px;">الطوارىء</a>
-        <a href="#" style="font-family:'Myriad عربي'; font-size:25px;">  اتبرع </a>
-        <a href="http://localhost:7508/home/askforblood" style="font-family:'Myriad عربي';font-size:25px;">دم </a>
+        <a href="/home/Donate" style="font-family:'Myriad عربي'; font-size:25px;">  اتبرع </a>
+        <a href="/home/askforblood" style="font-family:'Myriad عربي';font-size:25px;">دم </a>
         <a href="#" style="font-family:'Myriad عربي'; font-size:25px;"> المشاركات</a>
-        <a href="http://localhost:7508/home/info" style="font-family:'Myriad عربي'; font-size:25px;"> معلومات   </a>
+        @if (Session["UserId"] != null && Session["UserName"] != null)
+        {
+            switch (Session["UserType"].ToString())
+            {
+                case "1":
+                    <a href="/admin/index" style="font-family:'Myriad عربي'; font-size:25px;"> الصفحة الشخصية   </a>
+                    break;
+                case "2":
+                <a href="/donor/Index" style="font-family:'Myriad عربي'; font-size:25px;"> الصفحة الشخصية   </a>
+                    break;
+                case "3":
+                <a href="/ngo/index" style="font-family:'Myriad عربي'; font-size:25px;"> الصفحة الشخصية   </a>
+                    break;
+                case "4":
+                <a href="/partner/index" style="font-family:'Myriad عربي'; font-size:25px;"> الصفحة الشخصية   </a>
+                    break;
+            }
+        }
+        <a href="/home/info" style="font-family:'Myriad عربي'; font-size:25px;"> معلومات   </a>
         <a href="#" style="font-family:'Myriad عربي'; font-size:25px;"> احنا </a>
-        <a href="http://localhost:7508/home/contact" style="font-family:'Myriad عربي'; font-size:25px;">تواصل  </a>
+        <a href="/home/contact" style="font-family:'Myriad عربي'; font-size:25px;">تواصل  </a>
+        @if (Session["UserId"] != null && Session["UserName"] != null)
+        {
+            <a href="/home/Logout" style="font-family:'Myriad عربي'; font-size:25px;">تسجيل الخروج  </a>
+
+        }
     </div>
 
     <div id="main">

@@ -3530,6 +3530,7 @@ input[type=range] + .thumb {
   margin-left: auto;
   left: auto;
   right: auto;
+  float:right !important;
 }
 
 .row .col.s7 {
@@ -5793,11 +5794,11 @@ textarea.materialize-textarea + label:after {
   color:#f00;
   position: absolute;
   top: 0.8rem;
-  left: 0.75rem;
+  right: -13.75rem !important;
   font-size: 1rem;
   cursor: text;
   transition: .2s ease-out;
-  padding-right:25px !important;
+  padding-right:218px !important;
 }
 
 .input-field label.active {

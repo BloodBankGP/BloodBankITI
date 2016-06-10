@@ -110,16 +110,15 @@
   </EntityType>
   <EntityType Name="Needer_Donor">
     <Key>
-      <PropertyRef Name="NID" />
-      <PropertyRef Name="DID" />
-      <PropertyRef Name="AskDate" />
+      <PropertyRef Name="NDID" />
     </Key>
+    <Property Name="NDID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NID" Type="int" Nullable="false" />
     <Property Name="BID" Type="int" Nullable="false" />
     <Property Name="CID" Type="int" Nullable="false" />
     <Property Name="DID" Type="int" Nullable="false" />
     <Property Name="AskDate" Type="date" Nullable="false" />
-    <Property Name="Accepted" Type="bit" Nullable="false" />
+    <Property Name="Accepted" Type="bit" />
   </EntityType>
   <EntityType Name="NGO">
     <Key>
@@ -327,6 +326,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Needer_Donor_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_Donors">
+    <End Role="Donors" Type="Self.Donors" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donors">
+        <PropertyRef Name="DID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="DID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_Needer">
+    <End Role="Needer" Type="Self.Needer" Multiplicity="1" />
+    <End Role="Needer_Donor" Type="Self.Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Needer">
+        <PropertyRef Name="NID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="NID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_NGO_Cities">
     <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
     <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
@@ -448,6 +483,10 @@
   </Function>
   <Function Name="BloodTypesInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="type" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CancelRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
   </Function>
   <Function Name="CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
@@ -658,7 +697,7 @@
   </Function>
   <Function Name="Needer_DonorNotAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nid" Type="int" Mode="In" />
-    <Parameter Name="cid" Type="int" Mode="In" />
+    <Parameter Name="did" Type="int" Mode="In" />
   </Function>
   <Function Name="neederdonorall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="NGO_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -899,6 +938,18 @@
     </AssociationSet>
     <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="Self.FK_Needer_Donor_BloodTypes">
       <End Role="BloodTypes" EntitySet="BloodTypes" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Cities" Association="Self.FK_Needer_Donor_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Donors" Association="Self.FK_Needer_Donor_Donors">
+      <End Role="Donors" EntitySet="Donors" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Needer" Association="Self.FK_Needer_Donor_Needer">
+      <End Role="Needer" EntitySet="Needer" />
       <End Role="Needer_Donor" EntitySet="Needer_Donor" />
     </AssociationSet>
     <AssociationSet Name="FK_NGO_Cities" Association="Self.FK_NGO_Cities">

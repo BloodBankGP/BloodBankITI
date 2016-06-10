@@ -14,6 +14,12 @@ namespace BloodBankService.Models
     
     public partial class Needer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Needer()
+        {
+            this.Needer_Donor = new HashSet<Needer_Donor>();
+        }
+    
         public int NID { get; set; }
         public string Email { get; set; }
         public string Fname { get; set; }
@@ -24,5 +30,7 @@ namespace BloodBankService.Models
     
         public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }

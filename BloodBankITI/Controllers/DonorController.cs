@@ -12,12 +12,28 @@ namespace BloodBankITI.Controllers
     {
         //ViewProfile
         [HttpGet]
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ViewProfile()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             donor_SelectByDID_Result Donor = new donor_SelectByDID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("ViewProfile/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("ViewProfile/" + Int32.Parse(Session["UserId"].ToString())).Result;
             if (response.IsSuccessStatusCode)
             {
                 Donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
@@ -27,8 +43,12 @@ namespace BloodBankITI.Controllers
 
         //UpdateProfile
         [HttpGet]
-        public ActionResult UpdateProfile(int id)
+        public ActionResult UpdateProfile()
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+              return  RedirectToAction("Index", "Login");
+            }
             donorCityBlood donor = new donorCityBlood();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -48,10 +68,17 @@ namespace BloodBankITI.Controllers
             }
 
             //Get Donor
-            response = client.GetAsync("ViewProfile/" + id).Result;
+            response = client.GetAsync("ViewProfile/" + Int32.Parse(Session["UserId"].ToString())).Result;
             if (response.IsSuccessStatusCode)
             {
                 donor.Donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
+            }
+
+            //Get Locations
+            response = client.GetAsync("LocationByCID/" + donor.Donor.CID).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donor.Locations = response.Content.ReadAsAsync<List<Locations_SelectAllByCityID_Result>>().Result;
             }
 
             return View(donor);
@@ -66,10 +93,10 @@ namespace BloodBankITI.Controllers
             HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", new {id = donor.DID});
+                return RedirectToAction("Index");
             }
             else
-                return RedirectToAction("UpdateProfile", new {id = donor.DID});
+                return RedirectToAction("UpdateProfile");
         }
 
         [HttpPost]
@@ -80,10 +107,49 @@ namespace BloodBankITI.Controllers
             HttpResponseMessage response = client.PostAsJsonAsync("updatePending/donor", donor).Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", new {id = donor.DID});
+                return RedirectToAction("Index");
             }
             else
-                return RedirectToAction("UpdateProfile", new { id = donor.DID });
+                return RedirectToAction("UpdateProfile");
+        }
+
+        [HttpGet]
+        public ActionResult Requests ()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View(Int32.Parse(Session["UserId"].ToString()));
+        }
+
+        [HttpGet]
+        public ActionResult AcceptRequest(int nid , int did)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("DonorAcceptRequest/"+did+"/"+nid,"").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Requests", new { id = did });
+            }
+            else
+                return RedirectToAction("Requests", new { id = did });
+        }
+
+        [HttpGet]
+        public ActionResult CancelRequest(int nid, int did)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("DonorCancelRequest/" + did + "/" + nid,"").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Requests", new { id = did });
+            }
+            else
+                return RedirectToAction("Requests", new { id = did });
         }
 
     }

@@ -196,3 +196,7 @@ E:\ITI\GP\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
 D:\BloodBankITI\BloodBankService\bin\System.Web.Cors.dll
 D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.dll
 D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Cors.xml
+D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

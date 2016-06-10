@@ -8,10 +8,14 @@
 <!-- Compiled and minified JavaScript -->
 @*<script src="~/Scripts/materialize/materialize.min.js"></script>*@
 <br />
-<form style="margin-left:10px;">
-    <a href="">تسجيل </a>
-    <a href="">دخول </a>
-</form>
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                <form style="margin-left:10px;">
+                    <a href="/Home/Signup">تسجيل </a>
+                    <a href="/Login/Index">دخول </a>
+                </form>
+            }
+
 <!-- Header -->
 <header id="top" class="header">
     @*<div class="text-vertical-center">
