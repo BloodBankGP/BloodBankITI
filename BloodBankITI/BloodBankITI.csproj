@@ -1052,6 +1052,9 @@
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
+    <None Include="Views\Partner\AllStatistics.cshtml" />
+    <None Include="Views\Partner\Statistics.cshtml" />
+    <None Include="Views\Partner\TodayStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
