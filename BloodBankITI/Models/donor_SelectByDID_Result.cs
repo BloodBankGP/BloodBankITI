@@ -25,7 +25,6 @@ namespace BloodBankITI.Models
         public bool Pending { get; set; }
         public Nullable<System.DateTime> DonationDate { get; set; }
         public Nullable<int> PAID { get; set; }
-        public Nullable<bool> PhoneStatus { get; set; }
         public string Type { get; set; }
         public string CityName { get; set; }
         public string LocationName { get; set; }

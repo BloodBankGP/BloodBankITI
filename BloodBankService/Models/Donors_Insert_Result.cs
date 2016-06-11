@@ -10,18 +10,9 @@
 namespace BloodBankService.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PartnersStatestic
+    public partial class Donors_Insert_Result
     {
-        public int SID { get; set; }
-        public Nullable<int> BID { get; set; }
-        public Nullable<System.DateTime> Insert_Date { get; set; }
-        public int PID { get; set; }
-        public int DID { get; set; }
-    
-        public virtual BloodType BloodType { get; set; }
-        public virtual Partner Partner { get; set; }
-        public virtual Donor Donor { get; set; }
+        public Nullable<decimal> id { get; set; }
     }
 }

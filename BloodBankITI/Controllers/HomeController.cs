@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using BloodBankITI.Models;
 using System.Net.Mail;
 using System.Text;
+using System.IO;
 
 namespace BloodBankITI.Controllers
 {
@@ -273,10 +274,11 @@ namespace BloodBankITI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 result = "Done";
-                int id = response.Content.ReadAsAsync<int>().Result;
+               
+                string id = response.Content.ReadAsStringAsync().Result;
                 if (donor.BID == null)
                 {
-                    return RedirectToAction("selectPartner", new { id = id });
+                    return RedirectToAction("selectPartner", new { id = Int32.Parse(id) });
                 }
             }
             else
@@ -301,7 +303,7 @@ namespace BloodBankITI.Controllers
 
 
             List<Partner_SelectByCity_Result> partner = new List<Partner_SelectByCity_Result>();
-             response = client.GetAsync("getPartnar_City/" + donor.CID).Result;
+            response = client.GetAsync("getPartnar_City/" + donor.CID).Result;
             if (response.IsSuccessStatusCode)
             {
                 partner = response.Content.ReadAsAsync<List<Partner_SelectByCity_Result>>().Result;
@@ -331,7 +333,10 @@ namespace BloodBankITI.Controllers
                 PartnersStatestic partnersStatestic = new PartnersStatestic()
                 {
                     PID = Int32.Parse(donor.PAID.ToString()),
-                    DID = donor.DID
+                    DID = donor.DID,
+                    BID = null,
+                    Insert_Date = null
+
                 };
 
                 response = client.PostAsJsonAsync("PartnersStatesticInsert/PartnersStatestic", partnersStatestic).Result;
