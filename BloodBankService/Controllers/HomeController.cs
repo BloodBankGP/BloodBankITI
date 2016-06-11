@@ -101,7 +101,7 @@ namespace BloodBankService.Controllers
                 var id = db.Donors_Insert(donor.Fname, donor.Lname,donor.DonorGender, donor.Phone, donor.BID, donor.CID,
                     donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,donor.PhoneStatus);
 
-                db.Login_insert(login.UserName, login.Password, 2, id);
+                db.Login_insert(login.UserName, login.Password, 2, Int32.Parse(id.ToString()));
 
                 return "Inserted";
             }

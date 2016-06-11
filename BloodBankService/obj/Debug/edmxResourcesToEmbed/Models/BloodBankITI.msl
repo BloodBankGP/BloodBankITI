@@ -14,6 +14,7 @@
     <EntitySetMapping Name="BloodTypes">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
         <MappingFragment StoreEntitySet="BloodTypes">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="BID" ColumnName="BID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
@@ -22,6 +23,7 @@
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
         <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
         </MappingFragment>
@@ -114,18 +116,6 @@
           <ScalarProperty Name="BID" ColumnName="BID" />
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Needer_Donor">
-      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer_Donor">
-        <MappingFragment StoreEntitySet="Needer_Donor">
-          <ScalarProperty Name="NID" ColumnName="NID" />
-          <ScalarProperty Name="BID" ColumnName="BID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-          <ScalarProperty Name="DID" ColumnName="DID" />
-          <ScalarProperty Name="AskDate" ColumnName="AskDate" />
-          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -594,7 +584,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" />
     <FunctionImportMapping FunctionImportName="Needer_DonorNotAccepted" FunctionName="BloodBankDBITIModel.Store.Needer_DonorNotAccepted">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorNotAccepted_Result">
@@ -1048,5 +1037,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CancelRequest" FunctionName="BloodBankDBITIModel.Store.CancelRequest" />
+    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" />
+    <EntitySetMapping Name="Needer_Donor">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Needer_Donor">
+        <MappingFragment StoreEntitySet="Needer_Donor">
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="AskDate" ColumnName="AskDate" />
+          <ScalarProperty Name="DID" ColumnName="DID" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="NDID" ColumnName="NDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
