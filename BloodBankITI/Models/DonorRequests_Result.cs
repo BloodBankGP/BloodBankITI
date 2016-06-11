@@ -7,13 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankService.Models
+namespace BloodBankITI.Models
 {
     using System;
     
     public partial class DonorRequests_Result
     {
         public System.DateTime AskDate { get; set; }
+        public int NDID { get; set; }
         public int NID { get; set; }
         public string Email { get; set; }
         public string Fname { get; set; }
@@ -22,17 +23,5 @@ namespace BloodBankService.Models
         public int CID { get; set; }
         public string Phone { get; set; }
         public int DID { get; set; }
-        public string Fname1 { get; set; }
-        public string Lname1 { get; set; }
-        public string DonorGender { get; set; }
-        public string Phone1 { get; set; }
-        public Nullable<int> BID1 { get; set; }
-        public int CID1 { get; set; }
-        public int LID { get; set; }
-        public bool Status { get; set; }
-        public bool Pending { get; set; }
-        public Nullable<System.DateTime> DonationDate { get; set; }
-        public Nullable<int> PAID { get; set; }
-        public Nullable<bool> PhoneStatus { get; set; }
     }
 }

@@ -550,7 +550,9 @@
           <Parameter Name="cid" Type="int" Mode="In" />
           <Parameter Name="bid" Type="int" Mode="In" />
         </Function>
-        
+        <Function Name="DonorRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="did" Type="int" Mode="In" />
+        </Function>
         <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DID" Type="int" Mode="In" />
         </Function>
@@ -997,20 +999,6 @@
           <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="BloodType">
-          <Key>
-            <PropertyRef Name="BID" />
-          </Key>
-          <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Donors" Relationship="Self.FK_Donors_BloodTypes" FromRole="BloodTypes" ToRole="Donors" />
-          <NavigationProperty Name="Needers" Relationship="Self.FK_Needer_BloodTypes" FromRole="BloodTypes" ToRole="Needer" />
-          <NavigationProperty Name="PartnersStatestics" Relationship="Self.FK_PartnersStatestics_BloodTypes" FromRole="BloodTypes" ToRole="PartnersStatestics" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_BloodTypes" FromRole="BloodTypes" ToRole="Posts" />
-          <NavigationProperty Name="PartnersStatestics1" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" FromRole="BloodType" ToRole="PartnersStatestic" />
-          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="BloodType" ToRole="Needer_Donor" />
-        </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CID" />
@@ -1062,12 +1050,12 @@
           <Property Name="DonationDate" Type="DateTime" Precision="0" />
           <Property Name="PAID" Type="Int32" />
           <Property Name="PhoneStatus" Type="Boolean" />
-          <NavigationProperty Name="BloodType" Relationship="Self.FK_Donors_BloodTypes" FromRole="Donors" ToRole="BloodTypes" />
           <NavigationProperty Name="City" Relationship="Self.FK_Donors_Cities" FromRole="Donors" ToRole="Cities" />
           <NavigationProperty Name="Location" Relationship="Self.FK_Donors_Locations" FromRole="Donors" ToRole="Locations" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_Donors_Partners" FromRole="Donors" ToRole="Partners" />
           <NavigationProperty Name="PartnersStatestics" Relationship="Self.FK_PartnersStatestics_Donors" FromRole="Donors" ToRole="PartnersStatestics" />
           <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Donor" ToRole="Needer_Donor" />
+          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Donors_BloodTypes" FromRole="Donor" ToRole="BloodType" />
         </EntityType>
         <EntityType Name="Emergency">
           <Key>
@@ -1122,9 +1110,9 @@
           <Property Name="BID" Type="Int32" Nullable="false" />
           <Property Name="CID" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BloodType" Relationship="Self.FK_Needer_BloodTypes" FromRole="Needer" ToRole="BloodTypes" />
           <NavigationProperty Name="City" Relationship="Self.FK_Needer_Cities" FromRole="Needer" ToRole="Cities" />
           <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Needer" FromRole="Needer" ToRole="Needer_Donor" />
+          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_BloodTypes" FromRole="Needer" ToRole="BloodType" />
         </EntityType>
         <EntityType Name="NGO">
           <Key>
@@ -1160,11 +1148,10 @@
           <Property Name="Insert_Date" Type="DateTime" Precision="0" />
           <Property Name="PID" Type="Int32" Nullable="false" />
           <Property Name="DID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BloodType" Relationship="Self.FK_PartnersStatestics_BloodTypes" FromRole="PartnersStatestics" ToRole="BloodTypes" />
           <NavigationProperty Name="Donor" Relationship="Self.FK_PartnersStatestics_Donors" FromRole="PartnersStatestics" ToRole="Donors" />
           <NavigationProperty Name="Partner" Relationship="Self.FK_PartnersStatestics_Partners" FromRole="PartnersStatestics" ToRole="Partners" />
           <Property Name="BID" Type="Int32" />
-          <NavigationProperty Name="BloodType1" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" FromRole="PartnersStatestic" ToRole="BloodType" />
+          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes" FromRole="PartnersStatestic" ToRole="BloodType" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -1178,9 +1165,9 @@
           <Property Name="CID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Periodic" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="BloodType" Relationship="Self.FK_Posts_BloodTypes" FromRole="Posts" ToRole="BloodTypes" />
           <NavigationProperty Name="City" Relationship="Self.FK_Posts_Cities" FromRole="Posts" ToRole="Cities" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
+          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Posts_BloodTypes" FromRole="Post" ToRole="BloodType" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1200,54 +1187,6 @@
           <Property Name="UTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Logins" Relationship="Self.FK_Login_UserType" FromRole="UserType" ToRole="Login" />
         </EntityType>
-        <Association Name="FK_Donors_BloodTypes">
-          <End Role="BloodTypes" Type="Self.BloodType" Multiplicity="0..1" />
-          <End Role="Donors" Type="Self.Donor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodTypes">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="Donors">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Needer_BloodTypes">
-          <End Role="BloodTypes" Type="Self.BloodType" Multiplicity="1" />
-          <End Role="Needer" Type="Self.Needer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodTypes">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="Needer">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PartnersStatestics_BloodTypes">
-          <End Role="BloodTypes" Type="Self.BloodType" Multiplicity="0..1" />
-          <End Role="PartnersStatestics" Type="Self.PartnersStatestic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodTypes">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="PartnersStatestics">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Posts_BloodTypes">
-          <End Role="BloodTypes" Type="Self.BloodType" Multiplicity="1" />
-          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodTypes">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="Posts">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Donors_Cities">
           <End Role="Cities" Type="Self.City" Multiplicity="1" />
           <End Role="Donors" Type="Self.Donor" Multiplicity="*" />
@@ -1406,7 +1345,6 @@
         </Association>
         <EntityContainer Name="BloodBankDBITIEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="BloodTypes" EntityType="Self.BloodType" />
           <EntitySet Name="Cities" EntityType="Self.City" />
           <EntitySet Name="Comments1" EntityType="BloodBankDBITIModel.Comments" />
           <EntitySet Name="Days" EntityType="Self.Day" />
@@ -1422,22 +1360,6 @@
           <EntitySet Name="Posts" EntityType="Self.Post" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="UserTypes" EntityType="Self.UserType" />
-          <AssociationSet Name="FK_Donors_BloodTypes" Association="Self.FK_Donors_BloodTypes">
-            <End Role="BloodTypes" EntitySet="BloodTypes" />
-            <End Role="Donors" EntitySet="Donors" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Needer_BloodTypes" Association="Self.FK_Needer_BloodTypes">
-            <End Role="BloodTypes" EntitySet="BloodTypes" />
-            <End Role="Needer" EntitySet="Needers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PartnersStatestics_BloodTypes" Association="Self.FK_PartnersStatestics_BloodTypes">
-            <End Role="BloodTypes" EntitySet="BloodTypes" />
-            <End Role="PartnersStatestics" EntitySet="PartnersStatestics" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Posts_BloodTypes" Association="Self.FK_Posts_BloodTypes">
-            <End Role="BloodTypes" EntitySet="BloodTypes" />
-            <End Role="Posts" EntitySet="Posts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Donors_Cities" Association="Self.FK_Donors_Cities">
             <End Role="Cities" EntitySet="Cities" />
             <End Role="Donors" EntitySet="Donors" />
@@ -1814,7 +1736,6 @@
             <Parameter Name="did" Mode="In" Type="Int32" />
             <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Select_BloodTypes" ReturnType="Collection(BloodBankDBITIModel.Select_BloodTypes_Result)" />
           <FunctionImport Name="Select_BloodTypesID" ReturnType="Collection(BloodBankDBITIModel.Select_BloodTypesID_Result)">
           <Parameter Name="BID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1913,15 +1834,7 @@
           <FunctionImport Name="DonorByBid" ReturnType="Collection(BloodBankDBITIModel.DonorByBid_Result)">
           <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <AssociationSet Name="FK_PartnersStatestics_BloodTypes1" Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1">
-            <End Role="BloodType" EntitySet="BloodTypes" />
-            <End Role="PartnersStatestic" EntitySet="PartnersStatestics" />
-          </AssociationSet>
           <EntitySet Name="Needer_Donor" EntityType="BloodBankDBITIModel.Needer_Donor" />
-          <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes">
-            <End Role="BloodType" EntitySet="BloodTypes" />
-            <End Role="Needer_Donor" EntitySet="Needer_Donor" />
-          </AssociationSet>
           <AssociationSet Name="FK_Needer_Donor_Cities" Association="BloodBankDBITIModel.FK_Needer_Donor_Cities">
             <End Role="City" EntitySet="Cities" />
             <End Role="Needer_Donor" EntitySet="Needer_Donor" />
@@ -1938,6 +1851,31 @@
             <Parameter Name="nid" Mode="In" Type="Int32" />
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="BloodTypes" EntityType="BloodBankDBITIModel.BloodType" />
+          <AssociationSet Name="FK_Donors_BloodTypes" Association="BloodBankDBITIModel.FK_Donors_BloodTypes">
+            <End Role="BloodType" EntitySet="BloodTypes" />
+            <End Role="Donor" EntitySet="Donors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Needer_BloodTypes" Association="BloodBankDBITIModel.FK_Needer_BloodTypes">
+            <End Role="BloodType" EntitySet="BloodTypes" />
+            <End Role="Needer" EntitySet="Needers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes">
+            <End Role="BloodType" EntitySet="BloodTypes" />
+            <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnersStatestics_BloodTypes" Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes">
+            <End Role="BloodType" EntitySet="BloodTypes" />
+            <End Role="PartnersStatestic" EntitySet="PartnersStatestics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_BloodTypes" Association="BloodBankDBITIModel.FK_Posts_BloodTypes">
+            <End Role="BloodType" EntitySet="BloodTypes" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
+          <Parameter Name="did" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_BloodTypes" ReturnType="Collection(BloodBankDBITIModel.Select_BloodTypes_Result)" />
           </EntityContainer>
         <ComplexType Name="Admins_select_Result">
           <Property Type="Int32" Name="AID" Nullable="false" />
@@ -2320,11 +2258,6 @@
           <Property Type="Int32" Name="PAID" Nullable="true" />
           <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="Select_BloodTypes_Result">
-          <Property Type="Int32" Name="BID" Nullable="false" />
-          <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Logo" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="Select_BloodTypesID_Result">
           <Property Type="Int32" Name="BID" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
@@ -2489,18 +2422,6 @@
           <Property Type="String" Name="CityName" Nullable="false" />
           <Property Type="String" Name="locationName" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_PartnersStatestics_BloodTypes1">
-          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="0..1" />
-          <End Type="BloodBankDBITIModel.PartnersStatestic" Role="PartnersStatestic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodType">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="PartnersStatestic">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Needer_Donor">
           <Key>
             <PropertyRef Name="NDID" />
@@ -2512,23 +2433,11 @@
           <Property Name="DID" Type="Int32" Nullable="false" />
           <Property Name="AskDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Accepted" Type="Boolean" />
-          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="Needer_Donor" ToRole="BloodType" />
           <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Cities" FromRole="Needer_Donor" ToRole="City" />
           <NavigationProperty Name="Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Needer_Donor" ToRole="Donor" />
           <NavigationProperty Name="Needer" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Needer" FromRole="Needer_Donor" ToRole="Needer" />
+          <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="Needer_Donor" ToRole="BloodType" />
         </EntityType>
-        <Association Name="FK_Needer_Donor_BloodTypes">
-          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
-          <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BloodType">
-              <PropertyRef Name="BID" />
-            </Principal>
-            <Dependent Role="Needer_Donor">
-              <PropertyRef Name="BID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Needer_Donor_Cities">
           <End Type="BloodBankDBITIModel.City" Role="City" Multiplicity="1" />
           <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
@@ -2565,6 +2474,96 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BloodType">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Donors" Relationship="BloodBankDBITIModel.FK_Donors_BloodTypes" FromRole="BloodType" ToRole="Donor" />
+          <NavigationProperty Name="Needers" Relationship="BloodBankDBITIModel.FK_Needer_BloodTypes" FromRole="BloodType" ToRole="Needer" />
+          <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="BloodType" ToRole="Needer_Donor" />
+          <NavigationProperty Name="PartnersStatestics" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes" FromRole="BloodType" ToRole="PartnersStatestic" />
+          <NavigationProperty Name="Posts" Relationship="BloodBankDBITIModel.FK_Posts_BloodTypes" FromRole="BloodType" ToRole="Post" />
+        </EntityType>
+        <Association Name="FK_Donors_BloodTypes">
+          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="0..1" />
+          <End Type="BloodBankDBITIModel.Donor" Role="Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodType">
+              <PropertyRef Name="BID" />
+            </Principal>
+            <Dependent Role="Donor">
+              <PropertyRef Name="BID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Needer_BloodTypes">
+          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
+          <End Type="BloodBankDBITIModel.Needer" Role="Needer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodType">
+              <PropertyRef Name="BID" />
+            </Principal>
+            <Dependent Role="Needer">
+              <PropertyRef Name="BID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Needer_Donor_BloodTypes">
+          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
+          <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodType">
+              <PropertyRef Name="BID" />
+            </Principal>
+            <Dependent Role="Needer_Donor">
+              <PropertyRef Name="BID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnersStatestics_BloodTypes">
+          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="0..1" />
+          <End Type="BloodBankDBITIModel.PartnersStatestic" Role="PartnersStatestic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodType">
+              <PropertyRef Name="BID" />
+            </Principal>
+            <Dependent Role="PartnersStatestic">
+              <PropertyRef Name="BID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_BloodTypes">
+          <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
+          <End Type="BloodBankDBITIModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BloodType">
+              <PropertyRef Name="BID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="BID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="DonorRequests_Result">
+          <Property Type="DateTime" Name="AskDate" Nullable="false" />
+          <Property Type="Int32" Name="NDID" Nullable="false" />
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Select_BloodTypes_Result">
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Logo" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2578,15 +2577,6 @@
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
                 <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BloodTypes">
-            <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
-              <MappingFragment StoreEntitySet="BloodTypes">
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="BID" ColumnName="BID" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3339,15 +3329,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Select_BloodTypes" FunctionName="BloodBankDBITIModel.Store.Select_BloodTypes">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Select_BloodTypes_Result">
-                <ScalarProperty Name="BID" ColumnName="BID" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Select_BloodTypesID" FunctionName="BloodBankDBITIModel.Store.Select_BloodTypesID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Select_BloodTypesID_Result">
@@ -3597,6 +3578,40 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CancelRequest" FunctionName="BloodBankDBITIModel.Store.CancelRequest" />
+          <EntitySetMapping Name="BloodTypes">
+            <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
+              <MappingFragment StoreEntitySet="BloodTypes">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DonorRequests" FunctionName="BloodBankDBITIModel.Store.DonorRequests">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.DonorRequests_Result">
+                <ScalarProperty Name="AskDate" ColumnName="AskDate" />
+                <ScalarProperty Name="NDID" ColumnName="NDID" />
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_BloodTypes" FunctionName="BloodBankDBITIModel.Store.Select_BloodTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Select_BloodTypes_Result">
+                <ScalarProperty Name="BID" ColumnName="BID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
