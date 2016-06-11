@@ -57,7 +57,6 @@
     <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="DonationDate" Type="date" />
     <Property Name="PAID" Type="int" />
-    <Property Name="PhoneStatus" Type="bit" />
   </EntityType>
   <EntityType Name="Emergency">
     <Key>
@@ -566,7 +565,6 @@
     <Parameter Name="pending" Type="bit" Mode="In" />
     <Parameter Name="donationDate" Type="date" Mode="In" />
     <Parameter Name="PID" Type="int" Mode="In" />
-    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
   </Function>
   <Function Name="Donors_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Donors_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />

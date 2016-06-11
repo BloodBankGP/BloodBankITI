@@ -7,6 +7,10 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using BloodBankService.Models;
 using System.Web.Http.Cors;
+using System.Net.Http;
+using System.Text;
+using System.Net;
+using System.Net.Http.Headers;
 
 namespace BloodBankService.Controllers
 {
@@ -99,7 +103,7 @@ namespace BloodBankService.Controllers
             if (db.CheckName(login.UserName) == null)
             {
                 var id = db.Donors_Insert(donor.Fname, donor.Lname,donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,donor.PhoneStatus);
+                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID);
 
                 db.Login_insert(login.UserName, login.Password, 2, Int32.Parse(id.ToString()));
 
@@ -143,7 +147,7 @@ namespace BloodBankService.Controllers
 
         [HttpPost]
         [Route("donor_insert/{donor}")]
-        public Int32 donor_insert(Models.Donor donor)
+        public HttpResponseMessage donor_insert(Donor donor)
         {
             if (donor.DonorGender == "Male")
             {
@@ -173,10 +177,15 @@ namespace BloodBankService.Controllers
                 }
             }
 
-          var id =  db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
+          var id = db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
+                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID);
 
-          return Int32.Parse(id.ToString());
+            Donors_Insert_Result don = new Donors_Insert_Result(){ id = id.FirstOrDefault().id.Value};
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK,"value");
+            response.Content = new StringContent(don.id.Value.ToString(), Encoding.Unicode);
+
+         return response;
         }
 
         /////////////////////////////Partnar
@@ -343,6 +352,20 @@ namespace BloodBankService.Controllers
         public void DonorCancelRequest(int did, int nid)
         {
             db.CancelRequest(nid, did);
-        } 
+        }
+
+        [HttpGet]
+        [Route("getPartnar_City/{cid:int}")]
+        public List<Partner_SelectByCity_Result> getPartnar_City(int cid)
+        {
+            return db.Partner_SelectByCity(cid).ToList();
+        }
+
+        [HttpPost]
+        [Route("PartnersStatesticInsert/{PartnersStatestic}")]
+        public void PartnersStatesticInsert(PartnersStatestic PartnersStatestic)
+        {
+            db.PartnerStatestics_insert(PartnersStatestic.PID, PartnersStatestic.DID);
+        }
     }
 }
