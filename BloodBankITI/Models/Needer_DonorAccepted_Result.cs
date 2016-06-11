@@ -13,11 +13,18 @@ namespace BloodBankITI.Models
     
     public partial class Needer_DonorAccepted_Result
     {
-        public int NID { get; set; }
-        public int BID { get; set; }
-        public int CID { get; set; }
         public int DID { get; set; }
-        public System.DateTime AskDate { get; set; }
-        public bool Accepted { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public string DonorGender { get; set; }
+        public string Phone { get; set; }
+        public Nullable<int> BID { get; set; }
+        public int CID { get; set; }
+        public int LID { get; set; }
+        public bool Status { get; set; }
+        public bool Pending { get; set; }
+        public Nullable<System.DateTime> DonationDate { get; set; }
+        public Nullable<int> PAID { get; set; }
+        public Nullable<bool> PhoneStatus { get; set; }
     }
 }

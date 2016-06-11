@@ -1,8 +1,11 @@
-﻿@model Int32?
+﻿@model int?
+
 @{
-    ViewBag.Title = "Requests";
+    ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+
+<h2>title</h2>
 
 <head>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -20,7 +23,7 @@
     setInterval(ajax, 1000);
     function ajax(){
         $.ajax({
-            url: 'http://www.bloodservice.somee.com/Home/DonorRequests/' + model ,
+            url: 'http://www.bloodservice.somee.com/Home/NeederRequests/' + model ,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -38,7 +41,7 @@
     function WriteResponse(data) {
         var result= "";
         $.each(data, function (index, requests) {
-            result += "<div>"+ requests.Fname+" "+requests.Lname+" with the same blood type ask for Blood <br> Phone : "+requests.Phone+" <br> Email : "+requests.Email+" <br> Ask Date : "+requests.AskDate+"<br><a href='/Donor/AcceptRequest/"+requests.NID+"/"+model+"'>Accept Request</a><br><a href='/Donor/CancelRequest/"+requests.NID+"/"+model+"'>Cancel Request</a></div>";
+            result += "<div>"+ requests.Fname+" "+requests.Lname+" accepted your request <br> Phone : "+requests.Phone+"</div>";
         });
         $('#requests').html(result);
 

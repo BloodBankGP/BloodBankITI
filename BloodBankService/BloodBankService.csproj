@@ -369,9 +369,6 @@
     <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
-      <DependentUpon>BloodBankITI.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>

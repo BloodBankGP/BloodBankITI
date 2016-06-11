@@ -691,7 +691,6 @@
         </Function>
         <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nid" Type="int" Mode="In" />
-          <Parameter Name="cid" Type="int" Mode="In" />
         </Function>
         <Function Name="Needer_Donorall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1711,10 +1710,9 @@
           </FunctionImport>
           <FunctionImport Name="Needer_DonorAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorAccepted_Result)">
             <Parameter Name="nid" Mode="In" Type="Int32" />
-            <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
-          <FunctionImport Name="Needer_DonorInsert">
+          <FunctionImport Name="Needer_DonorInsert" ReturnType="Collection(Int32)">
             <Parameter Name="nid" Mode="In" Type="Int32" />
             <Parameter Name="bid" Mode="In" Type="Int32" />
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -1926,7 +1924,7 @@
             <End Role="Needer" EntitySet="Needers" />
             <End Role="Needer_Donor" EntitySet="Needer_Donor" />
           </AssociationSet>
-          <FunctionImport Name="Needer_DonorNotAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorNotAccepted_Result)">
+          <FunctionImport Name="Needer_DonorNotAccepted">
             <Parameter Name="nid" Mode="In" Type="Int32" />
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1935,7 +1933,7 @@
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
-            <Parameter Name="did" Mode="In" Type="Int32" />
+          <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="Admins_select_Result">
@@ -2179,14 +2177,6 @@
           <Property Type="Int32" Name="UID" Nullable="false" />
           <Property Type="Int32" Name="UTID" Nullable="false" />
           <Property Type="Boolean" Name="Status" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Needer_DonorAccepted_Result">
-          <Property Type="Int32" Name="NID" Nullable="false" />
-          <Property Type="Int32" Name="BID" Nullable="false" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="Int32" Name="DID" Nullable="false" />
-          <Property Type="DateTime" Name="AskDate" Nullable="false" />
-          <Property Type="Boolean" Name="Accepted" Nullable="false" />
         </ComplexType>
         <ComplexType Name="Needer_Donorall_Result">
           <Property Type="Int32" Name="NID" Nullable="false" />
@@ -2542,15 +2532,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="Needer_DonorNotAccepted_Result">
-          <Property Type="Int32" Name="NDID" Nullable="false" />
-          <Property Type="Int32" Name="NID" Nullable="false" />
-          <Property Type="Int32" Name="BID" Nullable="false" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="Int32" Name="DID" Nullable="false" />
-          <Property Type="DateTime" Name="AskDate" Nullable="false" />
-          <Property Type="Boolean" Name="Accepted" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="DonorRequests_Result">
           <Property Type="DateTime" Name="AskDate" Nullable="false" />
           <Property Type="Int32" Name="NDID" Nullable="false" />
@@ -2562,6 +2543,21 @@
           <Property Type="Int32" Name="CID" Nullable="false" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="DID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Needer_DonorAccepted_Result">
+          <Property Type="Int32" Name="DID" Nullable="false" />
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="true" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="LID" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="Pending" Nullable="false" />
+          <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+          <Property Type="Int32" Name="PAID" Nullable="true" />
+          <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3131,12 +3127,19 @@
           <FunctionImportMapping FunctionImportName="Needer_DonorAccepted" FunctionName="BloodBankDBITIModel.Store.Needer_DonorAccepted">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorAccepted_Result">
-                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="DonorGender" ColumnName="DonorGender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="BID" ColumnName="BID" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="DID" ColumnName="DID" />
-                <ScalarProperty Name="AskDate" ColumnName="AskDate" />
-                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+                <ScalarProperty Name="LID" ColumnName="LID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Pending" ColumnName="Pending" />
+                <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
+                <ScalarProperty Name="PAID" ColumnName="PAID" />
+                <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3581,17 +3584,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Needer_DonorNotAccepted" FunctionName="BloodBankDBITIModel.Store.Needer_DonorNotAccepted">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorNotAccepted_Result">
-                <ScalarProperty Name="NDID" ColumnName="NDID" />
-                <ScalarProperty Name="NID" ColumnName="NID" />
-                <ScalarProperty Name="BID" ColumnName="BID" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="DID" ColumnName="DID" />
-                <ScalarProperty Name="AskDate" ColumnName="AskDate" />
-                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
-              </ComplexTypeMapping>
-            </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CancelRequest" FunctionName="BloodBankDBITIModel.Store.CancelRequest" />
           <FunctionImportMapping FunctionImportName="DonorRequests" FunctionName="BloodBankDBITIModel.Store.DonorRequests">

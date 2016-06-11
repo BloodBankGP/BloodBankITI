@@ -311,7 +311,14 @@ namespace BloodBankService.Controllers
             {
                 db.Needer_DonorInsert(nid, bid, cid, d.DID);
             }
-        } 
+        }
+
+        [HttpGet]
+        [Route("NeederRequests/{nid:int}")]
+        public List<Needer_DonorAccepted_Result> NeederRequests(int nid)
+        {
+            return db.Needer_DonorAccepted(nid).ToList();
+        }
 
         [HttpGet]
         /////Donor Requests

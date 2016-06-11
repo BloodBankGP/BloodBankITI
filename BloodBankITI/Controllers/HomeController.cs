@@ -60,26 +60,44 @@ namespace BloodBankITI.Controllers
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
-            string result;
             
             if (response.IsSuccessStatusCode)
-            {
-                result = "Done";
-
-
+            {  
                 response = client.PostAsJsonAsync("AskForBlood/"+n.CID+"/"+n.BID+"/"+n.NID,"").Result;
             
-
                 if (response.IsSuccessStatusCode)
                 {
-                    result = "Done";
+                    int count = response.Content.ReadAsAsync<int>().Result;
+                    return RedirectToAction("FollowRequest",
+                        new
+                        {
+                            msg =
+                                "Your request was sent to " + count +
+                                " Donors, Follow this link to know if someone accepted your request and get their data to contact them: " +
+                                "http://localhost:7508/Home/RequestsResults/" + n.NID +"/"+ n.Fname + n.Lname
+                        });
                 }
                 else
-                    result = "Failed to insert Needer Donor";
+                    return RedirectToAction("FollowRequest",
+                        new
+                        {
+                            msg = "An error happened and no requests were sent, please try again!"
+                        });
             }
-            else
-                result = "Failed to insert Needer";
+
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult FollowRequest(string msg)
+        {
+            return View(msg);
+        }
+
+        [HttpGet]
+        public ActionResult RequestsResults(int nid, string name)
+        {
+            return View(nid);
         }
 
         [HttpGet]
@@ -94,7 +112,6 @@ namespace BloodBankITI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 posts = response.Content.ReadAsAsync<List<posts_SelectAll_Result>>().Result;
-
             }
 
             foreach (posts_SelectAll_Result item in posts)
@@ -333,15 +350,5 @@ namespace BloodBankITI.Controllers
             
 
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

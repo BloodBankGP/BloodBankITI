@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BloodBankService.Models
+namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class Needer_DonorNotAccepted_Result
+    public partial class DonorRequests_Result
     {
+        public System.DateTime AskDate { get; set; }
         public int NDID { get; set; }
         public int NID { get; set; }
+        public string Email { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
         public int BID { get; set; }
         public int CID { get; set; }
+        public string Phone { get; set; }
         public int DID { get; set; }
-        public System.DateTime AskDate { get; set; }
-        public Nullable<bool> Accepted { get; set; }
     }
 }

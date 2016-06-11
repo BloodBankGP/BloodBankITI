@@ -253,6 +253,9 @@
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
     <Compile Include="Models\donorpartner.cs" />
+    <Compile Include="Models\DonorRequests_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donors_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -1041,6 +1044,8 @@
     <Content Include="Views\Donor\ViewProfile.cshtml" />
     <Content Include="Views\Donor\Requests.cshtml" />
     <Content Include="Views\Home\selectPartner.cshtml" />
+    <None Include="Views\Home\FollowRequest.cshtml" />
+    <None Include="Views\Home\RequestsResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
