@@ -340,7 +340,7 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_Delete", dIDParameter);
         }
     
-        public virtual int Donors_Insert(string fname, string lname, string gender, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<bool> status, Nullable<bool> pending, Nullable<System.DateTime> donationDate, Nullable<int> pID, Nullable<bool> phoneStatus)
+        public virtual ObjectResult<Nullable<int>> Donors_Insert(string fname, string lname, string gender, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<bool> status, Nullable<bool> pending, Nullable<System.DateTime> donationDate, Nullable<int> pID, Nullable<bool> phoneStatus)
         {
             var fnameParameter = fname != null ?
                 new ObjectParameter("Fname", fname) :
@@ -390,7 +390,7 @@ namespace BloodBankITI.Models
                 new ObjectParameter("PhoneStatus", phoneStatus) :
                 new ObjectParameter("PhoneStatus", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_Insert", fnameParameter, lnameParameter, genderParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, statusParameter, pendingParameter, donationDateParameter, pIDParameter, phoneStatusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Donors_Insert", fnameParameter, lnameParameter, genderParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, statusParameter, pendingParameter, donationDateParameter, pIDParameter, phoneStatusParameter);
         }
     
         public virtual ObjectResult<Donors_select_Result> Donors_select()

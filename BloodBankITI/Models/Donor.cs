@@ -35,6 +35,7 @@ namespace BloodBankITI.Models
         public Nullable<int> PAID { get; set; }
         public Nullable<bool> PhoneStatus { get; set; }
     
+        public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }
         public virtual Location Location { get; set; }
         public virtual Partner Partner { get; set; }
@@ -42,6 +43,5 @@ namespace BloodBankITI.Models
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
-        public virtual BloodType BloodType { get; set; }
     }
 }

@@ -593,7 +593,7 @@
     <FunctionImport Name="Donors_Delete">
       <Parameter Name="DID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Donors_Insert">
+    <FunctionImport Name="Donors_Insert" ReturnType="Collection(Int32)">
       <Parameter Name="Fname" Mode="In" Type="String" />
       <Parameter Name="Lname" Mode="In" Type="String" />
       <Parameter Name="Gender" Mode="In" Type="String" />
@@ -723,7 +723,6 @@
     </FunctionImport>
     <FunctionImport Name="Needer_DonorAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorAccepted_Result)">
       <Parameter Name="nid" Mode="In" Type="Int32" />
-      <Parameter Name="cid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
     <FunctionImport Name="Needer_DonorInsert">
@@ -948,6 +947,9 @@
     </AssociationSet>
     <FunctionImport Name="CancelRequest">
       <Parameter Name="nid" Mode="In" Type="Int32" />
+      <Parameter Name="did" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
       <Parameter Name="did" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
@@ -1193,14 +1195,6 @@
     <Property Type="Int32" Name="UID" Nullable="false" />
     <Property Type="Int32" Name="UTID" Nullable="false" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="Needer_DonorAccepted_Result">
-    <Property Type="Int32" Name="NID" Nullable="false" />
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="Int32" Name="DID" Nullable="false" />
-    <Property Type="DateTime" Name="AskDate" Nullable="false" />
-    <Property Type="Boolean" Name="Accepted" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Needer_Donorall_Result">
     <Property Type="Int32" Name="NID" Nullable="false" />
@@ -1577,4 +1571,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="DonorRequests_Result">
+    <Property Type="DateTime" Name="AskDate" Nullable="false" />
+    <Property Type="Int32" Name="NDID" Nullable="false" />
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="DID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Needer_DonorAccepted_Result">
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="true" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="LID" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="Pending" Nullable="false" />
+    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+    <Property Type="Int32" Name="PAID" Nullable="true" />
+    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+  </ComplexType>
 </Schema>

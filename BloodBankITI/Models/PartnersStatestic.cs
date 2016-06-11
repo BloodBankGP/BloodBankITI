@@ -20,8 +20,9 @@ namespace BloodBankITI.Models
         public int DID { get; set; }
         public Nullable<int> BID { get; set; }
     
+        public virtual BloodType BloodType { get; set; }
         public virtual Donor Donor { get; set; }
         public virtual Partner Partner { get; set; }
-        public virtual BloodType BloodType { get; set; }
+        public virtual BloodType BloodType1 { get; set; }
     }
 }

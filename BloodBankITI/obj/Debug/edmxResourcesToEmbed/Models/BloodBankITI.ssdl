@@ -545,6 +545,9 @@
     <Parameter Name="cid" Type="int" Mode="In" />
     <Parameter Name="bid" Type="int" Mode="In" />
   </Function>
+  <Function Name="DonorRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="did" Type="int" Mode="In" />
+  </Function>
   <Function Name="Donors_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DID" Type="int" Mode="In" />
   </Function>
@@ -683,7 +686,6 @@
   </Function>
   <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nid" Type="int" Mode="In" />
-    <Parameter Name="cid" Type="int" Mode="In" />
   </Function>
   <Function Name="Needer_Donorall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

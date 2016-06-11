@@ -1582,7 +1582,7 @@
           <FunctionImport Name="Donors_Delete">
           <Parameter Name="DID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Donors_Insert">
+          <FunctionImport Name="Donors_Insert" ReturnType="Collection(Int32)">
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
             <Parameter Name="Gender" Mode="In" Type="String" />
@@ -1711,7 +1711,7 @@
             <Parameter Name="user" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_DonorAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorAccepted_Result)">
-            <Parameter Name="nid" Mode="In" Type="Int32" />
+          <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
           <FunctionImport Name="Needer_DonorInsert">
@@ -1939,7 +1939,7 @@
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
-            <Parameter Name="did" Mode="In" Type="Int32" />
+          <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="Admins_select_Result">
