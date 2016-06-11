@@ -475,6 +475,9 @@
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="ApproveNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="AskForBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="bid" Type="int" Mode="In" />
           <Parameter Name="cid" Type="int" Mode="In" />
@@ -739,6 +742,7 @@
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="approved" Type="bit" Mode="In" />
         </Function>
+        <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cid" Type="int" Mode="In" />
         </Function>
@@ -1941,6 +1945,10 @@
           <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
           <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ApproveNGO">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NotApprovedNGO" ReturnType="Collection(BloodBankDBITIModel.NotApprovedNGO_Result)" />
           </EntityContainer>
         <ComplexType Name="Admins_select_Result">
           <Property Type="Int32" Name="AID" Nullable="false" />
@@ -2586,6 +2594,15 @@
           <Property Type="DateTime" Name="DonationDate" Nullable="true" />
           <Property Type="Int32" Name="PAID" Nullable="true" />
           <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NotApprovedNGO_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3639,6 +3656,20 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="DID" ColumnName="DID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ApproveNGO" FunctionName="BloodBankDBITIModel.Store.ApproveNGO" />
+          <FunctionImportMapping FunctionImportName="NotApprovedNGO" FunctionName="BloodBankDBITIModel.Store.NotApprovedNGO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NotApprovedNGO_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

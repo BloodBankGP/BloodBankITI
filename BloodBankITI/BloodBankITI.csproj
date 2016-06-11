@@ -362,6 +362,9 @@
     <Compile Include="Models\NGO_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotApprovedNGO_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Partner.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -1034,6 +1037,7 @@
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
     <Content Include="Views\Admin\PartnersStatestics.cshtml" />
+    <Content Include="Views\Admin\NGORequests.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />

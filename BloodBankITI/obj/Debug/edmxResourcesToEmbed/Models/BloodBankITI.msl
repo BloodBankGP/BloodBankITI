@@ -1050,5 +1050,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ApproveNGO" FunctionName="BloodBankDBITIModel.Store.ApproveNGO" />
+    <FunctionImportMapping FunctionImportName="NotApprovedNGO" FunctionName="BloodBankDBITIModel.Store.NotApprovedNGO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.NotApprovedNGO_Result">
+          <ScalarProperty Name="NID" ColumnName="NID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

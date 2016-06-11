@@ -1481,5 +1481,19 @@ namespace BloodBankITI.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorRequests_Result>("DonorRequests", didParameter);
         }
+    
+        public virtual int ApproveNGO(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ApproveNGO", idParameter);
+        }
+    
+        public virtual ObjectResult<NotApprovedNGO_Result> NotApprovedNGO()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NotApprovedNGO_Result>("NotApprovedNGO");
+        }
     }
 }

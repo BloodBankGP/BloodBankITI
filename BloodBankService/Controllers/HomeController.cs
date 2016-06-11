@@ -143,7 +143,7 @@ namespace BloodBankService.Controllers
 
         [HttpPost]
         [Route("donor_insert/{donor}")]
-        public void donor_insert(Models.Donor donor)
+        public Int32 donor_insert(Models.Donor donor)
         {
             if (donor.DonorGender == "Male")
             {
@@ -173,9 +173,10 @@ namespace BloodBankService.Controllers
                 }
             }
 
-            db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
+          var id =  db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
                 donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
 
+          return Int32.Parse(id.ToString());
         }
 
         /////////////////////////////Partnar

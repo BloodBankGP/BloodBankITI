@@ -952,6 +952,10 @@
     <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
       <Parameter Name="did" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="ApproveNGO">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NotApprovedNGO" ReturnType="Collection(BloodBankDBITIModel.NotApprovedNGO_Result)" />
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1597,5 +1601,14 @@
     <Property Type="DateTime" Name="DonationDate" Nullable="true" />
     <Property Type="Int32" Name="PAID" Nullable="true" />
     <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="NotApprovedNGO_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Approved" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -266,3 +266,4 @@ D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.dll
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.Core.xml
 D:\BloodBankITI\BloodBankService\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache
