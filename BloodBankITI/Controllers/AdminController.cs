@@ -447,7 +447,9 @@ namespace BloodBankITI.Controllers
             }
             return View(db.Partners_selectt().ToList());
         }
-        
+
+       
+
         [HttpGet]
         public ActionResult PartnersEdit(int id)
         {
