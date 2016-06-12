@@ -976,16 +976,17 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Admin\BloodTypes\A+.png" />
-    <Content Include="Views\Admin\BloodTypes\A-.png" />
-    <Content Include="Views\Admin\BloodTypes\AB+.png" />
-    <Content Include="Views\Admin\BloodTypes\AB-.png" />
-    <Content Include="Views\Admin\BloodTypes\B+.png" />
-    <Content Include="Views\Admin\BloodTypes\B-.png" />
-    <Content Include="Views\Admin\BloodTypes\O+.png" />
-    <Content Include="Views\Admin\BloodTypes\O-.png" />
-    <Content Include="Views\Admin\CitiesLogos\Ismailia.png" />
-    <Content Include="Views\Admin\CitiesLogos\Portsaid.png" />
+    <Content Include="img\BloodTypes\A+.png" />
+    <Content Include="img\BloodTypes\A-.png" />
+    <Content Include="img\BloodTypes\AB+.png" />
+    <Content Include="img\BloodTypes\AB-.png" />
+    <Content Include="img\BloodTypes\B+.png" />
+    <Content Include="img\BloodTypes\B-.png" />
+    <Content Include="img\BloodTypes\download.png" />
+    <Content Include="img\BloodTypes\O+.png" />
+    <Content Include="img\BloodTypes\O-.png" />
+    <Content Include="img\CitiesLogos\Ismailia.png" />
+    <Content Include="img\CitiesLogos\Portsaid.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
