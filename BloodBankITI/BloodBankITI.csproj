@@ -505,6 +505,11 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
+    <Content Include="img\1220137105858.jpg" />
+    <Content Include="img\A+.png" />
+    <Content Include="img\A-.png" />
+    <Content Include="img\AB+.png" />
+    <Content Include="img\AB-.png" />
     <Content Include="img\android-chrome-144x144.png" />
     <Content Include="img\android-chrome-192x192.png" />
     <Content Include="img\android-chrome-36x36.png" />
@@ -522,6 +527,8 @@
     <Content Include="img\apple-touch-icon-76x76.png" />
     <Content Include="img\apple-touch-icon-precomposed.png" />
     <Content Include="img\apple-touch-icon.png" />
+    <Content Include="img\B+.png" />
+    <Content Include="img\B-.png" />
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\callout.jpg" />
@@ -534,7 +541,9 @@
     <Content Include="img\favicon.ico" />
     <Content Include="img\finaallogo.png" />
     <Content Include="img\homebackground.jpg" />
+    <Content Include="img\Iismailia-logo.png" />
     <Content Include="img\llogo.png" />
+    <Content Include="img\logo-small.png" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
     <Content Include="img\logo2Start.png" />
@@ -544,6 +553,8 @@
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
     <Content Include="img\NGO.png" />
+    <Content Include="img\O+.png" />
+    <Content Include="img\O-.png" />
     <Content Include="img\resala.jpg" />
     <Content Include="img\sona3.jpg" />
     <Content Include="js\animation.js" />
