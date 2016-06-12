@@ -238,6 +238,12 @@
     <Compile Include="Models\Comments_SelectAllByPostID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactSelect_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Day.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -282,6 +288,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetAllTodayStatestics_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetContact_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetPartnersDonor_Result.cs">
@@ -978,16 +987,17 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Admin\BloodTypes\A+.png" />
-    <Content Include="Views\Admin\BloodTypes\A-.png" />
-    <Content Include="Views\Admin\BloodTypes\AB+.png" />
-    <Content Include="Views\Admin\BloodTypes\AB-.png" />
-    <Content Include="Views\Admin\BloodTypes\B+.png" />
-    <Content Include="Views\Admin\BloodTypes\B-.png" />
-    <Content Include="Views\Admin\BloodTypes\O+.png" />
-    <Content Include="Views\Admin\BloodTypes\O-.png" />
-    <Content Include="Views\Admin\CitiesLogos\Ismailia.png" />
-    <Content Include="Views\Admin\CitiesLogos\Portsaid.png" />
+    <Content Include="img\BloodTypes\A+.png" />
+    <Content Include="img\BloodTypes\A-.png" />
+    <Content Include="img\BloodTypes\AB+.png" />
+    <Content Include="img\BloodTypes\AB-.png" />
+    <Content Include="img\BloodTypes\B+.png" />
+    <Content Include="img\BloodTypes\B-.png" />
+    <Content Include="img\BloodTypes\download.png" />
+    <Content Include="img\BloodTypes\O+.png" />
+    <Content Include="img\BloodTypes\O-.png" />
+    <Content Include="img\CitiesLogos\Ismailia.png" />
+    <Content Include="img\CitiesLogos\Portsaid.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1049,6 +1059,8 @@
     <Content Include="Views\Admin\NeederEdit.cshtml" />
     <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <Content Include="Views\Admin\NGORequests.cshtml" />
+    <Content Include="Views\Admin\ShowMsgs.cshtml" />
+    <Content Include="Views\Admin\ShowMsg.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
@@ -1063,6 +1075,7 @@
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
     <None Include="Views\Partner\AllStatistics.cshtml" />
     <None Include="Views\Partner\Statistics.cshtml" />
     <None Include="Views\Partner\TodayStatistics.cshtml" />

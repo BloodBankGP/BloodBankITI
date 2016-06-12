@@ -45,6 +45,7 @@ namespace BloodBankITI.Models
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     
         public virtual int AcceptRequest(Nullable<int> nid, Nullable<int> did)
         {
@@ -1490,6 +1491,58 @@ namespace BloodBankITI.Models
                 new ObjectParameter("PID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Donors_Insert", fnameParameter, lnameParameter, genderParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, statusParameter, pendingParameter, donationDateParameter, pIDParameter);
+        }
+    
+        public virtual int ContactDelete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ContactDelete", idParameter);
+        }
+    
+        public virtual int ContactInsert(string fname, string lname, Nullable<int> age, string city, string email, string msg)
+        {
+            var fnameParameter = fname != null ?
+                new ObjectParameter("fname", fname) :
+                new ObjectParameter("fname", typeof(string));
+    
+            var lnameParameter = lname != null ?
+                new ObjectParameter("lname", lname) :
+                new ObjectParameter("lname", typeof(string));
+    
+            var ageParameter = age.HasValue ?
+                new ObjectParameter("age", age) :
+                new ObjectParameter("age", typeof(int));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var msgParameter = msg != null ?
+                new ObjectParameter("msg", msg) :
+                new ObjectParameter("msg", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ContactInsert", fnameParameter, lnameParameter, ageParameter, cityParameter, emailParameter, msgParameter);
+        }
+    
+        public virtual ObjectResult<ContactSelect_Result> ContactSelect()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ContactSelect_Result>("ContactSelect");
+        }
+    
+        public virtual ObjectResult<GetContact_Result> GetContact(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetContact_Result>("GetContact", idParameter);
         }
     }
 }
