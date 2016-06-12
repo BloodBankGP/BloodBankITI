@@ -591,13 +591,53 @@ namespace BloodBankITI.Controllers
 
         public ActionResult UserTypesEdit(UserType userType)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             db.UserType_update(userType.Type, userType.UTID);
 
             return RedirectToAction("UserTypesView");
         }
 
 
+        //Contact Us Messages
+        [HttpGet]
+        public ActionResult ShowMsgs()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View(db.ContactSelect().ToList());
+            }
+        }
 
+        [HttpGet]
+        public ActionResult ShowMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.GetContact(id).FirstOrDefault());
+        }
+
+        public ActionResult DeleteMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                db.ContactDelete(id);
+                return RedirectToAction("ShowMsgs");
+            }
+        }
      
     }
 }

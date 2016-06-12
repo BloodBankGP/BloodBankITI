@@ -45,6 +45,7 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Partners" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Donors" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Donors" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Contact" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
