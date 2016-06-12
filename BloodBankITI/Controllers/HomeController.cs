@@ -13,6 +13,9 @@ namespace BloodBankITI.Controllers
 {
     public class HomeController : Controller
     {
+
+        BloodBankDBITIEntities db = new BloodBankDBITIEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -351,9 +354,21 @@ namespace BloodBankITI.Controllers
                 }
             }
             else
-                return RedirectToAction("selectPartner", new { id = donor.DID });
-            
+                return RedirectToAction("selectPartner", new { id = donor.DID });    
+        }
 
+        //Contact Us
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            db.ContactInsert(contact.FName, contact.LName, contact.Age, contact.City, contact.Email, contact.Msg);
+            return RedirectToAction("Thanks");
+        }
+
+        [HttpGet]
+        public ActionResult Thanks()
+        {
+            return View();
         }
     }
 }

@@ -1063,6 +1063,7 @@
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
     <None Include="Views\Partner\AllStatistics.cshtml" />
     <None Include="Views\Partner\Statistics.cshtml" />
     <None Include="Views\Partner\TodayStatistics.cshtml" />
