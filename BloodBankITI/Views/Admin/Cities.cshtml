@@ -9,7 +9,8 @@
 
 @foreach (var city in Model)
 {
-    <h2>@city.city.CityName</h2> <img src=@city.city.Logo/>
+    <h2>@city.city.CityName</h2> <img src=@city.city.Logo height="50" width="50 " />
+     
     foreach (var loc in city.locations)
     {
         <p>

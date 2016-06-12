@@ -1,5 +1,4 @@
-﻿@using System.Web.Mvc
-@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
+﻿@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
 
 @{
     ViewBag.Title = "title";
@@ -17,7 +16,9 @@
     @foreach (var b in Model)
     {
         @Html.ActionLink(@b.Type, "DonorsByBID", new {bid = @b.BID})<br/>
-        <img src=@b.Logo/>
+       // <img src="../../img/BloodTypes/A+.png" />
+        <img src=@b.Logo height="50" width="50" />
+
     }
 
 @Html.ActionLink("Back to Home", "Index")

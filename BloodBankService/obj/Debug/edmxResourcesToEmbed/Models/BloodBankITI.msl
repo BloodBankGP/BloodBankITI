@@ -14,6 +14,7 @@
     <EntitySetMapping Name="BloodTypes">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.BloodType">
         <MappingFragment StoreEntitySet="BloodTypes">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="BID" ColumnName="BID" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
@@ -22,6 +23,7 @@
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.City">
         <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
         </MappingFragment>

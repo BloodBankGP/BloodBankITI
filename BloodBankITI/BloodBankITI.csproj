@@ -253,6 +253,9 @@
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
     <Compile Include="Models\donorpartner.cs" />
+    <Compile Include="Models\DonorRequests_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donors_SelectAll_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -345,6 +348,7 @@
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NgoCitiesLogin.cs" />
     <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">
@@ -959,16 +963,16 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Admin\BloodTypes\A+.png" />
-    <Content Include="Views\Admin\BloodTypes\A-.png" />
-    <Content Include="Views\Admin\BloodTypes\AB+.png" />
-    <Content Include="Views\Admin\BloodTypes\AB-.png" />
-    <Content Include="Views\Admin\BloodTypes\B+.png" />
-    <Content Include="Views\Admin\BloodTypes\B-.png" />
-    <Content Include="Views\Admin\BloodTypes\O+.png" />
-    <Content Include="Views\Admin\BloodTypes\O-.png" />
-    <Content Include="Views\Admin\CitiesLogos\Ismailia.png" />
-    <Content Include="Views\Admin\CitiesLogos\Portsaid.png" />
+    <Content Include="img\BloodTypes\A+.png" />
+    <Content Include="img\BloodTypes\A-.png" />
+    <Content Include="img\BloodTypes\AB+.png" />
+    <Content Include="img\BloodTypes\AB-.png" />
+    <Content Include="img\BloodTypes\B+.png" />
+    <Content Include="img\BloodTypes\B-.png" />
+    <Content Include="img\BloodTypes\O+.png" />
+    <Content Include="img\BloodTypes\O-.png" />
+    <Content Include="img\CitiesLogos\Ismailia.png" />
+    <Content Include="img\CitiesLogos\Portsaid.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -976,7 +980,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

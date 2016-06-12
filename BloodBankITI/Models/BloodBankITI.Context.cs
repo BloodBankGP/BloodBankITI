@@ -28,7 +28,6 @@ namespace BloodBankITI.Models
         }
     
         public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<BloodType> BloodTypes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Comments> Comments1 { get; set; }
         public virtual DbSet<Day> Days { get; set; }
@@ -45,6 +44,7 @@ namespace BloodBankITI.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<Needer_Donor> Needer_Donor { get; set; }
+        public virtual DbSet<BloodType> BloodTypes { get; set; }
     
         public virtual int AcceptRequest(Nullable<int> nid, Nullable<int> did)
         {
@@ -1146,11 +1146,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<returDonorData_Result>("returDonorData", didParameter, nidParameter);
         }
     
-        public virtual ObjectResult<Select_BloodTypes_Result> Select_BloodTypes()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_BloodTypes_Result>("Select_BloodTypes");
-        }
-    
         public virtual ObjectResult<Select_BloodTypesID_Result> Select_BloodTypesID(Nullable<int> bID)
         {
             var bIDParameter = bID.HasValue ?
@@ -1475,6 +1470,20 @@ namespace BloodBankITI.Models
                 new ObjectParameter("did", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CancelRequest", nidParameter, didParameter);
+        }
+    
+        public virtual ObjectResult<DonorRequests_Result> DonorRequests(Nullable<int> did)
+        {
+            var didParameter = did.HasValue ?
+                new ObjectParameter("did", did) :
+                new ObjectParameter("did", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorRequests_Result>("DonorRequests", didParameter);
+        }
+    
+        public virtual ObjectResult<Select_BloodTypes_Result> Select_BloodTypes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Select_BloodTypes_Result>("Select_BloodTypes");
         }
     }
 }

@@ -29,9 +29,9 @@ namespace BloodBankITI.Models
         public string Name { get; set; }
         public bool Periodic { get; set; }
     
-        public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comments> Comments { get; set; }
+        public virtual BloodType BloodType { get; set; }
     }
 }
