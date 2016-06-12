@@ -318,7 +318,6 @@
           <ScalarProperty Name="Pending" ColumnName="Pending" />
           <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="locationName" ColumnName="locationName" />
