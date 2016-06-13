@@ -1579,7 +1579,7 @@
             <Parameter Name="Address" Mode="In" Type="String" />
             <Parameter Name="HID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="insert_needer">
+          <FunctionImport Name="insert_needer" ReturnType="Collection(BloodBankDBITIModel.insert_needer_Result)">
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
@@ -1631,7 +1631,7 @@
           <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
-          <FunctionImport Name="Needer_DonorInsert" ReturnType="Collection(Int32)">
+          <FunctionImport Name="Needer_DonorInsert" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorInsert_Result)">
             <Parameter Name="nid" Mode="In" Type="Int32" />
             <Parameter Name="bid" Mode="In" Type="Int32" />
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -2670,6 +2670,12 @@
           <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Msg" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="insert_needer_Result">
+          <Property Type="Decimal" Name="needer_id" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="Needer_DonorInsert_Result">
+          <Property Type="Int32" Name="DonorsNo" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3143,7 +3149,13 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Hospitals_UpdateHospital" FunctionName="BloodBankDBITIModel.Store.Hospitals_UpdateHospital" />
-          <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer" />
+          <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.insert_needer_Result">
+                <ScalarProperty Name="needer_id" ColumnName="needer_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Locations_DeleteLocation" FunctionName="BloodBankDBITIModel.Store.Locations_DeleteLocation" />
           <FunctionImportMapping FunctionImportName="Locations_InsertLocation" FunctionName="BloodBankDBITIModel.Store.Locations_InsertLocation" />
           <FunctionImportMapping FunctionImportName="Locations_SelectAllByCityID" FunctionName="BloodBankDBITIModel.Store.Locations_SelectAllByCityID">
@@ -3224,7 +3236,13 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" />
+          <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorInsert_Result">
+                <ScalarProperty Name="DonorsNo" ColumnName="DonorsNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="neederdonorall" FunctionName="BloodBankDBITIModel.Store.neederdonorall">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.neederdonorall_Result">

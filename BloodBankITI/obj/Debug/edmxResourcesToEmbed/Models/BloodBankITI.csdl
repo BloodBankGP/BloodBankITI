@@ -503,6 +503,8 @@
       <Parameter Name="LID" Mode="In" Type="Int32" />
       <Parameter Name="DID" Mode="In" Type="Int32" />
       <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
@@ -643,6 +645,8 @@
       <Parameter Name="city" Mode="In" Type="Int32" />
       <Parameter Name="phone" Mode="In" Type="String" />
       <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGOUPDATEADMIN">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -1145,6 +1149,8 @@
     <Property Type="Boolean" Name="Status" Nullable="false" />
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="NGO_selectByIDAll_Result">
     <Property Type="Int32" Name="NID" Nullable="false" />

@@ -68,20 +68,14 @@ namespace BloodBankService.Controllers
             return db.NGO_selectByID(nid).FirstOrDefault();
         }
 
-        [HttpPost]
-<<<<<<< HEAD
+
+         [HttpPost]
         [Route("NgoRequest/{ngo}")]
         public string NgoRequest(NGO_selectByID_Result ngo)
         {
             List<string> usernames = db.CheckUsernames().ToList();
             int result = 1;
             foreach (var u in usernames)
-=======
-        [Route("NgoRequest/{ngo}/{login}")]
-        public string NgoRequest(NGO ngo , Login login)
-        {
-            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address , login.UserName , login.Password) == 1)
->>>>>>> origin/master
             {
                 if (ngo.Username == u)
                     result = 0;
@@ -124,13 +118,10 @@ namespace BloodBankService.Controllers
             if (db.CheckName(login.UserName) == null)
             {
                 var id = db.Donors_Insert(donor.Fname, donor.Lname,donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-<<<<<<< HEAD
-                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, login.UserName, login.Password);
-=======
+
                     donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,login.UserName,login.Password);
 
                 db.Login_insert(login.UserName, login.Password, 2, Int32.Parse(id.ToString()));
->>>>>>> origin/master
 
                 return "Inserted";
             }
@@ -171,13 +162,9 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
-<<<<<<< HEAD
         [Route("donor_insert/{donor}")]
         public HttpResponseMessage donor_insert(donor_SelectByDID_Result donor)
-=======
-        [Route("donor_insert/{donor}/{login}")]
-        public HttpResponseMessage donor_insert(Donor donor , Login login)
->>>>>>> origin/master
+
         {
             if (donor.DonorGender == "Male")
             {
@@ -208,11 +195,8 @@ namespace BloodBankService.Controllers
             }
 
           var id = db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-<<<<<<< HEAD
                 donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.Username, donor.Password);
-=======
-                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,login.UserName,login.Password);
->>>>>>> origin/master
+
 
             Donors_Insert_Result don = new Donors_Insert_Result(){ id = id.FirstOrDefault().id.Value};
 

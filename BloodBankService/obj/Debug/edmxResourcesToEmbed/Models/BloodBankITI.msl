@@ -468,7 +468,13 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Hospitals_UpdateHospital" FunctionName="BloodBankDBITIModel.Store.Hospitals_UpdateHospital" />
-    <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer" />
+    <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.insert_needer_Result">
+          <ScalarProperty Name="needer_id" ColumnName="needer_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Locations_DeleteLocation" FunctionName="BloodBankDBITIModel.Store.Locations_DeleteLocation" />
     <FunctionImportMapping FunctionImportName="Locations_InsertLocation" FunctionName="BloodBankDBITIModel.Store.Locations_InsertLocation" />
     <FunctionImportMapping FunctionImportName="Locations_SelectAllByCityID" FunctionName="BloodBankDBITIModel.Store.Locations_SelectAllByCityID">
@@ -549,7 +555,13 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" />
+    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorInsert_Result">
+          <ScalarProperty Name="DonorsNo" ColumnName="DonorsNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="neederdonorall" FunctionName="BloodBankDBITIModel.Store.neederdonorall">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.neederdonorall_Result">
@@ -592,6 +604,8 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1052,6 +1066,8 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
