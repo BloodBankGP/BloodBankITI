@@ -1,0 +1,32 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.ContactSelect_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Messages</h2>
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>City</td>
+        <td>Email</td>
+        <td>Message</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>@(contact.FName + " " + contact.LName)</td>
+            <td>@contact.Age</td>
+            <td>@contact.City</td>
+            <td>@contact.Email</td>
+            <td>@contact.Msg</td>
+            <td>@Html.ActionLink("Show", "ShowMsg", new {id = @contact.ID})</td>
+            <td>@Html.ActionLink("Delete","DeleteMsg", new {id = @contact.ID})</td>
+        </tr>
+    }
+</table>

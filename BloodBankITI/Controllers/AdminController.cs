@@ -394,14 +394,14 @@ namespace BloodBankITI.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            NGO_selectByIDAll_Result ngo = db.NGO_selectByIDAll(id).FirstOrDefault();
+            NGO_selectByID_Result ngo = db.NGO_selectByID(id).FirstOrDefault();
 
             List<Cities_SelectAll_Result> cities = db.Cities_SelectAll().ToList();
 
             NgoUpdate update = new NgoUpdate()
             {
                 ngo =
-                    new NGO()
+                    new NGO_selectByID_Result()
                     {
                         CID = ngo.CID,
                         NID = ngo.NID,
@@ -409,7 +409,9 @@ namespace BloodBankITI.Controllers
                         Phone = ngo.Phone,
                         Address = ngo.Address,
                         Status = ngo.Status,
-                        Approved = ngo.Approved
+                        Approved = ngo.Approved,
+                        Username = ngo.Username,
+                        Password = ngo.Password
                     },
                 CitiesSelectAllResults = cities
             };
@@ -418,7 +420,7 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult NGOEdit(NGO ngo)
+        public ActionResult NGOEdit(NGO_selectByID_Result ngo)
 
         {
             db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved);
@@ -434,8 +436,26 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Ngo");
         }
 
+        [HttpGet]
+        public ActionResult NGORequests()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.NotApprovedNGO().ToList());
+        }
 
+        public ActionResult NGOApprove(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
+            db.ApproveNGO(id);
+            return RedirectToAction("NGORequests");
+        }
 
         //Partners
         [HttpGet]
@@ -573,13 +593,52 @@ namespace BloodBankITI.Controllers
 
         public ActionResult UserTypesEdit(UserType userType)
         {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             db.UserType_update(userType.Type, userType.UTID);
 
             return RedirectToAction("UserTypesView");
         }
 
 
+        //Contact Us Messages
+        [HttpGet]
+        public ActionResult ShowMsgs()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View(db.ContactSelect().ToList());
+            }
+        }
 
-     
+        [HttpGet]
+        public ActionResult ShowMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.GetContact(id).FirstOrDefault());
+        }
+
+        public ActionResult DeleteMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                db.ContactDelete(id);
+                return RedirectToAction("ShowMsgs");
+            }
+        }
     }
 }

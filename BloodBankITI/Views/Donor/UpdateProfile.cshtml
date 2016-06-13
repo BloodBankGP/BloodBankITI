@@ -110,7 +110,7 @@
             });
         });
 
-        var model = @Html.Encode(Json.Encode(Model.Donor.LID))
+        var model = @Html.Encode(Json.Encode(Model.Donor.LID));
         function WriteResponse(data) {
             var result;
             $.each(data, function (index, locations) {

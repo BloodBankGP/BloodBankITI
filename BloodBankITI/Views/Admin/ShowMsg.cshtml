@@ -1,0 +1,23 @@
+﻿@model BloodBankITI.Models.GetContact_Result
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br/>
+First Name: @Model.FName <br/>
+Last Name: @Model.LName <br/>
+Age: @Model.Age <br/>
+City: @Model.City <br/>
+Email: @Model.Email <br/>
+Message: @Model.Msg <br/>
+@Html.ActionLink("Back To Messages", "ShowMsgs")
+
+

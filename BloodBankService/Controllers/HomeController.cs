@@ -7,6 +7,11 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using BloodBankService.Models;
 using System.Web.Http.Cors;
+using System.Net.Http;
+using System.Text;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Data.Entity.Core.Objects;
 
 namespace BloodBankService.Controllers
 {
@@ -63,25 +68,39 @@ namespace BloodBankService.Controllers
             return db.NGO_selectByID(nid).FirstOrDefault();
         }
 
-        [HttpPost]
+
+         [HttpPost]
         [Route("NgoRequest/{ngo}")]
-        public string NgoRequest(NGO ngo)
+        public string NgoRequest(NGO_selectByID_Result ngo)
         {
-            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address) == 1)
+            List<string> usernames = db.CheckUsernames().ToList();
+            int result = 1;
+            foreach (var u in usernames)
             {
-                return "Ngo Inserted";
+                if (ngo.Username == u)
+                    result = 0;
+            }
+
+            if (result == 1)
+            {
+                if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address, ngo.Username, ngo.Password) == 1)
+                {
+                    return "Ngo Inserted";
+                }
+                return "Something went wrong";
             }
             else
             {
-                return "Operation Falied";
+                return "This username is already taken";
             }
         }
+
+
         [HttpPut]
         [Route("NGoUpdate/{Ngo}")]
-        public void NGO_update(NGO Ngo)
+        public void NGO_update(NGO_selectByID_Result ngo)
         {
-            db.NGO_update(Ngo.NID, Ngo.Name,Ngo.CID,Ngo.Phone, Ngo.Address);
-
+            db.NGO_update(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address, ngo.Username, ngo.Password);
         }
 
         
@@ -99,7 +118,8 @@ namespace BloodBankService.Controllers
             if (db.CheckName(login.UserName) == null)
             {
                 var id = db.Donors_Insert(donor.Fname, donor.Lname,donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,donor.PhoneStatus);
+
+                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID,login.UserName,login.Password);
 
                 db.Login_insert(login.UserName, login.Password, 2, Int32.Parse(id.ToString()));
 
@@ -136,14 +156,15 @@ namespace BloodBankService.Controllers
 
         [HttpPost]
         [Route ("donorupdate/{donor}")]
-        public void donor_update(Donor donor)
+        public void donor_update(donor_SelectByDID_Result donor)
         {
-            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender);
+            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender, donor.Username, donor.Password);
         }
 
         [HttpPost]
         [Route("donor_insert/{donor}")]
-        public void donor_insert(Models.Donor donor)
+        public HttpResponseMessage donor_insert(donor_SelectByDID_Result donor)
+
         {
             if (donor.DonorGender == "Male")
             {
@@ -173,9 +194,16 @@ namespace BloodBankService.Controllers
                 }
             }
 
-            db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.PhoneStatus);
+          var id = db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
+                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, donor.Username, donor.Password);
 
+
+            Donors_Insert_Result don = new Donors_Insert_Result(){ id = id.FirstOrDefault().id.Value};
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK,"value");
+            response.Content = new StringContent(don.id.Value.ToString(), Encoding.Unicode);
+
+         return response;
         }
 
         /////////////////////////////Partnar
@@ -197,9 +225,15 @@ namespace BloodBankService.Controllers
 
         [HttpPost]
         [Route("insertNeeder/{n}")]
-        public void insertNeeder(Needer n)
+        public HttpResponseMessage insertNeeder(Needer n)
         {
-            db.insert_needer(n.Email, n.Fname, n.Lname, n.BID, n.CID, n.Phone);
+            var id = db.insert_needer(n.Email, n.Fname, n.Lname, n.BID, n.CID, n.Phone);
+
+            insert_needer_Result needer = new insert_needer_Result() { needer_id = id.FirstOrDefault().needer_id.Value };
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
+            response.Content = new StringContent(needer.needer_id.Value.ToString(), Encoding.Unicode);
+            return response;
         }
 
         [HttpGet]
@@ -300,18 +334,29 @@ namespace BloodBankService.Controllers
             return db.EmergencySelectCityDay ((int)DateTime.Now.DayOfWeek,id).FirstOrDefault();
         }
 
-        [HttpGet]
+        [HttpPost]
         //////Ask For Blood
         [Route("AskForBlood/{cid:int}/{bid:int}/{nid:int}")]
-        public void AskForBlood(int cid, int bid, int nid)
+        public HttpResponseMessage AskForBlood(int cid, int bid, int nid)
         {
-            List<AskForBlood_Result> donors = db.AskForBlood(cid, bid).ToList();
+            List<AskForBlood_Result> donors = db.AskForBlood(bid, cid).ToList();
+
+            var count = (ObjectResult<Needer_DonorInsert_Result>)null;
 
             foreach (var d in donors)
             {
-                db.Needer_DonorInsert(nid, bid, cid, d.DID);
+                count = db.Needer_DonorInsert(nid, bid, cid, d.DID);
             }
+
+            Needer_DonorInsert_Result needonor = new Needer_DonorInsert_Result() { DonorsNo = count.FirstOrDefault().DonorsNo.Value };
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
+
+            response.Content = new StringContent(needonor.DonorsNo.Value.ToString(), Encoding.Unicode);
+
+            return response;
         }
+
 
         [HttpGet]
         [Route("NeederRequests/{nid:int}")]
@@ -342,6 +387,20 @@ namespace BloodBankService.Controllers
         public void DonorCancelRequest(int did, int nid)
         {
             db.CancelRequest(nid, did);
-        } 
+        }
+
+        [HttpGet]
+        [Route("getPartnar_City/{cid:int}")]
+        public List<Partner_SelectByCity_Result> getPartnar_City(int cid)
+        {
+            return db.Partner_SelectByCity(cid).ToList();
+        }
+
+        [HttpPost]
+        [Route("PartnersStatesticInsert/{PartnersStatestic}")]
+        public void PartnersStatesticInsert(PartnersStatestic PartnersStatestic)
+        {
+            db.PartnerStatestics_insert(PartnersStatestic.PID, PartnersStatestic.DID);
+        }
     }
 }
