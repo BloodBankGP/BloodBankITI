@@ -127,11 +127,10 @@
                         <div class="input-field col s12">
                             <input type="date" class="validate" name="Donor.DonationDate" style="text-align: right;"/>
                             <label class="right-align" for="DonationDate">تاريخ التبرع </label>
-                            @Html.ValidationMessageFor(model => model.Donor.LID)
+                            @Html.ValidationMessageFor(model => model.Donor.DonationDate)
                         </div>
                     </div>
                     <div class="row">
-<<<<<<< HEAD
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
                                 <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
@@ -200,27 +199,6 @@
                 
 
                     <div class="row">
-                <div class="input-field col s6">
-                    <input id="Username" type="text" class="validate" name="Donor.UserName" style="text-align:right">
-                    <label class="right-align" for="last_name"> Username </label>
-                    @Html.ValidationMessageFor(model => model.Login.UserName)
-                </div>
-                <div class="input-field col s6">
-                    <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
-                    <label class="right-align" for="last_name"> Password </label>
-                    @Html.ValidationMessageFor(model => model.Login.Password)
-                </div>
-                        <div class="input-field col s6">
-                            <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
-                            <label class="right-align" for="Passwprd"> ConfirmPassword </label>
-                        </div>
-
-                        <center>
-                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
-                        </center>
-
-</form>
-=======
                         <div class="input-field col s6">
                             <input id="Username" type="text" class="validate" name="Donor.UserName" style="text-align: right">
                             <label class="right-align" for="last_name"> اسم المستخدم </label>
@@ -244,7 +222,6 @@
             </form>
             </div>
         </div>
->>>>>>> origin/master
     </div>
 <script>
     $('#CitiesID').change(function () {
