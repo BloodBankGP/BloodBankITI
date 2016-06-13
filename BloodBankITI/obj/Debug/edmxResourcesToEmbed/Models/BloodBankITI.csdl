@@ -8,6 +8,7 @@
     <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="BloodType">
     <Key>
@@ -621,6 +622,7 @@
       <Parameter Name="lname" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="pic" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -632,6 +634,7 @@
       <Parameter Name="lname" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="pic" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="ApproveNGO">
       <Parameter Name="id" Mode="In" Type="Int32" />
