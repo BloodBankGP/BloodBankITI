@@ -7,11 +7,12 @@
 
 <div class="render">
 
-<h4>المشاركات </h4>
+<h4 style="font-family:'Myriad عربي'">المشاركات </h4>
+    <hr />
 
 @foreach (var post in Model)
 {
-    <div id="post">
+    <div id="post" class="outset">
         <p>@post.post.Name  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p> 
         <p>@post.post.Post</p>
     </div>
@@ -25,7 +26,7 @@
     </div>
 
         <div id="insertComment">
-            <h6>Insert Comment</h6>
+            @*<h6>Insert Comment</h6>*@
             <form action="InsertComment" method="post">
 
                 @*<input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>*@

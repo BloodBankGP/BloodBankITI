@@ -7,11 +7,8 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h3> عرض أنواع المستخدمين </h3>
-
-<br />
-    <br />
-
+    <h3 style="font-family:Myriad عربي;"> عرض أنواع المستخدمين </h3>
+    <hr />
     <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
         <tr>
           
@@ -24,9 +21,9 @@
         {
             <tr>
           
-                <td  style="text-align:center;"> @Html.ActionLink("تعديل", "UserTypesEdit", new { id = a.UTID })</td>
-                <td  style="text-align:center;">@(a.Type) </td>
-                <td  style="text-align:center;">@(a.UTID) </td>
+                <td> @Html.ActionLink("تعديل", "UserTypesEdit", new { id = a.UTID })</td>
+                <td>@(a.Type) </td>
+                <td>@(a.UTID) </td>
             </tr>
 
         }

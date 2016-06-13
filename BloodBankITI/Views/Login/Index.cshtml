@@ -4,44 +4,345 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
+<head>
+
+    <script src="~/js/login.js"></script>
+
+    <style>
+         *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/*html {
+  overflow-y: scroll;
+}*/
+
+body {
+  /*background: #179b77;*/
+  font-family: Myriad عربي;
+}
+
+a {
+  text-decoration: none;
+  color: brown;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+a:hover {
+  color: #179b77;
+}
+
+.form {
+  /*background: rgba(19, 35, 47, 0.9);*/
+  background:#fff;
+  padding: 40px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.tab-group {
+  list-style: none;
+  padding: 0 0 0 150px;
+  margin: 0 0 40px 0;
+}
+.tab-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group li a {
+  display: block;
+  text-decoration: none;
+  padding: 5px;
+  /*background: rgba(160, 179, 176, 0.25);*/
+  /*color: #a0b3b0;*/
+  font-size: 18px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+.tab-group li a:hover {
+  background: #c1bdba;
+  color: brown;
+}
+.tab-group .active a {
+  background: brown;
+  color: #ffffff;
+}
+
+.tab-content > div:last-child {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+label {
+  position: absolute;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  right: 13px;
+  /*color: rgba(255, 255, 255, 0.5);*/
+  color:#383333;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 18px;
+  font-weight:300;
+}
+label .req {
+  margin: 2px;
+  color: brown;
+}
+
+label.active {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  right: 2px;
+  font-size: 14px;
+}
+label.active .req {
+  opacity: 0;
+}
+
+label.highlight {
+  color: #ffffff;
+}
+
+input, textarea {
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #383333;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+  text-align:right;
+}
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: brown;  
+}
+
+textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 5px 0;
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: brown;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  margin-left:165px;
+  font-family:'Myriad عربي';
+}
+.button:hover, .button:focus {
+  background: #c1bdba;
+  color:brown;
+}
+
+.button-block {
+  display: block;
+  width: 100px;
+}
+
+.forgot {
+  margin-top: -20px;
+  text-align: right;
+}
+.info {
+  margin: 50px auto;
+  text-align: center;
+}
+.info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.info span {
+  color: #4d4d4d;
+  font-size: 22px;
+}
+.info span a {
+  color: #000000;
+  text-decoration: none;
+}
+ .info span .fa {
+  color: #EF3B3A;
+}
+
+.form .thumbnail {
+  background: #fff;
+  width: 100px;
+  height: 10px;
+  margin: 0 auto 30px;
+  padding: 50px 30px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  box-sizing: border-box;
+}
+.form .thumbnail img {
+  display: block;
+  width: 100%;
+}
+
+
+
+    </style>
+</head>
 <div class="render">
-    <h2><em> تسجيل الدخول</em></h2>
-    <div class="login">
+    @*<div class="login">
         <div class="row">
             <div class="col-lg-8 text-center">
-                <div id="loginForm">
-                    @*@using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
+                <div id="loginForm">*@
+                    @*@using (Html.BeginForm("Index", "Logsin", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
                       @* { *@
-                    <form action="" method="post">
-                        <hr />
-                        @Html.ValidationSummary(true)
-                        <div class="form-group text-center">
-                            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                            @*<label class="col-md-2 control-label"> اسم_المستخدم</label>*@
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.UserName)
-                            </div>
-                        </div>
-                        <div class="form-group  text-center">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            @*<label class="col-md-2 control-label"> كلمة_المرور</label>*@
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password)
-                            </div>
-                        </div>
+    @*<form action="" method="post">*@
+        @*<hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group text-center">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })*@
+        @*<label class="col-md-2 control-label"> اسم_المستخدم</label>*@
+        @*<div class="col-md-10">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>*@
+        @*<div class="form-group  text-center">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <label class="col-md-2 control-label"> كلمة_المرور</label>
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>*@
 
-                        <div class="form-group  text-center">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="دخول" class="btn btn-default" />
-                            </div>
-                        </div>
-                        </form>
-                    @* } *@
+        @*<div class="form-group  text-center">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="دخول" class="btn btn-default" />
                 </div>
             </div>
+        *@
+        @* } *@
+        @*</div>
+                    </div>
+                </div>
+            </div>*@
+    @*</form>*@
+
+    @*<div class="info">
+        <h2 style="font-family:'Myriad عربي'; text-align:center;font-size:36px;">تسجيل الدخول </h2>
+        <span>دمــــك  <i class="fa fa-heart"></i> حيـــــاة</span>
+    </div>*@
+    <div class="form">
+
+        @*<ul class="tab-group">
+            <li class="tab active"><a href="#signup">تسجيل الدخول </a></li>
+        </ul>*@
+        <div class="thumbnail"><img src="~/img/blood-drop.png" /></div>
+        <div class="tab-content">
+            <div id="signup">
+
+                <form action="" method="post" class="regi">
+                    <div class="field-wrap">
+                        <label>
+                            <span class="req">*</span>  اسم المستخدم 
+                        </label>
+                        <input type="text" name="UserName" required autocomplete="off" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            <span class="req">*</span>    كلمة المرور 
+                        </label>
+                        <input type="password" name="Password" required autocomplete="off" />
+                    </div>
+
+                    <button type="submit" class="button button-block" style="font-family:'Myriad عربي';">تسجيل  </button>
+
+                </form>
+
+            </div>
+
+            <div id="login">
+                <h1>Welcome Back!</h1>
+
+                <form action="/" method="post">
+
+                    <div class="field-wrap">
+                        <label>
+                            Email Address<span class="req">*</span>
+                        </label>
+                        <input type="email" required autocomplete="off" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Password<span class="req">*</span>
+                        </label>
+                        <input type="password" required autocomplete="off" />
+                    </div>
+
+                    <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+                    <button class="button button-block" />Log In</button>
+
+                </form>
+
+            </div>
+
         </div>
+        <!-- tab-content -->
+
     </div>
+    <!-- /form -->
 
    </div>

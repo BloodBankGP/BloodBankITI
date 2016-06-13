@@ -4,21 +4,28 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h2 style="font-family:'Myriad عربي';text-align:center;">الصفحة الشخصية</h2>
+    <h4 style="font-family:'Myriad عربي';">الصفحة الشخصية</h4>
+    <hr />
+
+    <div class="outset">
+        <p> :الإسم</p><br />
+        <div style="text-align:center;">  @(Model.Fname + " " + Model.Lname)</div>
+
+        <p> :اسم المستخدم</p><br />
+        <div style="text-align:center;">
+            @Model.UserName</div>
+
+            <p> :كلمة المرور</p><br />
+            <div style="text-align:center;">
+                @Model.Password</div>
+            </div>
+
     <br />
-    <label  style="float:right;"> :الإسم</label>
-    <div style="float:right;">@(Model.Fname + " " + Model.Lname)</div><br />
-
-    <label class="right-align" > :اسم المستخدم</label>
-    <div class="right-align" style="float:right;"> @Model.UserName </div> <br />
-
-    <label class="right-align" style="float:right;"> :كلمة المرور</label>
-    <div class="right-align" style="float:right;"> @Model.Password </div> <br />
-
-    <div class="right-align" style="float:right;">
-        @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile")</div><br />
-    <div class="right-align" style="float:right;">
-        @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index")</div>
+    <center>
+        @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile",null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index",null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 </div>
