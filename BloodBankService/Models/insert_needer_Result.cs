@@ -11,17 +11,8 @@ namespace BloodBankService.Models
 {
     using System;
     
-    public partial class NGO_selectByID_Result
+    public partial class insert_needer_Result
     {
-        public int NID { get; set; }
-        public string Name { get; set; }
-        public int CID { get; set; }
-        public string Phone { get; set; }
-        public bool Approved { get; set; }
-        public bool Status { get; set; }
-        public string Address { get; set; }
-        public string CityName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public Nullable<decimal> needer_id { get; set; }
     }
 }

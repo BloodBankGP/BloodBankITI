@@ -86,7 +86,7 @@ namespace BloodBankITI.Controllers
 
 
         [HttpPost]
-        public ActionResult UpdateProfile(Donor donor)
+        public ActionResult UpdateProfile(DonorByBid_Result donor)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
