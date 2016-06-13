@@ -128,11 +128,26 @@
                                         @Html.ValidationMessageFor(model => model.Donor.LID)
                                     </div>
                                 </div>
-                                <center>
-                                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
-                                </center>
+                <center>
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
+                </center>
 
-                            </div>
+                    <div class="row">
+                <div class="input-field col s6">
+                    <input id="Username" type="text" class="validate" name="login.UserName" style="text-align:right">
+                    <label class="right-align" for="last_name"> Username </label>
+                    @Html.ValidationMessageFor(model => model.Login.UserName)
+                </div>
+                <div class="input-field col s6">
+                    <input id="Password" type="text" class="validate" name="login.Password" style="text-align:right">
+                    <label class="right-align" for="last_name"> Password </label>
+                    @Html.ValidationMessageFor(model => model.Login.Password)
+                </div>
+                        <div class="input-field col s6">
+                            <input id="Password" type="text" class="validate" name="Password" style="text-align:right">
+                            <label class="right-align" for="Passwprd"> ConfirmPassword </label>
+                        </div>
+
 </form>
     </div>
 </div>

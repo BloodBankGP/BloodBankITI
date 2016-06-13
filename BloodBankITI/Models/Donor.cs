@@ -17,8 +17,8 @@ namespace BloodBankITI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Donor()
         {
-            this.Needer_Donor = new HashSet<Needer_Donor>();
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
+            this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
         public int DID { get; set; }
@@ -33,14 +33,15 @@ namespace BloodBankITI.Models
         public bool Pending { get; set; }
         public Nullable<System.DateTime> DonationDate { get; set; }
         public Nullable<int> PAID { get; set; }
+        public Nullable<bool> PhoneStatus { get; set; }
     
-        public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }
         public virtual Location Location { get; set; }
         public virtual Partner Partner { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
+        public virtual BloodType BloodType { get; set; }
     }
 }
