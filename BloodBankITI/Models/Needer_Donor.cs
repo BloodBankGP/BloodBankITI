@@ -22,9 +22,9 @@ namespace BloodBankITI.Models
         public System.DateTime AskDate { get; set; }
         public Nullable<bool> Accepted { get; set; }
     
-        public virtual City City { get; set; }
-        public virtual Donor Donor { get; set; }
-        public virtual Needer Needer { get; set; }
         public virtual BloodType BloodType { get; set; }
+        public virtual City City { get; set; }
+        public virtual Needer Needer { get; set; }
+        public virtual Donor Donor { get; set; }
     }
 }

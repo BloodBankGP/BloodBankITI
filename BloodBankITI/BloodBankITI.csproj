@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\DonorLogin.cs" />
     <Compile Include="Models\donorpartner.cs" />
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
@@ -316,9 +317,6 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\insert_needer_Result.cs">
-      <DependentUpon>BloodBankITI.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -354,15 +352,13 @@
     <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Needer_DonorInsert_Result.cs">
-      <DependentUpon>BloodBankITI.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NgoCitiesLogin.cs" />
     <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">

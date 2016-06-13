@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
         <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="AID" ColumnName="AID" />
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />

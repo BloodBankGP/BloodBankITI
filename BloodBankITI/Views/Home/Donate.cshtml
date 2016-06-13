@@ -22,136 +22,139 @@
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="first_name" name="Donor.Fname" type="text" class="validate" style="text-align: right;">
+                        <label class="right-align" for="first_name">الاسم الاول </label>
+                        @Html.ValidationMessageFor(model => model.Donor.Fname)
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align: right">
+                        <label class="right-align" for="last_name"> الاسم الاخير </label>
+                        @Html.ValidationMessageFor(model => model.Donor.Lname)
+                    </div>
+
+
+
+                </div>
+                <div class="row" style="float: right;">
+                    <div class="input-field col s12">
+                        <div style="float: right; position: relative; margin-right: 52px;">
+                            <label class="right-align" style="float: right;">النوع</label>
+                        </div>
+                        <br/>
+                        <p>
+                            <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male"/>
+                            <label for="Male">ذكر</label>
+                        </p>
+                        <p>
+                            <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female"/>
+                            <label for="Female">أنثى</label>
+                        </p>
+
+                        @Html.ValidationMessageFor(model => model.Donor.DonorGender)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="number" class="validate" name="Donor.Phone" style="text-align: right;"/>
+                        <label class="right-align" for="Phone"> رقم التلفون </label>
+                        @Html.ValidationMessageFor(model => model.Donor.Phone)
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <label for="CitiesID" style="text-align: right; width: 460px;">فصيلة الدم</label>
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <div dir="rtl">
+                            <select class="mdl-select__input" id="professsion" name="Donor.BID">
+                                <option value="NULL">اختر فصيلة الدم</option>
+                                @foreach (var item in Model.BloodTypesResults)
+                                {
+
+                                    <option value=@item.BID>@item.Type</option>
+                                }
+
+                            </select>
+                        </div>
+
+
+                        @Html.ValidationMessageFor(model => model.Donor.BID)
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <label for="CitiesID" style="text-align: right; width: 460px;">المدينة</label>
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <div dir="rtl">
+                            <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
+
+                                <option value="0">اختر مدينة</option>
+                                @foreach (var item in Model.CitiesSelectAllResults)
+                                {
+                                    <option value=@item.CID>@item.CityName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 ">
+                        <label class="right-align" for="LID">المنطقة </label>
+                        <select class="mdl-select__input" name="Donor.LID" id="locationID">
+                            <option> </option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Donor.CID)
+                    </div>
+                </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="date" class="validate" name="Donor.DonationDate" style="text-align: right;"/>
+                            <label class="right-align" for="DonationDate">تاريخ التبرع </label>
+                            @Html.ValidationMessageFor(model => model.Donor.LID)
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="first_name" name="Donor.Fname" type="text" class="validate" style="text-align:right;">
-                            <label class="right-align" for="first_name">الاسم الاول </label>
-                            @Html.ValidationMessageFor(model => model.Donor.Fname)
+                            <input id="Username" type="text" class="validate" name="Donor.UserName" style="text-align: right">
+                            <label class="right-align" for="last_name"> اسم المستخدم </label>
+                            @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align: right">
-                            <label class="right-align" for="last_name"> الاسم الاخير </label>
-                            @Html.ValidationMessageFor(model => model.Donor.Lname)
+                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align: right">
+                            <label class="right-align" for="Password"> كلمة المرور </label>
+                            @Html.ValidationMessageFor(model => model.Login.Password)
                         </div>
-
-                    </div>
-                    <div class="row" style="float:right;">
-                        <div class="input-field col s12">
-                            <div style="float:right; position:relative; margin-right:52px;">
-                                <label class="right-align" style="float:right;">النوع</label>
-                            </div>
-                            <br />
-                            <p>
-                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male" />
-                                <label for="Male">ذكر</label>
-                            </p>
-                            <p>
-                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female" />
-                                <label for="Female">أنثى</label>
-                            </p>
-
-                            @Html.ValidationMessageFor(model => model.Donor.DonorGender)
+                        <div class="input-field col s6">
+                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align: right">
+                            <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="number" class="validate" name="Donor.Phone" style="text-align:right;" />
-                            <label class="right-align" for="Phone"> رقم التلفون </label>
-                            @Html.ValidationMessageFor(model => model.Donor.Phone)
-                        </div>
-                    </div>
-
-                    
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
-                            </div>
-
-                            <br />
-                            <br />
-                            <div dir="rtl">
-                                <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                    <option value="NULL">Not Set</option>
-                                    @foreach (var item in Model.BloodTypesResults)
-                                    {
-
-                                        <option value=@item.BID>@item.Type</option>
-                                    }
-
-                                </select>
-                            </div>
-
-
-                                @Html.ValidationMessageFor(model => model.Donor.BID)
-                            </div>
-
-                     </div>
-
-
-
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                            <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
-                                        </div>
-
-                                        <br />
-                                        <br />
-                                        <div dir="rtl">
-                                            <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
-
-                                                <option value="0">Not Set</option>
-                                                @foreach (var item in Model.CitiesSelectAllResults)
-                                                {
-                                                <option value=@item.CID>@item.CityName</option>
-                                                }
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field col s12 ">
-                                        <label class="right-align" for="LID">المنطقة </label>
-                                        <select class="mdl-select__input" name="Donor.LID" id="locationID">
-                                            <option> </option>
-                                        </select>
-                                        @Html.ValidationMessageFor(model => model.Donor.CID)
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="date" class="validate" name="Donor.DonationDate" style="text-align: right;" />
-                                        <label class="right-align" for="DonationDate">تاريخ التبرع </label>
-                                        @Html.ValidationMessageFor(model => model.Donor.LID)
-                                    </div>
-                                </div>
                 <center>
                     <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
                 </center>
 
-                    <div class="row">
-                <div class="input-field col s6">
-                    <input id="Username" type="text" class="validate" name="login.UserName" style="text-align:right">
-                    <label class="right-align" for="last_name"> Username </label>
-                    @Html.ValidationMessageFor(model => model.Login.UserName)
                 </div>
-                <div class="input-field col s6">
-                    <input id="Password" type="text" class="validate" name="login.Password" style="text-align:right">
-                    <label class="right-align" for="last_name"> Password </label>
-                    @Html.ValidationMessageFor(model => model.Login.Password)
-                </div>
-                        <div class="input-field col s6">
-                            <input id="Password" type="text" class="validate" name="Password" style="text-align:right">
-                            <label class="right-align" for="Passwprd"> ConfirmPassword </label>
-                        </div>
-
-</form>
+            </form>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 <script>
     $('#CitiesID').change(function () {
         var CityID = $('#CitiesID').val();
