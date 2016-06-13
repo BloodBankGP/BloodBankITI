@@ -14,7 +14,6 @@ namespace BloodBankITI.Models
     
     public partial class Post
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Post()
         {
             this.Comments = new HashSet<Comments>();
@@ -31,7 +30,6 @@ namespace BloodBankITI.Models
     
         public virtual BloodType BloodType { get; set; }
         public virtual City City { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comments> Comments { get; set; }
     }
 }

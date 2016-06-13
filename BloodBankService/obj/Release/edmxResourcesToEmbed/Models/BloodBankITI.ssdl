@@ -609,6 +609,8 @@
     <Parameter Name="LID" Type="int" Mode="In" />
     <Parameter Name="DID" Type="int" Mode="In" />
     <Parameter Name="gender" Type="nvarchar" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dayid" Type="int" Mode="In" />
@@ -757,6 +759,8 @@
     <Parameter Name="city" Type="int" Mode="In" />
     <Parameter Name="phone" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />

@@ -22,7 +22,6 @@
 </head>
 
 <div class="render">
-    <h3>تعديل  </h3>
 
     @*<form action="" method="post" novalidate="novalidate">
         <div class="form-group">
@@ -55,53 +54,78 @@
             <input type="submit" value="submit" />
         </div>
     </form>*@
-    <form method="POST" action="" novalidate="novalidate">
-        <div class="form-container">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate" name="Donor.DID" style="text-align:right">
-                    <label class="right-align" for="first_name">رقم المتبرع   </label>
-                    <input type="hidden" name="DID" value=@Model.Donor.DID>
-                    <span class="mdl-textfield__error">Number required!</span>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right">
-                    <label class="right-align" for="first_name"> الاسم الاول   </label>
-                    <span class="mdl-textfield__error">Number required!</span>
-
-                </div>
-            </div>
-           
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right">
-                    <label class="right-align" for="last_name">  الاسم الثانى   </label>
-                    <span class="mdl-textfield__error">Number required!</span>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="professsion" name="BID">
-                            <option value="0">Not Set</option>
-                            @foreach (var item in Model.BloodTypesResults)
-                            {
-                                <option value=@item.BID>@item.Type</option>
-                            }
-                        </select>
-                        <label class="mdl-select__label" for="professsion">نوع فصيلة الدم </label>
+    <div class="container white z-depth-2">
+        <div class="card-panel #b71c1c red darken-4"><h4 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">  تعديل بيانات المتبرع</h4>  </div>
+        <form method="POST" action="" novalidate="novalidate">
+            <div class="form-container">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="" type="number" class="validate" name="Donor.DID" style="text-align:right">
+                        <label class="right-align">رقم المتبرع   </label>
+                        <input type="hidden" name="DID" value=@Model.Donor.DID>
                         <span class="mdl-textfield__error">Number required!</span>
 
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right">
+                        <label class="right-align" for="first_name"> الاسم الاول   </label>
+                        <span class="mdl-textfield__error">Number required!</span>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right">
+                        <label class="right-align" for="last_name">  الاسم الثانى   </label>
+                        <span class="mdl-textfield__error">Number required!</span>
+
+                    </div>
+                </div>
+                @*<div class="row" style="float:right;">
+                    <div class="input-field col s12">
+                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <select class="mdl-select__input" id="professsion" name="BID">
+                                <option value="0">Not Set</option>
+                                @foreach (var item in Model.BloodTypesResults)
+                                {
+                                    <option value=@item.BID>@item.Type</option>
+                                }
+                            </select>
+                            <label class="mdl-select__label" for="professsion"  style="margin-right:-100px;">نوع فصيلة الدم </label>
+                            <span class="mdl-textfield__error">Number required!</span>
+
+                        </div>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <label  style="margin-right:-240px;">نوع فصيلة الدم  </label>
+                        </div>
+                        <div dir="rtl">
+                            <select class="mdl-select__input" id="professsion" name="BID">
+                                <option value="0">إختـــر ... </option>
+
+                                @foreach (var item in Model.BloodTypesResults)
+                                {
+
+                                    <option value=@item.BID>@item.Type</option>
+                                }
+
+                            </select>
+                        </div>
+                        @*@Html.ValidationMessageFor(model => model.Donor.BID)*@
+                    </div>
+
+                </div>
+
+                <center>
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعديل </button>
+                </center>
             </div>
-            <center>
-                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">ارسال</button>
-            </center>
+        </form>
         </div>
-    </form>
-</div>
+    </div>

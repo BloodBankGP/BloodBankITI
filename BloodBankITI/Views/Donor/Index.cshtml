@@ -1,19 +1,16 @@
 ﻿
-
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Index</h2>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br/>
-@Html.ActionLink("View Profile", "ViewProfile")
-<br />
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-@Html.ActionLink("View Requests", "Requests")
+<div class="render">
+    <h4 style="font-family: Myriad عربي;">الصفحة الشخصية</h4>
+    <hr />
+    <center>
+        @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
+     @Html.ActionLink("عرض المحتاجين للتبرع", "Requests", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
+</div>

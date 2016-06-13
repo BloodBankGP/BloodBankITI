@@ -17,5 +17,7 @@ namespace BloodBankITI.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public Nullable<bool> Status { get; set; }
+        public Nullable<int> CID { get; set; }
+        public string CityName { get; set; }
     }
 }

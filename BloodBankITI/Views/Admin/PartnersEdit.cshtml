@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
-<div class="render" style="height:1050px;">
+<div class="render">
     <div class="container white z-depth-5">
         <div class="card-panel red darken-4"><h6>تعديل معلومات الشركاء</h6></div>
         <div id="register" class="col s12">
@@ -55,7 +55,7 @@
 
                     <center>
                         @Html.ActionLink("إلغاء", "Partners", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                        <button style="text-align:center;position:center;" class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
+                        <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
                     </center>   
                     </div>
             </form>

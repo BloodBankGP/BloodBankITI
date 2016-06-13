@@ -11,10 +11,14 @@ namespace BloodBankService.Models
 {
     using System;
     
-    public partial class Cities_SelectAll_Result
+    public partial class Needer_DonorNotAccepted_Result
     {
+        public int NDID { get; set; }
+        public int NID { get; set; }
+        public int BID { get; set; }
         public int CID { get; set; }
-        public string CityName { get; set; }
-        public string Logo { get; set; }
+        public int DID { get; set; }
+        public System.DateTime AskDate { get; set; }
+        public Nullable<bool> Accepted { get; set; }
     }
 }
