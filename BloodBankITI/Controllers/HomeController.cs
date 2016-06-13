@@ -350,7 +350,7 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult selectPartner(Donor  donor) 
+        public ActionResult selectPartner(donor_SelectByDID_Result  donor) 
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");

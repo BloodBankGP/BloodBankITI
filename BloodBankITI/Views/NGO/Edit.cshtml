@@ -104,7 +104,20 @@
                     @Html.DisplayNameFor(p => p.ngo.Address)
                     <input type="text" name="ngo.Address" />
                 </div>*@
-
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="Username" type="hidden" class="validate" name="ngo.UserName" style="text-align: right">
+                </div>
+                <div class="input-field col s6">
+                    <input id="Password" type="password" class="validate" name="ngo.Password" style="text-align: right">
+                    <label class="right-align" for="Password"> كلمة المرور </label>
+                    @Html.ValidationMessageFor(model => model.ngo.Password)
+                </div>
+                <div class="input-field col s6">
+                    <input id="Password" type="password" class="validate" name="ngo.Password" style="text-align: right">
+                    <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
+                </div>
+            </div>
 
 
             <center>

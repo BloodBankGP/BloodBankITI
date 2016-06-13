@@ -477,51 +477,6 @@ namespace BloodBankService.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectID_Result>("Donors_SelectID", cIDParameter, bIDParameter, lIDParameter);
         }
     
-        public virtual int Donors_UpdateID(string fname, string lname, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<int> dID, string gender, string username, string pw)
-        {
-            var fnameParameter = fname != null ?
-                new ObjectParameter("Fname", fname) :
-                new ObjectParameter("Fname", typeof(string));
-    
-            var lnameParameter = lname != null ?
-                new ObjectParameter("Lname", lname) :
-                new ObjectParameter("Lname", typeof(string));
-    
-            var phoneParameter = phone != null ?
-                new ObjectParameter("phone", phone) :
-                new ObjectParameter("phone", typeof(string));
-    
-            var bIDParameter = bID.HasValue ?
-                new ObjectParameter("BID", bID) :
-                new ObjectParameter("BID", typeof(int));
-    
-            var cIDParameter = cID.HasValue ?
-                new ObjectParameter("CID", cID) :
-                new ObjectParameter("CID", typeof(int));
-    
-            var lIDParameter = lID.HasValue ?
-                new ObjectParameter("LID", lID) :
-                new ObjectParameter("LID", typeof(int));
-    
-            var dIDParameter = dID.HasValue ?
-                new ObjectParameter("DID", dID) :
-                new ObjectParameter("DID", typeof(int));
-    
-            var genderParameter = gender != null ?
-                new ObjectParameter("gender", gender) :
-                new ObjectParameter("gender", typeof(string));
-    
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var pwParameter = pw != null ?
-                new ObjectParameter("pw", pw) :
-                new ObjectParameter("pw", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_UpdateID", fnameParameter, lnameParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, dIDParameter, genderParameter, usernameParameter, pwParameter);
-        }
-    
         public virtual int EmergencyDelete(Nullable<int> dayid, Nullable<int> cid)
         {
             var dayidParameter = dayid.HasValue ?
@@ -966,39 +921,6 @@ namespace BloodBankService.Models
         public virtual ObjectResult<NGO_selectt_Result> NGO_selectt()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NGO_selectt_Result>("NGO_selectt");
-        }
-    
-        public virtual int NGO_update(Nullable<int> id, string name, Nullable<int> city, string phone, string address, string username, string pw)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            var cityParameter = city.HasValue ?
-                new ObjectParameter("city", city) :
-                new ObjectParameter("city", typeof(int));
-    
-            var phoneParameter = phone != null ?
-                new ObjectParameter("phone", phone) :
-                new ObjectParameter("phone", typeof(string));
-    
-            var addressParameter = address != null ?
-                new ObjectParameter("address", address) :
-                new ObjectParameter("address", typeof(string));
-    
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var pwParameter = pw != null ?
-                new ObjectParameter("pw", pw) :
-                new ObjectParameter("pw", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NGO_update", idParameter, nameParameter, cityParameter, phoneParameter, addressParameter, usernameParameter, pwParameter);
         }
     
         public virtual int NGOUPDATEADMIN(Nullable<int> id, string name, Nullable<int> city, string phone, string address, Nullable<bool> status, Nullable<bool> approved)
@@ -1588,6 +1510,84 @@ namespace BloodBankService.Models
                 new ObjectParameter("pw", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NGO_insert", nameParameter, cityParameter, phoneParameter, addressParameter, usernameParameter, pwParameter);
+        }
+    
+        public virtual int Donors_UpdateID(string fname, string lname, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<int> dID, string gender, string username, string pw)
+        {
+            var fnameParameter = fname != null ?
+                new ObjectParameter("Fname", fname) :
+                new ObjectParameter("Fname", typeof(string));
+    
+            var lnameParameter = lname != null ?
+                new ObjectParameter("Lname", lname) :
+                new ObjectParameter("Lname", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var bIDParameter = bID.HasValue ?
+                new ObjectParameter("BID", bID) :
+                new ObjectParameter("BID", typeof(int));
+    
+            var cIDParameter = cID.HasValue ?
+                new ObjectParameter("CID", cID) :
+                new ObjectParameter("CID", typeof(int));
+    
+            var lIDParameter = lID.HasValue ?
+                new ObjectParameter("LID", lID) :
+                new ObjectParameter("LID", typeof(int));
+    
+            var dIDParameter = dID.HasValue ?
+                new ObjectParameter("DID", dID) :
+                new ObjectParameter("DID", typeof(int));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Donors_UpdateID", fnameParameter, lnameParameter, phoneParameter, bIDParameter, cIDParameter, lIDParameter, dIDParameter, genderParameter, usernameParameter, pwParameter);
+        }
+    
+        public virtual int NGO_update(Nullable<int> id, string name, Nullable<int> city, string phone, string address, string username, string pw)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var cityParameter = city.HasValue ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(int));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var pwParameter = pw != null ?
+                new ObjectParameter("pw", pw) :
+                new ObjectParameter("pw", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NGO_update", idParameter, nameParameter, cityParameter, phoneParameter, addressParameter, usernameParameter, pwParameter);
         }
     }
 }

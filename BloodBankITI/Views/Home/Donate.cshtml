@@ -130,73 +130,8 @@
                             @Html.ValidationMessageFor(model => model.Donor.DonationDate)
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
-                            </div>
-
-                            <br />
-                            <br />
-                            <div dir="rtl">
-                                <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                    <option value="NULL">Not Set</option>
-                                    @foreach (var item in Model.BloodTypesResults)
-                                    {
-
-                                        <option value=@item.BID>@item.Type</option>
-                                    }
-
-                                </select>
-                            </div>
-
-
-                                @Html.ValidationMessageFor(model => model.Donor.BID)
-                            </div>
-
-                     </div>
-
-
-
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                            <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
-                                        </div>
-
-                                        <br />
-                                        <br />
-                                        <div dir="rtl">
-                                            <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
-
-                                                <option value="0">Not Set</option>
-                                                @foreach (var item in Model.CitiesSelectAllResults)
-                                                {
-                                                <option value=@item.CID>@item.CityName</option>
-                                                }
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field col s12 ">
-                                        <label class="right-align" for="LID">المنطقة </label>
-                                        <select class="mdl-select__input" name="Donor.LID" id="locationID">
-                                            <option> </option>
-                                        </select>
-                                        @Html.ValidationMessageFor(model => model.Donor.CID)
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="date" class="validate" name="Donor.DonationDate" style="text-align: right;" />
-                                        <label class="right-align" for="DonationDate">تاريخ التبرع </label>
-                                        @Html.ValidationMessageFor(model => model.Donor.LID)
-                                    </div>
-                                </div>
-                
+                              
+                                   
 
                     <div class="row">
                         <div class="input-field col s6">

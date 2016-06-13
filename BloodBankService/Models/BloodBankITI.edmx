@@ -1771,18 +1771,6 @@
             <Parameter Name="BID" Mode="In" Type="Int32" />
             <Parameter Name="LID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Donors_UpdateID">
-            <Parameter Name="Fname" Mode="In" Type="String" />
-            <Parameter Name="Lname" Mode="In" Type="String" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="BID" Mode="In" Type="Int32" />
-            <Parameter Name="CID" Mode="In" Type="Int32" />
-            <Parameter Name="LID" Mode="In" Type="Int32" />
-            <Parameter Name="DID" Mode="In" Type="Int32" />
-            <Parameter Name="gender" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="EmergencyDelete">
             <Parameter Name="dayid" Mode="In" Type="Int32" />
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -1915,15 +1903,6 @@
           <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_selectt" ReturnType="Collection(BloodBankDBITIModel.NGO_selectt_Result)" />
-          <FunctionImport Name="NGO_update">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="city" Mode="In" Type="Int32" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="address" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="NGOUPDATEADMIN">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
@@ -2088,6 +2067,27 @@
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NGO_insert">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Donors_UpdateID">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="BID" Mode="In" Type="Int32" />
+            <Parameter Name="CID" Mode="In" Type="Int32" />
+            <Parameter Name="LID" Mode="In" Type="Int32" />
+            <Parameter Name="DID" Mode="In" Type="Int32" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="city" Mode="In" Type="Int32" />
             <Parameter Name="phone" Mode="In" Type="String" />
@@ -3189,7 +3189,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Donors_UpdateID" FunctionName="BloodBankDBITIModel.Store.Donors_UpdateID" />
           <FunctionImportMapping FunctionImportName="EmergencyDelete" FunctionName="BloodBankDBITIModel.Store.EmergencyDelete" />
           <FunctionImportMapping FunctionImportName="EmergencyInsert" FunctionName="BloodBankDBITIModel.Store.EmergencyInsert" />
           <FunctionImportMapping FunctionImportName="EmergencySelectAll" FunctionName="BloodBankDBITIModel.Store.EmergencySelectAll">
@@ -3535,7 +3534,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="NGO_update" FunctionName="BloodBankDBITIModel.Store.NGO_update" />
           <FunctionImportMapping FunctionImportName="NGOUPDATEADMIN" FunctionName="BloodBankDBITIModel.Store.NGOUPDATEADMIN" />
           <FunctionImportMapping FunctionImportName="NotApprovedNGO" FunctionName="BloodBankDBITIModel.Store.NotApprovedNGO">
             <ResultMapping>
@@ -3834,6 +3832,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
+          <FunctionImportMapping FunctionImportName="Donors_UpdateID" FunctionName="BloodBankDBITIModel.Store.Donors_UpdateID" />
+          <FunctionImportMapping FunctionImportName="NGO_update" FunctionName="BloodBankDBITIModel.Store.NGO_update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

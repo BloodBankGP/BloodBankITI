@@ -740,18 +740,6 @@
       <Parameter Name="BID" Mode="In" Type="Int32" />
       <Parameter Name="LID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Donors_UpdateID">
-      <Parameter Name="Fname" Mode="In" Type="String" />
-      <Parameter Name="Lname" Mode="In" Type="String" />
-      <Parameter Name="phone" Mode="In" Type="String" />
-      <Parameter Name="BID" Mode="In" Type="Int32" />
-      <Parameter Name="CID" Mode="In" Type="Int32" />
-      <Parameter Name="LID" Mode="In" Type="Int32" />
-      <Parameter Name="DID" Mode="In" Type="Int32" />
-      <Parameter Name="gender" Mode="In" Type="String" />
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="pw" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
       <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -884,15 +872,6 @@
       <Parameter Name="nid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="NGO_selectt" ReturnType="Collection(BloodBankDBITIModel.NGO_selectt_Result)" />
-    <FunctionImport Name="NGO_update">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="city" Mode="In" Type="Int32" />
-      <Parameter Name="phone" Mode="In" Type="String" />
-      <Parameter Name="address" Mode="In" Type="String" />
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="pw" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="NGOUPDATEADMIN">
       <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="name" Mode="In" Type="String" />
@@ -1057,6 +1036,27 @@
       <Parameter Name="password" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGO_insert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Donors_UpdateID">
+      <Parameter Name="Fname" Mode="In" Type="String" />
+      <Parameter Name="Lname" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="BID" Mode="In" Type="Int32" />
+      <Parameter Name="CID" Mode="In" Type="Int32" />
+      <Parameter Name="LID" Mode="In" Type="Int32" />
+      <Parameter Name="DID" Mode="In" Type="Int32" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NGO_update">
+      <Parameter Name="id" Mode="In" Type="Int32" />
       <Parameter Name="name" Mode="In" Type="String" />
       <Parameter Name="city" Mode="In" Type="Int32" />
       <Parameter Name="phone" Mode="In" Type="String" />
