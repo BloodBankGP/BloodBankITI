@@ -1,10 +1,14 @@
 ﻿@model String
-
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "FollowRequest";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Follow Requests</h2>
+<h2>FollowRequest</h2>
 
-<p>@Model</p>
+
+
+@Html.Raw(@Model.Replace('_',':').Replace('&','/').Replace('(','<').Replace(')','>'))
+
+
+

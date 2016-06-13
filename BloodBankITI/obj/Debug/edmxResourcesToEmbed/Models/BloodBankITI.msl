@@ -489,7 +489,13 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Hospitals_UpdateHospital" FunctionName="BloodBankDBITIModel.Store.Hospitals_UpdateHospital" />
-    <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer" />
+    <FunctionImportMapping FunctionImportName="insert_needer" FunctionName="BloodBankDBITIModel.Store.insert_needer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.insert_needer_Result">
+          <ScalarProperty Name="needer_id" ColumnName="needer_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Locations_DeleteLocation" FunctionName="BloodBankDBITIModel.Store.Locations_DeleteLocation" />
     <FunctionImportMapping FunctionImportName="Locations_InsertLocation" FunctionName="BloodBankDBITIModel.Store.Locations_InsertLocation" />
     <FunctionImportMapping FunctionImportName="Locations_SelectAllByCityID" FunctionName="BloodBankDBITIModel.Store.Locations_SelectAllByCityID">
@@ -570,7 +576,13 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert" />
+    <FunctionImportMapping FunctionImportName="Needer_DonorInsert" FunctionName="BloodBankDBITIModel.Store.Needer_DonorInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorInsert_Result">
+          <ScalarProperty Name="DonorsNo" ColumnName="DonorsNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Needer_DonorNotAccepted" FunctionName="BloodBankDBITIModel.Store.Needer_DonorNotAccepted">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorNotAccepted_Result">

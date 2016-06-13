@@ -299,7 +299,6 @@ D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Securi
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\bin\BloodBankITI.pdb
@@ -362,3 +361,4 @@ D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Secur
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\PROJECT\Versions\12-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
+D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
