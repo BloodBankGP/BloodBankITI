@@ -24,7 +24,6 @@
 <div class="render">
     <div class="container white z-depth-5">
         <div class="card-panel red darken-4"><h6>إضافة شركاء</h6></div>
-        <br /><br /><br />
         <div  class="col s12">
             <form class="col s12" action="" method="post" novalidate="novalidate">
                 <div class="form-container">
@@ -43,8 +42,9 @@
                     </div>
 
                     <center>
-                        <a href="http://localhost:7508/admin/Partners"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>
-                    </center>
+                        @*<a href="http://localhost:7508/admin/Partners"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>*@
+                        @Html.ActionLink("الرجوع الى الصفحة الرئيسية", "Partners", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                     </center>
                 </div>
             </form>
 

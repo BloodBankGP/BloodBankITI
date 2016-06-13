@@ -9,7 +9,8 @@
 </head>
 
 <div class="render">
-    <h3>إدخال مستخدم جديد </h3>
+    @*<h3 style="font-family:Myriad عربي;">إضافة مستخدم جديد </h3>
+    <hr />*@
     @*<form action="" method="POST">*@
         @*<div class="form-group">
                 First Name: <input type="text" name="Admin.Fname" />
@@ -24,39 +25,43 @@
                 Password: <input type="text" name="Login.Password" />
             </div>*@
         @*<input type="submit" value="Insert" />*@
-
+    <div class="container white z-depth-2">
+        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">إضافة مستخدم جديد</h5>  </div>
 
         <form class="col s12" action="" method="post">
             <div class="form-container">
-                    <div class="row">
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="last_name" name="Admin.Fname" type="text" class="validate" style="text-align:right;">
                         <label class="right-align" for="first_name">الاسم الاول</label>
                     </div>
                 </div>
-                    <div class="row">
+                <div class="row">
                     <div class="input-field col s12">
                         <input id="last_name" type="text" class="validate" name="Admin.Lname" style="text-align:right">
                         <label class="right-align" for="last_name">الاسم الثانى  </label>
                     </div>
-               </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" name="Login.Username" style="text-align:right;">
-                            <label class="right-align" for="bloodId"> اسم المستخدم</label>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate" name="Login.Username" style="text-align:right;">
+                        <label class="right-align" for="bloodId"> اسم المستخدم</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password-confirm" type="password" class="validate" name="Login.Password" style="text-align:right;">
-                            <label class="right-align" for="city">كلمة المرور </label>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password-confirm" type="password" class="validate" name="Login.Password" style="text-align:right;">
+                        <label class="right-align" for="city">كلمة المرور </label>
                     </div>
-                    <center>
-                        <label style=""> @Html.ActionLink("إلغاء", "UserTypesView", null, new { @class = "btn btn-danger" }) </label>
-                        <button class="btn btn-danger" type="submit">إدخال </button>
-                     </center>
-           </div>
-        </form>    
+                </div>
+                <center>
+                    @Html.ActionLink("إلغاء", "UserTypesView", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <button class="btn waves-effect waves-light red darken-4" type="submit">إضافة </button>
+                </center>
+            </div>
+        </form>
+      
 
-</div>
+        </div>
+
+    </div>

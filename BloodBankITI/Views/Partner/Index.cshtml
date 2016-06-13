@@ -7,18 +7,20 @@
 @*<link href="~/Content/materialize.css" rel="stylesheet" />*@
 
 <div class="render">
-    <h2>Index</h2>
-    <table class="table table-bordered table-hover table-striped" style="text-align:center;" @*class="responsive-table"*@>
+    <h3 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h3>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
             <tr>
                 @*<th>@Html.DisplayNameFor(d => d.DID)</th>
-                <th>@Html.DisplayNameFor(d => d.Fname)</th>
-                <th>@Html.DisplayNameFor(d => d.Lname)</th>
-                <th>أدخال فصيلة الدم</th>*@
-                <th>ادخل فصيلة الدم  </th>
+                    <th>@Html.DisplayNameFor(d => d.Fname)</th>
+                    <th>@Html.DisplayNameFor(d => d.Lname)</th>
+                    <th>أدخال فصيلة الدم</th>*@
+                <th> فصيلة الدم  </th>
                 <th>الاسم الثانى  </th>
                 <th>الاسم الاول   </th>
                 <th>رقم المتبرع </th>
-            </tr>     
+            </tr>
             @foreach (var item in Model)
             {
                 <tr>
@@ -28,5 +30,8 @@
                     <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
                 </tr>
             }
-    </table>
+        </table>
+    </div>
+    <div style="margin-bottom:170px;"></div>
+
 </div>

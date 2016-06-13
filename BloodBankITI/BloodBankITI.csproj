@@ -521,6 +521,7 @@
     <Content Include="img\apple-touch-icon.png" />
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
+    <Content Include="img\blood-drop.png" />
     <Content Include="img\callout.jpg" />
     <Content Include="img\cut.jpg" />
     <Content Include="img\DONOR.png" />
@@ -567,6 +568,7 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.waypoints.min.js" />
     <Content Include="js\leanModal.js" />
+    <Content Include="js\login.js" />
     <Content Include="js\main.js" />
     <Content Include="js\materialbox.js" />
     <Content Include="js\materialize.js" />
@@ -998,7 +1000,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Home\AskForBlood.cshtml" />
-    <Content Include="Views\Home\Vieeew.cshtml" />
     <Content Include="Views\NGO\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
@@ -1033,7 +1034,6 @@
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
-    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
