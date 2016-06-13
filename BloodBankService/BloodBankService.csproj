@@ -348,6 +348,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\insert_needer_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -379,6 +382,9 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Needer_Donorall_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Needer_DonorInsert_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">

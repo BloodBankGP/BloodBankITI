@@ -24,8 +24,8 @@ namespace BloodBankService.Models
             this.NGOes = new HashSet<NGO>();
             this.Posts = new HashSet<Post>();
             this.Partners = new HashSet<Partner>();
-            this.Needer_Donor = new HashSet<Needer_Donor>();
             this.Donors = new HashSet<Donor>();
+            this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
         public int CID { get; set; }
@@ -47,8 +47,8 @@ namespace BloodBankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Partner> Partners { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }
