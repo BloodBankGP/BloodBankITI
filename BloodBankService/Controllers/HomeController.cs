@@ -402,5 +402,17 @@ namespace BloodBankService.Controllers
         {
             db.PartnerStatestics_insert(PartnersStatestic.PID, PartnersStatestic.DID);
         }
+
+        [HttpGet]
+        [Route("CheckUsername/{username}")]
+        public int getPartnar_City(string username)
+        {
+            CheckName_Result check = db.CheckName(username).FirstOrDefault() ;
+
+            if (check != null)
+                return 1;
+            else
+                return 0;
+        }
     }
 }
