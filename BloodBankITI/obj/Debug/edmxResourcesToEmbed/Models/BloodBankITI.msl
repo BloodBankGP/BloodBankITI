@@ -1074,6 +1074,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CheckUsernames" FunctionName="BloodBankDBITIModel.Store.CheckUsernames" />
     <FunctionImportMapping FunctionImportName="ContactDelete" FunctionName="BloodBankDBITIModel.Store.ContactDelete" />
     <FunctionImportMapping FunctionImportName="ContactInsert" FunctionName="BloodBankDBITIModel.Store.ContactInsert" />
     <FunctionImportMapping FunctionImportName="ContactSelect" FunctionName="BloodBankDBITIModel.Store.ContactSelect">

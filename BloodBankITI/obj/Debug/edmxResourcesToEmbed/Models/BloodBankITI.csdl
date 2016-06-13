@@ -624,6 +624,8 @@
       <Parameter Name="city" Mode="In" Type="Int32" />
       <Parameter Name="phone" Mode="In" Type="String" />
       <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
       <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -869,6 +871,25 @@
       <Parameter Name="pending" Mode="In" Type="Boolean" />
       <Parameter Name="donationDate" Mode="In" Type="DateTime" />
       <Parameter Name="PID" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Contacts" EntityType="BloodBankDBITIModel.Contact" />
+    <FunctionImport Name="CheckUsernames" ReturnType="Collection(String)" />
+    <FunctionImport Name="ContactDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ContactInsert">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ContactSelect" ReturnType="Collection(BloodBankDBITIModel.ContactSelect_Result)" />
+    <FunctionImport Name="GetContact" ReturnType="Collection(BloodBankDBITIModel.GetContact_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
@@ -1605,5 +1626,35 @@
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="ContactSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Msg" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetContact_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Msg" Nullable="true" />
   </ComplexType>
 </Schema>

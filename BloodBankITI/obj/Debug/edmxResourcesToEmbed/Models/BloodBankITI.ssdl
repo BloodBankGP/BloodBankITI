@@ -509,6 +509,7 @@
   <Function Name="CheckName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="CheckUsernames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Cities_DeleteCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CID" Type="int" Mode="In" />
   </Function>
@@ -589,6 +590,8 @@
     <Parameter Name="pending" Type="bit" Mode="In" />
     <Parameter Name="donationDate" Type="date" Mode="In" />
     <Parameter Name="PID" Type="int" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Donors_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Donors_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -735,6 +738,8 @@
     <Parameter Name="city" Type="int" Mode="In" />
     <Parameter Name="phone" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cid" Type="int" Mode="In" />

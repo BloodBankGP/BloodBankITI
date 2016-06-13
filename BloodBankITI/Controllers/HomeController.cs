@@ -167,8 +167,6 @@ namespace BloodBankITI.Controllers
 
             }
 
-            
-
                 List<Comments_SelectAllByPostID_Result> comments = new List<Comments_SelectAllByPostID_Result>();
                 response = client.GetAsync("ALLCommentPerPost/" + post.PID).Result;
                 if (response.IsSuccessStatusCode)
@@ -214,7 +212,7 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult NgoRequest (NGO ngo)
+        public ActionResult NgoRequest (NGO_selectByID_Result ngo)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -267,7 +265,7 @@ namespace BloodBankITI.Controllers
 
 
         [HttpPost]
-        public ActionResult Donate(Donor donor)
+        public ActionResult Donate(donor_SelectByDID_Result donor)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -276,8 +274,7 @@ namespace BloodBankITI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                result = "Done";
-               
+                result = "Done";  
                 string id = response.Content.ReadAsStringAsync().Result;
                 if (donor.BID == null)
                 {
