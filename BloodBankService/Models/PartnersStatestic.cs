@@ -21,7 +21,7 @@ namespace BloodBankService.Models
         public int DID { get; set; }
     
         public virtual BloodType BloodType { get; set; }
-        public virtual Donor Donor { get; set; }
         public virtual Partner Partner { get; set; }
+        public virtual Donor Donor { get; set; }
     }
 }

@@ -34,6 +34,18 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Comment" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LName" Type="nchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Msg" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Days">
     <Key>
       <PropertyRef Name="DayID" />
@@ -57,7 +69,6 @@
     <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="DonationDate" Type="date" />
     <Property Name="PAID" Type="int" />
-    <Property Name="PhoneStatus" Type="bit" />
   </EntityType>
   <EntityType Name="Emergency">
     <Key>
@@ -470,6 +481,9 @@
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="ApproveNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
   <Function Name="AskForBlood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="bid" Type="int" Mode="In" />
     <Parameter Name="cid" Type="int" Mode="In" />
@@ -521,6 +535,18 @@
   <Function Name="Comments_SelectAllByPostID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="post_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="ContactDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ContactInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="age" Type="int" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="msg" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ContactSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="delete_Needer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NID" Type="int" Mode="In" />
   </Function>
@@ -563,7 +589,6 @@
     <Parameter Name="pending" Type="bit" Mode="In" />
     <Parameter Name="donationDate" Type="date" Mode="In" />
     <Parameter Name="PID" Type="int" Mode="In" />
-    <Parameter Name="PhoneStatus" Type="bit" Mode="In" />
   </Function>
   <Function Name="Donors_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Donors_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -606,6 +631,9 @@
     <Parameter Name="pid" Type="int" Mode="In" />
   </Function>
   <Function Name="GetAllTodayStatestics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetPartnersDonor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="PAID" Type="int" Mode="In" />
   </Function>
@@ -686,7 +714,6 @@
   </Function>
   <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nid" Type="int" Mode="In" />
-    <Parameter Name="cid" Type="int" Mode="In" />
   </Function>
   <Function Name="Needer_Donorall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -735,6 +762,7 @@
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="approved" Type="bit" Mode="In" />
   </Function>
+  <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cid" Type="int" Mode="In" />
   </Function>
@@ -878,6 +906,7 @@
     <EntitySet Name="BloodTypes" EntityType="Self.BloodTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donors" EntityType="Self.Donors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Emergency" EntityType="Self.Emergency" Schema="dbo" store:Type="Tables" />

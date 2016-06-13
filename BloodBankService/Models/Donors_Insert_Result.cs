@@ -11,14 +11,8 @@ namespace BloodBankService.Models
 {
     using System;
     
-    public partial class Needer_DonorNotAccepted_Result
+    public partial class Donors_Insert_Result
     {
-        public int NDID { get; set; }
-        public int NID { get; set; }
-        public int BID { get; set; }
-        public int CID { get; set; }
-        public int DID { get; set; }
-        public System.DateTime AskDate { get; set; }
-        public Nullable<bool> Accepted { get; set; }
+        public Nullable<decimal> id { get; set; }
     }
 }

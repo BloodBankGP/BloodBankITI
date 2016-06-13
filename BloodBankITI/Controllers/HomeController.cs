@@ -7,11 +7,15 @@ using System.Web.Mvc;
 using BloodBankITI.Models;
 using System.Net.Mail;
 using System.Text;
+using System.IO;
 
 namespace BloodBankITI.Controllers
 {
     public class HomeController : Controller
     {
+
+        BloodBankDBITIEntities db = new BloodBankDBITIEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -60,26 +64,44 @@ namespace BloodBankITI.Controllers
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
-            string result;
             
             if (response.IsSuccessStatusCode)
-            {
-                result = "Done";
-
-
+            {  
                 response = client.PostAsJsonAsync("AskForBlood/"+n.CID+"/"+n.BID+"/"+n.NID,"").Result;
             
-
                 if (response.IsSuccessStatusCode)
                 {
-                    result = "Done";
+                    int count = response.Content.ReadAsAsync<int>().Result;
+                    return RedirectToAction("FollowRequest",
+                        new
+                        {
+                            msg =
+                                "Your request was sent to " + count +
+                                " Donors, Follow this link to know if someone accepted your request and get their data to contact them: " +
+                                "http://localhost:7508/Home/RequestsResults/" + n.NID +"/"+ n.Fname + n.Lname
+                        });
                 }
                 else
-                    result = "Failed to insert Needer Donor";
+                    return RedirectToAction("FollowRequest",
+                        new
+                        {
+                            msg = "An error happened and no requests were sent, please try again!"
+                        });
             }
-            else
-                result = "Failed to insert Needer";
+
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult FollowRequest(string msg)
+        {
+            return View(msg);
+        }
+
+        [HttpGet]
+        public ActionResult RequestsResults(int nid, string name)
+        {
+            return View(nid);
         }
 
         [HttpGet]
@@ -94,7 +116,6 @@ namespace BloodBankITI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 posts = response.Content.ReadAsAsync<List<posts_SelectAll_Result>>().Result;
-
             }
 
             foreach (posts_SelectAll_Result item in posts)
@@ -256,10 +277,11 @@ namespace BloodBankITI.Controllers
             if (response.IsSuccessStatusCode)
             {
                 result = "Done";
-                int id = response.Content.ReadAsAsync<int>().Result;
+               
+                string id = response.Content.ReadAsStringAsync().Result;
                 if (donor.BID == null)
                 {
-                    return RedirectToAction("selectPartner", new { id = id });
+                    return RedirectToAction("selectPartner", new { id = Int32.Parse(id) });
                 }
             }
             else
@@ -284,7 +306,7 @@ namespace BloodBankITI.Controllers
 
 
             List<Partner_SelectByCity_Result> partner = new List<Partner_SelectByCity_Result>();
-             response = client.GetAsync("getPartnar_City/" + donor.CID).Result;
+            response = client.GetAsync("getPartnar_City/" + donor.CID).Result;
             if (response.IsSuccessStatusCode)
             {
                 partner = response.Content.ReadAsAsync<List<Partner_SelectByCity_Result>>().Result;
@@ -314,7 +336,10 @@ namespace BloodBankITI.Controllers
                 PartnersStatestic partnersStatestic = new PartnersStatestic()
                 {
                     PID = Int32.Parse(donor.PAID.ToString()),
-                    DID = donor.DID
+                    DID = donor.DID,
+                    BID = null,
+                    Insert_Date = null
+
                 };
 
                 response = client.PostAsJsonAsync("PartnersStatesticInsert/PartnersStatestic", partnersStatestic).Result;
@@ -329,19 +354,21 @@ namespace BloodBankITI.Controllers
                 }
             }
             else
-                return RedirectToAction("selectPartner", new { id = donor.DID });
-            
-
+                return RedirectToAction("selectPartner", new { id = donor.DID });    
         }
 
+        //Contact Us
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            db.ContactInsert(contact.FName, contact.LName, contact.Age, contact.City, contact.Email, contact.Msg);
+            return RedirectToAction("Thanks");
+        }
 
-
-
-
-
-
-
-
-
+        [HttpGet]
+        public ActionResult Thanks()
+        {
+            return View();
+        }
     }
 }

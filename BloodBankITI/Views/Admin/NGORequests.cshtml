@@ -1,0 +1,52 @@
+﻿@model List<BloodBankITI.Models.NotApprovedNGO_Result>
+@{
+    ViewBag.Title = "NGORequests";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="render">
+    <h4 style="font-family:'Myriad عربي';text-align:center;">الجمعيات الخيرية</h4>
+
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+            <tr>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">موافقة</th>
+
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الحالة</th>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الموافقة</th>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">العنوان</th>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">رقم التلفون</th>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الإسم</th>
+                <th style="text-align:center; font-size:25px;color:firebrick; font-family:'Myriad عربي'">الرقم المسلسل</th>
+
+            </tr>
+
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td style="text-align:center;"> @Html.ActionLink("موافقة", "NGOApprove", new { id = a.NID })</td>
+
+                    <td style="text-align:center;">@(a.Status) </td>
+                    <td style="text-align:center;">@(a.Approved) </td>
+                    <td style="text-align:center;">@(a.Address) </td>
+                    <td style="text-align:center;">@(a.Phone) </td>
+                    <td style="text-align:center;">@(a.Name) </td>
+                    <td style="text-align:center;">@(a.NID) </td>
+                </tr>
+
+            }
+
+        </table>
+    </div>
+
+
+    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn btn-danger" })</p>
+
+
+</div>
+

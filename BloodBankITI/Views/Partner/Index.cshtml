@@ -8,25 +8,26 @@
 
 <div class="render">
     <h2>Index</h2>
-    <table class="table table-bordered table-hover table-striped" style="text-align:center;" @*class="responsive-table"*@>
-            <tr>
-                @*<th>@Html.DisplayNameFor(d => d.DID)</th>
+    <table class="table table-bordered table-hover table-striped" style="text-align: center;" @*class="responsive-table"*@>
+        <tr>
+            @*<th>@Html.DisplayNameFor(d => d.DID)</th>
                 <th>@Html.DisplayNameFor(d => d.Fname)</th>
                 <th>@Html.DisplayNameFor(d => d.Lname)</th>
                 <th>أدخال فصيلة الدم</th>*@
-                <th>ادخل فصيلة الدم  </th>
-                <th>الاسم الثانى  </th>
-                <th>الاسم الاول   </th>
-                <th>رقم المتبرع </th>
-            </tr>     
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.DID</td>
-                    <td>@item.Fname</td>
-                    <td>@item.Lname</td>
-                    <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
-                </tr>
-            }
+            <th>ادخل فصيلة الدم </th>
+            <th>الاسم الثانى </th>
+            <th>الاسم الاول </th>
+            <th>رقم المتبرع </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DID</td>
+                <td>@item.Fname</td>
+                <td>@item.Lname</td>
+                <td>@Html.ActionLink("إدخال فصيلة الدم", "Edit", new {Id = item.DID})</td>
+            </tr>
+        }
     </table>
 </div>
+@Html.ActionLink("عرض الإحصائيات", "Statistics")

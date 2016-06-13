@@ -1,0 +1,34 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.GetTodayStatestics_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Today's Statistics</h2>
+<link href="~/Content/materialize.css" rel="stylesheet" />
+
+<div class="render">
+
+    <h3>إحصائيات اليوم</h3>
+    <table class="table table-bordered table-striped table-hover" style="text-align:center;background-color:wheat;">
+        <tr>
+            <td>مسلسل</td>
+            <td>اسم المتبرع</td>
+            <td>فصيلة الدم</td>
+        </tr>
+
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.SID</td>
+                <td>@(s.Fname + " " + s.Lname)</td>
+                <td>@s.Type</td>
+            </tr>
+        }
+    </table>
+    <center>
+        @Html.ActionLink("العودة للإحصائيات", "Statistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
+</div>

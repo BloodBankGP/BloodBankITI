@@ -17,19 +17,17 @@ namespace BloodBankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BloodType()
         {
-            this.Donors = new HashSet<Donor>();
             this.Needers = new HashSet<Needer>();
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Posts = new HashSet<Post>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
+            this.Donors = new HashSet<Donor>();
         }
     
         public int BID { get; set; }
         public string Type { get; set; }
         public string Logo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Donor> Donors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Needer> Needers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,5 +36,7 @@ namespace BloodBankService.Models
         public virtual ICollection<Post> Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Donor> Donors { get; set; }
     }
 }
