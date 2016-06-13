@@ -8,6 +8,7 @@
     <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Lname" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="BloodTypes">
     <Key>
@@ -469,6 +470,7 @@
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
+    <Parameter Name="pic" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Admins_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -480,6 +482,7 @@
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
+    <Parameter Name="pic" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="ApproveNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />

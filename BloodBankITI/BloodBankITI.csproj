@@ -238,6 +238,8 @@
     <Compile Include="Models\Comments_SelectAllByPostID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactSelect_Result.cs" />
     <Compile Include="Models\Day.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -252,6 +254,7 @@
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\DonorLogin.cs" />
     <Compile Include="Models\donorpartner.cs" />
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
@@ -284,6 +287,7 @@
     <Compile Include="Models\GetAllTodayStatestics_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetContact_Result.cs" />
     <Compile Include="Models\GetPartnersDonor_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -307,6 +311,7 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\insert_needer_Result.cs" />
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -342,12 +347,14 @@
     <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Needer_DonorInsert_Result.cs" />
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NgoCitiesLogin.cs" />
     <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">
@@ -362,6 +369,7 @@
     <Compile Include="Models\NGO_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotApprovedNGO_Result.cs" />
     <Compile Include="Models\Partner.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -1048,6 +1056,7 @@
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

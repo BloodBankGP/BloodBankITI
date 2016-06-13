@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
         <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="AID" ColumnName="AID" />
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
@@ -423,13 +424,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Donors_Delete" FunctionName="BloodBankDBITIModel.Store.Donors_Delete" />
-    <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Donors_select" FunctionName="BloodBankDBITIModel.Store.Donors_select">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_select_Result">
@@ -781,7 +775,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="NGO_delete" FunctionName="BloodBankDBITIModel.Store.NGO_delete" />
-    <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
     <FunctionImportMapping FunctionImportName="NGO_select" FunctionName="BloodBankDBITIModel.Store.NGO_select">
       <ResultMapping>
         <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_select_Result">
@@ -1131,5 +1124,13 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+    <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
   </EntityContainerMapping>
 </Mapping>

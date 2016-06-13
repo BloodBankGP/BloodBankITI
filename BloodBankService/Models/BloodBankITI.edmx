@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BloodBankDBITIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="AID" />
@@ -13,6 +13,7 @@
           <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Lname" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Picture" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="BloodTypes">
           <Key>
@@ -474,6 +475,7 @@
           <Parameter Name="lname" Type="nvarchar" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="pic" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Admins_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -485,6 +487,7 @@
           <Parameter Name="lname" Type="nvarchar" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="pic" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ApproveNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -1024,8 +1027,7 @@
             <End Role="Posts" EntitySet="Posts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BloodBankDBITIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1037,6 +1039,7 @@
           <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BloodType">
           <Key>
@@ -1643,16 +1646,17 @@
             <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Admins_delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Admins_insert">
             <Parameter Name="fname" Mode="In" Type="String" />
             <Parameter Name="lname" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="pic" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Admins_selectt" ReturnType="Collection(BloodBankDBITIModel.Admins_selectt_Result)" />
           <FunctionImport Name="Admins_update">
@@ -1661,9 +1665,10 @@
             <Parameter Name="lname" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="pic" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ApproveNGO">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AskForBlood" ReturnType="Collection(BloodBankDBITIModel.AskForBlood_Result)">
             <Parameter Name="bid" Mode="In" Type="Int32" />
@@ -1674,10 +1679,10 @@
             <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="BloodTypeSelectByID" ReturnType="Collection(BloodBankDBITIModel.BloodTypeSelectByID_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="BloodTypesInsert">
-            <Parameter Name="type" Mode="In" Type="String" />
+          <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CancelRequest">
             <Parameter Name="nid" Mode="In" Type="Int32" />
@@ -1688,11 +1693,11 @@
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CheckName" ReturnType="Collection(BloodBankDBITIModel.CheckName_Result)">
-            <Parameter Name="username" Mode="In" Type="String" />
+          <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CheckUsernames" ReturnType="Collection(String)" />
           <FunctionImport Name="Cities_DeleteCity">
-            <Parameter Name="CID" Mode="In" Type="Int32" />
+          <Parameter Name="CID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Cities_InsertCity">
             <Parameter Name="CityName" Mode="In" Type="String" />
@@ -1700,14 +1705,14 @@
           </FunctionImport>
           <FunctionImport Name="Cities_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Cities_SelectAll_Result)" />
           <FunctionImport Name="Cities_SelectBYID" ReturnType="Collection(BloodBankDBITIModel.Cities_SelectBYID_Result)">
-            <Parameter Name="CID" Mode="In" Type="Int32" />
+          <Parameter Name="CID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Cities_UpdateCity">
             <Parameter Name="CityName" Mode="In" Type="String" />
             <Parameter Name="CID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CommentDelete">
-            <Parameter Name="cid" Mode="In" Type="Int32" />
+          <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Comments_insert">
             <Parameter Name="post_id" Mode="In" Type="Int32" />
@@ -1715,10 +1720,10 @@
             <Parameter Name="comment" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Comments_SelectAllByPostID" ReturnType="Collection(BloodBankDBITIModel.Comments_SelectAllByPostID_Result)">
-            <Parameter Name="post_id" Mode="In" Type="Int32" />
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ContactDelete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ContactInsert">
             <Parameter Name="fname" Mode="In" Type="String" />
@@ -1730,49 +1735,34 @@
           </FunctionImport>
           <FunctionImport Name="ContactSelect" ReturnType="Collection(BloodBankDBITIModel.ContactSelect_Result)" />
           <FunctionImport Name="delete_Needer">
-            <Parameter Name="NID" Mode="In" Type="Int32" />
+          <Parameter Name="NID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Donor_insertPartner">
             <Parameter Name="PAID" Mode="In" Type="Int32" />
             <Parameter Name="DID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="donor_SelectByDID" ReturnType="Collection(BloodBankDBITIModel.donor_SelectByDID_Result)">
-            <Parameter Name="did" Mode="In" Type="Int32" />
+          <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="donor_updatepending">
-            <Parameter Name="DID" Mode="In" Type="Int32" />
+          <Parameter Name="DID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorBloodType">
             <Parameter Name="BID" Mode="In" Type="Int32" />
             <Parameter Name="DonorID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorByBid" ReturnType="Collection(BloodBankDBITIModel.DonorByBid_Result)">
-            <Parameter Name="bid" Mode="In" Type="Int32" />
+          <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorByBloodCity" ReturnType="Collection(BloodBankDBITIModel.DonorByBloodCity_Result)">
             <Parameter Name="cid" Mode="In" Type="Int32" />
             <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DonorRequests" ReturnType="Collection(BloodBankDBITIModel.DonorRequests_Result)">
-            <Parameter Name="did" Mode="In" Type="Int32" />
+          <Parameter Name="did" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Donors_Delete">
-            <Parameter Name="DID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Donors_Insert" ReturnType="Collection(BloodBankDBITIModel.Donors_Insert_Result)">
-            <Parameter Name="Fname" Mode="In" Type="String" />
-            <Parameter Name="Lname" Mode="In" Type="String" />
-            <Parameter Name="Gender" Mode="In" Type="String" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="BID" Mode="In" Type="Int32" />
-            <Parameter Name="CID" Mode="In" Type="Int32" />
-            <Parameter Name="LID" Mode="In" Type="Int32" />
-            <Parameter Name="status" Mode="In" Type="Boolean" />
-            <Parameter Name="pending" Mode="In" Type="Boolean" />
-            <Parameter Name="donationDate" Mode="In" Type="DateTime" />
-            <Parameter Name="PID" Mode="In" Type="Int32" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="password" Mode="In" Type="String" />
+          <Parameter Name="DID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Donors_select" ReturnType="Collection(BloodBankDBITIModel.Donors_select_Result)" />
           <FunctionImport Name="Donors_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectAll_Result)" />
@@ -1813,21 +1803,21 @@
             <Parameter Name="hid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllLabStatestics" ReturnType="Collection(BloodBankDBITIModel.GetAllLabStatestics_Result)">
-            <Parameter Name="pid" Mode="In" Type="Int32" />
+          <Parameter Name="pid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllTodayStatestics" ReturnType="Collection(BloodBankDBITIModel.GetAllTodayStatestics_Result)" />
           <FunctionImport Name="GetContact" ReturnType="Collection(BloodBankDBITIModel.GetContact_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetPartnersDonor" ReturnType="Collection(BloodBankDBITIModel.GetPartnersDonor_Result)">
-            <Parameter Name="PAID" Mode="In" Type="Int32" />
+          <Parameter Name="PAID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetStatestics" ReturnType="Collection(BloodBankDBITIModel.GetStatestics_Result)" />
           <FunctionImport Name="GetTodayStatestics" ReturnType="Collection(BloodBankDBITIModel.GetTodayStatestics_Result)">
-            <Parameter Name="pid" Mode="In" Type="Int32" />
+          <Parameter Name="pid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Hospitals_DeleteHospital">
-            <Parameter Name="HID" Mode="In" Type="Int32" />
+          <Parameter Name="HID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Hospitals_InsertHospital">
             <Parameter Name="Name" Mode="In" Type="String" />
@@ -1837,10 +1827,10 @@
           </FunctionImport>
           <FunctionImport Name="Hospitals_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Hospitals_SelectAll_Result)" />
           <FunctionImport Name="Hospitals_SelectByCity" ReturnType="Collection(BloodBankDBITIModel.Hospitals_SelectByCity_Result)">
-            <Parameter Name="CID" Mode="In" Type="Int32" />
+          <Parameter Name="CID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Hospitals_SelectByID" ReturnType="Collection(BloodBankDBITIModel.Hospitals_SelectByID_Result)">
-            <Parameter Name="hid" Mode="In" Type="Int32" />
+          <Parameter Name="hid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Hospitals_UpdateHospital">
             <Parameter Name="Name" Mode="In" Type="String" />
@@ -1866,7 +1856,7 @@
             <Parameter Name="LocationName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Locations_SelectAllByCityID" ReturnType="Collection(BloodBankDBITIModel.Locations_SelectAllByCityID_Result)">
-            <Parameter Name="CID" Mode="In" Type="Int32" />
+          <Parameter Name="CID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Locations_SelectBYCityID_LocationID" ReturnType="Collection(BloodBankDBITIModel.Locations_SelectBYCityID_LocationID_Result)">
             <Parameter Name="CID" Mode="In" Type="Int32" />
@@ -1888,7 +1878,7 @@
             <Parameter Name="user" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Login_select" ReturnType="Collection(BloodBankDBITIModel.Login_select_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Login_selectt" ReturnType="Collection(BloodBankDBITIModel.Login_selectt_Result)" />
           <FunctionImport Name="Login_update">
@@ -1898,7 +1888,7 @@
             <Parameter Name="user" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_DonorAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorAccepted_Result)">
-            <Parameter Name="nid" Mode="In" Type="Int32" />
+          <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
           <FunctionImport Name="Needer_DonorInsert" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorInsert_Result)">
@@ -1913,24 +1903,16 @@
           </FunctionImport>
           <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
           <FunctionImport Name="NGO_delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="NGO_insert">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="city" Mode="In" Type="Int32" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="address" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
-            <Parameter Name="cid" Mode="In" Type="Int32" />
+          <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
-            <Parameter Name="nid" Mode="In" Type="Int32" />
+          <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_selectByIDAll" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByIDAll_Result)">
-            <Parameter Name="nid" Mode="In" Type="Int32" />
+          <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="NGO_selectt" ReturnType="Collection(BloodBankDBITIModel.NGO_selectt_Result)" />
           <FunctionImport Name="NGO_update">
@@ -1953,10 +1935,10 @@
           </FunctionImport>
           <FunctionImport Name="NotApprovedNGO" ReturnType="Collection(BloodBankDBITIModel.NotApprovedNGO_Result)" />
           <FunctionImport Name="Partner_SelectByCity" ReturnType="Collection(BloodBankDBITIModel.Partner_SelectByCity_Result)">
-            <Parameter Name="cid" Mode="In" Type="Int32" />
+          <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Partners_delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Partners_insert">
             <Parameter Name="name" Mode="In" Type="String" />
@@ -1964,7 +1946,7 @@
             <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Partners_select" ReturnType="Collection(BloodBankDBITIModel.Partners_select_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Partners_selectt" ReturnType="Collection(BloodBankDBITIModel.Partners_selectt_Result)" />
           <FunctionImport Name="Partners_update">
@@ -1975,7 +1957,7 @@
             <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PartnerStatestics_delete">
-            <Parameter Name="sid" Mode="In" Type="Int32" />
+          <Parameter Name="sid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PartnerStatestics_insert">
             <Parameter Name="pid" Mode="In" Type="Int32" />
@@ -1987,10 +1969,10 @@
           </FunctionImport>
           <FunctionImport Name="PartnerStatestics_selectt" />
           <FunctionImport Name="posts_DeletePost">
-            <Parameter Name="PID" Mode="In" Type="Int32" />
+          <Parameter Name="PID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Posts_GetPostByID" ReturnType="Collection(BloodBankDBITIModel.Posts_GetPostByID_Result)">
-            <Parameter Name="post_id" Mode="In" Type="Int32" />
+          <Parameter Name="post_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="posts_InsertPost">
             <Parameter Name="post" Mode="In" Type="String" />
@@ -2011,28 +1993,28 @@
           </FunctionImport>
           <FunctionImport Name="Select_BloodTypes" ReturnType="Collection(BloodBankDBITIModel.Select_BloodTypes_Result)" />
           <FunctionImport Name="Select_BloodTypesID" ReturnType="Collection(BloodBankDBITIModel.Select_BloodTypesID_Result)">
-            <Parameter Name="BID" Mode="In" Type="Int32" />
+          <Parameter Name="BID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Select_Days" ReturnType="Collection(BloodBankDBITIModel.Select_Days_Result)">
-            <Parameter Name="DID" Mode="In" Type="Int32" />
+          <Parameter Name="DID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Select_DaysALL" ReturnType="Collection(BloodBankDBITIModel.Select_DaysALL_Result)" />
           <FunctionImport Name="Select_Needer" ReturnType="Collection(BloodBankDBITIModel.Select_Needer_Result)" />
           <FunctionImport Name="select_NeederID" ReturnType="Collection(BloodBankDBITIModel.select_NeederID_Result)">
-            <Parameter Name="NID" Mode="In" Type="Int32" />
+          <Parameter Name="NID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectCityLocations" ReturnType="Collection(BloodBankDBITIModel.SelectCityLocations_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectHospitalByID" ReturnType="Collection(BloodBankDBITIModel.SelectHospitalByID_Result)">
-            <Parameter Name="hospitalID" Mode="In" Type="Int32" />
+          <Parameter Name="hospitalID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="selectneederallinfo" ReturnType="Collection(BloodBankDBITIModel.selectneederallinfo_Result)" />
           <FunctionImport Name="selectNeederByBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByBlood_Result)">
-            <Parameter Name="bid" Mode="In" Type="Int32" />
+          <Parameter Name="bid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="selectNeederByCity" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCity_Result)">
-            <Parameter Name="cid" Mode="In" Type="Int32" />
+          <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="selectNeederByCityBlood" ReturnType="Collection(BloodBankDBITIModel.selectNeederByCityBlood_Result)">
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -2077,18 +2059,41 @@
             <Parameter Name="NID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UserType_delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UserType_insert">
-            <Parameter Name="type" Mode="In" Type="String" />
+          <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UserType_select" ReturnType="Collection(BloodBankDBITIModel.UserType_select_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UserType_selectt" ReturnType="Collection(BloodBankDBITIModel.UserType_selectt_Result)" />
           <FunctionImport Name="UserType_update">
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Donors_Insert" ReturnType="Collection(BloodBankDBITIModel.Donors_Insert_Result)">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="BID" Mode="In" Type="Int32" />
+            <Parameter Name="CID" Mode="In" Type="Int32" />
+            <Parameter Name="LID" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Boolean" />
+            <Parameter Name="pending" Mode="In" Type="Boolean" />
+            <Parameter Name="donationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PID" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_insert">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_select_Result">
@@ -2683,14 +2688,14 @@
           <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="UTID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="Donors_Insert_Result">
-          <Property Type="Decimal" Name="id" Nullable="true" Precision="38" Scale="0" />
-        </ComplexType>
         <ComplexType Name="Needer_DonorInsert_Result">
           <Property Type="Int32" Name="DonorsNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="insert_needer_Result">
           <Property Type="Decimal" Name="needer_id" Nullable="true" Precision="38" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="Donors_Insert_Result">
+          <Property Type="Decimal" Name="id" Nullable="true" Precision="38" Scale="0" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2701,6 +2706,7 @@
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
               <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="AID" ColumnName="AID" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
                 <ScalarProperty Name="Lname" ColumnName="Lname" />
@@ -3120,13 +3126,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Donors_Delete" FunctionName="BloodBankDBITIModel.Store.Donors_Delete" />
-          <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Donors_select" FunctionName="BloodBankDBITIModel.Store.Donors_select">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_select_Result">
@@ -3478,7 +3477,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NGO_delete" FunctionName="BloodBankDBITIModel.Store.NGO_delete" />
-          <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
           <FunctionImportMapping FunctionImportName="NGO_select" FunctionName="BloodBankDBITIModel.Store.NGO_select">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_select_Result">
@@ -3828,6 +3826,14 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+          <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
