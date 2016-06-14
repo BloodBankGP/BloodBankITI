@@ -53,19 +53,19 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
-                                    <option value="NULL">غير محدد</option>
+                                    <option value="NULL">اختر فصيلة</option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
                                         <option value=@item.BID>@item.Type</option>
                                     }
                                 </select>
-                                <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label>
+                                <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">فصيلة الدم</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
-                                    <option value="NULL">غير محدد</option>
+                                    <option value="NULL">اختر مدينة</option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
                                         <option value=@item.CID>@item.CityName</option>

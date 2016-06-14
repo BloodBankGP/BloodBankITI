@@ -60,16 +60,15 @@
             <div class="form-container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="" type="number" class="validate" name="Donor.DID" style="text-align:right">
+                        <input id="" type="number" class="validate" name="Donor.DID" style="text-align:right" value=@Model.Donor.DID >
                         <label class="right-align">رقم المتبرع   </label>
-                        <input type="hidden" name="DID" value=@Model.Donor.DID>
                         <span class="mdl-textfield__error">Number required!</span>
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right">
+                        <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right" value=@Model.Donor.Fname >
                         <label class="right-align" for="first_name"> الاسم الاول   </label>
                         <span class="mdl-textfield__error">Number required!</span>
 
@@ -78,7 +77,7 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right">
+                        <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right" value=@Model.Donor.Lname >
                         <label class="right-align" for="last_name">  الاسم الثانى   </label>
                         <span class="mdl-textfield__error">Number required!</span>
 
@@ -106,13 +105,13 @@
                             <label  style="margin-right:-240px;">نوع فصيلة الدم  </label>
                         </div>
                         <div dir="rtl">
-                            <select class="mdl-select__input" id="professsion" name="BID">
+                            <select class="mdl-select__input" id="professsion" name="Donor.BID">
                                 <option value="0">إختـــر ... </option>
 
                                 @foreach (var item in Model.BloodTypesResults)
                                 {
 
-                                    <option value=@item.BID>@item.Type</option>
+                                    <option value=@item.BID >@item.Type</option>
                                 }
 
                             </select>

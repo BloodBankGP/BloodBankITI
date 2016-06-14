@@ -1,4 +1,5 @@
-﻿@model BloodBankITI.Models.donor_SelectByDID_Result
+﻿@using System.ServiceModel.Security
+@model BloodBankITI.Models.donor_SelectByDID_Result
 @{
     ViewBag.Title = "ViewProfile";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -21,7 +22,10 @@ City: @Model.CityName <br />
 
 Location: @Model.LocationName <br />
 
-Phone: @Model.Phone <br />
+Phone: @Model.Phone <br/>
+
+UserName: @Model.Username <br />
+Password: @Model.Password <br/>
 
 @Html.ActionLink("Edit Profile", "UpdateProfile") <br />
 @if (Model.DonationDate == null)
