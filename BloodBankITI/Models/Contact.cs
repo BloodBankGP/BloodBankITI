@@ -10,15 +10,16 @@
 namespace BloodBankITI.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Admins_select_Result
+    public partial class Contact
     {
-        public int AID { get; set; }
-        public string Fname { get; set; }
-        public string Lname { get; set; }
-        public bool Status { get; set; }
-        public string Picture { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int ID { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string City { get; set; }
+        public string Email { get; set; }
+        public string Msg { get; set; }
     }
 }

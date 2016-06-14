@@ -3,43 +3,43 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h3 style="font-family:Myriad عربي;">المحتاجين للتبرع بالدم</h3>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+            <tr>
+                <th> الموافقة على التبرع </th>
+                <th> تاريخ طلب التبرع </th>
+                <th> فصيلة الدم </th>
+                <th> المدينة </th>
+                <th> الأسم الكامل للمتبرع </th>
+                <th> الرقم المسلسل للمتبرع </th>
 
-<h2>NeederDonor</h2>
+                <th>الإسم الأخير للمحتاج للتبرع </th>
+                <th> الإسم الأول للمحتاج للتبرع </th>
+                <th> الرقم المسلسل للمحتاج للتبرع </th>
+            </tr>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@(a.Accepted) </td>
+                    <td>@(a.AskDate) </td>
+                    <td>@(a.type) </td>
+                    <td>@(a.CityName) </td>
+                    <td>@(a.DonorFullname) </td>
+                    <td>@(a.DID) </td>
+             
+                    <td>@(a.lname) </td>
+                    <td>@(a.fname) </td>
+                    <td>@(a.NID) </td>
+                </tr>
+            }
 
-               <table class="table table-bordered table-hover table-striped">
-                   <tr>
+        </table>
+    </div>
+    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
 
-                       <th> Needer ID </th>
-                       <th> Blood Type </th>
-                       <th> City </th>
-                       <th> FullName </th>
-                       <th> Ask Date </th>
-                      
-
-
-
-                   </tr>
-
-                   @foreach (var a in Model)
-                   {
-                       <tr>
-                           <td>@(a.NID) </td>
-                           <td>@(a.type) </td>
-                           <td>@(a.CityName) </td>
-                           <td>@(a.Fullname) </td>
-                           <td>@(a.AskDate) </td>
-                          
-
-
-
-
-
-                       </tr>
-
-                   }
-
-               </table>
-
-
-               @Html.ActionLink("Back To Home", "Index")
+ </div>
 

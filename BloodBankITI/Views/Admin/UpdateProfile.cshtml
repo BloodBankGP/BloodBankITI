@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Update Profile</h2>
+@*<h2>Update Profile</h2>
 
 <form action="" method="POST">
     First Name: <input type="text" value=@Model.Fname name="Admin.Fname"/><br/>
@@ -17,4 +17,46 @@
     <input type="submit" value="Save"/>
 </form>
 
-@Html.ActionLink("Cancel", "ViewProfile")
+@Html.ActionLink("Cancel", "ViewProfile")*@
+
+
+<link href="~/Content/materialize.css" rel="stylesheet" />
+
+<div class="render">
+    <h3 style="font-family:Myriad عربي;">تعديل الصفحة الشخصية </h3>
+    <hr />
+    <form class="col s12" action="" method="POST">
+        <div class="form-container">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" name="Admin.Lname" value=@Model.Lname style="text-align:right">
+                    <label class="right-align" for="last_name">الاسم الثانى  </label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" name="Admin.Fname" value=@Model.Fname style="text-align:right;">
+                    <label class="right-align" for="first_name">الاسم الاول</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="text" class="validate" name="Login.UserName" value=@Model.UserName style="text-align:right;">
+                    <label class="right-align" for="bloodId"> اسم المستخدم </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password-confirm" type="password" class="validate" name="Login.Password" value=@Model.Password style="text-align:right;">
+                    <label class="right-align" for="city">كلمة المرور </label>
+                </div>
+            </div>
+            <input type="hidden" value=@Model.AID name="Admin.AID" />
+
+        </div>
+        @*<input type="submit" value="Save" />*@
+        <center>
+            @Html.ActionLink("إلغاء", "ViewProfile", new { id = @Model.AID }, new { @class = "btn waves-effect waves-light red darken-4" })
+            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">حفظ</button>
+        </center>
+    </form>
+
+</div>

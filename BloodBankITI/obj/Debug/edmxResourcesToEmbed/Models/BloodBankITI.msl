@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.Admin">
         <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="AID" ColumnName="AID" />
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
@@ -62,7 +63,6 @@
           <ScalarProperty Name="Pending" ColumnName="Pending" />
           <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -197,6 +197,7 @@
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
@@ -209,6 +210,7 @@
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -294,10 +296,11 @@
           <ScalarProperty Name="Pending" ColumnName="Pending" />
           <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -1013,7 +1016,6 @@
           <ScalarProperty Name="Pending" ColumnName="Pending" />
           <ScalarProperty Name="DonationDate" ColumnName="DonationDate" />
           <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="PhoneStatus" ColumnName="PhoneStatus" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="locationName" ColumnName="locationName" />
@@ -1050,5 +1052,18 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="BloodBankDBITIModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Msg" ColumnName="Msg" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -48,7 +48,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(Admin admin, Login login)
         {
-            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
+            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
             return View("Index");
         }
 
@@ -84,7 +84,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult AdminInsert(Admin admin, Login login)
         {
-            db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password);
+            db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
             return RedirectToAction("AdminsView");
         }
 

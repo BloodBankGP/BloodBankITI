@@ -3,66 +3,86 @@
     ViewBag.Title = "NeederEdit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <div class="container white z-depth-2">
+        <div class="card-panel red darken-4"><h6> تعديل بيانات المحتاجين للتبرع </h6></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post">
+                <div class="form-container">
+                    <div class="row">
+                        <input type="hidden" name="needer.NID" value=@Model.Needer.NID />
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" name="needer.Fname" value=@Model.Needer.Fname type="text" class="validate" style="text-align:left;" />
+                            <label class="right-align" for="first_name">الاسم الاول </label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" name="needer.Lname" value=@Model.Needer.Lname style="text-align:left">
+                            <label class="right-align" for="last_name">الاسم الاخير </label>
+                        </div>
+                    </div>
 
-<h2>NeederEdit</h2>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="email" name="needer.Email" value=@Model.Needer.Email class="validate" style="text-align:left;" />
+                            <label class="right-align"> البريد الإلكتروني </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
+                            </div>
+                            <div dir="rtl">
+                                <select class="mdl-select__input" id="professsion" name="Needer.BID">
+                                    @foreach (var item in Model.BloodTypesResults)
+                                    {
 
-<form method="POST" action="">
-    <input type="hidden" name="needer.NID" value=@Model.Needer.NID/>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Fname, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            <input type="text" name="needer.Fname" value=@Model.Needer.Fname />
+                                        <option value=@item.BID>@item.Type</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                            </div>           
+                            <div dir="rtl">
+                                <select class="mdl-select__input" name="Needer.CID" id="CitiesID">
+                                    <option value="0">Not Set</option>
+                                    @foreach (var item in Model.CitiesSelectAllResults)
+                                    {
+
+                                        <option value=@item.CID>@item.CityName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <center>
+                        @Html.ActionLink("إلغاء", "Needers", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                        <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
+                    </center>
+                </div>
+            </form>
+
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Lname, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            <input type="text" name="needer.Lname" value=@Model.Needer.Lname />
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Needer.Email, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            <input type="email" name="needer.Email" value=@Model.Needer.Email />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Needer.BID, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
+</div>
 
 
-            <select name="Needer.BID">
-
-                @foreach (var item in Model.BloodTypesResults)
-                {
-
-                    <option value=@item.BID>@item.Type</option>
-                }
-
-            </select>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Needer.CID, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-
-            <select name="Needer.CID" id="CitiesID">
-                <option value="0">Not Set</option>
-                @foreach (var item in Model.CitiesSelectAllResults)
-                {
-
-                    <option value=@item.CID>@item.CityName</option>
-                }
-            </select>
-
-        </div>
-    </div>
 
 
-    <input type="submit" value="Edit"/>
-</form>
 
-@Html.ActionLink("Cancel", "Needers")
+
+
+
+
+
+
 

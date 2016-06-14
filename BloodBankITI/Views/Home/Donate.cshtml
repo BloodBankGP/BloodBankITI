@@ -16,7 +16,7 @@
 
 
 </head>
-<div class="render" style="height:1250px;">
+<div class="render">
     <div class="container white z-depth-2" style="height:auto;">
         <div class="card-panel red darken-4"><h6> لو عايز تتبرع </h6></div>
         <div id="register" class="col s12">
@@ -64,20 +64,12 @@
                         <div class="input-field col s12">
                             <input type="checkbox" class="validate" name="PhoneStatus" onselect="true" style="text-align:right;" />
                             <label class="right-align" for="PhoneStatus">إظهار الرقم </label>
-                            <select class="mdl-select__input" name="Donor.PhoneStatus" id="CitiesID">
-                                @foreach (var item in Model.CitiesSelectAllResults)
-                                {
-                                <option value="0">Not Set</option>
-                                <option value=@item.CID>@item.CityName</option>
-                                }
-                            </select>
-                            @Html.ValidationMessageFor(model => model.Donor.PhoneStatus)
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
+                                <label for="CitiesID" style="text-align:right;margin-right:-165px;">فصيلة الدم</label>
                             </div>
 
                             <br />
@@ -104,7 +96,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                            <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                            <label for="CitiesID" style="text-align:right;margin-right:-165px;">المدينة</label>
                                         </div>
 
                                         <br />
