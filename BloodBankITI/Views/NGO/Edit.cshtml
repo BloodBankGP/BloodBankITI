@@ -109,12 +109,12 @@
                     <input id="Username" type="hidden" class="validate" name="ngo.UserName" style="text-align: right">
                 </div>
                 <div class="input-field col s6">
-                    <input id="Password" type="password" class="validate" name="ngo.Password" style="text-align: right">
+                    <input type="password" id="password1" class="validate" name="ngo.Password" style="text-align: right">
                     <label class="right-align" for="Password"> كلمة المرور </label>
                     @Html.ValidationMessageFor(model => model.ngo.Password)
                 </div>
                 <div class="input-field col s6">
-                    <input id="Password" type="password" class="validate" name="ngo.Password" style="text-align: right">
+                    <input type="password" id="password2" class="validate" name="ngo.Password" oninput="check()" style="text-align: right"><label id="PasswordMessage"></label>
                     <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                 </div>
             </div>
@@ -125,4 +125,17 @@
             </center>
         </form>
     </div>
-    </div>
+</div>
+
+<script>
+    
+    function check() {
+        if ($('#password2').val() != $('#password1').val()) {
+            $('#PasswordMessage').text("Doesn't Match");
+
+
+        } else
+            $('#PasswordMessage').text("done");
+
+    };
+</script>

@@ -135,17 +135,17 @@
 
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="Username" type="text" class="validate" name="Donor.UserName" style="text-align: right">
+                            <input id="Username" type="text" class="validate" name="Donor.UserName" oninput="checkusername()" style="text-align: right"><label id="UsernameMessage"></label>
                             <label class="right-align" for="last_name"> اسم المستخدم </label>
                             @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                         <div class="input-field col s6">
-                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align: right">
+                            <input  type="password" class="validate" id="password1" name="Donor.Password" style="text-align: right">
                             <label class="right-align" for="Password"> كلمة المرور </label>
                             @Html.ValidationMessageFor(model => model.Login.Password)
                         </div>
                         <div class="input-field col s6">
-                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align: right">
+                            <input  type="password" class="validate" id="password2" oninput="check()" name="Donor.Password" style="text-align: right"><label id="PasswordMessage"></label>
                             <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                         </div>
                     </div>
@@ -159,6 +159,44 @@
         </div>
     </div>
 <script>
+    
+    function check() {
+        if ($('#password2').val() != $('#password1').val()) {
+            $('#PasswordMessage').text("Doesn't Match");
+
+
+        } else
+            $('#PasswordMessage').text("done");
+
+    };
+
+
+    function checkusername() {
+        
+        var username = $('#Username').val();
+        if (username != "") {
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/CheckUsername/' + username,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data == 1) {
+                    $('#UsernameMessage').text("It's already taken"); 
+                } else {
+                    $('#UsernameMessage').text("Valid");
+                }
+               
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+      }
+
+    };
+
+
+
     $('#CitiesID').change(function () {
         var CityID = $('#CitiesID').val();
         $.ajax({
