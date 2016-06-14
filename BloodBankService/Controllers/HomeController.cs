@@ -162,6 +162,13 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
+        [Route("donorupdatepartner/{donor}")]
+        public void donor_updatePartner(donor_SelectByDID_Result donor)
+        {
+            db.Donor_insertPartner(donor.PAID, donor.DID);
+        }
+
+        [HttpPost]
         [Route("donor_insert/{donor}")]
         public HttpResponseMessage donor_insert(donor_SelectByDID_Result donor)
 
@@ -401,6 +408,18 @@ namespace BloodBankService.Controllers
         public void PartnersStatesticInsert(PartnersStatestic PartnersStatestic)
         {
             db.PartnerStatestics_insert(PartnersStatestic.PID, PartnersStatestic.DID);
+        }
+
+        [HttpGet]
+        [Route("CheckUsername/{username}")]
+        public int getPartnar_City(string username)
+        {
+            CheckName_Result check = db.CheckName(username).FirstOrDefault() ;
+
+            if (check != null)
+                return 1;
+            else
+                return 0;
         }
     }
 }

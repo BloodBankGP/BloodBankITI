@@ -5,12 +5,35 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Insert New City</h2>
-<form action="" method="POST">
-    City Name: <input type="text" name="City.CityName"/><br/>
-    City Logo Link: <input type="text" value="@Model.Logo" name="City.Logo"/>
-    <input type="submit" value="Insert"/>
-</form>
+<head>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+</head>
 
-@Html.ActionLink("Cancel", "Cities")
+<div class="render">
+    <div class="container white z-depth-2">
+        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">إضافة مدينة جديدة</h5>  </div>
+        <form class="col s12" action="" method="post">
+            <div class="form-container">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" name="City.CityName" class="validate" style="text-align:right" />
+                        <label class="right-align">اسم المدينة  </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" value="@Model.Logo" name="City.Logo" class="validate" style="text-align:right" />
+                        <label class="right-align"> لوجو لموقع المدينة  </label>
+                    </div>
+                </div>
+                <center>
+                    @Html.ActionLink("إلغاء", "Cities", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" value="Insert">موافق</button>
+                </center>
+            </div>
+        </form>
+
+    </div>
+</div>
+
 

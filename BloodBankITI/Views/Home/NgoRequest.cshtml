@@ -1,4 +1,4 @@
-﻿@model List<BloodBankITI.Models.Cities_SelectAll_Result>
+﻿@model List<bloodbankiti.models.cities_selectall_result>
     @{
         ViewBag.Title = "NgoRequest";
         Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -124,11 +124,11 @@
                             <label style="color:red; margin-right:20px;font-size:14px" for="CID"> المدينة </label>
                             <div class="input-field col s12">
                                 <div dir="rtl">
-                                    <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
-                                        <option value="0">Not Set</option>
+                                    <select class="mdl-select__input" name="NGO.CID" id="CitiesID">
+                                        <option value="NULL">Not Set</option>
                                         @foreach (var item in Model)
                                         {
-                                            <option value="item.CID">@item.CityName</option>
+                                            <option value=@item.CID>@item.CityName</option>
 
                                         }
                                     </select>
@@ -137,15 +137,16 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="Username" type="text" class="validate" name="login.UserName" style="text-align:right">
-                                <label class="right-align" for="Username"> Username </label>
+                                <input id="Username" type="text" oninput="checkusername()" class="validate" name="NGO.UserName" style="text-align:right">
+                                <label class="right-align"  for="Username"> Username </label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="Password" type="text" class="validate" name="login.Password" style="text-align:right">
-                                <label class="right-align" for="Passwprd"> Password </label> 
+                                <input id="Password1" type="text" class="validate" name="NGO.Password" style="text-align:right">
+                                <label class="right-align" for="Passwprd"> Password </label>
                             </div>
+
                             <div class="input-field col s6">
-                                <input id="Password" type="text" class="validate" name="Password" style="text-align:right">
+                                <input id="Password2" type="password" oninput="check()" class="validate" name="NGO.Password" style="text-align:right">
                                 <label class="right-align" for="Password"> ConfirmPassword </label>
                             </div>
 
@@ -153,9 +154,49 @@
                             <center>
                                 <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">ارسال</button>
                             </center>
-                           
+
                         </div>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+
+        function check() {
+            if ($('#password2').val() != $('#password1').val()) {
+                $('#PasswordMessage').text("Doesn't Match");
+
+
+            } else
+                $('#PasswordMessage').text("done");
+
+        };
+
+
+        function checkusername() {
+            var username = $('#Username').val();
+            if (username != "")
+            {
+            $.ajax({
+                url: 'http://www.bloodservice.somee.com/Home/CheckUsername/' + username,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data == 1) {
+                        $('#UsernameMessage').text("It's already taken");
+                    } else {
+                        $('#UsernameMessage').text("Valid");
+                    }
+
+                },
+                error: function (e) {
+                    alert(e.statusText);
+                }
+            });
+
+        }
+        };
+
+
+
+    </script>
