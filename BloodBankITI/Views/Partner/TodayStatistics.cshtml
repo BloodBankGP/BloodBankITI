@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>Today's Statistics</h2>
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
 
-    <h3>إحصائيات اليوم</h3>
+    <h4 style="font-family:'Myriad عربي'">إحصائيات اليوم</h4>
+    <hr />
     <table class="table table-bordered table-striped table-hover" style="text-align:center;background-color:wheat;">
         <tr>
             <td>مسلسل</td>
@@ -31,4 +31,6 @@
         @Html.ActionLink("العودة للإحصائيات", "Statistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
         @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
     </center>
+    <div style="margin-bottom:23px;"></div>
+
 </div>

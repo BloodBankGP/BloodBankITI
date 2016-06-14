@@ -238,6 +238,8 @@
     <Compile Include="Models\Comments_SelectAllByPostID_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactSelect_Result.cs" />
     <Compile Include="Models\Day.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -252,6 +254,7 @@
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\DonorLogin.cs" />
     <Compile Include="Models\donorpartner.cs" />
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
@@ -284,6 +287,7 @@
     <Compile Include="Models\GetAllTodayStatestics_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GetContact_Result.cs" />
     <Compile Include="Models\GetPartnersDonor_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -307,6 +311,7 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\insert_needer_Result.cs" />
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -342,12 +347,14 @@
     <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Needer_DonorInsert_Result.cs" />
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NgoCitiesLogin.cs" />
     <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">
@@ -362,6 +369,7 @@
     <Compile Include="Models\NGO_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotApprovedNGO_Result.cs" />
     <Compile Include="Models\Partner.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -502,6 +510,7 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
+    <Content Include="img\1220137105858.jpg" />
     <Content Include="img\android-chrome-144x144.png" />
     <Content Include="img\android-chrome-192x192.png" />
     <Content Include="img\android-chrome-36x36.png" />
@@ -522,7 +531,18 @@
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\blood-drop.png" />
+    <Content Include="img\BloodTypes\A+.png" />
+    <Content Include="img\BloodTypes\A-.png" />
+    <Content Include="img\BloodTypes\AB+.png" />
+    <Content Include="img\BloodTypes\AB-.png" />
+    <Content Include="img\BloodTypes\B+.png" />
+    <Content Include="img\BloodTypes\B-.png" />
+    <Content Include="img\BloodTypes\download.png" />
+    <Content Include="img\BloodTypes\O+.png" />
+    <Content Include="img\BloodTypes\O-.png" />
     <Content Include="img\callout.jpg" />
+    <Content Include="img\CitiesLogos\Ismailia.png" />
+    <Content Include="img\CitiesLogos\Portsaid.png" />
     <Content Include="img\cut.jpg" />
     <Content Include="img\DONOR.png" />
     <Content Include="img\download.jpg" />
@@ -532,7 +552,9 @@
     <Content Include="img\favicon.ico" />
     <Content Include="img\finaallogo.png" />
     <Content Include="img\homebackground.jpg" />
+    <Content Include="img\Iismailia-logo.png" />
     <Content Include="img\llogo.png" />
+    <Content Include="img\logo-small.png" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
     <Content Include="img\logo2Start.png" />
@@ -1034,6 +1056,9 @@
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
+    <Content Include="Views\Admin\NGORequests.cshtml" />
+    <Content Include="Views\Admin\ShowMsg.cshtml" />
+    <Content Include="Views\Admin\ShowMsgs.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
@@ -1048,6 +1073,10 @@
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
+    <Content Include="Views\Home\Thanks.cshtml" />
+    <Content Include="Views\Partner\AllStatistics.cshtml" />
+    <Content Include="Views\Partner\Statistics.cshtml" />
+    <Content Include="Views\Partner\TodayStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

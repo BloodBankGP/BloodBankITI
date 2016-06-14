@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-@*<link href="~/Content/materialize.css" rel="stylesheet" />*@
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h3 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h3>
+    <h4 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h4>
     <hr />
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
@@ -16,10 +16,10 @@
                     <th>@Html.DisplayNameFor(d => d.Fname)</th>
                     <th>@Html.DisplayNameFor(d => d.Lname)</th>
                     <th>أدخال فصيلة الدم</th>*@
-                <th> فصيلة الدم  </th>
+                <th> رقم المتبرع</th>
                 <th>الاسم الثانى  </th>
                 <th>الاسم الاول   </th>
-                <th>رقم المتبرع </th>
+                <th> فصيلة الدم</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -27,11 +27,13 @@
                     <td>@item.DID</td>
                     <td>@item.Fname</td>
                     <td>@item.Lname</td>
-                    <td>@Html.ActionLink("أدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
+                    <td>@Html.ActionLink("إدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
                 </tr>
             }
         </table>
     </div>
-    <div style="margin-bottom:170px;"></div>
+    <center>
+        @Html.ActionLink("الإحصائيات", "Statistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 
 </div>

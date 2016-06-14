@@ -13,10 +13,11 @@
     @*<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">*@
-    <script langauage="javascript">
-      function showMessage(value){
-         document.getElementById("message").innerHTML = value;
-      }
+  
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
     </script>
 
 </head>
@@ -55,33 +56,33 @@
         </div>
     </form>*@
     <div class="container white z-depth-2">
-        <div class="card-panel #b71c1c red darken-4"><h4 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">  تعديل بيانات المتبرع</h4>  </div>
+        <div class="card-panel #b71c1c red darken-4"><h4 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">  تعديل فصيلة دم المتبرع</h4>  </div>
         <form method="POST" action="" novalidate="novalidate">
             <div class="form-container">
-                <div class="row">
+                @*<div class="row">
                     <div class="input-field col s12">
                         <input id="" type="number" class="validate" name="Donor.DID" style="text-align:right">
                         <label class="right-align">رقم المتبرع   </label>
                         <input type="hidden" name="DID" value=@Model.Donor.DID>
-                        <span class="mdl-textfield__error">Number required!</span>
-
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value="@Model.Donor.DID"  id="disabled" type="text" class="validate" name="Donor.DID" style="text-align:left">
+                        <label style="margin-right:-325px;">رقم المتبرع</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate" name="Donor.Fname" style="text-align:right">
-                        <label class="right-align" for="first_name"> الاسم الاول   </label>
-                        <span class="mdl-textfield__error">Number required!</span>
-
+                        <input disabled value="@Model.Donor.Fname" id="disabled" type="text" name="Donor.Fname" style="text-align:left">
+                        <label> الاسم الاول </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align:right">
-                        <label class="right-align" for="last_name">  الاسم الثانى   </label>
-                        <span class="mdl-textfield__error">Number required!</span>
-
+                        <input disabled value="@Model.Donor.Lname" id="disabled" type="text"  name="Donor.Lname" style="text-align:left">
+                        <label> الاسم الثانى</label>
                     </div>
                 </div>
                 @*<div class="row" style="float:right;">
@@ -103,10 +104,10 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                            <label  style="margin-right:-240px;">نوع فصيلة الدم  </label>
+                            <label  style="margin-right:-310px;">نوع فصيلة الدم  </label>
                         </div>
                         <div dir="rtl">
-                            <select class="mdl-select__input" id="professsion" name="BID">
+                            <select class="mdl-select__input" id="professsion" name="Donor.BID">
                                 <option value="0">إختـــر ... </option>
 
                                 @foreach (var item in Model.BloodTypesResults)

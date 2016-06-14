@@ -43,7 +43,7 @@ namespace BloodBankITI.Controllers
             donor_SelectByDID_Result donor = new donor_SelectByDID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("SelectDonorByDID/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("ViewProfile/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
                 donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
@@ -75,7 +75,7 @@ namespace BloodBankITI.Controllers
                 );
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PutAsync("insertBloodType/"+BID+"/"+DID+"",content).Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+BID+"/"+DID+"","").Result;
             if (response.IsSuccessStatusCode)
             {
               return  RedirectToAction("Index");

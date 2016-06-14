@@ -13,7 +13,9 @@
 @foreach (var post in Model)
 {
     <div id="post" class="outset">
-        <p>@post.post.Name  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p> 
+        <p>@post.post.Name 
+            <label>  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</label><br /><br />
+        </p> 
         <p>@post.post.Post</p>
     </div>
     <div class="fb-share-button" data-href="http://localhost:7508/home/GetPostByID/1" data-layout="button_count" data-mobile-iframe="false"></div>
