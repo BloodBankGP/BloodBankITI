@@ -354,7 +354,7 @@ namespace BloodBankITI.Controllers
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("donorupdatepartner/donor", donor).Result;
             if (response.IsSuccessStatusCode)
             {
                 PartnersStatestic partnersStatestic = new PartnersStatestic()
