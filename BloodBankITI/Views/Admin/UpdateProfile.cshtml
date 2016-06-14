@@ -29,6 +29,7 @@
         <div class="form-container">
             <div class="row">
                 <div class="input-field col s6">
+                    <input type="hidden" value=@Model.AID name="Admin.AID"/>
                     <input id="last_name" type="text" class="validate" name="Admin.Lname" value=@Model.Lname style="text-align:right">
                     <label class="right-align" for="last_name">الاسم الثانى  </label>
                 </div>
@@ -39,7 +40,8 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="text" class="validate" name="Login.UserName" value=@Model.UserName style="text-align:right;">
+                    <label  class="left" name="login.username">@Model.UserName  </label>
+                    <input type="hidden" value=@Model.UserName name="Login.Username"/>
                     <label class="right-align" for="bloodId"> اسم المستخدم </label>
                 </div>
             </div>
@@ -49,7 +51,7 @@
                     <label class="right-align" for="city">كلمة المرور </label>
                 </div>
             </div>
-            <input type="hidden" value=@Model.AID name="Admin.AID" />
+            <input type="hidden" value=@Model.AID name="Admin.Password" />
 
         </div>
         @*<input type="submit" value="Save" />*@
@@ -57,6 +59,7 @@
             @Html.ActionLink("إلغاء", "ViewProfile", new { id = @Model.AID }, new { @class = "btn waves-effect waves-light red darken-4" })
             <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">حفظ</button>
         </center>
+        <input type="hidden" value=@Model.Picture name="Admin.Picture"/>
     </form>
 
 </div>

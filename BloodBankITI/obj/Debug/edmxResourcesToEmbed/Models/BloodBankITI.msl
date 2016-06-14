@@ -223,6 +223,7 @@
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
@@ -235,6 +236,7 @@
           <ScalarProperty Name="Fname" ColumnName="Fname" />
           <ScalarProperty Name="Lname" ColumnName="Lname" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
