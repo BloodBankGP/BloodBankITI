@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace BloodBankITI.Controllers
 {
     public class PartnerController : Controller
     {
+        BloodBankDBITIEntities db = new BloodBankDBITIEntities();
         // GET: Partner
         public ActionResult Index()
         {
@@ -30,7 +32,7 @@ namespace BloodBankITI.Controllers
             }
             return View(Part_donor);
         }
-        [HttpGet]
+        [System.Web.Mvc.HttpGet]
         public ActionResult Edit (int id)
         {
             if (Session["UserId"] == null && Session["UserName"] == null)
@@ -61,7 +63,7 @@ namespace BloodBankITI.Controllers
             return View(don);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult Edit(int BID , int DID)
         {
            var content = new FormUrlEncodedContent(
@@ -81,6 +83,43 @@ namespace BloodBankITI.Controllers
             }
 
             return RedirectToAction("Edit", new { id = DID });
+        }
+
+        ////Statistics
+        [System.Web.Mvc.HttpGet]
+        public ActionResult TodayStatistics()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.GetTodayStatestics(Int32.Parse(Session["UserId"].ToString())).ToList());
+        }
+
+        [System.Web.Http.HttpGet]
+        public ActionResult Statistics()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public ActionResult AllStatistics()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                return View(db.GetAllLabStatestics(Int32.Parse(Session["UserId"].ToString())).ToList());
+            }
         }
 
     }

@@ -27,10 +27,10 @@ namespace BloodBankService.Models
         public Nullable<bool> Status { get; set; }
         public Nullable<int> CID { get; set; }
     
+        public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
-        public virtual City City { get; set; }
     }
 }

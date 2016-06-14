@@ -23,7 +23,9 @@ namespace BloodBankITI.Models
         public bool Periodic { get; set; }
         public int BID1 { get; set; }
         public string Type { get; set; }
+        public string Logo { get; set; }
         public int CID1 { get; set; }
         public string CityName { get; set; }
+        public string Logo1 { get; set; }
     }
 }

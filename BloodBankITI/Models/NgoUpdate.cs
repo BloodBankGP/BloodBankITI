@@ -9,6 +9,6 @@ namespace BloodBankITI.Models
     {
         public List<Cities_SelectAll_Result> CitiesSelectAllResults { get; set; }
 
-        public NGO ngo { get; set; }
+        public NGO_selectByID_Result ngo { get; set; }
     }
 }

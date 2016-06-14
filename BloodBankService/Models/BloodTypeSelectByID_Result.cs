@@ -15,5 +15,6 @@ namespace BloodBankService.Models
     {
         public int BID { get; set; }
         public string Type { get; set; }
+        public string Logo { get; set; }
     }
 }
