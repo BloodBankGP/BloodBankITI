@@ -221,7 +221,7 @@ namespace BloodBankService.Controllers
             return db.GetPartnersDonor(paid).ToList();
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("insertBloodType/{bid:int}/{did:int}")]
         public void insertBloodType(int bid, int did)
         {

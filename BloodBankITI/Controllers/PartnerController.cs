@@ -43,7 +43,7 @@ namespace BloodBankITI.Controllers
             donor_SelectByDID_Result donor = new donor_SelectByDID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("SelectDonorByDID/" + id).Result;
+            HttpResponseMessage response = client.GetAsync("ViewProfile/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
                 donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
@@ -64,25 +64,23 @@ namespace BloodBankITI.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult Edit(int BID , int DID)
+        public ActionResult Edit(donor_SelectByDID_Result donor)
         {
-           var content = new FormUrlEncodedContent(
-                new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("bid", BID.ToString()),
-                    new KeyValuePair<string, string>("did", DID.ToString())
-                }
-                );
+           
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PutAsync("insertBloodType/"+BID+"/"+DID+"",content).Result;
+<<<<<<< HEAD
+            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+donor.BID+"/"+donor.DID+"","").Result;
+=======
+            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+BID+"/"+DID+"","").Result;
+>>>>>>> origin/master
             if (response.IsSuccessStatusCode)
             {
               return  RedirectToAction("Index");
 
             }
 
-            return RedirectToAction("Edit", new { id = DID });
+            return RedirectToAction("Edit", new { id = donor.DID });
         }
 
         ////Statistics
