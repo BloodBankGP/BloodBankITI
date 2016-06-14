@@ -209,6 +209,56 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpGet]
+        public ActionResult InsertPost()
+        {
+            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+
+            }
+
+
+            List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
+
+            response = client.GetAsync("AllBloodTypes").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
+
+            }
+
+            donorinsertform post = new donorinsertform()
+            {
+                BloodTypesResults = bloodTypes,
+                Donor = null,
+                CitiesSelectAllResults = cities,
+                //LocationsSelectAllByCity = null
+            };
+            return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult InsertPost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert Post";
+
+            return RedirectToAction("WallPosts");
+        }
+        [HttpGet]
         public ActionResult EmergencyToDay()
         {
             List<Cities_SelectAll_Result> Cities = new List<Cities_SelectAll_Result>();
