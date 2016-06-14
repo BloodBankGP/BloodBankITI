@@ -69,7 +69,11 @@ namespace BloodBankITI.Controllers
            
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+<<<<<<< HEAD
             HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+donor.BID+"/"+donor.DID+"","").Result;
+=======
+            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+BID+"/"+DID+"","").Result;
+>>>>>>> origin/master
             if (response.IsSuccessStatusCode)
             {
               return  RedirectToAction("Index");

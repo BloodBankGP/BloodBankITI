@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-@*<link href="~/Content/materialize.css" rel="stylesheet" />*@
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h3 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h3>
+    <h4 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h4>
     <hr />
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
@@ -16,7 +16,11 @@
                     <th>@Html.DisplayNameFor(d => d.Fname)</th>
                     <th>@Html.DisplayNameFor(d => d.Lname)</th>
                     <th>أدخال فصيلة الدم</th>*@
+<<<<<<< HEAD
                 <th> رقم المتبرع  </th>
+=======
+                <th> رقم المتبرع</th>
+>>>>>>> origin/master
                 <th>الاسم الثانى  </th>
                 <th>الاسم الاول   </th>
                 <th> فصيلة الدم</th>
@@ -32,6 +36,8 @@
             }
         </table>
     </div>
-    <div style="margin-bottom:170px;"></div>
+    <center>
+        @Html.ActionLink("الإحصائيات", "Statistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 
 </div>

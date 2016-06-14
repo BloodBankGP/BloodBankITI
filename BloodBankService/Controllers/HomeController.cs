@@ -162,6 +162,13 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
+        [Route("donorupdatepartner/{donor}")]
+        public void donor_updatePartner(donor_SelectByDID_Result donor)
+        {
+            db.Donor_insertPartner(donor.PAID, donor.DID);
+        }
+
+        [HttpPost]
         [Route("donor_insert/{donor}")]
         public HttpResponseMessage donor_insert(donor_SelectByDID_Result donor)
 

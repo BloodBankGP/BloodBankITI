@@ -15,7 +15,7 @@ body {
 }
 
 .render{
-    width:900px;
+    width:800px;
     height:auto;
     margin-top:8em;
     margin-right:auto;
@@ -37,7 +37,7 @@ table .th_style
     position: absolute;
     width: 250px;
     height: 250px;
-    background: url(../img/llogo.png);
+    background: url(../img/finaallogo.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -357,14 +357,12 @@ footer , #fixedbar ,#layoutone{
 	text-align: center;
 	max-width: 500px;
 	max-height: 300px;
-    margin-left: 660px;
-
    
     /*align-content:center;*/
 }
 
 span {
-	border: 0px solid;
+	border: 1px solid;
 	border-radius: 50%;
 	color: #fff;
 	width: 60px;
@@ -376,8 +374,6 @@ span {
 	-moz-transition: all .5s ease 0s;
 	-o-transition: all .5s ease 0s;
 	transition: all .5s ease 0s;
-    font-family:'Myriad عربي';
-  
 }
 
 span:hover {
@@ -468,7 +464,7 @@ h2 {
   margin: 0;
   cursor: pointer;
     text-align:right;
-   font-family:'Myriad عربي';
+   
 }
 
 p {
@@ -621,11 +617,11 @@ h4
 	opacity: 0.3;
 }
 
-/*.form-container
+.form-container
 {
 	padding: 40px;
 	padding-top: 10px;
-}*/
+}
 
 .confirmation-tabs-btn
 {
@@ -877,4 +873,3 @@ footer{
      background-color:antiquewhite;
  }
  /*view profile*/
- /*LOGIN*/

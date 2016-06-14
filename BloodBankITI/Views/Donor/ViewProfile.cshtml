@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>ViewProfile</h2>
+@*<h2>ViewProfile</h2>
 
 Name: @(Model.Fname + " " + Model.Lname) <br />
 
@@ -35,7 +35,81 @@ Password: @Model.Password <br/>
         <input type="hidden" value=@Model.DID name="Donor.DID" />
         <input type="submit" value="I Donated Today" />
     }
-}
+}*@
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <div class="panel panel-info" style="border:2px solid darkgray;">
+        <div class="panel-heading" style="background-color:darkgray;border:2px solid darkgray;">
+            <h3 class="panel-title" style="font-family:'Myriad عربي';position:center;color:black;">الصفحة الشخصية</h3>
+        </div>
+        <br />
 
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> 
+                    @if (@Model.DonorGender == "female")
+                    {
+                        <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                    }
+                    else
+                    {
+                        <img alt="User Pic" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTnCTg4SrxcZ45AWv9VRFkEAoE0sXzP72qsDHEJQLHgudG7_j7c" class="img-circle img-responsive">
+                    }
+                </div>
+                <div class=" col-md-9 col-lg-9 " style="position:center;border:hidden;">
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>@(Model.Fname + " " + Model.Lname)</td>
+                                <td>:الإسم</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.DonorGender</td>
+                                <td>:النوع</td>
+                            </tr>
+                            <tr>
+                                <td>@if (Model.DonationDate != null)
+                                    {
+                                        @Model.DonationDate <br />
+                                    }
+                                </td>
+                                <td>:تاريخ اخر تبرع</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Type</td>
+                                <td>:فصيلة الدم</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.CityName</td>
+                                <td>:المدينة</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.LocationName</td>
+                                <td>:المنطقة</td>
+                            </tr>
+                            <tr>
+                                <td>@Model.Phone</td>
+                                <td>:رقم التلفون</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <center style="margin-left:10px;">
+                    @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    @if (Model.DonationDate == null)
+                    {
+                        using (Html.BeginForm("UpdateDonationDate", "Donor", FormMethod.Post, new { id = @Model.DID }))
+                        {
+                            <input type="hidden" value=@Model.DID name="Donor.DID" />
+                            <input type="submit" value="I Donated Today" />
+                        }
+                    }
+                </center>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
