@@ -21,10 +21,10 @@ namespace BloodBankITI.Models
             this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
             this.Needers = new HashSet<Needer>();
-            this.Needer_Donor = new HashSet<Needer_Donor>();
             this.NGOes = new HashSet<NGO>();
-            this.Partners = new HashSet<Partner>();
             this.Posts = new HashSet<Post>();
+            this.Partners = new HashSet<Partner>();
+            this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
         public int CID { get; set; }
@@ -36,9 +36,9 @@ namespace BloodBankITI.Models
         public virtual ICollection<Hospital> Hospitals { get; set; }
         public virtual ICollection<Location> Locations { get; set; }
         public virtual ICollection<Needer> Needers { get; set; }
-        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
         public virtual ICollection<NGO> NGOes { get; set; }
-        public virtual ICollection<Partner> Partners { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Partner> Partners { get; set; }
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }

@@ -18,9 +18,10 @@ namespace BloodBankITI.Models
         {
             this.Donors = new HashSet<Donor>();
             this.Needers = new HashSet<Needer>();
-            this.Needer_Donor = new HashSet<Needer_Donor>();
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Posts = new HashSet<Post>();
+            this.PartnersStatestics1 = new HashSet<PartnersStatestic>();
+            this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
         public int BID { get; set; }
@@ -29,8 +30,9 @@ namespace BloodBankITI.Models
     
         public virtual ICollection<Donor> Donors { get; set; }
         public virtual ICollection<Needer> Needers { get; set; }
-        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<PartnersStatestic> PartnersStatestics1 { get; set; }
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }

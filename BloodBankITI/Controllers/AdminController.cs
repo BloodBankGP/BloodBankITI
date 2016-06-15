@@ -401,7 +401,7 @@ namespace BloodBankITI.Controllers
             NgoUpdate update = new NgoUpdate()
             {
                 ngo =
-                    new NGO()
+                    new NGO_selectByID_Result()
                     {
                         CID = ngo.CID,
                         NID = ngo.NID,

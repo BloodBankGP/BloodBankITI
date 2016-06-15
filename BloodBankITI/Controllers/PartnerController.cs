@@ -64,25 +64,18 @@ namespace BloodBankITI.Controllers
         }
 
         [System.Web.Mvc.HttpPost]
-        public ActionResult Edit(int BID , int DID)
+        public ActionResult Edit(donor_SelectByDID_Result donor)
         {
-           var content = new FormUrlEncodedContent(
-                new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("bid", BID.ToString()),
-                    new KeyValuePair<string, string>("did", DID.ToString())
-                }
-                );
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+BID+"/"+DID+"","").Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+donor.BID+"/"+donor.DID+"","").Result;
             if (response.IsSuccessStatusCode)
             {
               return  RedirectToAction("Index");
 
             }
 
-            return RedirectToAction("Edit", new { id = DID });
+            return RedirectToAction("Edit", new { id = donor.DID });
         }
 
         ////Statistics
