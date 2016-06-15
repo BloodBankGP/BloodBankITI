@@ -68,10 +68,10 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
-        [Route("NgoRequest/{ngo}")]
-        public string NgoRequest(NGO ngo)
+        [Route("NgoRequest/{ngo}/{login}")]
+        public string NgoRequest(NGO ngo, Login login)
         {
-            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address) == 1)
+            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address, login.UserName, login.Password) == 1)
             {
                 return "Ngo Inserted";
             }
@@ -103,7 +103,7 @@ namespace BloodBankService.Controllers
             if (db.CheckName(login.UserName) == null)
             {
                 var id = db.Donors_Insert(donor.Fname, donor.Lname,donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID);
+                    donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, login.UserName, login.Password);
 
                 db.Login_insert(login.UserName, login.Password, 2, Int32.Parse(id.ToString()));
 
@@ -146,8 +146,8 @@ namespace BloodBankService.Controllers
         }
 
         [HttpPost]
-        [Route("donor_insert/{donor}")]
-        public HttpResponseMessage donor_insert(Donor donor)
+        [Route("donor_insert/{donor}/{login}")]
+        public HttpResponseMessage donor_insert(Donor donor, Login login)
         {
             if (donor.DonorGender == "Male")
             {
@@ -177,8 +177,8 @@ namespace BloodBankService.Controllers
                 }
             }
 
-          var id = db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
-                donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID);
+            var id = db.Donors_Insert(donor.Fname, donor.Lname, donor.DonorGender, donor.Phone, donor.BID, donor.CID,
+                  donor.LID, true, donor.Pending, donor.DonationDate, donor.PAID, login.UserName, login.Password);
 
             Donors_Insert_Result don = new Donors_Insert_Result(){ id = id.FirstOrDefault().id.Value};
 

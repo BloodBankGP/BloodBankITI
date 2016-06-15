@@ -30,12 +30,8 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_Login_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Partners" ManuallyRouted="false" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Partners_Cities" />
-        <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="10.5" PointY="12.25" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Cities" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Needer" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.BloodType" Width="1.5" PointX="8.375" PointY="1" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_BloodTypes" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Posts_BloodTypes" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Donor" Width="1.5" PointX="10.625" PointY="6.75" />
@@ -43,9 +39,13 @@
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Cities" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Locations" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_Donors_Partners" />
-        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Donors" />
         <AssociationConnector Association="BloodBankDBITIModel.FK_PartnersStatestics_Donors" />
         <EntityTypeShape EntityType="BloodBankDBITIModel.Contact" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BloodBankDBITIModel.Needer_Donor" Width="1.5" PointX="12.875" PointY="6.75" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Cities" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Donors" />
+        <AssociationConnector Association="BloodBankDBITIModel.FK_Needer_Donor_Needer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

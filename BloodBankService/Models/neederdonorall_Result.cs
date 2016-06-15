@@ -18,7 +18,7 @@ namespace BloodBankService.Models
         public int CID { get; set; }
         public int DID { get; set; }
         public System.DateTime AskDate { get; set; }
-        public bool Accepted { get; set; }
+        public Nullable<bool> Accepted { get; set; }
         public string CityName { get; set; }
         public string type { get; set; }
         public string Fullname { get; set; }
