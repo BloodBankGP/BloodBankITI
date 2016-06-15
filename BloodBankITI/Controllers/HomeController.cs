@@ -55,7 +55,33 @@ namespace BloodBankITI.Controllers
     [HttpGet]
         public ActionResult AskForBlood()
         {
-            return View();
+            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+
+            }
+
+
+            List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
+
+            response = client.GetAsync("AllBloodTypes").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
+
+            }
+
+            donorinsertform donor = new donorinsertform()
+            {
+                BloodTypesResults = bloodTypes,
+                Donor = null,
+                CitiesSelectAllResults = cities,
+            };
+            return View(donor);
         }
 
         [HttpPost]
@@ -64,38 +90,39 @@ namespace BloodBankITI.Controllers
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
-            
-            if (response.IsSuccessStatusCode)
-            {  
-                response = client.PostAsJsonAsync("AskForBlood/"+n.CID+"/"+n.BID+"/"+n.NID,"").Result;
-            
-                if (response.IsSuccessStatusCode)
-                {
-                    int count = response.Content.ReadAsAsync<int>().Result;
-                    return RedirectToAction("FollowRequest",
-                        new
-                        {
-                            msg =
-                                "Your request was sent to " + count +
-                                " Donors, Follow this link to know if someone accepted your request and get their data to contact them: " +
-                                "http://localhost:7508/Home/RequestsResults/" + n.NID +"/"+ n.Fname + n.Lname
-                        });
-                }
-                else
-                    return RedirectToAction("FollowRequest",
-                        new
-                        {
-                            msg = "An error happened and no requests were sent, please try again!"
-                        });
-            }
 
+            if (response.IsSuccessStatusCode)
+            {
+                
+                    string needer_id = response.Content.ReadAsStringAsync().Result;
+
+                    response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string count = response.Content.ReadAsStringAsync().Result;
+
+                        return RedirectToAction("FollowRequest","Home",
+                            new
+                            {
+                                id =
+                                    "Your request was sent to " + count +
+                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a)"
+                            });
+                    }
+                    else
+                        return RedirectToAction("FollowRequest",
+                            new
+                            {
+                                id = "An error happened and no requests were sent, please try again!"
+                            });
+                }
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public ActionResult FollowRequest(string msg)
+        public ActionResult FollowRequest(string id)
         {
-            return View(msg);
+            return View("FollowRequest","_Layout2", id);
         }
 
         [HttpGet]
@@ -149,7 +176,7 @@ namespace BloodBankITI.Controllers
             else
                 result = "Failed to insert comment";
 
-            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
+            return RedirectToAction("wallposts");
         }
 
         [HttpGet]
@@ -167,8 +194,6 @@ namespace BloodBankITI.Controllers
 
             }
 
-            
-
                 List<Comments_SelectAllByPostID_Result> comments = new List<Comments_SelectAllByPostID_Result>();
                 response = client.GetAsync("ALLCommentPerPost/" + post.PID).Result;
                 if (response.IsSuccessStatusCode)
@@ -183,6 +208,56 @@ namespace BloodBankITI.Controllers
             return View(PostComments);
         }
 
+        [HttpGet]
+        public ActionResult InsertPost()
+        {
+            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+
+            }
+
+
+            List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
+
+            response = client.GetAsync("AllBloodTypes").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
+
+            }
+
+            donorinsertform post = new donorinsertform()
+            {
+                BloodTypesResults = bloodTypes,
+                Donor = null,
+                CitiesSelectAllResults = cities,
+                //LocationsSelectAllByCity = null
+            };
+            return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult InsertPost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert Post";
+
+            return RedirectToAction("WallPosts");
+        }
         [HttpGet]
         public ActionResult EmergencyToDay()
         {
@@ -214,7 +289,7 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult NgoRequest (NGO ngo)
+        public ActionResult NgoRequest (NGO_selectByID_Result ngo)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -267,7 +342,7 @@ namespace BloodBankITI.Controllers
 
 
         [HttpPost]
-        public ActionResult Donate(Donor donor)
+        public ActionResult Donate(donor_SelectByDID_Result donor)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -276,8 +351,7 @@ namespace BloodBankITI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                result = "Done";
-               
+                result = "Done";  
                 string id = response.Content.ReadAsStringAsync().Result;
                 if (donor.BID == null)
                 {
@@ -326,11 +400,11 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult selectPartner(Donor  donor) 
+        public ActionResult selectPartner(donor_SelectByDID_Result  donor) 
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("donorupdatepartner/donor", donor).Result;
             if (response.IsSuccessStatusCode)
             {
                 PartnersStatestic partnersStatestic = new PartnersStatestic()

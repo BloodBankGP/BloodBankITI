@@ -3,14 +3,16 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h3>عرض الإحصائيات</h3>
+    <h4>عرض الإحصائيات</h4>
+    <hr />
     @*<p>@Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics")</p>
         <p>@Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics")</p>*@
     <center>
-        <p style="text-align:center;">@Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics",null, new { @class = "btn btn-danger" })</p>
-        <p style="text-align:center;">@Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics",null, new { @class = "btn btn-danger" })</p>
+        @Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
     </center>
 </div>
 

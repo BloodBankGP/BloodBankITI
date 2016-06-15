@@ -4,13 +4,31 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<head>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+</head>
 
-<h2>Insert New Location</h2>
+<div class="render" >
+    <div class="container white z-depth-2" style="height:auto;">
+        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">إضافة منطقة جديدة</h5>  </div>
+        <form class="col s12" action="" method="post">
+            <div class="form-container">
+                <div class="row">
+                    <input type="hidden" name="Location.LID" value=@Model />
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" name="Location.LocationName" class="validate" style="text-align:right" />
+                        <label class="right-align">اسم المنطقة  </label>
+                    </div>
+                </div>
+                <center>
+                    @Html.ActionLink("إلغاء", "Cities", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" value="Insert" >موافق</button>
+                </center>
+            </div>
+        </form>
 
-<form action="" method="POST">
-    <input type="hidden" name="Location.LID" value=@Model/>
-    Location Name: <input type="text" name="Location.LocationName"/><br/>
-    <input type="submit" value="Insert"/>
-</form>
+    </div>
+</div>
 
-@Html.ActionLink("Cancel", "Cities")

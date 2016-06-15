@@ -49,9 +49,6 @@ namespace BloodBankITI.Controllers
 
             }
 
-
-            
-
             List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
             
        
@@ -66,7 +63,7 @@ namespace BloodBankITI.Controllers
             {
                 CitiesSelectAllResults = cities,
                 ngo =
-                    new NGO()
+                    new NGO_selectByID_Result()
                     {
                         Address = ng.Address,
                         Approved = ng.Approved,
@@ -74,20 +71,17 @@ namespace BloodBankITI.Controllers
                         NID = ng.NID,
                         Phone = ng.Phone,
                         Name = ng.Name, 
-                        Status = ng.Status
+                        Status = ng.Status,
+                        Username = ng.Username,
+                        Password = ng.Password
                     }
             };
-
-
-
-
-
-
             return View(ngoUpdate);
         }
 
+
         [HttpPost]
-        public ActionResult Edit(NGO ngo)
+        public ActionResult Edit(NGO_selectByID_Result ngo)
         {
 
             HttpClient client = new HttpClient();

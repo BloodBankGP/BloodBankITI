@@ -48,7 +48,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(Admin admin, Login login)
         {
-            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password);
+            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
             return View("Index");
         }
 
@@ -84,7 +84,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult AdminInsert(Admin admin, Login login)
         {
-            db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password);
+            db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
             return RedirectToAction("AdminsView");
         }
 
@@ -401,7 +401,7 @@ namespace BloodBankITI.Controllers
             NgoUpdate update = new NgoUpdate()
             {
                 ngo =
-                    new NGO()
+                    new NGO_selectByID_Result()
                     {
                         CID = ngo.CID,
                         NID = ngo.NID,
@@ -434,26 +434,8 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Ngo");
         }
 
-        [HttpGet]
-        public ActionResult NGORequests()
-        {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            return View(db.NotApprovedNGO().ToList());
-        }
 
-        public ActionResult NGOApprove(int id)
-        {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
 
-            db.ApproveNGO(id);
-            return RedirectToAction("NGORequests");
-        }
 
         //Partners
         [HttpGet]
@@ -591,53 +573,13 @@ namespace BloodBankITI.Controllers
 
         public ActionResult UserTypesEdit(UserType userType)
         {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             db.UserType_update(userType.Type, userType.UTID);
 
             return RedirectToAction("UserTypesView");
         }
 
 
-        //Contact Us Messages
-        [HttpGet]
-        public ActionResult ShowMsgs()
-        {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            else
-            {
-                return View(db.ContactSelect().ToList());
-            }
-        }
 
-        [HttpGet]
-        public ActionResult ShowMsg(int id)
-        {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            return View(db.GetContact(id).FirstOrDefault());
-        }
-
-        public ActionResult DeleteMsg(int id)
-        {
-            if (Session["UserId"] == null && Session["UserName"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            else
-            {
-                db.ContactDelete(id);
-                return RedirectToAction("ShowMsgs");
-            }
-        }
      
     }
 }

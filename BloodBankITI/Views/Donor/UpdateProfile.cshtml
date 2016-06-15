@@ -41,7 +41,7 @@
             <input type="radio" name="Donor.DonorGender" value="female" checked/>@("Female")
         }
     </div>
-
+    
     <div class="form-group">
         <label>Blood Type: </label>
         <select name="Donor.BID">
@@ -89,26 +89,49 @@
     <div class="form-group">
         <label>Phone: </label><input type="number" value="@Model.Donor.Phone" name="Donor.Phone"/>
     </div>
+    
+    <div class="form-group">
+        <input type="hidden" name="donor.Username" value=@Model.Donor.Username />
+    </div>
 
+    <div class="form-group">
+        <label> PassWord:</label> <input  type="password" name="donor.password" id="password1" value=@Model.Donor.Password />
+    </div>
+    <div class="form-group">
+        <label> Confirm Password:</label> <input type="password" name="donor.password" id="password2" oninput="check()" value=@Model.Donor.Password /> <label id="PasswordMessage"></label>
+    </div>
     <input type="submit" value="Save"/>
 
     <script>
-        $('#CitiesID').change(function () {
-            $('#locationID').html("");
-            var CityID = $('#CitiesID').val();
-            $.ajax({
-                url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
 
-                    WriteResponse(data);
-                },
-                error: function(e) {
-                    alert(e.statusText);
-                }
+        function check() {
+            if ($('#password2').val() != $('#password1').val()) {
+                $('#PasswordMessage').text( "Doesn't Match");
+
+
+            } else
+                $('#PasswordMessage').text( "done");
+
+        };
+
+
+            //Cities & Location
+            $('#CitiesID').change(function () {
+                $('#locationID').html("");
+                var CityID = $('#CitiesID').val();
+                $.ajax({
+                    url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+
+                        WriteResponse(data);
+                    },
+                    error: function(e) {
+                        alert(e.statusText);
+                    }
+                });
             });
-        });
 
         var model = @Html.Encode(Json.Encode(Model.Donor.LID))
         function WriteResponse(data) {
@@ -126,6 +149,7 @@
 
         }
     </script>
+    
 
 </form>
 

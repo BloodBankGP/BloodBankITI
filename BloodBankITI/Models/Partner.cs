@@ -14,11 +14,10 @@ namespace BloodBankITI.Models
     
     public partial class Partner
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Partner()
         {
-            this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Donors = new HashSet<Donor>();
+            this.PartnersStatestics = new HashSet<PartnersStatestic>();
         }
     
         public int PAID { get; set; }
@@ -27,10 +26,8 @@ namespace BloodBankITI.Models
         public Nullable<bool> Status { get; set; }
         public Nullable<int> CID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Donor> Donors { get; set; }
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
         public virtual City City { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Donor> Donors { get; set; }
     }
 }

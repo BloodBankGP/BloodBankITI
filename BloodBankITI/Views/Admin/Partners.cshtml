@@ -4,40 +4,73 @@
     ViewBag.Title = "Partners";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@*<div class="render">
+    <h2>View All Partners</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
 
-<h2>View All Partners</h2>
-
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-       
-        <th> ID </th>
-        <th> Name </th>
-        <th> Address </th>
-        <th> Status </th>
-        <th> Edit </th>
-
-
-    </tr>
-
-    @foreach (var a in Model)
-    {
-        <tr>
-            <td>@(a.PAID) </td>
-            <td>@(a.Name) </td>
-            <td>@(a.Address) </td>
-            <td>@(a.Status) </td>
-            
-
-            <td> @Html.ActionLink("Edit", "PartnersEdit", new { id = a.PAID })</td>
+                <th> الرقم المسلسل </th>
+                <th> الاسم  </th>
+                <th> Address </th>
+                <th> Status </th>
+                <th> Edit </th>
 
 
+            </tr>
+
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@(a.PAID) </td>
+                    <td>@(a.Name) </td>
+                    <td>@(a.Address) </td>
+                    <td>@(a.Status) </td>
 
 
-        </tr>
+                    <td> @Html.ActionLink("Edit", "PartnersEdit", new { id = a.PAID })</td>
 
-    }
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+    @Html.ActionLink("Insert New", "PartnersInsert")
+    @Html.ActionLink("Back To Home", "Index")
+</div>*@
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-@Html.ActionLink("Insert New", "PartnersInsert")
-@Html.ActionLink("Back To Home", "Index")
+<div class="render">
+    <div class="render">
+        <h4 style="font-family:'Myriad عربي';text-align:center;">عرض كل الشركاء</h4>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+                  <tr>
+                    <th>تعديل</th>
+                    <th >الحالة</th>
+                    <th >العنوان</th>
+                    <th>الإسم</th>
+                    <th>الرقم المسلسل</th>
+                </tr>
+                @foreach (var a in Model)
+                {
+                    <tr>
+                        <td > @Html.ActionLink("تعديل", "PartnersEdit", new { id = a.PAID })</td>
+                        <td>@(a.Status) </td>
+                        <td>@(a.Address) </td>
+                        <td>@(a.Name) </td>
+                        <td>@(a.PAID) </td>
+                    </tr>
+
+                }
+
+            </table>
+        </div>
+        <center>
+            @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+            @Html.ActionLink("إضافة شريك جديد", "PartnersInsert", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        </center>
+
+    </div>
+</div>
