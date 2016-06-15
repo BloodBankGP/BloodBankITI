@@ -1,0 +1,41 @@
+﻿@model BloodBankITI.Models.donorinsertform
+@{
+    ViewBag.Title = "InsertPost";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>InsertPost</h2>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br/>
+<form action="" method="POST">
+    Name: <input type="text" name="Post.Name" /><br/>
+    Post: <input type="text" name="Post.post1" /><br/>
+    Phone: <input type="number" name="Post.Phone" /><br/>
+    BloodType:
+    <select name="Post.BID">
+        <option value="NULL" >اختر فصيلة</option>
+        @foreach (var d in Model.BloodTypesResults)
+        {
+            <option value=@d.BID>@d.Type</option>
+        }
+    </select>
+    <br/>City:
+    <select name="Post.CID">
+        <option value="NULL">اختر محافظة</option>
+        @foreach (var d in Model.CitiesSelectAllResults)
+        {
+            <option value=@d.CID>@d.CityName</option>
+        }
+    </select>
+
+    <input type="hidden" name="Post.Periodic" value=1/>
+    <br/><input type="submit" value="Insert"/>
+</form>
+
+
+

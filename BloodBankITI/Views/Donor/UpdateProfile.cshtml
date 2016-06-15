@@ -9,174 +9,148 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
-<link href="~/Content/materialize.css" rel="stylesheet" />
-<div class="render">
-    <div class="container white z-depth-2" style="height:800px;">
-        <div class="card-panel red darken-4"><h6> تعديل بيانات المتبرع </h6></div>
-        <div id="register" class="col s12">
-            <form class="col s12" action="" method="post">
-                <div class="form-container">
-                    <div class="row">
-                        <input type="hidden" value="@Model.Donor.DID" name="Donor.DID" />
-                        <input type="hidden" value="@Model.Donor.DonationDate" name="Donor.DonationDate" />
-                        <input type="hidden" value="@Model.Donor.DonorGender" name="Donor.DonorGender" />
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="last_name" class="validate" type="text" value="@Model.Donor.Lname" name="Donor.Lname" style="text-align:right;" />
-                            <label class="right-align" for="last_name">الاسم الاخير </label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" value="@Model.Donor.Fname" name="Donor.Fname" class="validate" style="text-align:right;" />
-                            <label class="right-align" for="first_name">الاسم الاول </label>
-                        </div>
-                    </div>
-                    <div class="row" style="float:right;">
-                        <div class="input-field col s12">
-                            <div style="float:right; position:relative; margin-right:52px;">
-                                @if (Model.Donor.DonorGender == "male")
-                                {
-                                    <input type="radio" name="Donor.DonorGender" value="male" checked />@("ذكر   ")
-                                    <input type="radio" name="Donor.DonorGender" value="female" />@("أنثى")
-                                }
 
-                                @if (Model.Donor.DonorGender == "female")
-                                {
-                                    <input type="radio" name="Donor.DonorGender" value="male" />@("ذكر   ")
-                                    <input type="radio" name="Donor.DonorGender" value="female" checked />@("أنثى")
-                                }
-                            </div>
-                        </div>
-                    </div>
+<h2>Update Profile</h2>
 
-
-
-                        @*<div class="form-group">
-                                <label>Gender: </label>
-                                @if (Model.Donor.DonorGender == "male")
-                                {
-                                    <input type="radio" name="Donor.DonorGender" value="male" checked />@("Male   ")
-                                    <input type="radio" name="Donor.DonorGender" value="female" />@("Female")
-                                }
-
-                                @if (Model.Donor.DonorGender == "female")
-                                {
-                                    <input type="radio" name="Donor.DonorGender" value="male" />@("Male   ")
-                                    <input type="radio" name="Donor.DonorGender" value="female" checked />@("Female")
-                                }
-                            </div>*@
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                    <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
-                                </div>
-
-                                <br />
-                                <br />
-                                <div dir="rtl">
-                                    <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                        @foreach (var item in Model.BloodTypesResults)
-                                        {
-
-                                            <option value=@item.BID>@item.Type</option>
-                                        }
-
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                    <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
-                                </div>
-                                <div dir="rtl">
-                                    <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
-                                        @foreach (var item in Model.CitiesSelectAllResults)
-                                        {
-                                            if (Model.Donor.CID == item.CID)
-                                            {
-                                                <option selected="" value=@item.CID>@item.CityName</option>
-                                            }
-                                            else
-                                            {
-                                                <option value=@item.CID>@item.CityName</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 ">
-                                <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                    <label for="LID" style="text-align:right; width:460px;">المنطقة</label>
-                                </div>
-                                <div dir="rtl">
-                                    <select class="mdl-select__input" name="Donor.LID" id="locationID">
-                                        @foreach (var item in Model.Locations)
-                                        {
-                                            if (Model.Donor.LID == item.LID)
-                                            {
-                                                <option selected="" value=@item.LID>@item.LocationName</option>
-                                            }
-                                            else
-                                            {
-                                                <option value=@item.LID>@item.LocationName</option>
-                                            }
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input type="number" value="@Model.Donor.Phone" name="Donor.Phone" class="validate" style="text-align:right;" />
-                                <label class="right-align" for="Phone"> رقم التلفون </label>
-                            </div>
-                        </div>
-
-                        <center>
-                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
-                            @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                        </center>
-            </form>
-        </div>
+<form action="" method="POST">
+    <div class="form-group">
+        <input type="hidden" value="@Model.Donor.DID" name="Donor.DID" />
+        <input type="hidden" value="@Model.Donor.DonationDate" name="Donor.DonationDate" />
+        <input type="hidden" value="@Model.Donor.DonorGender" name="Donor.DonorGender" />
     </div>
-</div>
 
-<script>
-    $('#CitiesID').change(function () {
-        $('#locationID').html("");
-        var CityID = $('#CitiesID').val();
-        $.ajax({
-            url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
+    <div class="form-group">
+        <label>First Name: </label><input type="text" value="@Model.Donor.Fname" name="Donor.Fname"/>
+    </div>
 
-                WriteResponse(data);
-            },
-            error: function (e) {
-                alert(e.statusText);
+    <div class="form-group">
+        <label>Last Name: </label><input type="text" value="@Model.Donor.Lname" name="Donor.Lname"/>
+    </div>
+
+    <div class="form-group">
+        <label>Gender: </label>
+        @if (Model.Donor.DonorGender == "male")
+        {
+            <input type="radio" name="Donor.DonorGender" value="male" checked/>@("Male   ")
+            <input type="radio" name="Donor.DonorGender" value="female"/>@("Female")
+        }
+
+        @if (Model.Donor.DonorGender == "female")
+        {
+            <input type="radio" name="Donor.DonorGender" value="male"/>@("Male   ")
+            <input type="radio" name="Donor.DonorGender" value="female" checked/>@("Female")
+        }
+    </div>
+    
+    <div class="form-group">
+        <label>Blood Type: </label>
+        <select name="Donor.BID">
+            @foreach (var item in Model.BloodTypesResults)
+            {
+                <option value=@item.BID>@item.Type</option>
             }
-        });
-    });
+        </select>
+    </div>
 
-    var model = @Html.Encode(Json.Encode(Model.Donor.LID))
-    function WriteResponse(data) {
-        var result;
-        $.each(data, function (index, locations) {
-            if (locations.LID == model) {
-                result += "<option selected value=" + locations.LID + ">" + locations.LocationName + "</option>";
+    <div class="form-group">
+        <label>City: </label>
+        <select name="Donor.CID" id="CitiesID">
+            @foreach (var item in Model.CitiesSelectAllResults)
+            {
+                if (Model.Donor.CID == item.CID)
+                { 
+                   <option selected="" value=@item.CID>@item.CityName</option>
+                }
+                else
+                {
+                    <option value=@item.CID>@item.CityName</option>
+                }
             }
-            else {
-                result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Location:</label>
+        <select name="Donor.LID" id="locationID">
+            @foreach (var item in Model.Locations)
+            {
+                if (Model.Donor.LID == item.LID)
+                {
+                    <option selected="" value=@item.LID>@item.LocationName</option>
+                }
+                else
+                {
+                    <option value=@item.LID>@item.LocationName</option>
+                }
             }
-        });
-        $('#locationID').html(result);
+        </select>
+    </div>
 
-    }
-</script>
+    <div class="form-group">
+        <label>Phone: </label><input type="number" value="@Model.Donor.Phone" name="Donor.Phone"/>
+    </div>
+    
+    <div class="form-group">
+        <input type="hidden" name="donor.Username" value=@Model.Donor.Username />
+    </div>
 
+    <div class="form-group">
+        <label> PassWord:</label> <input  type="password" name="donor.password" id="password1" value=@Model.Donor.Password />
+    </div>
+    <div class="form-group">
+        <label> Confirm Password:</label> <input type="password" name="donor.password" id="password2" oninput="check()" value=@Model.Donor.Password /> <label id="PasswordMessage"></label>
+    </div>
+    <input type="submit" value="Save"/>
+
+    <script>
+
+        function check() {
+            if ($('#password2').val() != $('#password1').val()) {
+                $('#PasswordMessage').text( "Doesn't Match");
+
+
+            } else
+                $('#PasswordMessage').text( "done");
+
+        };
+
+
+            //Cities & Location
+            $('#CitiesID').change(function () {
+                $('#locationID').html("");
+                var CityID = $('#CitiesID').val();
+                $.ajax({
+                    url: 'http://www.bloodservice.somee.com/Home/LocationByCID/' + CityID,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+
+                        WriteResponse(data);
+                    },
+                    error: function(e) {
+                        alert(e.statusText);
+                    }
+                });
+            });
+
+        var model = @Html.Encode(Json.Encode(Model.Donor.LID))
+        function WriteResponse(data) {
+            var result;
+            $.each(data, function (index, locations) {
+                if (locations.LID == model) {
+                    result += "<option selected value=" + locations.LID + ">" + locations.LocationName + "</option>";
+                }
+                else
+                {
+                    result += "<option value=" + locations.LID + ">" + locations.LocationName + "</option>";
+                }
+            });
+            $('#locationID').html(result);
+
+        }
+    </script>
+    
+
+</form>
+
+@Html.ActionLink("Back", "Index")

@@ -1081,6 +1081,7 @@
     <Content Include="Views\Donor\Requests.cshtml" />
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
+    <Content Include="Views\Home\InsertPost.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\Partner\AllStatistics.cshtml" />
