@@ -4,38 +4,52 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;">@(Model.Select(a => a.Type).FirstOrDefault()) المتبرعون من فصيلة</h4>
 
-<h2>Donors of BloodType @(Model.Select(a => a.Type).FirstOrDefault())</h2>
-
-<table class="table table-bordered table-striped table-hover">
-    <tr>
-        <th>Full Name</th>
-        <th>Gender</th>
-        <th>Phone</th>
-        <th>City</th>
-        <th>Location</th>
-        <th>Pending or not</th>
-        <th>Last Donation Date</th>
-    </tr>
-    @foreach (var donor in Model)
-    {
+    <table class="table table-bordered table-striped table-hover">
         <tr>
-            <td>@(donor.Fname + " " + donor.Lname)</td>
-            <td>@donor.DonorGender</td>
-            <td>@donor.Phone</td>
-            <td>@donor.CityName</td>
-            <td>@donor.locationName</td>
-            @if (donor.Pending != true)
-            {
-                <td>Can donate now</td>
-            }
-            else
-            {
-                <td>Can't donate now</td>
-            }
-            <td>@donor.DonationDate</td>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">آخر تاريخ للتبرع</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">(يستطيع التبرع (نعم-لا</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">الموقع</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">المدينة</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">التليفون</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">النوع</th>
+            <th style="text-align:center;font-family:'Myriad عربي';font-size:20px;">الاسم كاملا</th>
+                
+           
+            
+            
+            
+      
         </tr>
-    }
-</table>
+        @foreach (var donor in Model)
+        {
+            <tr>
+                <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@donor.DonationDate</td>
+                
+                @if (donor.Pending != true)
+                {
+                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">نعم</td>
+                }
+                else
+                {
+                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">لا</td>
+                }
+                <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@donor.locationName</td>
+                <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@donor.CityName</td>
+                <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@donor.Phone</td>
+                <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@donor.DonorGender</td>
+                <td  style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@(donor.Fname + " " + donor.Lname)</td>
+               
+               
+                
+               
+                
+            </tr>
+        }
+    </table>
+    <p style="text-align:center; margin-bottom:411px;">@Html.ActionLink("عرض فصائل الدم", "BloodTypes", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
 
-<p>@Html.ActionLink("عرض فصائل الدم", "BloodTypes")</p>
+</div>

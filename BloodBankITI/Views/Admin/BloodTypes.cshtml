@@ -1,24 +1,27 @@
-﻿@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
+﻿@using System.Web.Mvc
+@model IEnumerable<BloodBankITI.Models.Select_BloodTypes_Result>
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render" style="width:1200px;margin-top:50px;">
+    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;margin-top:80px;margin-right:130px;"> فصائل الدم</h4>
+        <br />
+        <br />
+    
+        @foreach (var b in Model)
+        {
+            
+                @*@Html.ActionLink(@b.Type, "DonorsByBID", new { bid = @b.BID })<br />*@
+                <a href='/Admin/DonorsByBID/@b.BID'><center><img src=@b.Logo width="300" height="300" style="float:left; display:inline;"/> </center></a>
+               
+        }
+     
+    <br />
+        <p style="text-align: center;margin-top:650px;">
+            @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
 
-<h2>Blood Types</h2>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-    <br/>
-    @foreach (var b in Model)
-    {
-        @Html.ActionLink(@b.Type, "DonorsByBID", new {bid = @b.BID})<br/>
-       // <img src="../../img/BloodTypes/A+.png" />
-        <img src=@b.Logo height="50" width="50" />
-
-    }
-
-@Html.ActionLink("Back to Home", "Index")
+            @*@Html.ActionLink("Back to Home", "Index")*@
+</div>
