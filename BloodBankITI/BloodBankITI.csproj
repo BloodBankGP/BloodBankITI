@@ -1068,6 +1068,7 @@
     <Content Include="Views\Admin\NGORequests.cshtml" />
     <Content Include="Views\Admin\ShowMsg.cshtml" />
     <Content Include="Views\Admin\ShowMsgs.cshtml" />
+    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
