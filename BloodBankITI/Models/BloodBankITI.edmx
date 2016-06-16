@@ -1931,9 +1931,6 @@
           <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
           <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
-          <Parameter Name="nid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="NGO_selectByIDAll" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByIDAll_Result)">
           <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2094,6 +2091,9 @@
           <FunctionImport Name="UserType_update">
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
+            <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AskForBlood_Result">
@@ -2461,18 +2461,6 @@
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="NGO_selectByID_Result">
-          <Property Type="Int32" Name="NID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="Approved" Nullable="false" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <Property Type="String" Name="Address" Nullable="true" />
-          <Property Type="String" Name="CityName" Nullable="false" />
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="NGO_selectByIDAll_Result">
           <Property Type="Int32" Name="NID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
@@ -2689,6 +2677,18 @@
           <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
           <Property Type="Boolean" Name="Status" Nullable="false" />
           <Property Type="String" Name="Picture" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NGO_selectByID_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3476,22 +3476,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="NGO_selectByID" FunctionName="BloodBankDBITIModel.Store.NGO_selectByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByID_Result">
-                <ScalarProperty Name="NID" ColumnName="NID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Approved" ColumnName="Approved" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NGO_selectByIDAll" FunctionName="BloodBankDBITIModel.Store.NGO_selectByIDAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByIDAll_Result">
@@ -3811,6 +3795,22 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
+          <FunctionImportMapping FunctionImportName="NGO_selectByID" FunctionName="BloodBankDBITIModel.Store.NGO_selectByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByID_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

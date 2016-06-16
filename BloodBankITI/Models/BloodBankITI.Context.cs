@@ -1031,15 +1031,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NGO_select_Result>("NGO_select", cidParameter);
         }
     
-        public virtual ObjectResult<NGO_selectByID_Result> NGO_selectByID(Nullable<int> nid)
-        {
-            var nidParameter = nid.HasValue ?
-                new ObjectParameter("nid", nid) :
-                new ObjectParameter("nid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NGO_selectByID_Result>("NGO_selectByID", nidParameter);
-        }
-    
         public virtual ObjectResult<NGO_selectByIDAll_Result> NGO_selectByIDAll(Nullable<int> nid)
         {
             var nidParameter = nid.HasValue ?
@@ -1588,6 +1579,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserType_update", typeParameter, idParameter);
+        }
+    
+        public virtual ObjectResult<NGO_selectByID_Result> NGO_selectByID(Nullable<int> nid)
+        {
+            var nidParameter = nid.HasValue ?
+                new ObjectParameter("nid", nid) :
+                new ObjectParameter("nid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<NGO_selectByID_Result>("NGO_selectByID", nidParameter);
         }
     }
 }
