@@ -4,28 +4,31 @@
     ViewBag.Title = "Emergency";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>Emergency</h2>
+<div class="render">
+    <h4 style="font-size:40px;text-align:center; font-family:'Myriad عربي';">الطوارئ</h4>
 
-@foreach (var id in Model.Select(d => d.CID).Distinct())
-{
-    <h4>@(Model.Where(i => i.CID == id).FirstOrDefault().CityName)</h4>
-    <table class="table table-bordered table-hover table-striped">
-        <tr>
-            <th>Day</th>
-            <th>Hospital Name</th>
-            <th>Edit</th>
-        </tr>
-        @foreach (var item in Model.Where(i => i.CID == id))
-        {
+    @foreach (var id in Model.Select(d => d.CID).Distinct())
+    {
+        <h4 style="text-align:right; font-family:'Myriad عربي';font-size:30px;">@(Model.Where(i => i.CID == id).FirstOrDefault().CityName)</h4>
+        <table class="table table-bordered table-hover table-striped">
             <tr>
-                <td>@item.Day</td>
-                <td>@item.Name</td>
-                <td>@Html.ActionLink("Edit", "EmergencyEdit",new {did = item.DayID , cid = item.CID})</td>
+                <th style="font-size:25px;">تعديل</th> 
+                <th style="font-size:25px;">اليوم</th>
+                <th style="font-size:25px;">اسم المستشفى</th>
+             
             </tr>
-        }
-    </table>
-}
-
-<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>
-
+            @foreach (var item in Model.Where(i => i.CID == id))
+            {
+                <tr>
+                    <td style="text-align:center; font-family:'Myriad عربي';font-size:20px;">@Html.ActionLink("تعديل", "EmergencyEdit", new { did = item.DayID, cid = item.CID })</td>
+                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@item.Day</td>
+                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@item.Name</td>
+                  
+                </tr>
+            }
+        </table>
+    }
+    <p style="text-align:center; margin-bottom:359px;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>    @*<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
+</div>

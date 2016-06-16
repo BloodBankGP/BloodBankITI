@@ -4,16 +4,40 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<br/>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<head>
+  
+    // a recreation of a dribble shot from here:
+    https://dribbble.com/shots/2684292-Thanks
 
-Thank you, Your message was sent .. 
-<br />
-@Html.ActionLink("Ok", "Index")
+    <link href="~/Content/thanks.css" rel="stylesheet" />
+    'use strict';
+</head>
+
+
+<div class="render">
+
+    <div class="bg"></div>
+    <div class="wrap">
+        <div class="square">
+            <h1>
+                شكرا<br />
+            </h1>
+        </div>
+        <div class="line"></div>
+        @*<div class="subtext">Thank you for the world to give everything to me</div>*@
+    </div>
+
+
+
+
+
+
+
+
+
+
+    @Html.ActionLink("موافق", "Index",null, new { @class = "btn waves-effect waves-light red darken-4" })
+
+</div>

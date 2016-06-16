@@ -1,16 +1,16 @@
-﻿@model BloodBankITI.Models.City
-
-@{
+﻿@{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<div class="render">
+    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;">إضافة مدينة جديدة</h4>
+    <form action="" method="POST">
+        City Name: <input type="text" name="City.CityName" /><br />
+        City Logo Link: <input type="text" name="City.Logo" />
+        <input type="submit" value="Insert" />
+    </form>
 
-<h2>Insert New City</h2>
-<form action="" method="POST">
-    City Name: <input type="text" name="City.CityName"/><br/>
-    City Logo Link: <input type="text" value="@Model.Logo" name="City.Logo"/>
-    <input type="submit" value="Insert"/>
-</form>
+    @*@Html.ActionLink("Cancel", "Cities")*@
+    <p style="text-align:left;margin-left: 256px; margin-bottom:137px;">@Html.ActionLink("إلغاء", "Cities", null, new { @class = "btn waves-effect waves-light red darken-4" })
 
-@Html.ActionLink("Cancel", "Cities")
-
+</div>

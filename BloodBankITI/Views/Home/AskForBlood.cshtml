@@ -29,13 +29,14 @@
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" name="n.Lname" style="text-align:right">
-                            <label class="right-align" for="last_name" style="font-family:'Myriad عربي';">الاسم الثانى  </label>
-                        </div>
+                       
                         <div class="input-field col s6">
                             <input id="last_name" name="n.Fname" type="text" class="validate" style="text-align:right;">
                             <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم الاول</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" name="n.Lname" style="text-align:right">
+                            <label class="right-align" for="last_name" style="font-family:'Myriad عربي';">الاسم الثانى  </label>
                         </div>
                         <br /><br />
                         <div class="row">
@@ -53,7 +54,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
-                                    <option value="NULL">غير محدد</option>
+                                    <option value="NULL">إختــــر </option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
                                         <option value=@item.BID>@item.Type</option>
@@ -65,7 +66,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
-                                    <option value="NULL">غير محدد</option>
+                                    <option value="NULL"> إختــــر</option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
                                         <option value=@item.CID>@item.CityName</option>
