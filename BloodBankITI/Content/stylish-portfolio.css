@@ -37,15 +37,17 @@ table .th_style
     position: absolute;
     width: 250px;
     height: 250px;
-    background: url(../img/finaallogo.png);
+    background: url(../img/llogo.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     margin-left: -3em;
     margin-top: -8.6em!important;
     margin-bottom: 7em!important;
+    
    
 }
+
 
 /*fixed bar*/
 #fixedbar {
@@ -362,7 +364,7 @@ footer , #fixedbar ,#layoutone{
 }
 
 span {
-	border: 1px solid;
+	border: 0px solid;
 	border-radius: 50%;
 	color: #fff;
 	width: 60px;
@@ -468,7 +470,7 @@ h2 {
 }
 
 p {
-  color: rgba(48, 69, 92, 0.8);
+  color: #000;
   font-size: 17px;
   line-height: 26px;
   letter-spacing: 1px;
@@ -872,4 +874,40 @@ footer{
      padding:15px;
      background-color:antiquewhite;
  }
- /*view profile*/
+
+ #post label{
+    font-size:24px;   
+}
+ #C-omments label{
+         font-size:15px;   
+ }
+ #sname {
+       font-size:15px;
+       font-family: Myriad عربي;
+       color:brown;
+ }
+ /*THANK*/
+
+ /*NGO*/
+ .ngodata label{
+      font-size:20px;
+       font-family: Myriad عربي;
+       color:brown;
+ }
+  .ngodata p{
+      font-size:15px;
+       font-family: Myriad عربي;
+       color:black;
+ }
+
+
+
+
+
+
+
+
+
+
+
+

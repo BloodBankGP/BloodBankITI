@@ -107,7 +107,7 @@ namespace BloodBankITI.Controllers
                             {
                                 id =
                                     "Your request was sent to " + count +
-                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a)"
+                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a) (br)(br) If you use of Android app just type this code " +needer_id +"_"+n.Fname+n.Lname
                             });
                     }
                     else
@@ -126,9 +126,14 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpGet]
-        public ActionResult RequestsResults(int nid, string name)
+        public ActionResult RequestsResults(int? id, string name)
         {
-            return View(nid);
+            Post post = new Post()
+            {
+                BID = Int32.Parse(id.ToString()),
+                Name = name
+            };
+            return View(post);
         }
 
         [HttpGet]
@@ -176,7 +181,7 @@ namespace BloodBankITI.Controllers
             else
                 result = "Failed to insert comment";
 
-            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
+            return RedirectToAction("wallposts");
         }
 
         [HttpGet]
@@ -208,6 +213,56 @@ namespace BloodBankITI.Controllers
             return View(PostComments);
         }
 
+        [HttpGet]
+        public ActionResult InsertPost()
+        {
+            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+
+            }
+
+
+            List<Select_BloodTypes_Result> bloodTypes = new List<Select_BloodTypes_Result>();
+
+            response = client.GetAsync("AllBloodTypes").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                bloodTypes = response.Content.ReadAsAsync<List<Select_BloodTypes_Result>>().Result;
+
+            }
+
+            donorinsertform post = new donorinsertform()
+            {
+                BloodTypesResults = bloodTypes,
+                Donor = null,
+                CitiesSelectAllResults = cities,
+                //LocationsSelectAllByCity = null
+            };
+            return View(post);
+        }
+
+        [HttpPost]
+        public ActionResult InsertPost(Post post)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
+            string result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = "Done";
+            }
+            else
+                result = "Failed to insert Post";
+
+            return RedirectToAction("WallPosts");
+        }
         [HttpGet]
         public ActionResult EmergencyToDay()
         {

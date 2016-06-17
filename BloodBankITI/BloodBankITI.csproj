@@ -482,6 +482,7 @@
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\stylish-portfolio.css" />
+    <Content Include="Content\thanks.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
@@ -1052,6 +1053,7 @@
     <Content Include="Views\Admin\NGORequests.cshtml" />
     <Content Include="Views\Admin\ShowMsg.cshtml" />
     <Content Include="Views\Admin\ShowMsgs.cshtml" />
+    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
@@ -1065,6 +1067,7 @@
     <Content Include="Views\Donor\Requests.cshtml" />
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
+    <Content Include="Views\Home\InsertPost.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\Partner\AllStatistics.cshtml" />

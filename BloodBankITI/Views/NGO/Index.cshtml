@@ -9,13 +9,13 @@
     <hr />
     <div style="float:right;">
         <label>الاســــــــــــم</label><br /><br />
-        @*<p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Name) </p><br />*@
+        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Name) </p>
         <label>العنــــــــــوان</label><br /><br/>
-        @*<p style="color:darkmagenta;">@Html.DisplayFor(N => N.Address)</p><br />*@
+        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.Address)</p>
         <label>رقم الهـــاتف</label><br /><br />
-        @*<p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Phone)</p> <br />*@
+        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Phone)</p>
         <label> المدينـــــــــة </label><br /><br />
-        @*@*<p style="color:darkmagenta;">@Html.DisplayFor(N => N.CityName)</p><br />*@
+        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.CityName)</p>
     </div>
     <div style="float:left;"> 
         <a href="http://www.lifemakers.org/">
@@ -24,4 +24,6 @@
     </div>
     <div style="margin-bottom:184px;"></div>
 </div>
+
+@Html.ActionLink("Edit","Edit")
 

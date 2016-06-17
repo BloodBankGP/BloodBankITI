@@ -6,8 +6,9 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <div id="post">
-        <p>@Model.post.Name @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = Model.post.PID })</p>
+    <div id="post" class="outset">
+        <label>@Model.post.Name</label><br /><br />
+        <p> @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = Model.post.PID })</p>
 
         <p>@Model.post.Post</p>
     </div>
@@ -24,14 +25,14 @@
         @*<h6>Insert Comment</h6>*@
         <form action="InsertComment" method="post">
 
-            @*<input type="hidden" name="comment.Post_ID" value=@Model.post.PID.ToString()>*@
-            <label name="comment.Post_ID" value=@Model.post.PID.ToString()></label>
+            <input type="hidden" name="comment.Post_ID" value=@Model.post.PID.ToString()>
+            @*<label name="comment.Post_ID" value=@Model.post.PID.ToString()></label>*@
 
             @if (Session["UserName"] != null)
             {
                 @Session["UserName"].ToString()
-                @*<input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />*@
-                <label name="comment.Name" value=@Session["UserName"].ToString() > </label>
+                <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                @*<label name="comment.Name" value=@Session["UserName"].ToString() > </label>*@
 
             }
             else

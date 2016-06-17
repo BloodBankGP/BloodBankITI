@@ -4,22 +4,30 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>selectPartner</h2>
-<br /> <br /> <br /> <br />
-<form action="" method="POST">
-   
-    <input type="hidden" value=@Model.donor.DID name="donor.DID" />
-    
-    <select name="Donor.PAID">
-        <option value="0" selected=""> Not Set</option>
-        @foreach (var item in Model.partnerSelectByCity)
-        {
-            <option value=@item.PAID >@item.Name</option>
-        }
-    </select>
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-    <input type="submit" value="Select"/>
+<div class="render">
+    <h4 style="font-family:'Myriad عربي';color:brown;" >إختر من الشركاء</h4>
+    <hr />
+    <form action="" method="POST">
 
-</form>
-
-
+        <input type="hidden" value=@Model.donor.DID name="donor.DID" />
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                </div>
+                <div dir="rtl">
+                    <select class="mdl-select__input" name="Donor.PAID">
+                        <option value="0" selected="">إختـــــــــر</option>
+                        @foreach (var item in Model.partnerSelectByCity)
+                        {
+                            <option value=@item.PAID>@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        @*<input type="submit" value="إختر" />*@
+        <button class="btn waves-effect waves-light red darken-4" type="submit"> إختر</button>
+    </form>
+</div>
