@@ -4,8 +4,53 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h3 style="font-family:Myriad عربي;">الرسائل</h3>
+    <hr />
 
-<h2>Messages</h2>
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>الرسالة</th>
+                <th>البريد الإلكتروني</th>
+                <th>المدينة</th>
+                <th>العمر</th>
+                <th>الاسم</th>
+            </tr>
+
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td> @Html.ActionLink("حذف", "DeleteMsg", new { id = @contact.ID })</td>
+                    <td> @Html.ActionLink("عرض", "ShowMsg", new { id = @contact.ID })</td>
+
+                    @if(@contact.Msg.Length>10)
+                    {<td>@(contact.Msg.Substring(0,9) + "...") </td>}
+                    else
+                    {<td>@contact.Msg</td>}
+
+                    <td>@contact.Email </td>
+                    <td>@contact.City </td>
+                    <td>@contact.Age </td>
+                    <td>@(contact.FName + " " + contact.LName) </td>                   
+                </tr>
+
+            }
+
+        </table>
+    </div>
+
+
+    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+
+
+</div>
+
+
+@*<h2>Messages</h2>
 <table class="table table-striped table-hover table-bordered">
     <tr>
         <td>Name</td>
@@ -29,4 +74,4 @@
             <td>@Html.ActionLink("Delete","DeleteMsg", new {id = @contact.ID})</td>
         </tr>
     }
-</table>
+</table>*@

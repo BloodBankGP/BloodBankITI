@@ -10,14 +10,14 @@
 </head>
 <div class="render">
     <div class="container white z-depth-2" style="height:500px;">
-        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">مكان الطوارى اليوم</h5>  </div>
+        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">مكان الطوارئ اليوم</h5>  </div>
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s12">
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
-                                    <option value="0">Not Set</option>
+                                    <option value="0">اختر محافظة</option>
                                     @foreach (var item in Model)
                                     {
                                         <option value=@item.CID>@item.CityName</option>
@@ -57,7 +57,7 @@
 
                     //result = "Hospital Name :    " + data.Name + "<br>Hospital Address :     " + data.Address + "<br>Hospital Phone :    " + data.Phone + "";
                     //result = data.Name + "<label style='text-align:right'>: اسم المستشفى</label>" + "<br>" + data.Address + " : العنوان" + "<br>" + data.Phone + " : رقم التلفون";
-                    result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='float:right;border:hidden;'><table class='table table-user-information'><tbody><tr><td> "+ data.Name + "</td><td>:اسم المستشفى</td></tr><tr><td> " +data.Address + "</td><td>:العنوان</td></tr><tr><td> " + data.Phone + "</td><td>:رقم التلفون</td></tr></tbody></table></div></div></div>";
+                    result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='position:center;margin-left:75px;border:hidden;'><table class='table table-user-information'><tbody><tr><td> " + data.Name + "</td><td style='color:brown;background-color:darkgrey;'>:اسم المستشفى</td></tr><tr><td> " + data.Address + "</td><td style='color:brown;background-color:darkgrey;'>:العنوان</td></tr><tr><td> " + data.Phone + "</td><td style='color:brown;background-color:darkgrey;'>:رقم التلفون</td></tr></tbody></table></div></div></div>";
 
                     $('#hospital').html(result);
 

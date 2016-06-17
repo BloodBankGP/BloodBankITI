@@ -325,6 +325,7 @@ namespace BloodBankITI.Controllers
             HttpResponseMessage response = client.GetAsync("ViewProfile/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
+
                 donor = response.Content.ReadAsAsync<donor_SelectByDID_Result>().Result;
             }
 
