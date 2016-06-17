@@ -237,7 +237,6 @@ D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Securi
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 D:\PROJECT\Versions\7-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
-D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
 H:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
 H:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll
 H:\BloodBankITI\BloodBankITI\bin\BloodBankITI.pdb
@@ -485,3 +484,4 @@ E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
 E:\ITI\GP\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
+D:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache

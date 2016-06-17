@@ -20,6 +20,12 @@ namespace BloodBankITI
             );
 
             routes.MapRoute(
+                name: "Default3",
+                url: "{controller}/{action}/{id}/{name}",
+                defaults: new { controller = "Home", action = "Index", nid = UrlParameter.Optional , name = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default2",
                 url: "{controller}/{action}/{nid}/{did}",
                 defaults: new { controller = "Home", action = "Index", nid = UrlParameter.Optional , did = UrlParameter.Optional }

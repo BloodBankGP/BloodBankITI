@@ -107,7 +107,7 @@ namespace BloodBankITI.Controllers
                             {
                                 id =
                                     "Your request was sent to " + count +
-                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a)"
+                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a) (br)(br) If you use of Android app just type this code " +needer_id +"_"+n.Fname+n.Lname
                             });
                     }
                     else
@@ -126,9 +126,14 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpGet]
-        public ActionResult RequestsResults(int nid, string name)
+        public ActionResult RequestsResults(int? id, string name)
         {
-            return View(nid);
+            Post post = new Post()
+            {
+                BID = Int32.Parse(id.ToString()),
+                Name = name
+            };
+            return View(post);
         }
 
         [HttpGet]
