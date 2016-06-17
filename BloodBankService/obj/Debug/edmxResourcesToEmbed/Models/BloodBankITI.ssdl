@@ -8,7 +8,6 @@
     <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Lname" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="bit" Nullable="false" />
-    <Property Name="Picture" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="BloodTypes">
     <Key>
@@ -470,7 +469,6 @@
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
-    <Parameter Name="pic" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Admins_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -482,7 +480,6 @@
     <Parameter Name="lname" Type="nvarchar" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
-    <Parameter Name="pic" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="ApproveNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -512,7 +509,6 @@
   <Function Name="CheckName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="CheckUsernames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Cities_DeleteCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CID" Type="int" Mode="In" />
   </Function>
@@ -612,8 +608,6 @@
     <Parameter Name="LID" Type="int" Mode="In" />
     <Parameter Name="DID" Type="int" Mode="In" />
     <Parameter Name="gender" Type="nvarchar" Mode="In" />
-    <Parameter Name="username" Type="nvarchar" Mode="In" />
-    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="EmergencyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dayid" Type="int" Mode="In" />
@@ -762,8 +756,6 @@
     <Parameter Name="city" Type="int" Mode="In" />
     <Parameter Name="phone" Type="nvarchar" Mode="In" />
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="username" Type="nvarchar" Mode="In" />
-    <Parameter Name="pw" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />

@@ -8,6 +8,7 @@
     <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="BloodType">
     <Key>
@@ -408,6 +409,7 @@
       <Parameter Name="lname" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="pic" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -419,6 +421,7 @@
       <Parameter Name="lname" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="pic" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="BloodTypesEdit">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -605,6 +608,7 @@
     </FunctionImport>
     <FunctionImport Name="Needer_DonorAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorAccepted_Result)">
       <Parameter Name="nid" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Needer_Donorall" ReturnType="Collection(BloodBankDBITIModel.Needer_Donorall_Result)" />
     <FunctionImport Name="Needer_DonorInsert">
@@ -1119,16 +1123,6 @@
     <Property Type="Boolean" Name="Accepted" Nullable="false" />
   </ComplexType>
   <ComplexType Name="NGO_select_Result">
-    <Property Type="Int32" Name="NID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Approved" Nullable="false" />
-    <Property Type="Boolean" Name="Status" Nullable="false" />
-    <Property Type="String" Name="Address" Nullable="true" />
-    <Property Type="String" Name="CityName" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="NGO_selectByID_Result">
     <Property Type="Int32" Name="NID" Nullable="false" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="CID" Nullable="false" />
@@ -1661,5 +1655,17 @@
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="DonorFullname" Nullable="false" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="NGO_selectByID_Result">
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Approved" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>
