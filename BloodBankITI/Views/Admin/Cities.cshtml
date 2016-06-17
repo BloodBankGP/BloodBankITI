@@ -4,21 +4,28 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:right;">المدن والمناطق</h4>
 
-<h2>المدن والمناطق</h2>
-
-@foreach (var city in Model)
-{
-    <h2>@city.city.CityName</h2> <img src=@city.city.Logo />
-    foreach (var loc in city.locations)
+    @foreach (var city in Model)
     {
-        <p>
-            @loc.LocationName        
-        </p>
+        <h3 style="text-align:right;">@city.city.CityName</h3> <img src=@city.city.Logo style="margin-top:-110px;"/>
+
+        foreach (var loc in city.locations)
+        {
+            <p  >
+                @loc.LocationName
+            </p>
+        }
+        <br />
+        @*<p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>*@
+        <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
     }
-    <br/>
-    <p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>
-}
-<br/><br/>
-<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
-<p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>
+    <br /><br />
+    <p style="text-align: left;margin-top: -34px;margin-left: 20px;">@Html.ActionLink("إدخال مدينة جديدة", "InsertCity", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+    <p style="text-align: left;margin-top: -46px;margin-left: -170px;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+    
+    @*<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
+    <p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
+</div>

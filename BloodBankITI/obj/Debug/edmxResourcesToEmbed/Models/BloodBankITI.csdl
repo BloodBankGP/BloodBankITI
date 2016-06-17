@@ -20,8 +20,8 @@
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_BloodTypes" FromRole="BloodTypes" ToRole="Posts" />
     <NavigationProperty Name="PartnersStatestics1" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_BloodTypes1" FromRole="BloodType" ToRole="PartnersStatestic" />
     <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="BloodType" ToRole="Needer_Donor" />
     <NavigationProperty Name="Donors" Relationship="BloodBankDBITIModel.FK_Donors_BloodTypes" FromRole="BloodType" ToRole="Donor" />
+    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="BloodType" ToRole="Needer_Donor" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -37,8 +37,8 @@
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Cities" FromRole="Cities" ToRole="Posts" />
     <NavigationProperty Name="Partners" Relationship="BloodBankDBITIModel.FK_Partners_Cities" FromRole="City" ToRole="Partner" />
     <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Cities" FromRole="City" ToRole="Needer_Donor" />
     <NavigationProperty Name="Donors" Relationship="BloodBankDBITIModel.FK_Donors_Cities" FromRole="City" ToRole="Donor" />
+    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Cities" FromRole="City" ToRole="Needer_Donor" />
   </EntityType>
   <EntityType Name="Comments">
     <Key>
@@ -503,6 +503,8 @@
       <Parameter Name="LID" Mode="In" Type="Int32" />
       <Parameter Name="DID" Mode="In" Type="Int32" />
       <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="EmergencyDelete">
       <Parameter Name="dayid" Mode="In" Type="Int32" />
@@ -615,7 +617,6 @@
       <Parameter Name="nid" Mode="In" Type="Int32" />
       <Parameter Name="did" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
     <FunctionImport Name="NGO_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -624,6 +625,8 @@
       <Parameter Name="city" Mode="In" Type="Int32" />
       <Parameter Name="phone" Mode="In" Type="String" />
       <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
       <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -641,6 +644,8 @@
       <Parameter Name="city" Mode="In" Type="Int32" />
       <Parameter Name="phone" Mode="In" Type="String" />
       <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGOUPDATEADMIN">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -808,19 +813,6 @@
       <End Role="BloodType" EntitySet="BloodTypes" />
       <End Role="PartnersStatestic" EntitySet="PartnersStatestics" />
     </AssociationSet>
-    <EntitySet Name="Needer_Donor" EntityType="BloodBankDBITIModel.Needer_Donor" />
-    <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes">
-      <End Role="BloodType" EntitySet="BloodTypes" />
-      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Needer_Donor_Cities" Association="BloodBankDBITIModel.FK_Needer_Donor_Cities">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Needer_Donor_Needer" Association="BloodBankDBITIModel.FK_Needer_Donor_Needer">
-      <End Role="Needer" EntitySet="Needers" />
-      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
-    </AssociationSet>
     <FunctionImport Name="CancelRequest">
       <Parameter Name="nid" Mode="In" Type="Int32" />
       <Parameter Name="did" Mode="In" Type="Int32" />
@@ -849,10 +841,6 @@
       <End Role="Partner" EntitySet="Partners" />
       <End Role="Donor" EntitySet="Donors" />
     </AssociationSet>
-    <AssociationSet Name="FK_Needer_Donor_Donors" Association="BloodBankDBITIModel.FK_Needer_Donor_Donors">
-      <End Role="Donor" EntitySet="Donors" />
-      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
-    </AssociationSet>
     <AssociationSet Name="FK_PartnersStatestics_Donors" Association="BloodBankDBITIModel.FK_PartnersStatestics_Donors">
       <End Role="Donor" EntitySet="Donors" />
       <End Role="PartnersStatestic" EntitySet="PartnersStatestics" />
@@ -869,7 +857,44 @@
       <Parameter Name="pending" Mode="In" Type="Boolean" />
       <Parameter Name="donationDate" Mode="In" Type="DateTime" />
       <Parameter Name="PID" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Contacts" EntityType="BloodBankDBITIModel.Contact" />
+    <FunctionImport Name="ContactDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ContactInsert">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="msg" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ContactSelect" ReturnType="Collection(BloodBankDBITIModel.ContactSelect_Result)" />
+    <FunctionImport Name="GetContact" ReturnType="Collection(BloodBankDBITIModel.GetContact_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Needer_Donor" EntityType="BloodBankDBITIModel.Needer_Donor" />
+    <AssociationSet Name="FK_Needer_Donor_BloodTypes" Association="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes">
+      <End Role="BloodType" EntitySet="BloodTypes" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Cities" Association="BloodBankDBITIModel.FK_Needer_Donor_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Donors" Association="BloodBankDBITIModel.FK_Needer_Donor_Donors">
+      <End Role="Donor" EntitySet="Donors" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Needer_Donor_Needer" Association="BloodBankDBITIModel.FK_Needer_Donor_Needer">
+      <End Role="Needer" EntitySet="Needers" />
+      <End Role="Needer_Donor" EntitySet="Needer_Donor" />
+    </AssociationSet>
+    <FunctionImport Name="CheckUsernames" ReturnType="Collection(String)" />
+    <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
   </EntityContainer>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -986,7 +1011,6 @@
     <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Int32" Name="DayID" Nullable="false" />
-    <Property Type="Int32" Name="CID1" Nullable="false" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="Day" Nullable="true" MaxLength="50" />
   </ComplexType>
@@ -1093,17 +1117,6 @@
     <Property Type="Int32" Name="DID" Nullable="false" />
     <Property Type="DateTime" Name="AskDate" Nullable="false" />
     <Property Type="Boolean" Name="Accepted" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="neederdonorall_Result">
-    <Property Type="Int32" Name="NID" Nullable="false" />
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="Int32" Name="DID" Nullable="false" />
-    <Property Type="DateTime" Name="AskDate" Nullable="false" />
-    <Property Type="Boolean" Name="Accepted" Nullable="false" />
-    <Property Type="String" Name="CityName" Nullable="false" />
-    <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="Fullname" Nullable="false" MaxLength="101" />
   </ComplexType>
   <ComplexType Name="NGO_select_Result">
     <Property Type="Int32" Name="NID" Nullable="false" />
@@ -1372,7 +1385,6 @@
     <Property Type="Boolean" Name="Pending" Nullable="false" />
     <Property Type="DateTime" Name="DonationDate" Nullable="true" />
     <Property Type="Int32" Name="PAID" Nullable="true" />
-    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
@@ -1386,58 +1398,6 @@
       </Principal>
       <Dependent Role="PartnersStatestic">
         <PropertyRef Name="BID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Needer_Donor">
-    <Key>
-      <PropertyRef Name="NDID" />
-    </Key>
-    <Property Name="NDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NID" Type="Int32" Nullable="false" />
-    <Property Name="BID" Type="Int32" Nullable="false" />
-    <Property Name="CID" Type="Int32" Nullable="false" />
-    <Property Name="DID" Type="Int32" Nullable="false" />
-    <Property Name="AskDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Accepted" Type="Boolean" />
-    <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="Needer_Donor" ToRole="BloodType" />
-    <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Cities" FromRole="Needer_Donor" ToRole="City" />
-    <NavigationProperty Name="Needer" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Needer" FromRole="Needer_Donor" ToRole="Needer" />
-    <NavigationProperty Name="Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Needer_Donor" ToRole="Donor" />
-  </EntityType>
-  <Association Name="FK_Needer_Donor_BloodTypes">
-    <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
-    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BloodType">
-        <PropertyRef Name="BID" />
-      </Principal>
-      <Dependent Role="Needer_Donor">
-        <PropertyRef Name="BID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Needer_Donor_Cities">
-    <End Type="BloodBankDBITIModel.City" Role="City" Multiplicity="1" />
-    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="CID" />
-      </Principal>
-      <Dependent Role="Needer_Donor">
-        <PropertyRef Name="CID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Needer_Donor_Needer">
-    <End Type="BloodBankDBITIModel.Needer" Role="Needer" Multiplicity="1" />
-    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Needer">
-        <PropertyRef Name="NID" />
-      </Principal>
-      <Dependent Role="Needer_Donor">
-        <PropertyRef Name="NID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1497,8 +1457,8 @@
     <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Donors_Cities" FromRole="Donor" ToRole="City" />
     <NavigationProperty Name="Location" Relationship="BloodBankDBITIModel.FK_Donors_Locations" FromRole="Donor" ToRole="Location" />
     <NavigationProperty Name="Partner" Relationship="BloodBankDBITIModel.FK_Donors_Partners" FromRole="Donor" ToRole="Partner" />
-    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Donor" ToRole="Needer_Donor" />
     <NavigationProperty Name="PartnersStatestics" Relationship="BloodBankDBITIModel.FK_PartnersStatestics_Donors" FromRole="Donor" ToRole="PartnersStatestic" />
+    <NavigationProperty Name="Needer_Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Donor" ToRole="Needer_Donor" />
   </EntityType>
   <Association Name="FK_Donors_BloodTypes">
     <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="0..1" />
@@ -1548,18 +1508,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Needer_Donor_Donors">
-    <End Type="BloodBankDBITIModel.Donor" Role="Donor" Multiplicity="1" />
-    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Donor">
-        <PropertyRef Name="DID" />
-      </Principal>
-      <Dependent Role="Needer_Donor">
-        <PropertyRef Name="DID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PartnersStatestics_Donors">
     <End Type="BloodBankDBITIModel.Donor" Role="Donor" Multiplicity="1" />
     <End Type="BloodBankDBITIModel.PartnersStatestic" Role="PartnersStatestic" Multiplicity="*" />
@@ -1605,5 +1553,113 @@
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="ContactSelect_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Msg" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetContact_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Msg" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Needer_Donor">
+    <Key>
+      <PropertyRef Name="NDID" />
+    </Key>
+    <Property Name="NDID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NID" Type="Int32" Nullable="false" />
+    <Property Name="BID" Type="Int32" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <Property Name="DID" Type="Int32" Nullable="false" />
+    <Property Name="AskDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Accepted" Type="Boolean" />
+    <NavigationProperty Name="BloodType" Relationship="BloodBankDBITIModel.FK_Needer_Donor_BloodTypes" FromRole="Needer_Donor" ToRole="BloodType" />
+    <NavigationProperty Name="City" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Cities" FromRole="Needer_Donor" ToRole="City" />
+    <NavigationProperty Name="Donor" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Donors" FromRole="Needer_Donor" ToRole="Donor" />
+    <NavigationProperty Name="Needer" Relationship="BloodBankDBITIModel.FK_Needer_Donor_Needer" FromRole="Needer_Donor" ToRole="Needer" />
+  </EntityType>
+  <Association Name="FK_Needer_Donor_BloodTypes">
+    <End Type="BloodBankDBITIModel.BloodType" Role="BloodType" Multiplicity="1" />
+    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodType">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_Cities">
+    <End Type="BloodBankDBITIModel.City" Role="City" Multiplicity="1" />
+    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_Donors">
+    <End Type="BloodBankDBITIModel.Donor" Role="Donor" Multiplicity="1" />
+    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donor">
+        <PropertyRef Name="DID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="DID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Needer_Donor_Needer">
+    <End Type="BloodBankDBITIModel.Needer" Role="Needer" Multiplicity="1" />
+    <End Type="BloodBankDBITIModel.Needer_Donor" Role="Needer_Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Needer">
+        <PropertyRef Name="NID" />
+      </Principal>
+      <Dependent Role="Needer_Donor">
+        <PropertyRef Name="NID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="neederdonorall_Result">
+    <Property Type="Int32" Name="NDID" Nullable="false" />
+    <Property Type="Int32" Name="NID" Nullable="false" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="DateTime" Name="AskDate" Nullable="false" />
+    <Property Type="Boolean" Name="Accepted" Nullable="true" />
+    <Property Type="String" Name="fname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="DonorFullname" Nullable="false" MaxLength="101" />
   </ComplexType>
 </Schema>

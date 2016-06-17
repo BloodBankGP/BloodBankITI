@@ -3,33 +3,51 @@
     ViewBag.Title = "HospitalsInsert";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
-<h2>HospitalsInsert</h2>
-
-<form action="" method="POST">
-
-    Name:
-    <input type="text" name="Hospital.Name"/>
-
-    Phone:
-    <input type="text" name="Hospital.Phone"/>
-
-    Address:
-    <input type="text" name="Hospital.Address"/>
-
-    City:
-    <select name="Hospital.CID">
-        <option>Not Set</option>
-        @foreach (var item in Model.CitiesSelectAllResults)
-        {
-
-            <option value=@item.CID>@item.CityName</option>
-
-        }
-    </select>
-    <input type="submit" value="Insert"/>
-</form>
-
-@Html.ActionLink("Cancel", "Hospitals")
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 
+<div class="render" style="margin-top: 26px; height:850px;">
+    <div class="container white z-depth-2" style="height:800px;">
+        <div class="card-panel #b71c1c red darken-4">
+            <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:center;">إضافة مستشفى</h4>
+        </div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post">
+                <div class="row" dir="rtl">
+                    <div class="input-field col s12">
+                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">الإسم</p>
+                        <input type="text" name="Hospital.Name" style="float:right; " /><br />
+                    </div>
+                </div>
+                <div class="row" dir="rtl">
+                    <div class="input-field col s12">
+                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">التليفون</p>
+
+                        <input type="text" name="Hospital.Phone" style="float:right; " /><br />
+                    </div>
+                </div>
+                <div class="row" dir="rtl">
+                    <div class="input-field col s12">
+                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">العنوان</p>
+
+                        <input type="text" name="Hospital.Address" style="float:right; " /><br />
+                    </div>
+                </div>
+                <div class="row" dir="rtl">
+                    <div class="input-field col s12">
+                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">المدينة</p></div></div>
+
+                            <select name="Hospital.CID" class="mdl-select__input" dir="rtl">
+                                <option value="null">إختر مدينة</option>
+                                @foreach (var item in Model.CitiesSelectAllResults)
+                                {
+
+                                    <option value=@item.CID>@item.CityName</option>
+                                }
+                            </select>
+            <input type="submit" value="إدخال"  class="btn waves-effect waves-light red darken-4 " style="margin-top: 48px;margin-left: 192px;"/>
+            </form>
+            <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إلغاء", "Hospitals", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>  
+            @*@Html.ActionLink("إالغاء", "Hospitals")*@
+        </div>
+        </div></div>

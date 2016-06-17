@@ -4,28 +4,60 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+
 <div class="render">
 
 
-    <h2>Admin Panel</h2>
-    @Html.ActionLink("View Profile", "ViewProfile") <br />
+    <h4 style="font-size:40px;text-align:center; font-family:'Myriad عربي';">القائمة الرئيسية</h4>
+   
 
-    @Html.ActionLink("Admins", "AdminsView") <br />
-    @Html.ActionLink("Blood Types", "BloodTypes") <br />
-    @Html.ActionLink("Cities", "Cities") <br />
-    @Html.ActionLink("Posts and Comments", "PostsComments") <br />
+    @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile",
+    new { @style = "background-image:url('~/Content/Images/')", title = "عرض الصفحة الشخصية" }) <br />
 
-    @Html.ActionLink("Donors", "Donors") <br />
-    @Html.ActionLink("Emergency", "Emergency") <br />
-    @Html.ActionLink("Hospitals", "Hospitals") <br />
+    @Html.ActionLink("المشرفون", "AdminsView",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المشرفون" }) <br />
 
-    @Html.ActionLink("Needers", "Needers") <br />
-    @Html.ActionLink("Needer_Donors", "NeederDonor") <br />
-    @Html.ActionLink("NGO", "NGO") <br />
-    @Html.ActionLink("NGO_Requests", "NGORequests") <br />
-    @Html.ActionLink("Partners", "Partners") <br />
-    @Html.ActionLink("Partners Statestics", "PartnersStatistics") <br />
-    @Html.ActionLink("User Types", "UserTypesView") <br/>
-    @Html.ActionLink("Show Messages","ShowMsgs")
+    @Html.ActionLink("فصائل الدم", "BloodTypes",
+    new { @style = "background-image:url('~/Content/Images/')", title = "فصائل الدم" }) <br />
 
+    @Html.ActionLink("المحافظات", "Cities",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المحافظات" }) <br />
+
+    @Html.ActionLink(" التنزيلات والتعليقات", "PostsComments",
+    new { @style = "background-image:url('~/Content/Images/')", title = " التنزيلات والتعليقات" }) <br />
+
+    @Html.ActionLink("المتبرعون", "Donors",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المتبرعون" }) <br />
+
+    @Html.ActionLink("الطوارئ", "Emergency",
+    new { @style = "background-image:url('~/Content/Images/')", title = " الطوارئ" }) <br />
+
+    @Html.ActionLink("المستشفيات", "Hospitals",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المستشفيات" })<br />
+
+    @Html.ActionLink("المحتاجين للدم", "Needers",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المحتاجين للدم" }) <br />
+
+    @Html.ActionLink("طلبات الدم", "NeederDonor",
+    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الدم" }) <br />
+
+    @Html.ActionLink("الجمعيات الخيرية", "NGO",
+    new { @style = "background-image:url('~/Content/Images/')", title = "الجمعيات الخيرية" }) <br />
+
+    @Html.ActionLink("طلبات الجمعيات", "NGORequests",
+    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الجمعيات" }) <br />
+
+    @Html.ActionLink("الشركاء", "Partners",
+    new { @style = "background-image:url('~/Content/Images/')", title = "الشركاء" }) <br />
+
+    @Html.ActionLink("إحصائيات الشركاء", "PartnersStatistics",
+    new { @style = "background-image:url('~/Content/Images/')", title = "إحصائيات الشركاء" }) <br />
+
+    @Html.ActionLink("نوع المستخدم", "UserTypesView",
+    new { @style = "background-image:url('~/Content/Images/')", title = "نوع المستخدم" }) <br/>
+
+    @Html.ActionLink("إظهار الرسائل", "ShowMsgs",
+    new { @style = "background-image:url('~/Content/Images/')", title = "إظهار الرسائل" })
+    <div id="space" style="margin-bottom:198px;"></div>
 </div>

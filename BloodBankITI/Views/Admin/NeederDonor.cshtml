@@ -10,13 +10,14 @@
                    <tr>
 
                        <th> Needer ID </th>
+                       <th> Needer First Name </th>
+                       <th> Needer Last Name </th>
+                       <th> Donor ID </th>
+                       <th> Donor FullName </th>
+                       <th> City Name </th>
                        <th> Blood Type </th>
-                       <th> City </th>
-                       <th> FullName </th>
                        <th> Ask Date </th>
-                      
-
-
+                       <th> Accepted </th>
 
                    </tr>
 
@@ -24,10 +25,14 @@
                    {
                        <tr>
                            <td>@(a.NID) </td>
-                           <td>@(a.type) </td>
+                           <td>@(a.fname) </td>
+                           <td>@(a.lname) </td>
+                           <td>@(a.DID) </td>
+                           <td>@(a.DonorFullname) </td>
                            <td>@(a.CityName) </td>
-                           <td>@(a.Fullname) </td>
+                           <td>@(a.type) </td>
                            <td>@(a.AskDate) </td>
+                           <td>@(a.Accepted) </td>
                           
 
 
