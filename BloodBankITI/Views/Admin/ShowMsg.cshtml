@@ -4,7 +4,49 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-<br />
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <div class="panel-body">
+        <div class="row">
+            <div class=" col-md-9 col-lg-9 " style="position:center;border:hidden;">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>@Model.FName</td>
+                            <td>:الاسم الأول</td>
+                        </tr>
+                        <tr>
+                            <td>@Model.LName</td>
+                            <td>:الاسم الأخير</td>
+                        </tr><tr>
+                            <td>@Model.Age</td>
+                            <td>:العمر</td>
+                        </tr>
+                        <tr>
+                            <td>@Model.City</td>
+                            <td>:المدينة</td>
+                        </tr>
+                        <tr>
+                            <td>@Model.Email</td>
+                            <td>:البريد الإلكتروني</td>
+                        </tr>
+                        <tr>
+                            <td>@Model.Msg</td>
+                            <td>:الرسالة</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <center style="margin-left:10px;">
+                    @Html.ActionLink("العودة لصفحة الرسائل", "ShowMsgs", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                </center>
+            </div>
+           
+
+        </div>
+    </div>
+
+</div>
+@*<br />
 <br />
 <br />
 <br />
@@ -18,6 +60,6 @@ Age: @Model.Age <br/>
 City: @Model.City <br/>
 Email: @Model.Email <br/>
 Message: @Model.Msg <br/>
-@Html.ActionLink("Back To Messages", "ShowMsgs")
+@Html.ActionLink("Back To Messages", "ShowMsgs")*@
 
 

@@ -716,6 +716,7 @@
   </Function>
   <Function Name="Needer_DonorAccepted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="nid" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Needer_Donorall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Needer_DonorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

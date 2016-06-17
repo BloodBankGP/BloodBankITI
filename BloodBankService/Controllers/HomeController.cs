@@ -155,11 +155,11 @@ namespace BloodBankService.Controllers
 
                 if (s.Days >= 90)
                 {
-                    donor.Pending = true;
+                    donor.Pending = false;
                 }
                 else
                 {
-                    donor.Pending = false;
+                    donor.Pending = true;
                 }
             }
 
@@ -169,11 +169,11 @@ namespace BloodBankService.Controllers
 
                 if (s.Days >= 120)
                 {
-                    donor.Pending = true;
+                    donor.Pending = false;
                 }
                 else
                 {
-                    donor.Pending = false;
+                    donor.Pending = true;
                 }
             }
 
@@ -324,10 +324,10 @@ namespace BloodBankService.Controllers
         }
 
         [HttpGet]
-        [Route("NeederRequests/{nid:int}")]
-        public List<Needer_DonorAccepted_Result> NeederRequests(int nid)
+        [Route("NeederRequests/{nid:int}/{name}")]
+        public List<Needer_DonorAccepted_Result> NeederRequests(int nid, string name)
         {
-            return db.Needer_DonorAccepted(nid).ToList();
+            return db.Needer_DonorAccepted(nid,name).ToList();
         }
 
         [HttpGet]
