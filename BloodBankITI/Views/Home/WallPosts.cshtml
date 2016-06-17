@@ -13,13 +13,13 @@
 @foreach (var post in Model)
 {
     <div id="post" class="outset">
-        <p>@post.post.Name 
-            <label>  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</label><br /><br />
-        </p> 
+        <label>@post.post.Name </label> <br /><br />
+        <p>  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p>
         <p>@post.post.Post</p>
     </div>
     <div class="fb-share-button" data-href="http://localhost:7508/home/GetPostByID/1" data-layout="button_count" data-mobile-iframe="false"></div>
-    <div id="Comments">
+ 
+     <div id="C-omments">
          @foreach (var comment in post.comments)
          {
             <label>  @comment.Name</label><br />
@@ -31,29 +31,29 @@
             @*<h6>Insert Comment</h6>*@
             <form action="InsertComment" method="post">
 
-                @*<input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>*@
-                <label name="comment.Post_ID" value=@post.post.PID.ToString()></label>
+                <input type="hidden" name="comment.Post_ID" value=@post.post.PID.ToString()>
+                @*<label name="comment.Post_ID" value=@post.post.PID.ToString()></label>*@
 
 
                 @if (Session["UserName"] != null)
                 {
                     @Session["UserName"].ToString()
-                    @*<input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />*@
-                    <label name="comment.Name" value=@Session["UserName"].ToString() > </label>
+                    <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                    @*<label style="color:brown;" name="comment.Name" value=@Session["UserName"].ToString() > </label>*@
                 }
                 else
                 {
                     @*@("Name :")   <input type="text" name="comment.Name" />*@
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;">
+                            <input id="first_name" type="text" class="validate" name="Comment.Name" style="text-align:right;">
                             <label class="right-align"> الاسم  </label>
                         </div>
                     </div>
                 }
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate" name="NGO.Address" style="text-align:right;">
+                        <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align:right;">
                         <label class="right-align"> التعليق  </label>
                     </div>
                 </div>
@@ -62,6 +62,7 @@
                 <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
 
             </form>
+            <br />
 
         </div>
 }
