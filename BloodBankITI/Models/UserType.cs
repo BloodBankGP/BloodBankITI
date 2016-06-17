@@ -14,7 +14,6 @@ namespace BloodBankITI.Models
     
     public partial class UserType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserType()
         {
             this.Logins = new HashSet<Login>();
@@ -23,7 +22,6 @@ namespace BloodBankITI.Models
         public string Type { get; set; }
         public int UTID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Login> Logins { get; set; }
     }
 }

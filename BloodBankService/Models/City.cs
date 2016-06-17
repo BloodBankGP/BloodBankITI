@@ -17,21 +17,23 @@ namespace BloodBankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public City()
         {
+            this.Donors = new HashSet<Donor>();
             this.Emergencies = new HashSet<Emergency>();
             this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
             this.Needers = new HashSet<Needer>();
-            this.NGOes = new HashSet<NGO>();
-            this.Posts = new HashSet<Post>();
-            this.Partners = new HashSet<Partner>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
-            this.Donors = new HashSet<Donor>();
+            this.NGOes = new HashSet<NGO>();
+            this.Partners = new HashSet<Partner>();
+            this.Posts = new HashSet<Post>();
         }
     
         public int CID { get; set; }
         public string CityName { get; set; }
         public string Logo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Donor> Donors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Emergency> Emergencies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -41,14 +43,12 @@ namespace BloodBankService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Needer> Needers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NGO> NGOes { get; set; }
+        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<NGO> NGOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Partner> Partners { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Donor> Donors { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

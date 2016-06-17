@@ -28,5 +28,7 @@ namespace BloodBankService.Models
         public string Type { get; set; }
         public string CityName { get; set; }
         public string LocationName { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

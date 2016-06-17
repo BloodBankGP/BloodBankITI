@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Models\donorCityBlood.cs" />
     <Compile Include="Models\donorinsertform.cs" />
+    <Compile Include="Models\DonorLogin.cs" />
     <Compile Include="Models\donorpartner.cs" />
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
@@ -316,6 +317,7 @@
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\insert_needer_Result.cs" />
     <Compile Include="Models\Location.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -351,12 +353,14 @@
     <Compile Include="Models\Needer_Donorall_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Needer_DonorInsert_Result.cs" />
     <Compile Include="Models\Needer_DonorNotAccepted_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGO.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NgoCitiesLogin.cs" />
     <Compile Include="Models\NgoUpdate.cs" />
     <Compile Include="Models\CitiesLocations.cs" />
     <Compile Include="Models\NGO_selectByIDAll_Result.cs">
@@ -473,11 +477,14 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\icomoon.css" />
     <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\materialize.css" />
+    <Content Include="Content\materialize.min.css" />
     <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\owl.theme.default.min.css" />
     <Content Include="Content\simple-line-icons.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\stylish-portfolio.css" />
+    <Content Include="Content\thanks.css" />
     <Content Include="favicon.ico" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
@@ -514,11 +521,6 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
-    <Content Include="img\1220137105858.jpg" />
-    <Content Include="img\A+.png" />
-    <Content Include="img\A-.png" />
-    <Content Include="img\AB+.png" />
-    <Content Include="img\AB-.png" />
     <Content Include="img\android-chrome-144x144.png" />
     <Content Include="img\android-chrome-192x192.png" />
     <Content Include="img\android-chrome-36x36.png" />
@@ -536,8 +538,6 @@
     <Content Include="img\apple-touch-icon-76x76.png" />
     <Content Include="img\apple-touch-icon-precomposed.png" />
     <Content Include="img\apple-touch-icon.png" />
-    <Content Include="img\B+.png" />
-    <Content Include="img\B-.png" />
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\callout.jpg" />
@@ -550,9 +550,7 @@
     <Content Include="img\favicon.ico" />
     <Content Include="img\finaallogo.png" />
     <Content Include="img\homebackground.jpg" />
-    <Content Include="img\Iismailia-logo.png" />
     <Content Include="img\llogo.png" />
-    <Content Include="img\logo-small.png" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
     <Content Include="img\logo2Start.png" />
@@ -562,8 +560,6 @@
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
     <Content Include="img\NGO.png" />
-    <Content Include="img\O+.png" />
-    <Content Include="img\O-.png" />
     <Content Include="img\resala.jpg" />
     <Content Include="img\sona3.jpg" />
     <Content Include="js\animation.js" />
@@ -624,7 +620,6 @@
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\.DS_Store" />
     <Content Include="Content\style.css.map" />
     <Content Include="js\.DS_Store" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
@@ -987,17 +982,16 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="img\BloodTypes\A+.png" />
-    <Content Include="img\BloodTypes\A-.png" />
-    <Content Include="img\BloodTypes\AB+.png" />
-    <Content Include="img\BloodTypes\AB-.png" />
-    <Content Include="img\BloodTypes\B+.png" />
-    <Content Include="img\BloodTypes\B-.png" />
-    <Content Include="img\BloodTypes\download.png" />
-    <Content Include="img\BloodTypes\O+.png" />
-    <Content Include="img\BloodTypes\O-.png" />
-    <Content Include="img\CitiesLogos\Ismailia.png" />
-    <Content Include="img\CitiesLogos\Portsaid.png" />
+    <Content Include="Views\Admin\BloodTypes\A+.png" />
+    <Content Include="Views\Admin\BloodTypes\A-.png" />
+    <Content Include="Views\Admin\BloodTypes\AB+.png" />
+    <Content Include="Views\Admin\BloodTypes\AB-.png" />
+    <Content Include="Views\Admin\BloodTypes\B+.png" />
+    <Content Include="Views\Admin\BloodTypes\B-.png" />
+    <Content Include="Views\Admin\BloodTypes\O+.png" />
+    <Content Include="Views\Admin\BloodTypes\O-.png" />
+    <Content Include="Views\Admin\CitiesLogos\Ismailia.png" />
+    <Content Include="Views\Admin\CitiesLogos\Portsaid.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1057,10 +1051,10 @@
     <Content Include="Views\Admin\PartnersEdit.cshtml" />
     <Content Include="Views\Admin\PartnersInsert.cshtml" />
     <Content Include="Views\Admin\NeederEdit.cshtml" />
-    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <Content Include="Views\Admin\NGORequests.cshtml" />
-    <Content Include="Views\Admin\ShowMsgs.cshtml" />
     <Content Include="Views\Admin\ShowMsg.cshtml" />
+    <Content Include="Views\Admin\ShowMsgs.cshtml" />
+    <Content Include="Views\Admin\PartnersStatestics.cshtml" />
     <None Include="Views\Admin\TodayStatistics.cshtml" />
     <None Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Donor\UpdateProfile.cshtml" />
@@ -1074,11 +1068,12 @@
     <Content Include="Views\Donor\Requests.cshtml" />
     <Content Include="Views\Home\selectPartner.cshtml" />
     <None Include="Views\Home\FollowRequest.cshtml" />
+    <Content Include="Views\Home\InsertPost.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
-    <None Include="Views\Partner\AllStatistics.cshtml" />
-    <None Include="Views\Partner\Statistics.cshtml" />
-    <None Include="Views\Partner\TodayStatistics.cshtml" />
+    <Content Include="Views\Partner\AllStatistics.cshtml" />
+    <Content Include="Views\Partner\Statistics.cshtml" />
+    <Content Include="Views\Partner\TodayStatistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

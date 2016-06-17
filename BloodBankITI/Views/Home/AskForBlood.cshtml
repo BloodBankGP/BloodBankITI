@@ -1,5 +1,4 @@
-﻿
-@model BloodBankITI.Models.Needer
+﻿@model BloodBankITI.Models.donorinsertform
 @{
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -30,37 +29,50 @@
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
+                       
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
-                            <label class="right-align" for="last_name" style="font-family:'Myriad عربي';">الاسم الثانى  </label>
+                            <input id="last_name" name="n.Fname" type="text" class="validate" style="text-align:right;">
+                            <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم الاول</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="last_name" name="Fname" type="text" class="validate" style="text-align:right;">
-                            <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم الاول</label>
+                            <input id="last_name" type="text" class="validate" name="n.Lname" style="text-align:right">
+                            <label class="right-align" for="last_name" style="font-family:'Myriad عربي';">الاسم الثانى  </label>
                         </div>
                         <br /><br />
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="Email" style="text-align:right">
+                                <input id="email" type="email" class="validate" name="n.Email" style="text-align:right">
                                 <label class="right-align" for="email" style="font-family:'Myriad عربي';">البريد الالكترونى </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email-confirm" type="tel" class="validate" name="Phone" style="text-align:right;">
+                                <input id="email-confirm" type="tel" class="validate" name="n.Phone" style="text-align:right;">
                                 <label class="right-align" for="phone" style="font-family:'Myriad عربي';">رقم التليفون </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="password" type="password" class="validate" name="BID" style="text-align:right;">
+                                <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
+                                    <option value="NULL">إختــــر </option>
+                                    @foreach (var item in Model.BloodTypesResults)
+                                    {
+                                        <option value=@item.BID>@item.Type</option>
+                                    }
+                                </select>
                                 <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="password-confirm" type="password" class="validate" name="CID" style="text-align:right;">
-                                <label class="right-align" for="city"  style="font-family:'Myriad عربي';">المدينة </label>
+                                <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
+                                    <option value="NULL"> إختــــر</option>
+                                    @foreach (var item in Model.CitiesSelectAllResults)
+                                    {
+                                        <option value=@item.CID>@item.CityName</option>
+                                    }
+                                </select>
+                                <label class="right-align" for="city" style="font-family:'Myriad عربي';">المدينة </label>
                             </div>
                         </div>
                         <center>

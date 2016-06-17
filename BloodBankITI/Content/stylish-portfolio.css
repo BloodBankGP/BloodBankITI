@@ -11,11 +11,11 @@ body {
     width: 100%;
     height: 100%;
     background-color:rgba(255,255,255,0.8);
-   	font-family: 'open-sans-bold', AvenirNext-Medium, sans-serif,"Titillium Web";
+        font-family:Myriad عربي;
 }
 
 .render{
-    width:900px;
+    width:800px;
     height:auto;
     margin-top:8em;
     margin-right:auto;
@@ -359,14 +359,12 @@ footer , #fixedbar ,#layoutone{
 	text-align: center;
 	max-width: 500px;
 	max-height: 300px;
-    margin-left: 660px;
-
    
     /*align-content:center;*/
 }
 
 span {
-	border: 1px solid;
+	border: 0px solid;
 	border-radius: 50%;
 	color: #fff;
 	width: 60px;
@@ -472,7 +470,7 @@ h2 {
 }
 
 p {
-  color: rgba(48, 69, 92, 0.8);
+  color: #000;
   font-size: 17px;
   line-height: 26px;
   letter-spacing: 1px;
@@ -509,6 +507,12 @@ ul li:nth-of-type(2) {
 }
 ul li:nth-of-type(3) {
   animation-delay: 1s;
+}
+ul li:nth-of-type(4) {
+  animation-delay: 1.25s;
+}
+ul li:nth-of-type(5) {
+  animation-delay: 1.5s;
 }
 ul li:last-of-type {
   padding-bottom: 0;
@@ -588,8 +592,17 @@ ul li input[type=checkbox]:checked ~ i:after {
 
 h5
 {
+    font-family: Myriad عربي;
 	font-weight: 400;
     color:white;
+   text-align:center;
+}
+h4
+{
+    font-family: Myriad عربي;
+	font-weight: 400;
+    color:black;
+   text-align:center;
 }
 
 .container
@@ -740,6 +753,7 @@ h6{
           overflow: hidden;
           white-space: nowrap;
           text-align: left; 
+              font-family: Myriad عربي;
         }
 
         .mdl-select.is-dirty .mdl-select__label { visibility: hidden; }
@@ -827,8 +841,73 @@ h6{
         }
 
 
+/*table*/ 
+table tr th {
+    text-align:center;
+        font-size:18px;
+        color:firebrick; 
+        font-family:Myriad عربي;
+}
 
-    /*5-6-2016*/
-    th{
-        text-align:center;
-    }
+table tr td {
+    text-align: center;
+    font-size: 18px;
+    font-family: Myriad عربي;
+}
+
+h3{
+    text-align:center;
+    font-size:25px;
+        font-family: Myriad عربي;
+
+}
+label{
+        font-family: Myriad عربي;
+}
+footer{
+    bottom:0;
+}
+
+ /*postcomments*/
+ div.outset {
+     border-style: outset;
+     padding:15px;
+     background-color:antiquewhite;
+ }
+
+ #post label{
+    font-size:24px;   
+}
+ #C-omments label{
+         font-size:15px;   
+ }
+ #sname {
+       font-size:15px;
+       font-family: Myriad عربي;
+       color:brown;
+ }
+ /*THANK*/
+
+ /*NGO*/
+ .ngodata label{
+      font-size:20px;
+       font-family: Myriad عربي;
+       color:brown;
+ }
+  .ngodata p{
+      font-size:15px;
+       font-family: Myriad عربي;
+       color:black;
+ }
+
+
+
+
+
+
+
+
+
+
+
+

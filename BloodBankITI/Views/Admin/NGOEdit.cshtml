@@ -4,15 +4,15 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
-<div class="render" style="height:1050px;">
-    <div class="container white z-depth-5" style="height:950px;" >
-        <div class="card-panel red darken-4"><h6>تعديل معلومات الجمعيات الخيرية</h6></div>
+<div class="render">
+    <div class="container white z-depth-5" style="height:800px;">
+        <div class="card-panel red darken-4"><h5>تعديل معلومات الجمعيات الخيرية</h5></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post" novalidate="novalidate">
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="hidden" class="validate" name="ngo.NID" style="text-align:right" value=@Model.ngo.NID>
+                            <input type="hidden" class="validate" name="ngo.NID" value=@Model.ngo.NID style="text-align:right">
                         </div>
                     </div>
                     <div class="row">
@@ -32,11 +32,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                <label for="CitiesID" style="margin-right:-160px;">المدينة</label>
                             </div>
-
-                            <br />
-                            <br />
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="ngo.CID" id="CitiesID">
                                     <option value="0">Not Set</option>
@@ -66,7 +63,7 @@
                     </div>   
                         
 
-                    <div class="row">
+                    @*<div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
                                 <label class="right-align" for="Message" style="text-align:right; width:460px;">الحالة</label>
@@ -89,17 +86,14 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
 
 
                     <div class="row" >
                         <div class="input-field col s12" >
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="Message" style="text-align:right; width:460px;">الموافقة</label>
+                                <label for="Message" style="margin-right:-160px;">الموافقة</label>
                             </div>
-
-                            <br />
-                            <br />
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="ngo.approved">
                                     @if (@Model.ngo.Approved == true)
@@ -121,8 +115,9 @@
                     <center>
                         <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
                     </center>
-                    </div>
-</form>
-        </div>
+                 
+                   </div>
+            </form>
         </div>
     </div>
+  </div>

@@ -1,11 +1,10 @@
-﻿@model int?
+﻿@model  BloodBankITI.Models.Post
 
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2>title</h2>
 
 <head>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -19,11 +18,12 @@
 </div>
 
 <script>
-    var model = @Html.Raw(Json.Encode(Model));
+    var nid = @Model.BID
+    var name = '@Html.Encode(@Model.Name)'
     setInterval(ajax, 1000);
     function ajax(){
         $.ajax({
-            url: 'http://www.bloodservice.somee.com/Home/NeederRequests/' + model ,
+            url: 'http://www.bloodservice.somee.com/Home/NeederRequests/' + nid+"/" + name ,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -39,11 +39,19 @@
     };
 
     function WriteResponse(data) {
-        var result= "";
-        $.each(data, function (index, requests) {
-            result += "<div>"+ requests.Fname+" "+requests.Lname+" accepted your request <br> Phone : "+requests.Phone+"</div>";
-        });
-        $('#requests').html(result);
 
+        
+            var result= "";
+            $.each(data, function (index, requests) {
+                if (requests.Fname == "Wrong URL")
+                {
+                    result ="هذا الرابط غير صحيح";
+                }
+                else
+                {
+                    result += "<div>"+ requests.Fname+" "+requests.Lname+" accepted your request <br> Phone : "+requests.Phone+"</div>";
+            
+                }});
+            $('#requests').html(result);
     }
 </script>

@@ -5,51 +5,25 @@
 }
 
 <div class="render">
-    <h1><em>الجمعيات الخيرية </em></h1>
+    <h2 style="font-family:'Myriad عربي'">الجمعيات الخيرية</h2>
     <hr />
     <div style="float:right;">
-        <label>الاســــــــــــم</label><br />
-        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Name) </p><br />
-        <label>العنــــــــوان</label><br />
-        <p>@Html.DisplayFor(N => N.Address)</p><br />
-        <label>رقم الهـــاتف</label><br />
-        <p> @Html.DisplayFor(N => N.Phone)</p> <br />
-        <label> المدينـــــــــة </label><br />
-        <p>@Html.DisplayFor(N => N.CityName)</p><br />
+        <label>الاســــــــــــم</label><br /><br />
+        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Name) </p>
+        <label>العنــــــــــوان</label><br /><br/>
+        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.Address)</p>
+        <label>رقم الهـــاتف</label><br /><br />
+        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Phone)</p>
+        <label> المدينـــــــــة </label><br /><br />
+        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.CityName)</p>
     </div>
-    <div class="ngo" style="float:left;"> 
+    <div style="float:left;"> 
         <a href="http://www.lifemakers.org/">
             <img src="~/img/download.jpg" style="padding-left:50px;" />
         </a>
     </div>
-    @*<ul>
-        <li>
-            <input type="checkbox" checked>
-            <i></i>
-            <h3> الاســــــــــــم</h3>
-            <p> @Html.DisplayFor(N => N.Name)</p>
-        </li>
-        <li>
-            <input type="checkbox" checked>
-            <i></i>
-            <h3>العنـــــــــوان </h3>
-            <p>
-               @Html.DisplayFor(N => N.Address)
-            </p>
-        </li>
-        <li>
-            <input type="checkbox" checked>
-            <i></i>
-            <h3>رقــم الهــاتف</h3>
-            @Html.DisplayFor(N => N.Phone)
-        </li>
-        <li>
-            <input type="checkbox" checked>
-            <i></i>
-            <h3> المدينــــــــــة</h3>
-            <p> @Html.DisplayFor(N => N.CityName)</p>
-        </li>
-    </ul>*@
-
-
+    <div style="margin-bottom:184px;"></div>
 </div>
+
+@Html.ActionLink("Edit","Edit")
+

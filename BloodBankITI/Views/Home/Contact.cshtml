@@ -6,50 +6,51 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
     <div class="container white z-depth-2">
-        <div class="card-panel red darken-4"><h6> للتواصل معنا </h6></div>
+        <div class="card-panel red darken-4"><h6> تواصل معنا </h6></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" name="Contact.LName" style="text-align:right">
-                            <label class="right-align" for="last_name"> :الاسم الاخير </label>
+                            <input id="first_name" name="Contact.Fname" type="text" class="validate" style="text-align:right;">
+                            <label class="right-align" for="first_name">الاسم الأول </label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="first_name" name="Contact.FName" type="text" class="validate" style="text-align:right;">
-                            <label class="right-align" for="first_name">:الاسم الاول </label>
+                            <input id="last_name" type="text" class="validate" name="Contact.Lname" style="text-align:right">
+                            <label class="right-align" for="last_name">الاسم الأخير </label>
                         </div>
-
+                   </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="number" class="validate" name="Contact.Age" style="text-align:right;">
-                                <label class="right-align" for="Age">:العمر </label>
+                                <label class="right-align" for="Age">العمر </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" class="validate" name="Contact.City" style="text-align:right;" />
-                                <label class="right-align" for="City">: المدينة </label>
+                                <label class="right-align" for="City"> المدينة </label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="email" class="validate" name="Contact.Email" style="text-align:right;" />
-                                <label class="right-align" for="Email">: البريد الإلكتروني </label>
+                                <label class="right-align" for="Email"> البريد الإلكتروني </label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <div style="float:right; position:relative; margin-right:52px;"><label class="right-align" for="Message" style="float:right;">:الرسالة </label></div>
-                                <textarea class="materialize-textarea" style="text-align:right;" name="Contact.Msg"></textarea>
-                            </div>
+                                <div style="float:right; position:relative; margin-right:52px;"><label class="right-align" for="textarea1" style="float:right;margin-right:-52px;">الرسالة </label></div>
+                                  <textarea id="textarea1" class="materialize-textarea"  name="Contact.Msg" style="text-align:right;"></textarea>
+                                @*<input type="text" name="Contact.Msg" />
+                                <label class="right-align" for="textarea1" style="float:right;margin-right:-52px;">الرسالة </label>*@
+</div>
                         </div>
                         <center>
                             <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">إرسال</button>
                         </center>
-                    </div>
                 </div>
             </form>
         </div>

@@ -16,7 +16,7 @@
 
 
 </head>
-<div class="render" style="height:1250px;">
+<div class="render">
     <div class="container white z-depth-2" style="height:auto;">
         <div class="card-panel red darken-4"><h6> لو عايز تتبرع </h6></div>
         <div id="register" class="col s12">
@@ -42,11 +42,11 @@
                             </div>
                             <br />
                             <p>
-                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male" />
+                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male" value="male" />
                                 <label for="Male">ذكر</label>
                             </p>
                             <p>
-                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female" />
+                                <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female" value="female" />
                                 <label for="Female">أنثى</label>
                             </p>
 
@@ -128,11 +128,32 @@
                                         @Html.ValidationMessageFor(model => model.Donor.LID)
                                     </div>
                                 </div>
-                                <center>
-                                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
-                                </center>
 
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="Username" type="text" class="validate" name="login.UserName" style="text-align:right">
+                            <label class="right-align" for="last_name">  اسم المستخدم</label>
+                            @Html.ValidationMessageFor(model => model.Login.UserName)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
+                            <label class="right-align" for="last_name"> كلمة المرور </label>
+                            @Html.ValidationMessageFor(model => model.Login.Password)
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
+                            <label class="right-align" for="Passwprd"> تأكيد كلمة المرور </label>
+                        </div>
+                    </div>
+                        <center>
+                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
+                        </center>
+
+
+</div>
 </form>
     </div>
 </div>

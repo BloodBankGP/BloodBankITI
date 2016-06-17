@@ -10,5 +10,6 @@ namespace BloodBankITI.Models
         public List<Cities_SelectAll_Result> CitiesSelectAllResults { get; set; }
         public List<Select_BloodTypes_Result> BloodTypesResults { get; set; }
         public Donor Donor { get; set; }
+        public Login Login { get; set; }
     }
 }
