@@ -541,6 +541,7 @@
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
     <Content Include="img\callout.jpg" />
+    <Content Include="img\Community-Management.png" />
     <Content Include="img\cut.jpg" />
     <Content Include="img\DONOR.png" />
     <Content Include="img\download.jpg" />
@@ -550,7 +551,9 @@
     <Content Include="img\favicon.ico" />
     <Content Include="img\finaallogo.png" />
     <Content Include="img\homebackground.jpg" />
+    <Content Include="img\Iismailia-logo.png" />
     <Content Include="img\llogo.png" />
+    <Content Include="img\logo-small.png" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
     <Content Include="img\logo2Start.png" />
@@ -560,8 +563,11 @@
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
     <Content Include="img\NGO.png" />
+    <Content Include="img\person_icon.jpg" />
     <Content Include="img\resala.jpg" />
+    <Content Include="img\round-account-button-with-user-inside.png" />
     <Content Include="img\sona3.jpg" />
+    <Content Include="img\user.png" />
     <Content Include="js\animation.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />

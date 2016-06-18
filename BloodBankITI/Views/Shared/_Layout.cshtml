@@ -54,44 +54,45 @@
     </script>
     <!-- Navigation -->
    
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <a href="/home/index" style="font-family:'Myriad عربي'; font-size:25px;">الرئيسية</a>
-                <a href="#" style="font-family:'Myriad عربي';font-size:25px;">الطوارىء</a>
-                <a href="/home/Donate" style="font-family:'Myriad عربي'; font-size:25px;">  اتبرع </a>
-                <a href="/home/askforblood" style="font-family:'Myriad عربي';font-size:25px;">دم </a>
-                <a href="#" style="font-family:'Myriad عربي'; font-size:25px;"> المشاركات</a>
+            <div id="mySidenav" class="sidenav" >
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"style="padding: 8px 0px 0px 0px;margin-right: -132px;">×</a>
+                <a href="/home/index" >الصفحة الرئيسية </a>
                 @if (Session["UserId"] != null && Session["UserName"] != null)
             {
                 switch (Session["UserType"].ToString())
                 {
                     case "1":
-                            <a href="/admin/index" style="font-family:'Myriad عربي'; font-size:25px;"> الشخصية</a>
+                            <a href="/admin/index"> الصفحة الشخصية</a>
                             break;
                         case "2":
-                            <a href="/donor/Index" style="font-family:'Myriad عربي'; font-size:25px;"> الشخصية</a>
+                            <a href="/donor/Index"> الصفحة الشخصية</a>
                             break;
                         case "3":
-                            <a href="/ngo/index" style="font-family:'Myriad عربي'; font-size:25px;"> الشخصية</a>
+                            <a href="/ngo/index"> الصفحة الشخصية</a>
                             break;
                         case "4":
-                            <a href="/partner/index" style="font-family:'Myriad عربي'; font-size:25px;">الشخصية</a>
+                            <a href="/partner/index">الصفحة الشخصية</a>
                             break;
                     }
                 }
-                <a href="/home/info" style="font-family:'Myriad عربي'; font-size:25px;"> معلومات </a>
-                <a href="#" style="font-family:'Myriad عربي'; font-size:25px;"> احنا </a>
-                <a href="/home/contact" style="font-family:'Myriad عربي'; font-size:25px;">تواصل  </a>
+                <a href="/home/emergencytoday">الطوارىء</a>
+                <a href="/home/Donate">عايز اتبرع    </a>
+                <a href="/home/askforblood">محتاج دم</a>
+                <a href="/home/wallposts"> المشاركات و التعليقات</a>
+               
+                <a href="/home/info">  معلومات عن النبرع </a>
+                <a href="#"> احنا مين </a>
+                <a href="/home/contact">تواصل معنا </a>
                 @if (Session["UserId"] != null && Session["UserName"] != null)
             {
-                    <a href="/home/Logout" style="font-family:'Myriad عربي'; font-size:25px;">الخروج </a>
+                    <a href="/home/Logout">تسجيل الخروج  </a>
 
                 }
             </div>
 
             <div id="main">
                 @*<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>*@
-                <a href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"> menu<i class="fa fa-bars"></i></a>
+                <a href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"> القائمة <i class="fa fa-bars"></i></a>
             </div>
 
             @RenderBody()
@@ -99,7 +100,7 @@
             <!-- Footer -->
             <footer>
                 <div class="icons center-block">
-                    ;
+                    
                     <span class="fa fa-facebook fa-2x"></span>
                     <span class="fa fa-twitter fa-2x"></span>
                     <span class="fa fa-youtube fa-2x"></span>

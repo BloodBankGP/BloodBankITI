@@ -221,8 +221,8 @@ textarea {
 
 .form .thumbnail {
   background: #fff;
-  width: 100px;
-  height: 10px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto 30px;
   padding: 50px 30px;
   border-top-left-radius: 100%;
@@ -246,31 +246,29 @@ textarea {
         <div class="mui-col-xs-12 mui-col-md-8">
 
 
-            <div class="info">
+            @*<div class="info">
                 <h2 style="font-family:'Myriad عربي'; text-align:center;font-size:36px;">تسجيل الدخول </h2>
                 <span>دمــــك  <i class="fa fa-heart"></i> حيـــــاة</span>
-            </div>
+            </div>*@
             <div class="form">
 
-                <div class="thumbnail"><img src="~/img/blood-drop.png" /></div>
+                <div>
+
+                    <img src="~/img/user.png"  style="height:100px;width:100px;"/>
+                </div>
                 <div class="tab-content">
                     <div id="signup">
 
                         <form action="" method="post" class="regi">
                             <div class="field-wrap">
-                                <label>
-                                    <span class="req">*</span>  اسم المستخدم
-                                </label>
+                                <label> اسم المستخدم  </label>
                                 <input type="text" name="UserName" required autocomplete="off" />
-
                             </div>
 
                             <div class="field-wrap">
-                                <label>
-                                    <span class="req">*</span>    كلمة المرور
-                                </label>
+                                <label>كلمة المرور  </label>     
                                 <input type="password" name="Password" required autocomplete="off" />
-                            </div>
+                           </div>
 
                             <button type="submit" class="button button-block" style="font-family:'Myriad عربي';">تسجيل  </button>
 
