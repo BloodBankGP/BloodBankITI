@@ -127,6 +127,8 @@
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="City" Relationship="Self.FK_NGO_Cities" FromRole="NGO" ToRole="Cities" />
+    <Property Name="Fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Partner">
     <Key>
@@ -624,42 +626,13 @@
     <FunctionImport Name="NGO_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="NGO_insert">
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="city" Mode="In" Type="Int32" />
-      <Parameter Name="phone" Mode="In" Type="String" />
-      <Parameter Name="address" Mode="In" Type="String" />
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="pw" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
       <Parameter Name="cid" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
-      <Parameter Name="nid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="NGO_selectByIDAll" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByIDAll_Result)">
       <Parameter Name="nid" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="NGO_selectt" ReturnType="Collection(BloodBankDBITIModel.NGO_selectt_Result)" />
-    <FunctionImport Name="NGO_update">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="city" Mode="In" Type="Int32" />
-      <Parameter Name="phone" Mode="In" Type="String" />
-      <Parameter Name="address" Mode="In" Type="String" />
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="pw" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="NGOUPDATEADMIN">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="city" Mode="In" Type="Int32" />
-      <Parameter Name="phone" Mode="In" Type="String" />
-      <Parameter Name="address" Mode="In" Type="String" />
-      <Parameter Name="status" Mode="In" Type="Boolean" />
-      <Parameter Name="approved" Mode="In" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="Partners_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -899,6 +872,41 @@
     </AssociationSet>
     <FunctionImport Name="CheckUsernames" ReturnType="Collection(String)" />
     <FunctionImport Name="neederdonorall" ReturnType="Collection(BloodBankDBITIModel.neederdonorall_Result)" />
+    <FunctionImport Name="NGO_insert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="fb" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
+      <Parameter Name="nid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NGO_update">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="fb" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NGOUPDATEADMIN">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="Int32" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="approved" Mode="In" Type="Boolean" />
+      <Parameter Name="fb" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -1656,6 +1664,8 @@
     <Property Type="Boolean" Name="Approved" Nullable="false" />
     <Property Type="Boolean" Name="Status" Nullable="false" />
     <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="Fb" Nullable="true" />
+    <Property Type="String" Name="Website" Nullable="true" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
