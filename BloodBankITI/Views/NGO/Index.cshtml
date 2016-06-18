@@ -5,25 +5,29 @@
 }
 
 <div class="render">
-    <h2 style="font-family:'Myriad عربي'">الجمعيات الخيرية</h2>
+    <h4> جمعية صناع الحياة بالإسماعيلية</h4>
     <hr />
-    <div style="float:right;">
-        <label>الاســــــــــــم</label><br /><br />
-        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Name) </p>
-        <label>العنــــــــــوان</label><br /><br/>
-        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.Address)</p>
-        <label>رقم الهـــاتف</label><br /><br />
-        <p style="color:darkmagenta;"> @Html.DisplayFor(N => N.Phone)</p>
-        <label> المدينـــــــــة </label><br /><br />
-        <p style="color:darkmagenta;">@Html.DisplayFor(N => N.CityName)</p>
+    <div class="ngodata" style="width:350px;float:right;">
+        <label>الاســــــــــــم</label><br />
+        <p>@Model.Name</p>
+        <br />
+        <label>العنــــــــــوان</label><br />
+        <p>@Model.Address</p>
+        <br />
+        <label>رقم الهـــاتف</label><br />
+        <p>@Model.Phone</p>
+        <br />
+        <label> المدينـــــــــة </label><br />
+        <p>@Model.CityName</p>
     </div>
     <div style="float:left;"> 
         <a href="http://www.lifemakers.org/">
             <img src="~/img/download.jpg" style="padding-left:50px;" />
         </a>
     </div>
-    <div style="margin-bottom:184px;"></div>
+    <center style="padding:220px;">
+        @Html.ActionLink("تعديل", "Edit", new { id = Model.NID }, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 </div>
 
-@Html.ActionLink("Edit","Edit")
 

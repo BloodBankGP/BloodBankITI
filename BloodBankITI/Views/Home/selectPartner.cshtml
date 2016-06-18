@@ -7,10 +7,9 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';color:brown;" >إختر من الشركاء</h4>
+    <h4 style="text-align:right;">إختر من الشركاء</h4>
     <hr />
     <form action="" method="POST">
-
         <input type="hidden" value=@Model.donor.DID name="donor.DID" />
         <div class="row">
             <div class="input-field col s12">
@@ -27,7 +26,6 @@
                 </div>
             </div>
         </div>
-        @*<input type="submit" value="إختر" />*@
         <button class="btn waves-effect waves-light red darken-4" type="submit"> إختر</button>
     </form>
 </div>

@@ -636,7 +636,7 @@ h4
 {
 	float:left;
 	width:400px;
-    height:400px;
+    height:auto;
 	/*padding-right:10px;
 	margin-top:15px;*/
 }
@@ -645,7 +645,7 @@ h4
 {
 	float:right;
 	width:400px;
-    height:400px;
+    height:auto;
 }
 .clear
 {
@@ -845,6 +845,10 @@ h6{
 
 
 /*table*/ 
+table{
+    text-align:center;
+    background-color:wheat;
+}
 table tr th {
     text-align:center;
         font-size:18px;
@@ -903,7 +907,9 @@ footer{
        color:black;
  }
 
-
+  center{
+    font-family: Myriad عربي;
+  }
 
 
 
