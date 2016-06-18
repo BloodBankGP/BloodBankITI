@@ -3,52 +3,59 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
+<div class="render">
+    <h3 style="font-family:Myriad عربي;">طلبات التبرع </h3>
+    <hr />
+    <div class="table-responsive">
+        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+            <tr>
+                <th> الموافقة على التبرع </th>
+                <th> تاريخ الطلب </th>
+                <th> فصيلة الدم </th>
+                <th> المدينة </th>
+                <th> اسم المتبرع </th>
 
-<h2>NeederDonor</h2>
+                <th>اسم المحتاج للتبرع </th>
+            </tr>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>
+                        @if (a.Accepted.HasValue)
+                        {
+                            if ((bool)@a.Accepted == false)
+                            {
+                                @("لا");
+                            }
+                            else
+                            {
+                                @("نعم");
+                            }
+                        }
+                        else
+                        {
+                            @("لم يتم الرد");
+                        }
 
-               <table class="table table-bordered table-hover table-striped">
-                   <tr>
+                    </td>
+                    <td>@(a.AskDate) </td>
+                    <td>@(a.type) </td>
+                    <td>@(a.CityName) </td>
+                    <td>@(a.DonorFullname) </td>
 
-                       <th> Needer ID </th>
-                       <th> Needer First Name </th>
-                       <th> Needer Last Name </th>
-                       <th> Donor ID </th>
-                       <th> Donor FullName </th>
-                       <th> City Name </th>
-                       <th> Blood Type </th>
-                       <th> Ask Date </th>
-                       <th> Accepted </th>
 
-                     </tr>
+                    <td>@((a.fname)+ " " + (a.lname)) </td>
+                   
+                </tr>
+            }
 
-                   @foreach (var a in Model)
-                   {
-                       <tr>
-                           <td>@(a.NID) </td>
-                           <td>@(a.fname) </td>
-                           <td>@(a.lname) </td>
-                           <td>@(a.DID) </td>
-                           <td>@(a.DonorFullname) </td>
-                           <td>@(a.CityName) </td>
-                           <td>@(a.type) </td>
-                           <td>@(a.AskDate) </td>
-                           <td>@(a.Accepted) </td>
+        </table>
+    </div>
+    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+
+</div>
+
 
 
                           
-
-                          
-
-
-
-
-
-                       </tr>
-
-                   }
-
-               </table>
-
-
-               @Html.ActionLink("Back To Home", "Index")
-

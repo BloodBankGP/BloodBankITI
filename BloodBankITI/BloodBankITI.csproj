@@ -477,6 +477,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\icomoon.css" />
     <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\materialize.css" />
+    <Content Include="Content\materialize.min.css" />
     <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\owl.theme.default.min.css" />
     <Content Include="Content\simple-line-icons.css" />
@@ -519,7 +521,6 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
-    <Content Include="img\1220137105858.jpg" />
     <Content Include="img\android-chrome-144x144.png" />
     <Content Include="img\android-chrome-192x192.png" />
     <Content Include="img\android-chrome-36x36.png" />
@@ -539,19 +540,8 @@
     <Content Include="img\apple-touch-icon.png" />
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
-    <Content Include="img\blood-drop.png" />
-    <Content Include="img\BloodTypes\A+.png" />
-    <Content Include="img\BloodTypes\A-.png" />
-    <Content Include="img\BloodTypes\AB+.png" />
-    <Content Include="img\BloodTypes\AB-.png" />
-    <Content Include="img\BloodTypes\B+.png" />
-    <Content Include="img\BloodTypes\B-.png" />
-    <Content Include="img\BloodTypes\download.png" />
-    <Content Include="img\BloodTypes\O+.png" />
-    <Content Include="img\BloodTypes\O-.png" />
     <Content Include="img\callout.jpg" />
-    <Content Include="img\CitiesLogos\Ismailia.png" />
-    <Content Include="img\CitiesLogos\Portsaid.png" />
+    <Content Include="img\Community-Management.png" />
     <Content Include="img\cut.jpg" />
     <Content Include="img\DONOR.png" />
     <Content Include="img\download.jpg" />
@@ -573,8 +563,11 @@
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
     <Content Include="img\NGO.png" />
+    <Content Include="img\person_icon.jpg" />
     <Content Include="img\resala.jpg" />
+    <Content Include="img\round-account-button-with-user-inside.png" />
     <Content Include="img\sona3.jpg" />
+    <Content Include="img\user.png" />
     <Content Include="js\animation.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
@@ -599,7 +592,6 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.waypoints.min.js" />
     <Content Include="js\leanModal.js" />
-    <Content Include="js\login.js" />
     <Content Include="js\main.js" />
     <Content Include="js\materialbox.js" />
     <Content Include="js\materialize.js" />
@@ -634,7 +626,6 @@
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\.DS_Store" />
     <Content Include="Content\style.css.map" />
     <Content Include="js\.DS_Store" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
@@ -1031,6 +1022,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Home\AskForBlood.cshtml" />
+    <Content Include="Views\Home\Vieeew.cshtml" />
     <Content Include="Views\NGO\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />

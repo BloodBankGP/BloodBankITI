@@ -313,6 +313,37 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Hospitals");
         }
 
+        [HttpGet]
+        public ActionResult ShowMsgs()
+
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.ContactSelect().ToList());
+        }
+
+        [HttpGet]
+        public ActionResult ShowMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.GetContact(id).FirstOrDefault());
+        }
+
+        public ActionResult DeleteMsg(int id)
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            db.ContactDelete(id);
+            return RedirectToAction("ShowMsgs");
+        }
+
 
         public ActionResult HospitalsDelete(int id)
         {
