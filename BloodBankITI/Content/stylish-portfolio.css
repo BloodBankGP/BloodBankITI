@@ -668,13 +668,16 @@ h4
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 145px 8px 0px;
     text-decoration: none !important;
     font-size: 18px;
     color: white;
     display: block;
     transition: 0.3s;
    text-align:center;
+     font-family:'Myriad عربي'; 
+    font-size:20px;
+    width:350px;
 }
 
 .sidenav a:hover, .offcanvas a:focus{

@@ -75,6 +75,59 @@
             </td>
             <td>
 
+<<<<<<< HEAD
+    <h4 style="font-size:40px;text-align:center; font-family:'Myriad عربي';">القائمة الرئيسية</h4>
+   
+
+    @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile",
+    new { @style = "background-image:url('~/Content/Images/')", title = "عرض الصفحة الشخصية" }) <br />
+
+    @Html.ActionLink("المشرفون", "AdminsView",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المشرفون" }) <br />
+
+    @Html.ActionLink("فصائل الدم", "BloodTypes",
+    new { @style = "background-image:url('~/Content/Images/')", title = "فصائل الدم" }) <br />
+
+    @Html.ActionLink("المحافظات", "Cities",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المحافظات" }) <br />
+
+    @Html.ActionLink(" التنزيلات والتعليقات", "PostsComments",
+    new { @style = "background-image:url('~/Content/Images/')", title = " التنزيلات والتعليقات" }) <br />
+
+    @Html.ActionLink("المتبرعون", "Donors",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المتبرعون" }) <br />
+
+    @Html.ActionLink("الطوارئ", "Emergency",
+    new { @style = "background-image:url('~/Content/Images/')", title = " الطوارئ" }) <br />
+
+    @Html.ActionLink("المستشفيات", "Hospitals",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المستشفيات" })<br />
+
+    @Html.ActionLink("المحتاجين للدم", "Needers",
+    new { @style = "background-image:url('~/Content/Images/')", title = "المحتاجين للدم" }) <br />
+
+    @Html.ActionLink("طلبات الدم", "NeederDonor",
+    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الدم" }) <br />
+
+    @Html.ActionLink("الجمعيات الخيرية", "NGO",
+    new { @style = "background-image:url('~/Content/Images/')", title = "الجمعيات الخيرية" }) <br />
+
+    @Html.ActionLink("طلبات الجمعيات", "NGORequests",
+    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الجمعيات" }) <br />
+
+    @Html.ActionLink("الشركاء", "Partners",
+    new { @style = "background-image:url('~/Content/Images/')", title = "الشركاء" }) <br />
+
+    @Html.ActionLink("إحصائيات الشركاء", "PartnersStatistics",
+    new { @style = "background-image:url('~/Content/Images/')", title = "إحصائيات الشركاء" }) <br />
+
+    @Html.ActionLink("نوع المستخدم", "UserTypesView",
+    new { @style = "background-image:url('~/Content/Images/')", title = "نوع المستخدم" }) <br/>
+
+    @Html.ActionLink("إظهار الرسائل", "ShowMsgs",
+    new { @style = "background-image:url('~/Content/Images/')", title = "إظهار الرسائل" })
+    <div id="space" style="margin-bottom:198px;"></div>
+=======
                 <a href='@Url.Action("NeederDonor", "admin")' title="طلبات الدم" style="text-decoration:none;">
                     <img src='@Url.Content("~/img/admin/bloodrequest.png")' width="70" height="70" />
                 </a>
@@ -128,4 +181,5 @@
         
     </table>
     <div id="space" style="margin-bottom:100px;"></div>
+>>>>>>> origin/master
 </div>
