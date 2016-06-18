@@ -7,7 +7,9 @@
 <head>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
 </head>
+
 <div class="render">
     <h4 style="font-family: Myriad عربي;">المحتاجين للتبرع بالدم</h4>
     <div id="requests">
@@ -39,7 +41,7 @@
         var result= "";
         $.each(data, function (index, requests) {
             //result += "<div>"+ requests.Fname+" "+requests.Lname+" له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br> تليفون : "+requests.Phone+" <br> بريد إلكتروني : "+requests.Email+" <br> تاريخ طلب التبرع : "+requests.AskDate+"<br><form action='/Donor/AcceptRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' value='قبول' ></form><br><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' value='رفض' ></form></div>";
-            result += "<div class='outset'><label style='text-align:right'>"+ requests.Fname+" "+requests.Lname+"</label><br /><br /><p>له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br /><p>رقم التليفون :" + requests.Phone + "</p><p>"+ requests.Email +":بريد إلكتروني "+ "</p><p>"+ requests.AskDate+" :تاريخ طلب التبرع  "+ "<br><br><center><form action='/Donor/AcceptRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='قبول' ></form><br><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' value='رفض' ></form></center></div><br><br>";
+            result += "<div class='outset'><label style='text-align:right'>"+ requests.Fname+" "+requests.Lname+"</label><br /><br /><p>له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br /><p>رقم التليفون :" + requests.Phone + "</p><p>"+ requests.Email +":بريد إلكتروني "+ "</p><p>"+ requests.AskDate+" :تاريخ طلب التبرع  "+ "<br><br><center><form action='/Donor/AcceptRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='قبول' ></form><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='رفض' ></form></center></div><br><br>";
             });
         $('#requests').html(result);
 
