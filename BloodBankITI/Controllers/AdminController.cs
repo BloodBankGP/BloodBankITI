@@ -421,7 +421,7 @@ namespace BloodBankITI.Controllers
         public ActionResult NGOEdit(NGO ngo)
 
         {
-            db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved);
+            db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved,ngo.Fb,ngo.Website);
             db.SaveChanges();
 
            return RedirectToAction("Ngo");

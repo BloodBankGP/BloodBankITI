@@ -21,6 +21,8 @@ namespace BloodBankITI.Models
         public bool Approved { get; set; }
         public bool Status { get; set; }
         public string Address { get; set; }
+        public string Fb { get; set; }
+        public string Website { get; set; }
     
         public virtual City City { get; set; }
     }

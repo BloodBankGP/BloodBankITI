@@ -71,7 +71,7 @@ namespace BloodBankService.Controllers
         [Route("NgoRequest/{ngo}/{login}")]
         public string NgoRequest(NGO ngo, Login login)
         {
-            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address, login.UserName, login.Password) == 1)
+            if (db.NGO_insert(ngo.Name, ngo.CID, ngo.Phone, ngo.Address, login.UserName, login.Password,ngo.Fb,ngo.Website) == 1)
             {
                 return "Ngo Inserted";
             }
@@ -82,9 +82,9 @@ namespace BloodBankService.Controllers
         }
         [HttpPut]
         [Route("NGoUpdate/{Ngo}")]
-        public void NGO_update(NGO Ngo)
+        public void NGO_update(NGO_selectByID_Result Ngo)
         {
-            db.NGO_update(Ngo.NID, Ngo.Name,Ngo.CID,Ngo.Phone, Ngo.Address);
+            db.NGO_update(Ngo.NID, Ngo.Name,Ngo.CID,Ngo.Phone, Ngo.Address,Ngo.Username,Ngo.Password,Ngo.Fb,Ngo.Website);
 
         }
 
@@ -140,9 +140,9 @@ namespace BloodBankService.Controllers
 
         [HttpPost]
         [Route ("donorupdate/{donor}")]
-        public void donor_update(Donor donor)
+        public void donor_update(donor_SelectByDID_Result donor)
         {
-            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender);
+            db.Donors_UpdateID(donor.Fname, donor.Lname, donor.Phone, donor.BID, donor.CID, donor.LID, donor.DID, donor.DonorGender,donor.Username,donor.Password);
         }
 
         [HttpPost]
