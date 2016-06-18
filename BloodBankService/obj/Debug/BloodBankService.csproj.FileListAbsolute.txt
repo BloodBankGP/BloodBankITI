@@ -266,4 +266,3 @@ D:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.MicrosoftAccount.xm
 D:\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
 D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.dll
 D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.pdb
-D:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache
