@@ -17,5 +17,6 @@ namespace BloodBankITI.Models
         public string Fname { get; set; }
         public string Lname { get; set; }
         public bool Status { get; set; }
+        public string Picture { get; set; }
     }
 }
