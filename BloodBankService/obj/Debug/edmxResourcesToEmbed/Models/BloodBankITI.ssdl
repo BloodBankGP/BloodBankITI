@@ -143,8 +143,6 @@
     <Property Name="Approved" Type="bit" Nullable="false" />
     <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" />
-    <Property Name="Fb" Type="nvarchar(max)" />
-    <Property Name="Website" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Partners">
     <Key>
@@ -748,8 +746,6 @@
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
-    <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cid" Type="int" Mode="In" />
@@ -769,8 +765,6 @@
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="pw" Type="nvarchar" Mode="In" />
-    <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -780,8 +774,6 @@
     <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="status" Type="bit" Mode="In" />
     <Parameter Name="approved" Type="bit" Mode="In" />
-    <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

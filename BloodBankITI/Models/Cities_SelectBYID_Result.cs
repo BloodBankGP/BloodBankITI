@@ -15,5 +15,6 @@ namespace BloodBankITI.Models
     {
         public int CID { get; set; }
         public string CityName { get; set; }
+        public string Logo { get; set; }
     }
 }

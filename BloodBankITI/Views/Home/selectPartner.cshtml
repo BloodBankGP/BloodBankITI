@@ -5,7 +5,9 @@
 }
 
 <link href="~/Content/materialize.css" rel="stylesheet" />
-
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script></head>
 <div class="render">
     <h4 style="text-align:right;">إختر من الشركاء</h4>
     <hr />
@@ -16,7 +18,7 @@
                 <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 </div>
                 <div dir="rtl">
-                    <select class="mdl-select__input" name="Donor.PAID">
+                    <select class="mdl-select__input" name="Donor.PAID" id="PartnerId">
                         <option value="0" selected="">إختـــــــــر</option>
                         @foreach (var item in Model.partnerSelectByCity)
                         {
@@ -29,3 +31,34 @@
         <button class="btn waves-effect waves-light red darken-4" type="submit"> إختر</button>
     </form>
 </div>
+<script>
+    $('#PartnerId').change(function () {
+        var CityID = $('#PartnerId').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/ParterByID/' + PID,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                WriteResponse(data);
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+
+
+    });
+
+    function WriteResponse(data) {
+        var result;
+        $.each(data, function (index, partners) {
+            result += "<label> Name : partners.Name <br> Address: partners.address <br> </label>";
+        });
+        $('#PartnerId').html(result);
+
+    }
+</script>
+
+
+
