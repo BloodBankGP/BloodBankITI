@@ -195,6 +195,14 @@ namespace BloodBankService.Controllers
         {
             return db.GetPartnersDonor(paid).ToList();
         }
+        [HttpGet]
+        [Route("PartnerByID/{Pid:int}")]
+        public Partners_select_Result partnersbyId(int Pid)
+        {
+            return db.Partners_select(Pid).FirstOrDefault();
+           
+        }
+
 
         [HttpPut]
         [Route("insertBloodType/{bid:int}/{did:int}")]
