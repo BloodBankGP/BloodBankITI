@@ -16,8 +16,8 @@ namespace BloodBankITI.Models
     {
         public Partner()
         {
-            this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Donors = new HashSet<Donor>();
+            this.PartnersStatestics = new HashSet<PartnersStatestic>();
         }
     
         public int PAID { get; set; }
@@ -26,8 +26,8 @@ namespace BloodBankITI.Models
         public Nullable<bool> Status { get; set; }
         public Nullable<int> CID { get; set; }
     
+        public virtual ICollection<Donor> Donors { get; set; }
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }
         public virtual City City { get; set; }
-        public virtual ICollection<Donor> Donors { get; set; }
     }
 }

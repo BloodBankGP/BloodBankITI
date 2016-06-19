@@ -1,13 +1,14 @@
-﻿@model String
+﻿@model BloodBankITI.Models.Post
 @{
     ViewBag.Title = "FollowRequest";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<div class="render">
-    <h2>FollowRequest</h2>
-    @Html.Raw(@Model.Replace('_', ':').Replace('&', '/').Replace('(', '<').Replace(')', '>'))
+<h2>FollowRequest</h2>
 
-</div>
+
+
+@Html.Raw(@Model.Post1.Replace('_', ':').Replace('&', '/').Replace('(', '<').Replace(')', '>').Replace('*', ','))
+
+
 
