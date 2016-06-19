@@ -10,23 +10,23 @@
 
 <div class="render">
 
-    <h3 style="font-family:'Myriad عربي';">جميع الاحصائيات </h3>
+    <h4>جميع الاحصائيات </h4>
     <hr />
     <table class="table table-bordered table-striped table-hover" style="text-align:center;background-color:wheat;">
         <tr>
-            <td>مسلسل</td>
-            <td>اسم المتبرع</td>
-            <td>تاريخ التحليل</td>
             <td>فصيلة الدم</td>
+            <td>تاريخ التحليل</td>
+            <td>اسم المتبرع</td>
+            <td>مسلسل</td>
         </tr>
 
         @foreach (var s in Model)
         {
             <tr>
-                <td>@s.SID</td>
-                <td>@(s.Fname + " " + s.Lname)</td>
-                <td>@s.Insert_Date</td>
                 <td>@s.Type</td>
+                <td>@s.Insert_Date</td>
+                <td>@(s.Fname + " " + s.Lname)</td>
+                <td>@s.SID</td>
             </tr>
         }
     </table>

@@ -1,0 +1,78 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.Cities_SelectAll_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+</head>
+
+<div class="render">
+    <div class="container white z-depth-5" style="height:auto;">
+        <div class="card-panel red darken-4"><h4> الجمعيات الخيرية</h4></div>
+        <div id="register" class="col s12">
+            <form class="col s12" action="" method="post" novalidate="novalidate">
+                <div class="form-container">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                <label class="right-align" for="Message" style="text-align:right; width:460px;">اختر مدينة</label>
+                            </div>
+                            <div dir="rtl">
+                                <select class="mdl-select__input" name="City.CID" id="CitiesID">
+                                    <option value="0">اختر مدينة</option>
+                                    @foreach (var city in Model)
+                                    {
+                                    <option value=@city.CID>@city.CityName</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+    <div id="ngos"></div>
+                    </div>
+        </form>
+        </div>  
+ </div>
+    </div>
+
+
+
+
+<script>
+    $('#CitiesID').change(function() {
+        var CityID = $('#CitiesID').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/NgoSelect/' + CityID,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                WriteResponse(data);
+            },
+
+            error: function(e) {
+                alert(e.statusText);
+            }
+        });
+    })
+
+    function WriteResponse(data) {
+        var result;
+
+        result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='position:center;margin-left:75px;border:hidden;'><table class='table table-user-information'><tbody>";
+        $.each(data, function(index, ngo) {
+
+            result += "<tr><td style='color:brown;'> <a href='/Home/Ngo/" + ngo.NID + "'>عرض البيانات كاملة</a></td><td> " + ngo.Name + "</td></tr>";
+        });
+        result += "</tbody></table></div></div></div>";
+
+        $('#ngos').html(result);
+}
+
+</script>

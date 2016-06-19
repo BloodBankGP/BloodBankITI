@@ -6,13 +6,9 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';"> إضافة تعليق </h4><hr />
+    <h4> إضافة تعليق </h4><hr />
         <form action="" method="POST">
             <input type="hidden" name="Post.Periodic" value=1 />
-
-            @*Name: <input type="text" name="Post.Name" /><br />
-            Post: <input type="text" name="Post.post1" /><br />
-            Phone: <input type="number" name="Post.Phone" /><br />*@
             <div class="row">
                 <div class="input-field col s12">
                     <input type="text" class="validate" name="Post.Name" style="text-align:right">
@@ -25,18 +21,9 @@
                     <label class="right-align">التعليق   </label>
                 </div>
             </div>
-            
-
-        @*BloodType:
-        <select name="Post.BID">
-            <option value="NULL">اختر فصيلة</option>
-            @foreach (var d in Model.BloodTypesResults)
-        {
-                <option value=@d.BID>@d.Type</option>
-            }
-        </select>*@
             <div class="row" style="float:right;">
                 <div class="input-field col s12">
+                    <label class="mdl-select__label" style="margin-left:170px;">  إختــــر فصيلة الدم  </label><br />
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select name="Post.BID" class="mdl-select__input">
                             <option value="NULL">إختـــــر </option>
@@ -45,28 +32,19 @@
                                 <option value=@d.BID>@d.Type</option>
                             }
                         </select>
-                        <label class="mdl-select__label" style="margin-left:170px;">  إختــــر فصيلة الدم  </label>
                     </div>
                 </div>
             </div>
-
-        <br />
             <div class="row">
                 <div class="input-field col s12">
                     <input type="number" class="validate" name="Post.Phone" style="text-align:right">
                     <label class="right-align">رقم الهاتف    </label>
                 </div>
             </div>
-            @*City:
-        <select name="Post.CID">
-            <option value="NULL">اختر محافظة</option>
-            @foreach (var d in Model.CitiesSelectAllResults)
-        {
-                <option value=@d.CID>@d.CityName</option>
-            }
-        </select>*@
+        
             <div class="row" style="float:right;">
                 <div class="input-field col s12">
+                    <label class="mdl-select__label" style="margin-left:250px;">    المدينة  </label><br />
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select name="Post.CID" class="mdl-select__input">
                             <option value="NULL">إختـــــر </option>
@@ -75,19 +53,12 @@
                                 <option value=@d.CID>@d.CityName</option>
                             }
                         </select>
-                        <label class="mdl-select__label"  style="margin-left:250px;">    المدينة  </label>
                     </div>
                 </div>
             </div>
-            <br />
-            <br />
-            <br />
-            @*<br /><input type="submit" value="Insert" />*@
-           
-        
-                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action"> إضافة</button>
-        
+         <br /><br /><br />
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action"> إضافة</button>        
         </form>
   </div>
-
+<br />
 

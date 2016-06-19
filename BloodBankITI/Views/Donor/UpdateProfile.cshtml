@@ -12,7 +12,7 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h6> تعديل بيانات المتبرع </h6></div>
+        <div class="card-panel red darken-4"><h4> تعديل بيانات المتبرع </h4></div>
         <div id="register">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
@@ -22,11 +22,13 @@
                         <input type="hidden" value="@Model.Donor.DonorGender" name="Donor.DonorGender" />
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input id="first_name" type="text" value="@Model.Donor.Fname" name="Donor.Fname" class="validate" />
                             <label class="right-align" for="first_name">الاسم الأول </label>
                         </div>
-                        <div class="input-field col s6">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input id="last_name" class="validate" type="text" value="@Model.Donor.Lname" name="Donor.Lname" />
                             <label class="right-align" for="last_name">الاسم الأخير </label>
                         </div>
@@ -75,7 +77,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                <label for="CitiesID" style="text-align:right;margin-right:-150px;">المدينة</label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
@@ -97,7 +99,7 @@
                     <div class="row">
                         <div class="input-field col s12 ">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="LID" style="text-align:right; width:460px;">المنطقة</label>
+                                <label for="LID" style="text-align:right; margin-right:-150px;">المنطقة</label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="Donor.LID" id="locationID">
@@ -149,6 +151,7 @@
                         <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
                         @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                     </center>
+                    </div>
                 </form>
                 </div>
         </div>

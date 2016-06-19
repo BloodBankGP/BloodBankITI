@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Materialize v0.97.6 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
@@ -4329,6 +4329,7 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   line-height: 1.1;
+  font-family:'Myriad عربي';
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -5484,6 +5485,7 @@ label {
   font-size: 0.8rem;
   color: brown;
   float:right;
+  font-size:20px;
 }
 
 /* Text Inputs + Textarea

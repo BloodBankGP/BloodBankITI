@@ -6,9 +6,14 @@
 
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script></head>
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';color:brown;" >إختر من الشركاء</h4>
+    <h4 style="font-family:'Myriad عربي';color:brown;" >اختر أحد المعامل لإجراء تحليل معرفة فصيلة الدم برقم مسلسل @Model.donor.DID</h4>
     <hr />
+
+
     <form action="" method="POST">
 
         <input type="hidden" value=@Model.donor.DID name="donor.DID" />
@@ -17,8 +22,8 @@
                 <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 </div>
                 <div dir="rtl">
-                    <select class="mdl-select__input" name="Donor.PAID">
-                        <option value="0" selected="">إختـــــــــر</option>
+                    <select class="mdl-select__input" name="Donor.PAID" id="PartnerId">
+                        <option value="0" selected="">اختـــــــــر</option>
                         @foreach (var item in Model.partnerSelectByCity)
                         {
                             <option value=@item.PAID>@item.Name</option>
@@ -30,4 +35,47 @@
         @*<input type="submit" value="إختر" />*@
         <button class="btn waves-effect waves-light red darken-4" type="submit"> إختر</button>
     </form>
+    <div id="partid"> </div>
 </div>
+
+<script>
+    $('#PartnerId').change(function () {
+        var PartnerID = $('#PartnerId').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/PartnerByID/' + PartnerID,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+
+                WriteResponse(data);
+            },
+            error: function (e) {
+                alert(e.statusText);
+            }
+        });
+
+
+    });
+
+   
+
+    function WriteResponse(data) {
+        var result = "";
+        
+        //result = "<label> اسم المعمل :" + data.Name+ + "<br> العنوان:" + data.Address + "<br> </label>";
+
+        result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='position:center;margin-left:75px;border:hidden;'><table class='table table-user-information'><tbody><tr><td> " + data.Name + "</td><td style='color:brown;background-color:darkgrey;'> اسم المعمل</td></tr><tr><td> " + data.Address + "</td><td style='color:brown;background-color:darkgrey;'>العنوان</td></tr></tbody></table></div></div></div>";
+
+
+        $('#partid').html(result);
+
+        };
+        
+    
+        
+      
+
+</script>
+
+
+
