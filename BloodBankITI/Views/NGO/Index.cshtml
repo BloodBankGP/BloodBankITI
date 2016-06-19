@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
     <h4> جمعية صناع الحياة بالإسماعيلية</h4>
@@ -25,9 +26,13 @@
             <img src="~/img/download.jpg" style="padding-left:50px;" />
         </a>
     </div>
+    <br /><br /><br /><br />
     <center style="padding:220px;">
         @Html.ActionLink("تعديل", "Edit", new { id = Model.NID }, new { @class = "btn waves-effect waves-light red darken-4" })
     </center>
-</div>
+    <div>
+
+    </div>
+  </div>
 
 

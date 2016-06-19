@@ -7,7 +7,7 @@
 
 
 <div class="render">
-    <div class="container white z-depth-2">
+    <div class="container white z-depth-2" style="height:auto;">
         <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">  تعديل</h5>  </div>
         <form action="" method="post" novalidate="novalidate">
             <div class="form-group">
@@ -21,27 +21,26 @@
             <div class="form-container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:right">
+                        <input id="last_name" type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left">
                         <label class="right-align" for="last_name">الاسم   </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email-confirm" type="tel" value=@Model.ngo.Phone class="validate" name="ngo.Phone" style="text-align:right;">
+                        <input id="email-confirm" type="tel" value=@Model.ngo.Phone class="validate" name="ngo.Phone" style="text-align:left;">
                         <label class="right-align" for="phone">رقم التليفون </label>
                     </div>
                 </div>
 
                 <div class="row" style="float:right;">
                     <div class="input-field col s12">
+                        <label class="mdl-select__label" for="professsion" style="margin-left:250px;">  المدينة </label>
                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
                             <select name="ngo.CID" id="CitiesID" class="mdl-select__input">
                                 <option value="0">Not Set</option>
                                 @foreach (var item in Model.CitiesSelectAllResults)
                                 {
-
-
                                     if (item.CID == Model.ngo.CID)
                                     {
                                         <option value=@item.CID selected="selected">@item.CityName</option>
@@ -52,69 +51,45 @@
                                     }
                                 }
                             </select>
-                            <label class="mdl-select__label" for="professsion" style="margin-left:250px;">  المدينة </label>
-                            <span class="mdl-textfield__error">Number required!</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:right">
+                        <input id="last_name" type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left">
                         <label class="right-align" for="last_name">العنوان    </label>
                     </div>
                 </div>
 
-            </div>
 
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value=@Model.ngo.Username id="disabled" type="text" name="ngo.UserName" style="text-align:left">
+                        <input id="Username" type="hidden" value=@Model.ngo.Username class="validate" name="ngo.UserName" style="text-align: left">
+                        <label> اسم المستخدم</label>
 
-            @*<div class="form-group">
-                    @Html.DisplayNameFor(p => p.ngo.Phone)
-
-                    <input type="text" name="ngo.Phone" />
-                </div>*@
-
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.ngo.CID, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-
-                        <select name="ngo.CID" id="CitiesID">
-
-                            @foreach (var item in Model.CitiesSelectAllResults)
-                    {
-
-                    <option value="0">Not Set</option>
-                        if (item.CID == Model.ngo.CID)
-                        {
-                    <option value=@item.CID selected="true">@item.CityName</option>
-                        }
-                        else
-                        {
-                    <option value=@item.CID>@item.CityName</option>
-                        }
-                    }
-                        </select>
-
-                        @Html.ValidationMessageFor(model => model.ngo.CID)
                     </div>
-                </div>*@
 
-
-            @*<div class="form-group">
-                    @Html.DisplayNameFor(p => p.ngo.Address)
-                    <input type="text" name="ngo.Address" />
-                </div>*@
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="Username" type="hidden" value=@Model.ngo.Username class="validate" name="ngo.UserName" style="text-align: right">
                 </div>
-                <div class="input-field col s6">
-                    <input type="password" id="password1" value=@Model.ngo.Password class="validate" name="ngo.Password" style="text-align: right">
+
+
+                @*<div class="input-field col s12">
+                    <input disabled value=@Model.Donor.DID id="disabled" type="text" name="Donor.DID" style="text-align:left">
+                    <input value=@Model.Donor.DID type="hidden" name="Donor.DID" style="text-align:left">
+                    <label>رقم المتبرع</label>
+                </div>*@
+
+
+
+
+           
+                <div class="input-field col s12">
+                    <input type="password" id="password1" value=@Model.ngo.Password class="validate" name="ngo.Password" style="text-align: left">
                     <label class="right-align" for="Password"> كلمة المرور </label>
-                    @Html.ValidationMessageFor(model => model.ngo.Password)
                 </div>
-                <div class="input-field col s6">
-                    <input type="password" id="password2" value=@Model.ngo.Password class="validate" name="ngo.Password" oninput="check()" style="text-align: right"><label id="PasswordMessage"></label>
+                <div class="input-field col s12">
+                    <input type="password" id="password2" value=@Model.ngo.Password class="validate" name="ngo.Password" oninput="check()" style="text-align: left"><label id="PasswordMessage"></label>
                     <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                 </div>
             </div>
@@ -122,7 +97,7 @@
 
             <center>
                 <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعديل</button>
-            </center>
+            </center><br />
         </form>
     </div>
 </div>
