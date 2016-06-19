@@ -594,6 +594,7 @@
     <Content Include="images\user.jpg" />
     <Content Include="images\user_2.jpg" />
     <Content Include="images\user_3.jpg" />
+    <Content Include="img\1220137105858.jpg" />
     <Content Include="img\android-chrome-144x144.png" />
     <Content Include="img\android-chrome-192x192.png" />
     <Content Include="img\android-chrome-36x36.png" />
@@ -624,6 +625,7 @@
     <Content Include="img\favicon-96x96.png" />
     <Content Include="img\favicon.ico" />
     <Content Include="img\finaallogo.png" />
+    <Content Include="img\finalback.jpg" />
     <Content Include="img\homebackground.jpg" />
     <Content Include="img\Iismailia-logo.png" />
     <Content Include="img\llogo.png" />
