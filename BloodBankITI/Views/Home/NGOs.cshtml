@@ -1,0 +1,66 @@
+﻿@model System.Collections.Generic.List<BloodBankITI.Models.Cities_SelectAll_Result>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br/>
+
+<h2>NGOs</h2>
+
+<form>
+    <Select name="City.CID" id="CitiesID">
+        <option value="0">Choose a city</option>
+        @foreach (var city in Model)
+        {
+            <option value= @city.CID >@city.CityName</option>
+        }
+    </Select>
+
+    <div id="ngos"></div>
+</form>
+
+
+<script>
+    $('#CitiesID').change(function() {
+        var CityID = $('#CitiesID').val();
+        $.ajax({
+            url: 'http://www.bloodservice.somee.com/Home/NgoSelect/' + CityID,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                WriteResponse(data);
+            },
+
+            error: function(e) {
+                alert(e.statusText);
+            }
+        });
+    })
+
+    function WriteResponse(data) {
+        var result;
+
+        result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='position:center;margin-left:75px;border:hidden;'><table class='table table-user-information'><tbody>";
+        $.each(data, function(index, ngo) {
+
+            result += "<tr><td> " + ngo.Name + "</td><td> </td><td style='color:brown;background-color:darkgrey;'> <a href='/Home/Ngo/"+ngo.NID+"'>عرض البيانات كاملة</a></td></tr>";
+        });
+        result += "</tbody></table></div></div></div>";
+
+        $('#ngos').html(result);
+}
+
+</script>
