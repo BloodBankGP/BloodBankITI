@@ -576,7 +576,7 @@ namespace BloodBankITI.Controllers
         public ActionResult UserTypesInsert(UserType userType)
         {
             db.UserType_insert(userType.Type);
-            return RedirectToAction("UsersTypesView");
+            return RedirectToAction("UserTypesView");
         }
 
 

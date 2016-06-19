@@ -131,21 +131,21 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="Username" type="text" class="validate" name="Donor.UserName" style="text-align:right">
-                            <label class="right-align" for="last_name">  اسم المستخدم</label>
+                            <input id="Username" type="text" oninput="checkusername()" class="validate" name="Donor.UserName" style="text-align:right">
+                            <label class="right-align" for="last_name">  اسم المستخدم</label><label id="usernameerror"></label>
                             @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
+                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align:right">
                             <label class="right-align" for="last_name"> كلمة المرور </label>
                             @Html.ValidationMessageFor(model => model.Login.Password)
                         </div>
 
                         <div class="input-field col s6">
-                            <input id="Password" type="text" class="validate" name="Donor.Password" style="text-align:right">
-                            <label class="right-align" for="Passwprd"> تأكيد كلمة المرور </label>
+                            <input id="Password2" type="password" oninput="checkpassword()" class="validate" name="Donor.Password" style="text-align:right">
+                            <label class="right-align" for="Passwprd"> تأكيد كلمة المرور </label><label id="passworderror"></label>
                         </div>
                     </div>
                         <center>
@@ -159,6 +159,41 @@
 </div>
 </div>
 <script>
+
+    function checkusername() {
+        var username = $('#Username').val();
+        if (username != "") {
+            $.ajax({
+                url: 'http://www.bloodservice.somee.com/Home/CheckUsername/' + username,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+
+                    if (data == 1)
+                        $('#usernameerror').html('هذا الاسم مستخدم');
+                    else {
+                        $('#usernameerror').html('هذا الاسم متاح');
+                    }
+                },
+                error: function (e) {
+                    alert(e.statusText);
+                }
+            });
+        }
+    }
+
+    function checkpassword() {
+        var Password = $('#Password').val();
+        var Password2 = $('#Password2').val();
+        if (Password == Password2) {
+            $('#passworderror').html('كلمة المرور متطابقة');
+        }
+        else
+        {
+            $('#passworderror').html('كلمة المرور غير متطابقة');
+        }
+    }
+
     $('#CitiesID').change(function () {
         var CityID = $('#CitiesID').val();
         $.ajax({
