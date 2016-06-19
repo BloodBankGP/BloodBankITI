@@ -329,6 +329,28 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_select_Result>("Donors_select");
         }
     
+        public virtual ObjectResult<Donors_SelectAll_Result> Donors_SelectAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectAll_Result>("Donors_SelectAll");
+        }
+    
+        public virtual ObjectResult<Donors_SelectID_Result> Donors_SelectID(Nullable<int> cID, Nullable<int> bID, Nullable<int> lID)
+        {
+            var cIDParameter = cID.HasValue ?
+                new ObjectParameter("CID", cID) :
+                new ObjectParameter("CID", typeof(int));
+    
+            var bIDParameter = bID.HasValue ?
+                new ObjectParameter("BID", bID) :
+                new ObjectParameter("BID", typeof(int));
+    
+            var lIDParameter = lID.HasValue ?
+                new ObjectParameter("LID", lID) :
+                new ObjectParameter("LID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectID_Result>("Donors_SelectID", cIDParameter, bIDParameter, lIDParameter);
+        }
+    
         public virtual int Donors_UpdateID(string fname, string lname, string phone, Nullable<int> bID, Nullable<int> cID, Nullable<int> lID, Nullable<int> dID, string gender, string username, string pw)
         {
             var fnameParameter = fname != null ?
@@ -1594,28 +1616,6 @@ namespace BloodBankITI.Models
                 new ObjectParameter("name", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Needer_DonorAccepted_Result>("Needer_DonorAccepted", nidParameter, nameParameter);
-        }
-    
-        public virtual ObjectResult<Donors_SelectAll_Result> Donors_SelectAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectAll_Result>("Donors_SelectAll");
-        }
-    
-        public virtual ObjectResult<Donors_SelectID_Result> Donors_SelectID(Nullable<int> cID, Nullable<int> bID, Nullable<int> lID)
-        {
-            var cIDParameter = cID.HasValue ?
-                new ObjectParameter("CID", cID) :
-                new ObjectParameter("CID", typeof(int));
-    
-            var bIDParameter = bID.HasValue ?
-                new ObjectParameter("BID", bID) :
-                new ObjectParameter("BID", typeof(int));
-    
-            var lIDParameter = lID.HasValue ?
-                new ObjectParameter("LID", lID) :
-                new ObjectParameter("LID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectID_Result>("Donors_SelectID", cIDParameter, bIDParameter, lIDParameter);
         }
     }
 }

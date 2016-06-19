@@ -263,8 +263,12 @@
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Donors_SelectAll_Result.cs" />
-    <Compile Include="Models\Donors_SelectID_Result.cs" />
+    <Compile Include="Models\Donors_SelectAll_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Donors_SelectID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donors_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
@@ -1223,6 +1227,8 @@
     <None Include="Views\Home\FollowRequest.cshtml" />
     <Content Include="Views\Home\InsertPost.cshtml" />
     <Content Include="Views\Home\team-members.cshtml" />
+    <Content Include="Views\Home\NGO.cshtml" />
+    <Content Include="Views\Home\NGOs.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\Partner\AllStatistics.cshtml" />

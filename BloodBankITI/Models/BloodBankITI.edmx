@@ -1948,14 +1948,6 @@
             <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
-        <ComplexType Name="Admins_select_Result">
-          <Property Type="Int32" Name="AID" Nullable="false" />
-          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="Admins_selectt_Result">
           <Property Type="Int32" Name="AID" Nullable="false" />
           <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -2716,6 +2708,15 @@
           <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="Admins_select_Result">
+          <Property Type="Int32" Name="AID" Nullable="false" />
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Picture" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2901,6 +2902,7 @@
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
                 <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </ComplexTypeMapping>
