@@ -69,15 +69,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Admins_delete", idParameter);
         }
     
-        public virtual ObjectResult<Admins_select_Result> Admins_select(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Admins_select_Result>("Admins_select", idParameter);
-        }
-    
         public virtual ObjectResult<Admins_selectt_Result> Admins_selectt()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Admins_selectt_Result>("Admins_selectt");
@@ -1616,6 +1607,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("LID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_SelectID_Result>("Donors_SelectID", cIDParameter, bIDParameter, lIDParameter);
+        }
+    
+        public virtual ObjectResult<Admins_select_Result> Admins_select(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Admins_select_Result>("Admins_select", idParameter);
         }
     }
 }

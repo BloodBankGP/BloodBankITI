@@ -406,9 +406,6 @@
     <FunctionImport Name="Admins_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="Admins_selectt" ReturnType="Collection(BloodBankDBITIModel.Admins_selectt_Result)" />
     <FunctionImport Name="Admins_update">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -907,15 +904,10 @@
       <Parameter Name="BID" Mode="In" Type="Int32" />
       <Parameter Name="LID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="Admins_select_Result">
-    <Property Type="Int32" Name="AID" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="Status" Nullable="false" />
-    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-  </ComplexType>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
     <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -1674,5 +1666,14 @@
     <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="locationName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Admins_select_Result">
+    <Property Type="Int32" Name="AID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="String" Name="Picture" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -461,3 +461,4 @@ D:\PROJECT\Versions\19-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Secur
 D:\PROJECT\Versions\19-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Google.xml
 D:\PROJECT\Versions\19-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 D:\PROJECT\Versions\19-6-2016\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\PROJECT\Versions\19-6-2016\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache

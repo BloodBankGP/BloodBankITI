@@ -617,6 +617,7 @@
     <Content Include="img\apple-touch-icon.png" />
     <Content Include="img\banner 1.jpg" />
     <Content Include="img\bg.jpg" />
+    <Content Include="img\blood-drop.png" />
     <Content Include="img\callout.jpg" />
     <Content Include="img\Community-Management.png" />
     <Content Include="img\cut.jpg" />
@@ -644,6 +645,7 @@
     <Content Include="img\resala.jpg" />
     <Content Include="img\round-account-button-with-user-inside.png" />
     <Content Include="img\sona3.jpg" />
+    <Content Include="img\thanks.jpg" />
     <Content Include="img\user.png" />
     <Content Include="js\animation.js" />
     <Content Include="js\bootstrap.js" />
