@@ -181,7 +181,7 @@ namespace BloodBankITI.Controllers
             else
                 result = "Failed to insert comment";
 
-            return RedirectToAction("wallposts");
+            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
         }
 
         [HttpGet]

@@ -89,11 +89,11 @@
 
         function check() {
             if ($('#password2').val() != $('#password1').val()) {
-                $('#PasswordMessage').text("Doesn't Match");
+                $('#PasswordMessage').text("كلمة المرور غير متطابقة");
 
 
             } else
-                $('#PasswordMessage').text("done");
+                $('#PasswordMessage').text("كلمة المرور متطابقة");
 
         };
 
@@ -108,9 +108,9 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data == 1) {
-                        $('#UsernameMessage').text("It's already taken");
+                        $('#UsernameMessage').text("اسم المستخدم غير متاح");
                     } else {
-                        $('#UsernameMessage').text("Valid");
+                        $('#UsernameMessage').text("اسم المستخدم متاح");
                     }
 
                 },
