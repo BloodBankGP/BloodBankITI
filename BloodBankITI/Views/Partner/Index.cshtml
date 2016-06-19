@@ -7,29 +7,23 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';" > تحديد فصيلة الدم للمتبرعين </h4>
+    <h4 > تحديد فصيلة الدم للمتبرعين </h4>
     <hr />
     <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped" style="text-align:center;background-color:wheat;">
+        <table class="table table-bordered table-hover table-striped">
             <tr>
-                @*<th>@Html.DisplayNameFor(d => d.DID)</th>
-                    <th>@Html.DisplayNameFor(d => d.Fname)</th>
-                    <th>@Html.DisplayNameFor(d => d.Lname)</th>
-                    <th>أدخال فصيلة الدم</th>*@
-
-                <th> رقم المتبرع  </th>
+                <th> فصيلة الدم</th>
                 <th> رقم المتبرع</th>
                 <th>الاسم الثانى  </th>
                 <th>الاسم الاول   </th>
-                <th> فصيلة الدم</th>
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.ActionLink("إدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
                     <td>@item.DID</td>
                     <td>@item.Fname</td>
                     <td>@item.Lname</td>
-                    <td>@Html.ActionLink("إدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
                 </tr>
             }
         </table>

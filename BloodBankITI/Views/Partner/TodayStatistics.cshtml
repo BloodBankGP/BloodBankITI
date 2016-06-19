@@ -9,21 +9,22 @@
 
 <div class="render">
 
-    <h4 style="font-family:'Myriad عربي'">إحصائيات اليوم</h4>
+    <h4>إحصائيات اليوم</h4>
     <hr />
-    <table class="table table-bordered table-striped table-hover" style="text-align:center;background-color:wheat;">
+    <table class="table table-bordered table-striped table-hover">
         <tr>
-            <td>مسلسل</td>
-            <td>اسم المتبرع</td>
             <td>فصيلة الدم</td>
+            <td>اسم المتبرع</td>
+            <td>مسلسل</td>
+
         </tr>
 
         @foreach (var s in Model)
         {
             <tr>
-                <td>@s.SID</td>
-                <td>@(s.Fname + " " + s.Lname)</td>
                 <td>@s.Type</td>
+                <td>@(s.Fname + " " + s.Lname)</td>
+                <td>@s.SID</td>
             </tr>
         }
     </table>
@@ -31,6 +32,5 @@
         @Html.ActionLink("العودة للإحصائيات", "Statistics", null, new { @class = "btn waves-effect waves-light red darken-4" })
         @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
     </center>
-    <div style="margin-bottom:23px;"></div>
 
 </div>

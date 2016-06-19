@@ -15,26 +15,31 @@
         <tr>
             <td>
                 <a href='@Url.Action("ViewProfile", "admin")' title="عرض الصفحة الشخصية" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/profileeee.png")' />
+                    <img src='@Url.Content("~/img/admin/profileeee.png")' 
+                         style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("AdminsView", "admin")' title="المشرفون" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/adminn.png")' />
+                    <img src='@Url.Content("~/img/admin/adminn.png")' style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("BloodTypes", "admin")' title="فصائل الدم" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/btt.png")' />
+                    <img src='@Url.Content("~/img/admin/btt.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
             <td>
 
                 <a href='@Url.Action("Cities", "admin")' title="المحافظات" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/locationn.png")' />
+                    <img src='@Url.Content("~/img/admin/locationn.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
@@ -42,26 +47,30 @@
         <tr>
             <td>
                 <a href='@Url.Action("PostsComments", "admin")' title="المشاركات والتعليقات" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/posts.png")' width="70" height="70" />
+                    <img src='@Url.Content("~/img/admin/posts.png")' width="70" height="70"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("Donors", "admin")' title="المتبرعون" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/donate.png")' width="70" height="70" />
+                    <img src='@Url.Content("~/img/admin/donate.png")' width="70" height="70"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("Emergency", "admin")' title="الطوارئ" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/emergencyyy.png")' />
+                    <img src='@Url.Content("~/img/admin/emergencyyy.png")'   style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
             <td>
 
                 <a href='@Url.Action("Hospitals", "admin")' title="المستشفيات" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/hospitall.png")' />
+                    <img src='@Url.Content("~/img/admin/hospitall.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
@@ -69,81 +78,35 @@
         <tr>
             <td>
                 <a href='@Url.Action("Needers", "admin")' title="المحتاجين للدم" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/neederdonor.png")' width="80" height="80" />
+                    <img src='@Url.Content("~/img/admin/neederdonor.png")' width="80" height="80"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
             <td>
 
-<<<<<<< HEAD
-    <h4 style="font-size:40px;text-align:center; font-family:'Myriad عربي';">القائمة الرئيسية</h4>
-   
 
-    @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile",
-    new { @style = "background-image:url('~/Content/Images/')", title = "عرض الصفحة الشخصية" }) <br />
+    
 
-    @Html.ActionLink("المشرفون", "AdminsView",
-    new { @style = "background-image:url('~/Content/Images/')", title = "المشرفون" }) <br />
-
-    @Html.ActionLink("فصائل الدم", "BloodTypes",
-    new { @style = "background-image:url('~/Content/Images/')", title = "فصائل الدم" }) <br />
-
-    @Html.ActionLink("المحافظات", "Cities",
-    new { @style = "background-image:url('~/Content/Images/')", title = "المحافظات" }) <br />
-
-    @Html.ActionLink(" التنزيلات والتعليقات", "PostsComments",
-    new { @style = "background-image:url('~/Content/Images/')", title = " التنزيلات والتعليقات" }) <br />
-
-    @Html.ActionLink("المتبرعون", "Donors",
-    new { @style = "background-image:url('~/Content/Images/')", title = "المتبرعون" }) <br />
-
-    @Html.ActionLink("الطوارئ", "Emergency",
-    new { @style = "background-image:url('~/Content/Images/')", title = " الطوارئ" }) <br />
-
-    @Html.ActionLink("المستشفيات", "Hospitals",
-    new { @style = "background-image:url('~/Content/Images/')", title = "المستشفيات" })<br />
-
-    @Html.ActionLink("المحتاجين للدم", "Needers",
-    new { @style = "background-image:url('~/Content/Images/')", title = "المحتاجين للدم" }) <br />
-
-    @Html.ActionLink("طلبات الدم", "NeederDonor",
-    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الدم" }) <br />
-
-    @Html.ActionLink("الجمعيات الخيرية", "NGO",
-    new { @style = "background-image:url('~/Content/Images/')", title = "الجمعيات الخيرية" }) <br />
-
-    @Html.ActionLink("طلبات الجمعيات", "NGORequests",
-    new { @style = "background-image:url('~/Content/Images/')", title = "طلبات الجمعيات" }) <br />
-
-    @Html.ActionLink("الشركاء", "Partners",
-    new { @style = "background-image:url('~/Content/Images/')", title = "الشركاء" }) <br />
-
-    @Html.ActionLink("إحصائيات الشركاء", "PartnersStatistics",
-    new { @style = "background-image:url('~/Content/Images/')", title = "إحصائيات الشركاء" }) <br />
-
-    @Html.ActionLink("نوع المستخدم", "UserTypesView",
-    new { @style = "background-image:url('~/Content/Images/')", title = "نوع المستخدم" }) <br/>
-
-    @Html.ActionLink("إظهار الرسائل", "ShowMsgs",
-    new { @style = "background-image:url('~/Content/Images/')", title = "إظهار الرسائل" })
-    <div id="space" style="margin-bottom:198px;"></div>
-=======
                 <a href='@Url.Action("NeederDonor", "admin")' title="طلبات الدم" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/bloodrequest.png")' width="70" height="70" />
+                    <img src='@Url.Content("~/img/admin/bloodrequest.png")' width="70" height="70"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
             <td>
 
                 <a href='@Url.Action("NGO", "admin")' title="الجمعيات الخيرية" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/ngoo.png")' width="70" height="70" />
+                    <img src='@Url.Content("~/img/admin/ngoo.png")' width="70" height="70"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
 
             <td>
                 <a href='@Url.Action("NGORequests", "admin")' title="الجمعيات الخيرية الغير مفعلة " style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/ngorequest.jpg")' width="70" height="70" />
+                    <img src='@Url.Content("~/img/admin/ngorequest.jpg")' width="70" height="70"  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
@@ -151,26 +114,30 @@
         <tr>
             <td>
                 <a href='@Url.Action("Partners", "admin")' title="الشركاء" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/partnerss.png")' />
+                    <img src='@Url.Content("~/img/admin/partnerss.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("PartnersStatistics", "admin")' title="إحصائيات الشركاء" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/Statisticss.png")' />
+                    <img src='@Url.Content("~/img/admin/Statisticss.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
             <td>
                 <a href='@Url.Action("UserTypesView", "admin")' title="أنواع المستخدمين" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/usertypee.png")' />
+                    <img src='@Url.Content("~/img/admin/usertypee.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60" />
                 </a>
                 <br />
             </td>
 
             <td>
                 <a href='@Url.Action("ShowMsgs", "admin")' title="إظهار الرسائل" style="text-decoration:none;">
-                    <img src='@Url.Content("~/img/admin/messsagess.png")' />
+                    <img src='@Url.Content("~/img/admin/messsagess.png")'  style="opacity:1;filter:alpha(opacity=100)" onmouseout="this.style.opacity=1;this.filters.alpha.opacity=100" 
+    		onmouseover="this.style.opacity=0.6;this.filters.alpha.opacity=60"/>
                 </a>
                 <br />
             </td>
@@ -181,5 +148,5 @@
         
     </table>
     <div id="space" style="margin-bottom:100px;"></div>
->>>>>>> origin/master
+
 </div>

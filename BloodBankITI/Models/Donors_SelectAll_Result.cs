@@ -11,7 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     
-    public partial class Needer_DonorAccepted_Result
+    public partial class Donors_SelectAll_Result
     {
         public int DID { get; set; }
         public string Fname { get; set; }
@@ -25,5 +25,9 @@ namespace BloodBankITI.Models
         public bool Pending { get; set; }
         public Nullable<System.DateTime> DonationDate { get; set; }
         public Nullable<int> PAID { get; set; }
+        public Nullable<bool> PhoneStatus { get; set; }
+        public string Type { get; set; }
+        public string CityName { get; set; }
+        public string locationName { get; set; }
     }
 }
