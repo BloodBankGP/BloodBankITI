@@ -4,13 +4,43 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Content/materialize.css" rel="stylesheet" />
 
-<h2>@Model.Name</h2>
+<div class="render">
+    <div class="row">
+        <div class="panel-heading" style="background-color:darkgray;border:2px solid darkgray;">
+            <h5 class="panel-title" style="font-family:'Myriad عربي';position:center;color:black;">@Model.Name</h5>
+        </div>
+        <div class="" style="border:hidden;">
+            <table class="table table-user-information">
+                <tbody>
+                    <tr>
+                        <td>@Model.Address</td>
+                        <td>العنوان</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Phone</td>
+                        <td>رقم التلفون</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.City</td>
+                        <td>المدينة</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Website</td>
+                        <td>البريد الإلكتروني</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Fb</td>
+                        <td>الفيس بوك</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+                <p style="text-align:center;">@Html.ActionLink("العودة للجمعيات الخيرية", "NGOs", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+            </center>
+        </div>
 
-Name: @Model.Name <br/>
-Address: @Model.Address <br />
-Phone: @Model.Phone <br />
-Website: @Model.Website <br />
-FB: @Model.Fb <br />
 
-@Html.ActionLink("Back to Home", "Index")
+    </div>
+</div>

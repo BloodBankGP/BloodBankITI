@@ -17,7 +17,7 @@
     <!-- Custom Fonts -->
     <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <link rel="icon" href="~/img/blood-drop.png">
     <!-- Compiled and minified CSS -->
     @*<link href="~/Content/materialize.css" rel="stylesheet" />*@
     @*<link href="~/Content/materialize.min.css" rel="stylesheet" />*@
@@ -48,16 +48,16 @@
                switch (Session["UserType"].ToString())
                {
                    case "1":
-                       <a href="/admin/index">  الصفحة الشخصية </a>
+                       <a href="/admin/index">  لوحة التحكم   </a>
                        break;
                    case "2":
-                       <a href="/donor/Index"> الصفحة الشخصية </a>
+                       <a href="/donor/Index"> لوحة التحكم  </a>
                        break;
                    case "3":
-                       <a href="/ngo/index"> الصفحة الشخصية </a>
+                       <a href="/ngo/index"> لوحة التحكم   </a>
                        break;
                    case "4":
-                       <a href="/partner/index"> الصفحة الشخصية</a>
+                       <a href="/partner/index"> الوحة التحكم  </a>
                        break;
                }
            }
@@ -65,6 +65,7 @@
            <a href="/home/donate">  عايز اتبرع   </a>
            <a href="/home/askforblood">محتاج دم  </a>
            <a href="/home/wallposts"> المشاركات والتعليقات </a>
+           <a href="/home/NGOs"> الجمعيات الخيرية </a>
            <a href="/home/info">  معلومات عن التبرع </a>
            <a href="#">  احنا مين  </a>
            <a href="/home/contact"> تواصل معنا  </a>
@@ -96,8 +97,8 @@
     <!-- Footer -->
     <footer>
         <div class="icon center-block" >
-            <span class="fa fa-facebook fa-2x"></span>
-            <span class="fa fa-twitter fa-2x"></span>
+            <a href="https://www.facebook.com/dammak7ayah" style="text-decoration:none;"><span class="fa fa-facebook fa-2x" ></span></a>
+            <a href="https://twitter.com/dammak_7ayah"> <span class="fa fa-twitter fa-2x"></span></a>
             <span class="fa fa-youtube fa-2x"></span>
             <br><br>
             <h6>Copyright @@2016 www.damak7ayah.com. All rights reserved.</h6>

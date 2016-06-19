@@ -19,6 +19,7 @@ namespace BloodBankITI.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public int DayID { get; set; }
+        public int CID1 { get; set; }
         public string CityName { get; set; }
         public string Day { get; set; }
     }

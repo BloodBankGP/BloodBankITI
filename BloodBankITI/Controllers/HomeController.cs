@@ -84,43 +84,66 @@ namespace BloodBankITI.Controllers
             return View(donor);
         }
 
-        [HttpPost]
-        public ActionResult AskForBlood(Needer n)
+    [HttpPost]
+    public ActionResult AskForBlood(Needer n)
+    {
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+        HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
+
+        if (response.IsSuccessStatusCode)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
+
+            string needer_id = response.Content.ReadAsStringAsync().Result;
+
+            response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
 
             if (response.IsSuccessStatusCode)
             {
-                
-                    string needer_id = response.Content.ReadAsStringAsync().Result;
+                string count = response.Content.ReadAsStringAsync().Result;
 
-                    response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
-
-                    if (response.IsSuccessStatusCode)
+                if (Int32.Parse(count) > 0)
+                {
+                    Post donor = new Post()
                     {
-                        string count = response.Content.ReadAsStringAsync().Result;
-
-                        return RedirectToAction("FollowRequest","Home",
-                            new
-                            {
-                                id =
-                                    "Your request was sent to " + count +
-                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a) (br)(br) If you use of Android app just type this code " +needer_id +"_"+n.Fname+n.Lname
-                            });
-                    }
-                    else
-                        return RedirectToAction("FollowRequest",
-                            new
-                            {
-                                id = "An error happened and no requests were sent, please try again!"
-                            });
+                        Post1 =
+                        "<label>طلبك تم ارساله الى عدد " + count +
+                        " متبرع* تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم:</label><a href=' http://localhost:7508/Home&/equestsResults/" + needer_id + "/" + n.Fname + n.Lname + "'></a> <br><br><label> لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "</label><br><br><label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده <a href=' http://localhost:7508/Home/RequestsResults/InsertPost'></a> "
+                    };
+                    return RedirectToAction("FollowRequest", "_Layout2");
                 }
-            return RedirectToAction("Index");
+                else
+                {
+                    return RedirectToAction("FollowRequest", "Home",
+                    new
+                    {
+                        id =
+                        "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
+
+                    });
+                }
+            }
+            else
+
+
+                return RedirectToAction("FollowRequest", "Home",
+                    new
+                    {
+                        id =
+                            "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
+                    });
         }
 
-        public ActionResult FollowRequest(string id)
+        else
+            return RedirectToAction("FollowRequest",
+                new
+                {
+                    id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
+                });
+
+    }
+
+        public ActionResult FollowRequest(Post id)
         {
             return View("FollowRequest","_Layout2", id);
         }

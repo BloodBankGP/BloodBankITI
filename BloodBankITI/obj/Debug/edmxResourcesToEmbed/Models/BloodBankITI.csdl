@@ -406,6 +406,9 @@
     <FunctionImport Name="Admins_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="Admins_selectt" ReturnType="Collection(BloodBankDBITIModel.Admins_selectt_Result)" />
     <FunctionImport Name="Admins_update">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -483,6 +486,12 @@
       <Parameter Name="DID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="Donors_select" ReturnType="Collection(BloodBankDBITIModel.Donors_select_Result)" />
+    <FunctionImport Name="Donors_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectAll_Result)" />
+    <FunctionImport Name="Donors_SelectID" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectID_Result)">
+      <Parameter Name="CID" Mode="In" Type="Int32" />
+      <Parameter Name="BID" Mode="In" Type="Int32" />
+      <Parameter Name="LID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="Donors_UpdateID">
       <Parameter Name="Fname" Mode="In" Type="String" />
       <Parameter Name="Lname" Mode="In" Type="String" />
@@ -898,15 +907,6 @@
       <Parameter Name="nid" Mode="In" Type="Int32" />
       <Parameter Name="name" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Donors_SelectAll" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectAll_Result)" />
-    <FunctionImport Name="Donors_SelectID" ReturnType="Collection(BloodBankDBITIModel.Donors_SelectID_Result)">
-      <Parameter Name="CID" Mode="In" Type="Int32" />
-      <Parameter Name="BID" Mode="In" Type="Int32" />
-      <Parameter Name="LID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Admins_select" ReturnType="Collection(BloodBankDBITIModel.Admins_select_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Admins_selectt_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
@@ -961,6 +961,41 @@
     <Property Type="DateTime" Name="DonationDate" Nullable="true" />
     <Property Type="Int32" Name="PAID" Nullable="true" />
     <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Donors_SelectAll_Result">
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="true" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="LID" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="Pending" Nullable="false" />
+    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+    <Property Type="Int32" Name="PAID" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="locationName" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Donors_SelectID_Result">
+    <Property Type="Int32" Name="DID" Nullable="false" />
+    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="true" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="LID" Nullable="false" />
+    <Property Type="Boolean" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="Pending" Nullable="false" />
+    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+    <Property Type="Int32" Name="PAID" Nullable="true" />
+    <Property Type="Boolean" Name="PhoneStatus" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="locationName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="EmergencySelectAll_Result">
     <Property Type="Int32" Name="HID" Nullable="true" />
@@ -1632,40 +1667,6 @@
     <Property Type="String" Name="CityName" Nullable="false" />
     <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="Donors_SelectAll_Result">
-    <Property Type="Int32" Name="DID" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="true" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="Int32" Name="LID" Nullable="false" />
-    <Property Type="Boolean" Name="Status" Nullable="false" />
-    <Property Type="Boolean" Name="Pending" Nullable="false" />
-    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
-    <Property Type="Int32" Name="PAID" Nullable="true" />
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CityName" Nullable="false" />
-    <Property Type="String" Name="locationName" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="Donors_SelectID_Result">
-    <Property Type="Int32" Name="DID" Nullable="false" />
-    <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="true" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="Int32" Name="LID" Nullable="false" />
-    <Property Type="Boolean" Name="Status" Nullable="false" />
-    <Property Type="Boolean" Name="Pending" Nullable="false" />
-    <Property Type="DateTime" Name="DonationDate" Nullable="true" />
-    <Property Type="Int32" Name="PAID" Nullable="true" />
-    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-    <Property Type="String" Name="CityName" Nullable="false" />
-    <Property Type="String" Name="locationName" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Admins_select_Result">
     <Property Type="Int32" Name="AID" Nullable="false" />
