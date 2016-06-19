@@ -98,24 +98,36 @@ namespace BloodBankITI.Controllers
 
                     response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string count = response.Content.ReadAsStringAsync().Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    string count = response.Content.ReadAsStringAsync().Result;
 
-                        return RedirectToAction("FollowRequest","Home",
+                    if (Int32.Parse(count) > 0)
+                    {
+                        return RedirectToAction("FollowRequest", "Home",
                             new
                             {
                                 id =
-                                    "Your request was sent to " + count +
-                                    " Donors, Follow this link to know if someone accepted your request and get their data to contact them_(a href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname+"')This Link(&a) (br)(br) If you use of Android app just type this code " +needer_id +"_"+n.Fname+n.Lname
+                                    "(label class='')طلبك تم ارساله الى عدد " + count +
+                                    " متبرع, تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم_(&label)(a  href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname + "')(&a) (br)(br)(label class='') لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "(&label)(br)(br)(label)وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده (a  href=' http_&&localhost_7508&Home&RequestsResults&InsertPost')(&a) "
                             });
                     }
                     else
-                        return RedirectToAction("FollowRequest",
+                    {
+                        return RedirectToAction("FollowRequest", "Home",
                             new
                             {
-                                id = "An error happened and no requests were sent, please try again!"
+                                id =
+                                    "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
                             });
+                    }
+                }
+                else
+                    return RedirectToAction("FollowRequest",
+                        new
+                        {
+                            id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
+                        });
                 }
             return RedirectToAction("Index");
         }

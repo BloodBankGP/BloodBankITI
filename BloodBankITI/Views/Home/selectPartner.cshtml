@@ -37,6 +37,7 @@
     </form>
     <div id="partid"> </div>
 </div>
+
 <script>
     $('#PartnerId').change(function () {
         var PartnerID = $('#PartnerId').val();
@@ -61,7 +62,10 @@
     function WriteResponse(data) {
         var result = "";
         
-        result = "<label> Name :" + data.Name + "<br> Address:" + data.Address + "<br> </label>";
+        //result = "<label> اسم المعمل :" + data.Name+ + "<br> العنوان:" + data.Address + "<br> </label>";
+
+        result = "<div class='panel-body'><div class='row'><div class='col-md-9 col-lg-9' style='position:center;margin-left:75px;border:hidden;'><table class='table table-user-information'><tbody><tr><td> " + data.Name + "</td><td style='color:brown;background-color:darkgrey;'> اسم المعمل</td></tr><tr><td> " + data.Address + "</td><td style='color:brown;background-color:darkgrey;'>العنوان</td></tr></tbody></table></div></div></div>";
+
 
         $('#partid').html(result);
 
