@@ -84,82 +84,64 @@ namespace BloodBankITI.Controllers
             return View(donor);
         }
 
-        [HttpPost]
-        public ActionResult AskForBlood(Needer n)
+    [HttpPost]
+    public ActionResult AskForBlood(Needer n)
+    {
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+        HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
+
+        if (response.IsSuccessStatusCode)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
+
+            string needer_id = response.Content.ReadAsStringAsync().Result;
+
+            response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
 
             if (response.IsSuccessStatusCode)
             {
-                
-                    string needer_id = response.Content.ReadAsStringAsync().Result;
+                string count = response.Content.ReadAsStringAsync().Result;
 
-                    response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
-
-                if (response.IsSuccessStatusCode)
+                if (Int32.Parse(count) > 0)
                 {
-                    string count = response.Content.ReadAsStringAsync().Result;
-
-<<<<<<< HEAD
-                        if (Int32.Parse(count) > 0)
-                        {
-                            Post donor = new Post()
-                            {
-                                Post1 = 
-                                "<label>طلبك تم ارساله الى عدد " + count +
-                                " متبرع* تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم:</label><a href=' http://localhost:7508/Home&/equestsResults/" + needer_id + "/" + n.Fname + n.Lname + "'></a> <br><br><label> لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "</label><br><br><label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده <a href=' http://localhost:7508/Home/RequestsResults/InsertPost'></a> "
-                            };
-                            return RedirectToAction("FollowRequest", "_Layout2");
-                        }
-                        else
-                        {
-                            return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
-=======
-                    if (Int32.Parse(count) > 0)
+                    Post donor = new Post()
                     {
-                        return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                    "(label class='')طلبك تم ارساله الى عدد " + count +
-                                    " متبرع, تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم_(&label)(a  href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname + "')(&a) (br)(br)(label class='') لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "(&label)(br)(br)(label)وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده (a  href=' http_&&localhost_7508&Home&RequestsResults&InsertPost')(&a) "
->>>>>>> origin/master
-                            });
-                        }
-                    }
-                    else
-<<<<<<< HEAD
-                        return RedirectToAction("FollowRequest",
-=======
-                    {
-                        return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                    "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
-                            });
-                    }
+                        Post1 =
+                        "<label>طلبك تم ارساله الى عدد " + count +
+                        " متبرع* تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم:</label><a href=' http://localhost:7508/Home&/equestsResults/" + needer_id + "/" + n.Fname + n.Lname + "'></a> <br><br><label> لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "</label><br><br><label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده <a href=' http://localhost:7508/Home/RequestsResults/InsertPost'></a> "
+                    };
+                    return RedirectToAction("FollowRequest", "_Layout2");
                 }
                 else
-                    return RedirectToAction("FollowRequest",
->>>>>>> origin/master
-                        new
-                        {
-                            id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
-                        });
-<<<<<<< HEAD
-            }
-=======
+                {
+                    return RedirectToAction("FollowRequest", "Home",
+                    new
+                    {
+                        id =
+                        "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
+
+                    });
                 }
->>>>>>> origin/master
-            return RedirectToAction("Index");
+            }
+            else
+
+
+                return RedirectToAction("FollowRequest", "Home",
+                    new
+                    {
+                        id =
+                            "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
+                    });
         }
+
+        else
+            return RedirectToAction("FollowRequest",
+                new
+                {
+                    id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
+                });
+
+    }
 
         public ActionResult FollowRequest(Post id)
         {
