@@ -148,6 +148,8 @@
           <Property Name="Approved" Type="bit" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Fb" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Partners">
           <Key>
@@ -751,6 +753,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cid" Type="int" Mode="In" />
@@ -770,6 +774,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -779,6 +785,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="approved" Type="bit" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1209,6 +1217,8 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="City" Relationship="Self.FK_NGO_Cities" FromRole="NGO" ToRole="Cities" />
+          <Property Name="Fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -1894,9 +1904,6 @@
           <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
           <Parameter Name="cid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
-          <Parameter Name="nid" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="NGO_selectByIDAll" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByIDAll_Result)">
           <Parameter Name="nid" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1909,6 +1916,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="status" Mode="In" Type="Boolean" />
             <Parameter Name="approved" Mode="In" Type="Boolean" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NotApprovedNGO" ReturnType="Collection(BloodBankDBITIModel.NotApprovedNGO_Result)" />
           <FunctionImport Name="Partner_SelectByCity" ReturnType="Collection(BloodBankDBITIModel.Partner_SelectByCity_Result)">
@@ -2049,6 +2058,46 @@
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="Needer_DonorNotAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorNotAccepted_Result)">
+            <Parameter Name="nid" Mode="In" Type="Int32" />
+            <Parameter Name="did" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Donors_UpdateID">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="BID" Mode="In" Type="Int32" />
+            <Parameter Name="CID" Mode="In" Type="Int32" />
+            <Parameter Name="LID" Mode="In" Type="Int32" />
+            <Parameter Name="DID" Mode="In" Type="Int32" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_insert">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="Int32" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGO_selectByID" ReturnType="Collection(BloodBankDBITIModel.NGO_selectByID_Result)">
+          <Parameter Name="nid" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="Donors_Insert" ReturnType="Collection(BloodBankDBITIModel.Donors_Insert_Result)">
             <Parameter Name="Fname" Mode="In" Type="String" />
             <Parameter Name="Lname" Mode="In" Type="String" />
@@ -2063,39 +2112,6 @@
             <Parameter Name="PID" Mode="In" Type="Int32" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="NGO_insert">
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="city" Mode="In" Type="Int32" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="address" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Needer_DonorNotAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorNotAccepted_Result)">
-            <Parameter Name="nid" Mode="In" Type="Int32" />
-            <Parameter Name="did" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="NGO_update">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="city" Mode="In" Type="Int32" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="address" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="Donors_UpdateID">
-            <Parameter Name="Fname" Mode="In" Type="String" />
-            <Parameter Name="Lname" Mode="In" Type="String" />
-            <Parameter Name="phone" Mode="In" Type="String" />
-            <Parameter Name="BID" Mode="In" Type="Int32" />
-            <Parameter Name="CID" Mode="In" Type="Int32" />
-            <Parameter Name="LID" Mode="In" Type="Int32" />
-            <Parameter Name="DID" Mode="In" Type="Int32" />
-            <Parameter Name="gender" Mode="In" Type="String" />
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="pw" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Admins_select_Result">
@@ -2449,18 +2465,6 @@
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="NGO_selectByID_Result">
-          <Property Type="Int32" Name="NID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="Approved" Nullable="false" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <Property Type="String" Name="Address" Nullable="true" />
-          <Property Type="String" Name="CityName" Nullable="false" />
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="NGO_selectByIDAll_Result">
           <Property Type="Int32" Name="NID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
@@ -2668,9 +2672,6 @@
         <ComplexType Name="insert_needer_Result">
           <Property Type="Decimal" Name="needer_id" Nullable="true" Precision="38" Scale="0" />
         </ComplexType>
-        <ComplexType Name="Donors_Insert_Result">
-          <Property Type="Decimal" Name="id" Nullable="true" Precision="38" Scale="0" />
-        </ComplexType>
         <ComplexType Name="Needer_DonorNotAccepted_Result">
           <Property Type="Int32" Name="NDID" Nullable="false" />
           <Property Type="Int32" Name="NID" Nullable="false" />
@@ -2698,6 +2699,23 @@
           <Property Type="String" Name="LocationName" Nullable="false" />
           <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NGO_selectByID_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Fb" Nullable="true" />
+          <Property Type="String" Name="Website" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Donors_Insert_Result">
+          <Property Type="Decimal" Name="id" Nullable="true" Precision="38" Scale="0" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2852,6 +2870,8 @@
           <EntitySetMapping Name="NGOes">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
               <MappingFragment StoreEntitySet="NGO">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Fb" ColumnName="Fb" />
                 <ScalarProperty Name="NID" ColumnName="NID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
@@ -3479,22 +3499,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="NGO_selectByID" FunctionName="BloodBankDBITIModel.Store.NGO_selectByID">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByID_Result">
-                <ScalarProperty Name="NID" ColumnName="NID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Approved" ColumnName="Approved" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NGO_selectByIDAll" FunctionName="BloodBankDBITIModel.Store.NGO_selectByIDAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByIDAll_Result">
@@ -3813,14 +3817,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UserType_update" FunctionName="BloodBankDBITIModel.Store.UserType_update" />
-          <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
           <FunctionImportMapping FunctionImportName="Needer_DonorNotAccepted" FunctionName="BloodBankDBITIModel.Store.Needer_DonorNotAccepted">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BloodBankDBITIModel.Needer_DonorNotAccepted_Result">
@@ -3834,8 +3830,34 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="NGO_update" FunctionName="BloodBankDBITIModel.Store.NGO_update" />
           <FunctionImportMapping FunctionImportName="Donors_UpdateID" FunctionName="BloodBankDBITIModel.Store.Donors_UpdateID" />
+          <FunctionImportMapping FunctionImportName="NGO_insert" FunctionName="BloodBankDBITIModel.Store.NGO_insert" />
+          <FunctionImportMapping FunctionImportName="NGO_update" FunctionName="BloodBankDBITIModel.Store.NGO_update" />
+          <FunctionImportMapping FunctionImportName="NGO_selectByID" FunctionName="BloodBankDBITIModel.Store.NGO_selectByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.NGO_selectByID_Result">
+                <ScalarProperty Name="NID" ColumnName="NID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Fb" ColumnName="Fb" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Donors_Insert" FunctionName="BloodBankDBITIModel.Store.Donors_Insert" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BloodBankDBITIModel.Donors_Insert_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

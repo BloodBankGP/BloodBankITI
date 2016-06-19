@@ -9,7 +9,7 @@
 
     <meta name="keywords" content="blood, donation, egypt, help, needed,  دم، تبرع، مصر,دمك,حياة">
     <meta property="og:keywords" content="blood, donation, egypt, help, needed,  دم، تبرع، مصر,دمك,حياة">
-   
+
 
     <title>damak 7ayah دمك حياة</title>
     <!-- Bootstrap Core CSS -->
@@ -36,26 +36,26 @@
 </head>
 <body>
     <script>
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '247072542325141',
-            xfbml: true,
-            version: 'v2.6'
-        });
-    };
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '247072542325141',
+                xfbml: true,
+                version: 'v2.6'
+            });
+        };
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) { return; }
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
     <!-- Navigation -->
-    
+
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"style="padding: 8px 0px 0px 0px;margin-right: -130px;">×</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="padding: 8px 0px 0px 0px;margin-right: -130px;">×</a>
         <a href="/home/index"> الصفحة الرئيسية</a>
         @if (Session["UserId"] != null && Session["UserName"] != null)
         {
@@ -65,13 +65,13 @@
                     <a href="/admin/index"> الصفحة الشخصية</a>
                     break;
                 case "2":
-                    <a href="/donor/Index"> الصفحة الشخصية</a>
+                <a href="/donor/Index"> الصفحة الشخصية</a>
                     break;
                 case "3":
-                    <a href="/ngo/index"> الصفحة الشخصية</a>
+                <a href="/ngo/index"> الصفحة الشخصية</a>
                     break;
                 case "4":
-                    <a href="/partner/index">الصفحة الشخصية</a>
+                <a href="/partner/index">الصفحة الشخصية</a>
                     break;
             }
         }
@@ -79,7 +79,7 @@
         <a href="/home/Donate">  عايز اتبرع  </a>
         <a href="/home/askforblood">محتاج دم </a>
         <a href="/home/wallposts">    المشاركات والتعليقات </a>
-        
+
         <a href="/home/info"> معلومات عن التبرع  </a>
         <a href="#">احنا مين  </a>
         <a href="/home/contact">تواصل معنا   </a>
@@ -92,14 +92,15 @@
 
     <div id="main">
         @*<span style="font-size:30px;cursor:pointer" onclick="openNav()">☰ open</span>*@
-        <a  href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"> القائمة  <i class="fa fa-bars"></i></a>
+        <a href="#" class="btn btn-dark btn-lg toggle" onclick="openNav()" style="float:right;color:black"> القائمة  <i class="fa fa-bars"></i></a>
     </div>
 
-        @RenderBody()
+    @RenderBody()
 
     <!-- Footer -->
     <footer>
-        <div class="icons center-block">;
+        <div class="icons center-block">
+            ;
             <span class="fa fa-facebook fa-2x"></span>
             <span class="fa fa-twitter fa-2x"></span>
             <span class="fa fa-youtube fa-2x"></span>
@@ -119,16 +120,16 @@
     <!-- Compiled and minified JavaScript -->
     @*<script src="~/js/forms.js"></script>*@
     <script>
-    // Closes the sidebar menu
-    //$("#menu-close").click(function(e) {
-    //    e.preventDefault();
-    //    $("#sidebar-wrapper").toggleClass("active");
-    //});
+        // Closes the sidebar menu
+        //$("#menu-close").click(function(e) {
+        //    e.preventDefault();
+        //    $("#sidebar-wrapper").toggleClass("active");
+        //});
 
-    //// Opens the sidebar menu
-    //$("#menu-toggle").click(function(e) {
-    //    e.preventDefault();
-    //    $("#sidebar-wrapper").toggleClass("active");
+        //// Opens the sidebar menu
+        //$("#menu-toggle").click(function(e) {
+        //    e.preventDefault();
+        //    $("#sidebar-wrapper").toggleClass("active");
         //});
 
         function openNav() {
@@ -141,27 +142,27 @@
             document.getElementById("main").style.marginLeft = "0";
         }
 
-    // Scrolls to the selected menu item on the page
-    //$(function() {
-    //    $('a[href*=#]:not([href=#])').click(function() {
-    //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-    //            var target = $(this.hash);
-    //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //            if (target.length) {
-    //                $('html,body').animate({
-    //                    scrollTop: target.offset().top
-    //                }, 1000);
-    //                return false;
-    //            }
-    //        }
-    //    });
-    //});
+        // Scrolls to the selected menu item on the page
+        //$(function() {
+        //    $('a[href*=#]:not([href=#])').click(function() {
+        //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+        //            var target = $(this.hash);
+        //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        //            if (target.length) {
+        //                $('html,body').animate({
+        //                    scrollTop: target.offset().top
+        //                }, 1000);
+        //                return false;
+        //            }
+        //        }
+        //    });
+        //});
     </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-            <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-            <script src="~/Scripts/bootstrap-datepicker.js"></script>
-    
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
 </body>
 </html>

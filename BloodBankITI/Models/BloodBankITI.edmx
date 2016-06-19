@@ -148,6 +148,8 @@
           <Property Name="Approved" Type="bit" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Fb" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Partners">
           <Key>
@@ -751,6 +753,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cid" Type="int" Mode="In" />
@@ -770,6 +774,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -779,6 +785,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="approved" Type="bit" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1182,6 +1190,8 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="City" Relationship="Self.FK_NGO_Cities" FromRole="NGO" ToRole="Cities" />
+          <Property Name="Fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -1767,6 +1777,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
           <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -1786,6 +1798,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="status" Mode="In" Type="Boolean" />
             <Parameter Name="approved" Mode="In" Type="Boolean" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Partners_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
@@ -2813,6 +2827,8 @@
           <EntitySetMapping Name="NGOes">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
               <MappingFragment StoreEntitySet="NGO">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Fb" ColumnName="Fb" />
                 <ScalarProperty Name="NID" ColumnName="NID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CID" ColumnName="CID" />

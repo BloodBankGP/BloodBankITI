@@ -150,6 +150,8 @@
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="City" Relationship="Self.FK_NGO_Cities" FromRole="NGO" ToRole="Cities" />
+    <Property Name="Fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Partner">
     <Key>
@@ -735,6 +737,8 @@
       <Parameter Name="address" Mode="In" Type="String" />
       <Parameter Name="username" Mode="In" Type="String" />
       <Parameter Name="pw" Mode="In" Type="String" />
+      <Parameter Name="fb" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NGO_select" ReturnType="Collection(BloodBankDBITIModel.NGO_select_Result)">
       <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -754,6 +758,8 @@
       <Parameter Name="address" Mode="In" Type="String" />
       <Parameter Name="status" Mode="In" Type="Boolean" />
       <Parameter Name="approved" Mode="In" Type="Boolean" />
+      <Parameter Name="fb" Mode="In" Type="String" />
+      <Parameter Name="website" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Partners_delete">
       <Parameter Name="id" Mode="In" Type="Int32" />

@@ -1,4 +1,4 @@
-﻿@model String
+﻿@model BloodBankITI.Models.Post
 @{
     ViewBag.Title = "FollowRequest";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -8,7 +8,7 @@
 
 
 
-@Html.Raw(@Model.Replace('_',':').Replace('&','/').Replace('(','<').Replace(')','>'))
+@Html.Raw(@Model.Post1.Replace('_', ':').Replace('&', '/').Replace('(', '<').Replace(')', '>').Replace('*', ','))
 
 
 

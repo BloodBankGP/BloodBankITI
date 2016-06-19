@@ -14,9 +14,9 @@ namespace BloodBankITI.Models
     
     public partial class City
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public City()
         {
+            this.Donors = new HashSet<Donor>();
             this.Emergencies = new HashSet<Emergency>();
             this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
@@ -24,7 +24,6 @@ namespace BloodBankITI.Models
             this.NGOes = new HashSet<NGO>();
             this.Posts = new HashSet<Post>();
             this.Partners = new HashSet<Partner>();
-            this.Donors = new HashSet<Donor>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
@@ -32,23 +31,14 @@ namespace BloodBankITI.Models
         public string CityName { get; set; }
         public string Logo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Emergency> Emergencies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hospital> Hospitals { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Needer> Needers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NGO> NGOes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partner> Partners { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Donor> Donors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Emergency> Emergencies { get; set; }
+        public virtual ICollection<Hospital> Hospitals { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
+        public virtual ICollection<Needer> Needers { get; set; }
+        public virtual ICollection<NGO> NGOes { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Partner> Partners { get; set; }
         public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }
