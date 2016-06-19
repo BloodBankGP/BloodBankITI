@@ -263,6 +263,12 @@
     <Compile Include="Models\DonorRequests_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Donors_SelectAll_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Donors_SelectID_Result.cs">
+      <DependentUpon>BloodBankITI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donors_select_Result.cs">
       <DependentUpon>BloodBankITI.tt</DependentUpon>
     </Compile>

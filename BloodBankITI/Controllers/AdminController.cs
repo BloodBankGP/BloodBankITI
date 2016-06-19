@@ -201,13 +201,13 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpGet]
-        public ActionResult DonorsByBID(Donor donor)
+        public ActionResult DonorsByBID(int id)
         {
             if (Session["UserId"] == null && Session["UserName"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
-            List<DonorByBid_Result> donors = db.DonorByBid(donor.BID).ToList();
+            List<DonorByBid_Result> donors = db.DonorByBid(id).ToList();
             return View(donors);
         }
 
