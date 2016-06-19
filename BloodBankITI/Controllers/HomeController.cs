@@ -181,7 +181,7 @@ namespace BloodBankITI.Controllers
             else
                 result = "Failed to insert comment";
 
-            return RedirectToAction("wallposts");
+            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
         }
 
         [HttpGet]
@@ -449,6 +449,38 @@ namespace BloodBankITI.Controllers
         public ActionResult Thanks()
         {
             return View();
+        }
+
+        ///NGO
+        [HttpGet]
+        public ActionResult NGOs()
+        {
+            List<Cities_SelectAll_Result> cities = new List<Cities_SelectAll_Result>();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("ALLCities").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                cities = response.Content.ReadAsAsync<List<Cities_SelectAll_Result>>().Result;
+            }
+
+            return View(cities);
+        }
+
+        [HttpGet]
+        public ActionResult NGO(int id)
+        {
+            Models.NGO ngo = new NGO();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+            HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                ngo = response.Content.ReadAsAsync<NGO>().Result;
+            }
+
+            return View(ngo);
+
         }
     }
 }

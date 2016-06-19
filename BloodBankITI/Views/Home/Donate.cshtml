@@ -16,29 +16,36 @@
 
 
 </head>
+
 <div class="render">
+    <div style=" margin-right:150px; float:right; font-size:20px;">&nbsp;لو عايز تتبرع اعرف معلومات أكتر عن التبرع
+
+        <a href="/home/info">من هنا</a>
+    </div>
+    <br />
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h6> لو عايز تتبرع </h6></div>
+        <div class="card-panel red darken-4"><h4> لو عايز تتبرع </h4></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input id="first_name" name="Donor.Fname" type="text" class="validate" style="text-align:right;">
                             <label class="right-align" for="first_name">الاسم الاول </label>
                             @Html.ValidationMessageFor(model => model.Donor.Fname)
                         </div>
-                        <div class="input-field col s6">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input id="last_name" type="text" class="validate" name="Donor.Lname" style="text-align: right">
                             <label class="right-align" for="last_name"> الاسم الاخير </label>
                             @Html.ValidationMessageFor(model => model.Donor.Lname)
                         </div>
-
                     </div>
                     <div class="row" style="float:right;">
                         <div class="input-field col s12">
                             <div style="float:right; position:relative; margin-right:52px;">
-                                <label class="right-align" style="float:right;">النوع</label>
+                                <label class="right-align" style="margin-right:-55px;">النوع</label>
                             </div>
                             <br />
                             <p>
@@ -65,14 +72,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
+                                <label for="CitiesID" class="right-align" style="margin-right:-155px;">فصيلة الدم</label>
                             </div>
-
-                            <br />
-                            <br />
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                    <option value="NULL">Not Set</option>
+                                    <option value="NULL">لا أعرف فصيلة دمك</option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
 
@@ -81,27 +85,36 @@
 
                                 </select>
                             </div>
-
-
                                 @Html.ValidationMessageFor(model => model.Donor.BID)
-                            </div>
+                        </div>
 
                      </div>
+                    <div class="card">
+                        <h4 style="font-family:'Myriad عربي'; color:brown;"> لو مش عارف فصيلة دمي اعمل ايه؟</h4>
+                        <p style="font-family:'Myriad عربي'; text-align:right; ">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا اختار المعمل بعد تسجيل بياناتك <a href="/home/selectPartner">من هنا</a></p>
+                     
+                    </div>
+                    @*<ul>
+                        <li>
+                            <input type="checkbox" checked>
+                            <i></i>
+                            <h4 style="font-family:'Myriad عربي'"> لو مش عارف فصيلة دمي اعمل ايه؟</h4>
+                            <p style="font-family:'Myriad عربي'">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا ,اختار المعمل بعد تسجيل بياناتك <a href="/home/selectPartner">من هنا</a></p>
+                        </li>
+                    </ul>*@
 
 
 
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                            <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                            <label for="CitiesID" class="right-align" style="margin-right:-155px;">المدينة</label>
                                         </div>
 
-                                        <br />
-                                        <br />
                                         <div dir="rtl">
                                             <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
 
-                                                <option value="0">Not Set</option>
+                                                <option value="0">اختر مدينة</option>
                                                 @foreach (var item in Model.CitiesSelectAllResults)
                                                 {
                                                 <option value=@item.CID>@item.CityName</option>
@@ -113,7 +126,10 @@
 
                                 <div class="row">
                                     <div class="input-field col s12 ">
-                                        <label class="right-align" for="LID">المنطقة </label>
+                                        <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                                            <label class="right-align" for="LID" style="margin-right:-155px;">المنطقة</label>
+                                        </div>
+                                        @*<label class="right-align" for="LID">المنطقة </label>*@
                                         <select class="mdl-select__input" name="Donor.LID" id="locationID">
                                             <option> </option>
                                         </select>
@@ -123,7 +139,7 @@
 
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input type="date" class="validate" name="Donor.DonationDate" style="text-align: right;" />
+                                        <input type="date" class="validate" name="Donor.DonationDate" " />
                                         <label class="right-align" for="DonationDate">تاريخ التبرع </label>
                                         @Html.ValidationMessageFor(model => model.Donor.LID)
                                     </div>
@@ -131,23 +147,24 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="Username" type="text" oninput="checkusername()" class="validate" name="Donor.UserName" style="text-align:right">
+                            <input id="Username" type="text" oninput="checkusername()" class="validate" name="Donor.UserName" style="text-align:right;" />
                             <label class="right-align" for="last_name">  اسم المستخدم</label><label id="usernameerror"></label>
                             @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align:right">
+                        <div class="input-field col s12">
+                            <input id="Password" type="password" class="validate" name="Donor.Password" style="text-align:right;" />
                             <label class="right-align" for="last_name"> كلمة المرور </label>
                             @Html.ValidationMessageFor(model => model.Login.Password)
                         </div>
-
-                        <div class="input-field col s6">
-                            <input id="Password2" type="password" oninput="checkpassword()" class="validate" name="Donor.Password" style="text-align:right">
+                   </div>
+                   <div class="row">
+                        <div class="input-field col s12">
+                            <input id="Password2" type="password" oninput="checkpassword()" class="validate" name="Donor.Password" style="text-align:right" />
                             <label class="right-align" for="Passwprd"> تأكيد كلمة المرور </label><label id="passworderror"></label>
-                        </div>
-                    </div>
+                        </div> 
+                  </div>
                         <center>
                             <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تبرع</button>
                         </center>
@@ -170,9 +187,9 @@
                 success: function (data) {
 
                     if (data == 1)
-                        $('#usernameerror').html('هذا الاسم مستخدم');
+                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم مستخدم<label>");
                     else {
-                        $('#usernameerror').html('هذا الاسم متاح');
+                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم متاح<label>");
                     }
                 },
                 error: function (e) {
@@ -186,11 +203,11 @@
         var Password = $('#Password').val();
         var Password2 = $('#Password2').val();
         if (Password == Password2) {
-            $('#passworderror').html('كلمة المرور متطابقة');
+            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور متطابقة<label>");
         }
         else
         {
-            $('#passworderror').html('كلمة المرور غير متطابقة');
+            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور غير متطابقة<label>");
         }
     }
 

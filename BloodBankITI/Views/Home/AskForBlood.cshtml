@@ -6,35 +6,20 @@
 }
 <!-- Compiled and minified CSS -->
 <link href="~/Content/materialize.css" rel="stylesheet" />
-
-
-@*<h2>Ask for Blood محتاج دم </h2>*@
-@*الاسم: @Html.EditorFor(n => Model.Fname)<br />
-    LastName: @Html.EditorFor(n => Model.Lname)<br />
-    Email: @Html.EditorFor(n => Model.Email)<br />
-    Phone: @Html.EditorFor(n => Model.Phone)<br />
-    Blood: @Html.EditorFor(n => Model.BID)<br />
-    City: @Html.EditorFor(n => Model.CID)<br />*@
-
 <div class="render">
 
     <div class="container white z-depth-2">
         <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">انا محتاج دم</h5>  </div>
-        @*<ul class="tabs teal">
-                <li class="tab col s3">
-                    <li class="white-text">انا محتاج دم</li>
-                 </li>
-            </ul>*@
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
                        
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input id="last_name" name="n.Fname" type="text" class="validate" style="text-align:right;">
                             <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم الاول</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input id="last_name" type="text" class="validate" name="n.Lname" style="text-align:right">
                             <label class="right-align" for="last_name" style="font-family:'Myriad عربي';">الاسم الثانى  </label>
                         </div>
@@ -53,6 +38,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
+                                <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
                                     <option value="NULL">إختــــر </option>
                                     @foreach (var item in Model.BloodTypesResults)
@@ -60,11 +46,11 @@
                                         <option value=@item.BID>@item.Type</option>
                                     }
                                 </select>
-                                <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
+                                <label class="right-align" for="city" style="font-family:'Myriad عربي';">المدينة </label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
                                     <option value="NULL"> إختــــر</option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
@@ -72,7 +58,6 @@
                                         <option value=@item.CID>@item.CityName</option>
                                     }
                                 </select>
-                                <label class="right-align" for="city" style="font-family:'Myriad عربي';">المدينة </label>
                             </div>
                         </div>
                         <center>
