@@ -148,6 +148,8 @@
     <EntitySetMapping Name="NGOes">
       <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
         <MappingFragment StoreEntitySet="NGO">
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Fb" ColumnName="Fb" />
           <ScalarProperty Name="NID" ColumnName="NID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CID" ColumnName="CID" />
@@ -785,6 +787,8 @@
           <ScalarProperty Name="Approved" ColumnName="Approved" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Fb" ColumnName="Fb" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />

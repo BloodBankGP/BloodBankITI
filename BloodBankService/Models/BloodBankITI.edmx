@@ -148,6 +148,8 @@
           <Property Name="Approved" Type="bit" Nullable="false" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Fb" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Partners">
           <Key>
@@ -751,6 +753,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGO_select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cid" Type="int" Mode="In" />
@@ -770,6 +774,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
           <Parameter Name="pw" Type="nvarchar" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NGOUPDATEADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -779,6 +785,8 @@
           <Parameter Name="address" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="status" Type="bit" Mode="In" />
           <Parameter Name="approved" Type="bit" Mode="In" />
+          <Parameter Name="fb" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="website" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="NotApprovedNGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Partner_SelectByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1209,6 +1217,8 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="City" Relationship="Self.FK_NGO_Cities" FromRole="NGO" ToRole="Cities" />
+          <Property Name="Fb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -1909,6 +1919,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="status" Mode="In" Type="Boolean" />
             <Parameter Name="approved" Mode="In" Type="Boolean" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NotApprovedNGO" ReturnType="Collection(BloodBankDBITIModel.NotApprovedNGO_Result)" />
           <FunctionImport Name="Partner_SelectByCity" ReturnType="Collection(BloodBankDBITIModel.Partner_SelectByCity_Result)">
@@ -2071,6 +2083,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Needer_DonorNotAccepted" ReturnType="Collection(BloodBankDBITIModel.Needer_DonorNotAccepted_Result)">
             <Parameter Name="nid" Mode="In" Type="Int32" />
@@ -2084,6 +2098,8 @@
             <Parameter Name="address" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="pw" Mode="In" Type="String" />
+            <Parameter Name="fb" Mode="In" Type="String" />
+            <Parameter Name="website" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Donors_UpdateID">
             <Parameter Name="Fname" Mode="In" Type="String" />
@@ -2449,18 +2465,6 @@
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="String" Name="CityName" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="NGO_selectByID_Result">
-          <Property Type="Int32" Name="NID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="Approved" Nullable="false" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <Property Type="String" Name="Address" Nullable="true" />
-          <Property Type="String" Name="CityName" Nullable="false" />
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="NGO_selectByIDAll_Result">
           <Property Type="Int32" Name="NID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
@@ -2699,6 +2703,20 @@
           <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="NGO_selectByID_Result">
+          <Property Type="Int32" Name="NID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Approved" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Fb" Nullable="true" />
+          <Property Type="String" Name="Website" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2852,6 +2870,8 @@
           <EntitySetMapping Name="NGOes">
             <EntityTypeMapping TypeName="BloodBankDBITIModel.NGO">
               <MappingFragment StoreEntitySet="NGO">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Fb" ColumnName="Fb" />
                 <ScalarProperty Name="NID" ColumnName="NID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
@@ -3489,6 +3509,8 @@
                 <ScalarProperty Name="Approved" ColumnName="Approved" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Fb" ColumnName="Fb" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

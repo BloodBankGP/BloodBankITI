@@ -5,12 +5,15 @@
 }
 
 <link href="~/Content/materialize.css" rel="stylesheet" />
+
 <head>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script></head>
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';color:brown;" >إختر من الشركاء</h4>
+    <h4 style="font-family:'Myriad عربي';color:brown;" >اختر أحد المعامل لإجراء تحليل معرفة فصيلة الدم برقم مسلسل @Model.donor.DID</h4>
     <hr />
+
+
     <form action="" method="POST">
 
         <input type="hidden" value=@Model.donor.DID name="donor.DID" />
@@ -20,7 +23,7 @@
                 </div>
                 <div dir="rtl">
                     <select class="mdl-select__input" name="Donor.PAID" id="PartnerId">
-                        <option value="0" selected="">إختـــــــــر</option>
+                        <option value="0" selected="">اختـــــــــر</option>
                         @foreach (var item in Model.partnerSelectByCity)
                         {
                             <option value=@item.PAID>@item.Name</option>
@@ -32,12 +35,13 @@
         @*<input type="submit" value="إختر" />*@
         <button class="btn waves-effect waves-light red darken-4" type="submit"> إختر</button>
     </form>
+    <div id="partid"> </div>
 </div>
 <script>
     $('#PartnerId').change(function () {
-        var CityID = $('#PartnerId').val();
+        var PartnerID = $('#PartnerId').val();
         $.ajax({
-            url: 'http://www.bloodservice.somee.com/Home/ParterByID/' + PID,
+            url: 'http://www.bloodservice.somee.com/Home/PartnerByID/' + PartnerID,
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -52,14 +56,21 @@
 
     });
 
-    function WriteResponse(data) {
-        var result;
-        $.each(data, function (index, partners) {
-            result += "<label> Name : partners.Name <br> Address: partners.address <br> </label>";
-        });
-        $('#PartnerId').html(result);
+   
 
-    }
+    function WriteResponse(data) {
+        var result = "";
+        
+        result = "<label> Name :" + data.Name + "<br> Address:" + data.Address + "<br> </label>";
+
+        $('#partid').html(result);
+
+        };
+        
+    
+        
+      
+
 </script>
 
 

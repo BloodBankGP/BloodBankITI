@@ -334,6 +334,5 @@ C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\bin
 C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
-C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache
 C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.dll
 C:\Users\Eman\Desktop\project\BloodBank_guthub\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.pdb

@@ -1509,15 +1509,6 @@ namespace BloodBankITI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Cities_SelectBYID_Result>("Cities_SelectBYID", cIDParameter);
         }
     
-        public virtual ObjectResult<donor_SelectByDID_Result> donor_SelectByDID(Nullable<int> did)
-        {
-            var didParameter = did.HasValue ?
-                new ObjectParameter("did", did) :
-                new ObjectParameter("did", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<donor_SelectByDID_Result>("donor_SelectByDID", didParameter);
-        }
-    
         public virtual ObjectResult<Donors_select_Result> Donors_select()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Donors_select_Result>("Donors_select");
@@ -1530,6 +1521,15 @@ namespace BloodBankITI.Models
                 new ObjectParameter("bid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DonorByBid_Result>("DonorByBid", bidParameter);
+        }
+    
+        public virtual ObjectResult<donor_SelectByDID_Result> donor_SelectByDID(Nullable<int> did)
+        {
+            var didParameter = did.HasValue ?
+                new ObjectParameter("did", did) :
+                new ObjectParameter("did", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<donor_SelectByDID_Result>("donor_SelectByDID", didParameter);
         }
     }
 }
