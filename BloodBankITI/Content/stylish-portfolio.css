@@ -471,7 +471,7 @@ h2 {
 
 p {
   color: #000;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 26px;
   letter-spacing: 1px;
   position: relative;
@@ -848,6 +848,7 @@ h6{
 table{
     text-align:center;
     background-color:wheat;
+    
 }
 table tr th {
     text-align:center;

@@ -53,8 +53,11 @@
                     <label class="right-align"> التعليق  </label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
-        </form>
+            <center>
+                   @Html.ActionLink("العودة للمشاركات", "WallPosts", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
+           </center>
+                   </form>
 
     </div>
 </div>
