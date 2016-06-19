@@ -748,8 +748,10 @@
     <Content Include="img\CitiesLogos\Portsaid.png" />
     <Content Include="img\Community-Management.png" />
     <Content Include="img\cut.jpg" />
+    <Content Include="img\domain.png" />
     <Content Include="img\DONOR.png" />
     <Content Include="img\download.jpg" />
+    <Content Include="img\facebook-logo.png" />
     <Content Include="img\favicon-16x16.png" />
     <Content Include="img\favicon-32x32.png" />
     <Content Include="img\favicon-96x96.png" />
@@ -1367,6 +1369,8 @@
     <None Include="Views\Home\FollowRequest.cshtml" />
     <Content Include="Views\Home\InsertPost.cshtml" />
     <Content Include="Views\Home\team-members.cshtml" />
+    <Content Include="Views\Home\NGOs.cshtml" />
+    <Content Include="Views\Home\NGO.cshtml" />
     <None Include="Views\Home\RequestsResults.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
     <Content Include="Views\Partner\AllStatistics.cshtml" />
