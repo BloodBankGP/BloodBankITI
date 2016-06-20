@@ -5,7 +5,7 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <h3 style="font-family:Myriad عربي;">طلبات التبرع </h3>
+    <h4>طلبات التبرع </h4>
     <hr />
     <div class="table-responsive">
         <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
@@ -43,8 +43,6 @@
                     <td>@(a.type) </td>
                     <td>@(a.CityName) </td>
                     <td>@(a.DonorFullname) </td>
-
-
                     <td>@((a.fname)+ " " + (a.lname)) </td>
                    
                 </tr>
@@ -52,8 +50,9 @@
 
         </table>
     </div>
-    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-
+    <center>
+        @Html.ActionLink("العودة للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 </div>
 
 

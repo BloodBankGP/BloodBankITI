@@ -5,40 +5,36 @@
     }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;">المستشفيات</h4>
-
-    @*@Html.ActionLink("Insert new Hospital", "HospitalsInsert")*@
-
+    <h4 style="text-align:right;">المستشفيات</h4>
+    <hr />
     <table class="table table-bordered table-striped table-hover" style="background-color:wheat;margin-right:inherit; width:850px;">
         <tr>
             
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> حذف </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> تعديل </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> العنوان </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;">التليفون </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> اسم المدينة </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;">اسم المستشفى </th>
-            <th style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> رقم المستشفى</th>
+            <th> حذف </th>
+            <th> تعديل </th>
+            <th> العنوان </th>
+            <th>التليفون </th>
+            <th> اسم المدينة </th>
+            <th>اسم المستشفى </th>
+            <th> رقم المستشفى</th>
         </tr>
 
         @foreach (var a in Model)
         {
             <tr>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> @Html.ActionLink("Delete", "HospitalsDelete", new { id = a.HID })</td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;"> @Html.ActionLink("Edit", "HospitalsEdit", new { id = a.HID })</td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;">@(a.Address) </td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;">@(a.Phone) </td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;">@(a.CityName) </td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;">@(a.Name) </td>
-                <td style="font-family:'Myriad عربي';font-size:20px; text-align:center;">@(a.HID) </td>
+                <td> @Html.ActionLink("حذف", "HospitalsDelete", new { id = a.HID })</td>
+                <td> @Html.ActionLink("تعديل", "HospitalsEdit", new { id = a.HID })</td>
+                <td>@(a.Address) </td>
+                <td>@(a.Phone) </td>
+                <td>@(a.CityName) </td>
+                <td>@(a.Name) </td>
+                <td>@(a.HID) </td>
             </tr>
 
         }
-
-
-
     </table>
-    <p style="text-align:center; margin-bottom:321px;">@Html.ActionLink("إضافة مستشفى جديدة", "HospitalsInsert", null, new { @class = "btn waves-effect waves-light red darken-4" })
-    @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-    @*@Html.ActionLink("الرجوع للرئيسية", "Index")*@
+   <center>
+            @Html.ActionLink("إضافة مستشفى جديدة", "HospitalsInsert", null, new { @class = "btn waves-effect waves-light red darken-4" })
+             @Html.ActionLink("العودة  للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+       </center>
 </div>
