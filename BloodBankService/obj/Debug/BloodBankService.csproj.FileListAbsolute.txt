@@ -336,3 +336,4 @@ E:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.Twitter.xml
 E:\BloodBankITI\BloodBankService\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\BloodBankITI\BloodBankService\bin\System.Web.Http.Owin.xml
 E:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.pdb
+E:\BloodBankITI\BloodBankService\obj\Debug\BloodBankService.csprojResolveAssemblyReference.cache

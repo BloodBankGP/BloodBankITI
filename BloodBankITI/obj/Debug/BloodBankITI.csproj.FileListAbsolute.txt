@@ -429,3 +429,9 @@ D:\PROJECT\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.OAuth.xml
 D:\PROJECT\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Google.xml
 D:\PROJECT\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.Twitter.xml
 D:\PROJECT\BloodBankITI\BloodBankITI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll.config
+E:\BloodBankITI\BloodBankITI\bin\BloodBankITI.dll
+E:\BloodBankITI\BloodBankITI\bin\BloodBankITI.pdb
+E:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.csprojResolveAssemblyReference.cache
+E:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.dll
+E:\BloodBankITI\BloodBankITI\obj\Debug\BloodBankITI.pdb
