@@ -281,6 +281,8 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

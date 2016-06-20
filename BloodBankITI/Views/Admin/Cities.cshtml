@@ -6,26 +6,35 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:right;">المدن والمناطق</h4>
+
+    <h4>المدن والمناطق</h4>
+    <hr /><br />
+    
 
     @foreach (var city in Model)
     {
-        <h3 style="text-align:right;">@city.city.CityName</h3> <img src=@city.city.Logo style="margin-top:-110px;"/>
+        <h5 style="text-align:right;color:brown;">@city.city.CityName</h5> <img src=@city.city.Logo style="margin-top:-65px; width:100px;height:100px;"/>
 
         foreach (var loc in city.locations)
         {
-            <p  >
-                @loc.LocationName
-            </p>
+            <table>
+                <tr>
+                   <td style="float:right;font-size:18px;"> 
+                       <ul style="margin-right:50px;margin-top:-30px;"><li>@loc.LocationName</li></ul> 
+                    </td>
+                </tr> </table>
         }
-        <br />
         @*<p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>*@
-        <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+        <p style="text-align: left;margin-top: -34px;float:left;">@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+        <hr />
     }
-    <br /><br />
-    <p style="text-align: left;margin-top: -34px;margin-left: 20px;">@Html.ActionLink("إدخال مدينة جديدة", "InsertCity", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-    <p style="text-align: left;margin-top: -46px;margin-left: -170px;">@Html.ActionLink("العودة للوحة التحكم   ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
     
+    <br /><br />
+    <center>
+        
+        @Html.ActionLink("إدخال مدينة جديدة", "InsertCity", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("العودة للوحة التحكم   ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
     @*<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
     <p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
 </div>

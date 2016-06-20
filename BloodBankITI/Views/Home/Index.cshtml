@@ -27,19 +27,19 @@ else
     switch (Session["UserType"].ToString())
     {
         case "1":
-            <a href="/admin/index" class="user"> @(Session["Fname"]+" "+Session["Lname"])
+            <a href="/admin/index" class="user" style="text-decoration:none;"> @(Session["Fname"]+" "+Session["Lname"])
             </a>
             break;
         case "2":
-            <a href="/donor/Index" class="user">@(Session["Fname"] + " " + Session["Lname"])
+            <a href="/donor/Index" class="user" style="text-decoration:none;">@(Session["Fname"] + " " + Session["Lname"])
             </a>
             break;
         case "3":
-            <a href="/ngo/index" class="user">@(Session["Fname"])
+            <a href="/ngo/index" class="user" style="text-decoration:none;">@(Session["Fname"])
             </a>
             break;
         case "4":
-            <a href="/partner/index" class="user">@(Session["Fname"])
+            <a href="/partner/index" class="user" style="text-decoration:none;">@(Session["Fname"])
             </a>
             break;
     }

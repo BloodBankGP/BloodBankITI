@@ -8,7 +8,7 @@
 <div class="render">
     <h4 style="color:black; text-align:right;">المتبــــرعون</h4>
     <hr />
-    <table class="table table-bordered table-striped table-hover" style="background-color:wheat;margin-right:inherit; width:850px;">
+    <table class="table table-bordered table-striped table-hover" style="background-color:wheat;margin-right:inherit; width:850px;margin-left:-50px;">
         <tr>
             <th> </th>
             <th>تاريخ آخر تبرع</th>
@@ -43,6 +43,7 @@
             </tr>
         }
     </table>
-     <p style="text-align:center;">@Html.ActionLink("العودة  للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-
+    <center>
+        @Html.ActionLink("العودة  للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
 </div>

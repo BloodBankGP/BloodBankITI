@@ -13,18 +13,23 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-
+    <style>
+      #usernameerror{
+          text-align:left;
+          float:left;
+          color:brown;
+      }
+    </style>
 
 </head>
 
 <div class="render">
-    <div style=" margin-right:150px; float:right; font-size:20px;">&nbsp;لو عايز تتبرع اعرف معلومات أكتر عن التبرع
-
+    <div style="margin-right:150px; float:right; font-size:20px;">&nbsp;لو عايز تتبرع اعرف معلومات أكتر عن التبرع
         <a href="/home/info">من هنا</a>
     </div>
     <br />
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h4> لو عايز تتبرع </h4></div>
+        <div class="card-panel red darken-4"><h5> لو عايز تتبرع </h5></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
@@ -50,7 +55,7 @@
                             <br />
                             <p>
                                 <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male" value="male" />
-                                <label for="Male">ذكر</label>
+                                <label for="Male" style="color:brown;">ذكر</label>
                             </p>
                             <p>
                                 <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female" value="female" />
@@ -76,7 +81,7 @@
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                    <option value="NULL">لا أعرف فصيلة دمك</option>
+                                    <option value="NULL">لا أعرف فصيلة دمى </option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
 
@@ -91,7 +96,7 @@
                      </div>
                     <div class="card">
                         <h4 style="font-family:'Myriad عربي'; color:brown;"> لو مش عارف فصيلة دمي اعمل ايه؟</h4>
-                        <p style="font-family:'Myriad عربي'; text-align:right; ">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا اختار المعمل بعد تسجيل بياناتك <a href="/home/selectPartner">من هنا</a></p>
+                        <p style="font-family:'Myriad عربي'; text-align:right; ">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا اختار المعمل بعد تسجيل بياناتك </p>
                      
                     </div>
                     @*<ul>
@@ -139,8 +144,9 @@
 
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input type="date" class="validate" name="Donor.DonationDate" " />
-                                        <label class="right-align" for="DonationDate">تاريخ التبرع </label>
+                                        <label class="right-align" for="DonationDate">تاريخ آخر لتبرع   </label><br />
+
+                                        <input type="date" class="validate" name="Donor.DonationDate" /><br /><br />
                                         @Html.ValidationMessageFor(model => model.Donor.LID)
                                     </div>
                                 </div>
@@ -148,7 +154,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="Username" type="text" oninput="checkusername()" class="validate" name="Donor.UserName" style="text-align:right;" />
-                            <label class="right-align" for="last_name">  اسم المستخدم</label><label id="usernameerror"></label>
+                            <label class="right-align" for="last_name">  اسم المستخدم</label> <br /><label id="usernameerror"></label>
                             @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                     </div>
@@ -187,9 +193,9 @@
                 success: function (data) {
 
                     if (data == 1)
-                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم مستخدم<label>");
+                        $('#usernameerror').html("<label>هذا الاسم مستخدم<label>");
                     else {
-                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم متاح<label>");
+                        $('#usernameerror').html("<label>هذا الاسم متاح<label>");
                     }
                 },
                 error: function (e) {
@@ -203,11 +209,11 @@
         var Password = $('#Password').val();
         var Password2 = $('#Password2').val();
         if (Password == Password2) {
-            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور متطابقة<label>");
+            $('#passworderror').html("<label>كلمة المرور متطابقة<label>");
         }
         else
         {
-            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور غير متطابقة<label>");
+            $('#passworderror').html("<label>كلمة المرور غير متطابقة<label>");
         }
     }
 
