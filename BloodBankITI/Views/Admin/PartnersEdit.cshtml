@@ -1,4 +1,4 @@
-﻿@model BloodBankITI.Models.Partners_select_Result
+﻿@model BloodBankITI.Models.PartnerCities
 @{
     ViewBag.Title = "PartnersEdit";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -12,18 +12,18 @@
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="hidden" class="validate" name="Partner.PAID" value=@Model.PAID style="text-align:right">
+                            <input type="hidden" class="validate" name="Partner.PAID" value=@Model.partnersSelectResult.PAID style="text-align:right">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="Partner.Name" value=@Model.Name style="text-align:right;">
+                            <input type="text" class="validate" name="Partner.Name" value=@Model.partnersSelectResult.Name style="text-align:right;">
                             <label class="right-align" for="Partner.Name">الاسم </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="Partner.Address" value=@Model.Address style="text-align:right;">
+                            <input type="text" class="validate" name="Partner.Address" value=@Model.partnersSelectResult.Address style="text-align:right;">
                             <label class="right-align" for="Partner.Address">العنوان</label>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
 
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="Partner.Status">
-                                    @if (@Model.Status == true)
+                                    @if (@Model.partnersSelectResult.Status == true)
                                     {
                                         <option selected value="true">True</option>
                                         <option value="false"> False </option>
