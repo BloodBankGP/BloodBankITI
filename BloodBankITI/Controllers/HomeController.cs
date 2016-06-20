@@ -102,7 +102,7 @@ namespace BloodBankITI.Controllers
                 {
                     string count = response.Content.ReadAsStringAsync().Result;
 
-<<<<<<< HEAD
+
                         if (Int32.Parse(count) > 0)
                         {
                             Post donor = new Post()
