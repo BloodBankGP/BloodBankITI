@@ -1,4 +1,4 @@
-﻿@model BloodBankITI.Models.Post
+﻿@model BloodBankITI.Models.Needer
 @{
     ViewBag.Title = "FollowRequest";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -7,8 +7,24 @@
 <h2>FollowRequest</h2>
 
 
+@if(Model.CID > 0)
+{ 
+<label>
+    طلبك تم ارساله الى عدد  @Model.CID متبرع ,تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم:
+</label>
 
-@Html.Raw(@Model.Post1.Replace('_', ':').Replace('&', '/').Replace('(', '<').Replace(')', '>').Replace('*', ','))
+<a href='http://localhost:7508/Home/requestsResults/@(Model.NID + "/" + @Model.Fname + @Model.Lname)'>"http://localhost:7508/Home/requestsResults/@Model.NID/@Model.Fname@Model.Lname </a> <br><br>
 
+<label> لو بتستخدم تطبيق الموبايل استخدم الكود ده @(Model.NID + "_" + Model.Fname + Model.Lname) </label><br><br>
 
+<label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده </label> <a href=' http://localhost:7508/Home/InsertPost'>http://localhost:7508/Home/RequestsResults/InsertPost</a>
+    
+}                                                                 
+
+else if ( Model.CID == 0)
+{
+    <label>نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده </label><a class="btn waves-effect waves-light red darken-4" href=" http://localhost:7508/Home/InsertPost"></a>
+
+    <label>او يمكنك التواصل مع احدى الجميعيات الخيرية من اللينك ده </label><a class="btn waves-effect waves-light red darken-4" href=" http://localhost:7508/Home/ngos"></a>
+}
 

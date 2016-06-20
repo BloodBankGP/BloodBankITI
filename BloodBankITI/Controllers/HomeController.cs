@@ -98,50 +98,35 @@ namespace BloodBankITI.Controllers
 
                     response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    string count = response.Content.ReadAsStringAsync().Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string count = response.Content.ReadAsStringAsync().Result;
 
 
-                        if (Int32.Parse(count) > 0)
-                        {
-                            Post donor = new Post()
-                            {
-                                Post1 = 
-                                "<label>طلبك تم ارساله الى عدد " + count +
-                                " متبرع* تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم:</label><a href=' http://localhost:7508/Home&/equestsResults/" + needer_id + "/" + n.Fname + n.Lname + "'></a> <br><br><label> لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "</label><br><br><label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده <a href=' http://localhost:7508/Home/RequestsResults/InsertPost'></a> "
-                            };
-                            return RedirectToAction("FollowRequest", "_Layout2");
-                        }
-                        else
-                        {
-                            return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
-                            });
-                        }
-                    }
-                    
-                else
-                {
-                    return RedirectToAction("FollowRequest",
 
+                        return RedirectToAction("FollowRequest", "Home",
                         new
                         {
-                            id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
+                            id = needer_id,
+                            count = count,
+                            fname = n.Fname,
+                            lname = n.Lname
                         });
-
-            }
-
+                    }
                 }
             return RedirectToAction("Index");
         }
 
-        public ActionResult FollowRequest(Post id)
+        public ActionResult FollowRequest(int id, int count, string fname, string lname)
         {
-            return View("FollowRequest","_Layout2", id);
+            Needer needer = new Needer()
+            {
+                NID = id,
+                Fname = fname,
+                Lname = lname,
+                CID = count
+            };
+            return View(needer);
         }
 
         [HttpGet]

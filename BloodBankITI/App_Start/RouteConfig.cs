@@ -19,6 +19,8 @@ namespace BloodBankITI
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
+            
+
             routes.MapRoute(
                 name: "Default3",
                 url: "{controller}/{action}/{id}/{name}",
@@ -28,7 +30,13 @@ namespace BloodBankITI
             routes.MapRoute(
                 name: "Default2",
                 url: "{controller}/{action}/{nid}/{did}",
-                defaults: new { controller = "Home", action = "Index", nid = UrlParameter.Optional , did = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", nid = UrlParameter.Optional, did = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default4",
+                url: "{controller}/{action}/{id:int}/{count:int}/{fname:alpha}/{lname:alpha}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, count = UrlParameter.Optional, fname = UrlParameter.Optional, lname = UrlParameter.Optional }
             );
         }
     }
