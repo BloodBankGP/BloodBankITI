@@ -11,6 +11,8 @@ namespace BloodBankITI.Controllers
 {
     public class LoginController : Controller
     {
+        BloodBankDBITIEntities db = new BloodBankDBITIEntities();
+
         // GET: Login
         [HttpGet]
         public ActionResult Index()
@@ -39,6 +41,24 @@ namespace BloodBankITI.Controllers
                 Session["UserId"] = login.UID;
                 Session["UserName"] = login.UserName;
                 Session["UserType"] = login.UTID;
+
+                switch (login.UTID)
+                {
+                    case 1:
+                        Session["Fname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Fname;
+                        Session["Lname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Lname;
+                        break;
+                    case 2:
+                        Session["Fname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Fname;
+                        Session["Lname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Lname;
+                        break;
+                    case 3:
+                        Session["Fname"] = db.NGOes.Where(a => a.NID == login.UID).FirstOrDefault().Name;
+                        break;
+                    case 4:
+                        Session["Fname"] = db.Partners.Where(a => a.PAID == login.UID).FirstOrDefault().Name;
+                        break;
+                }
 
 
                 return RedirectToAction("Index", "Home");
