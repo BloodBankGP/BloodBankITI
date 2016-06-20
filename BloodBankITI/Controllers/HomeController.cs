@@ -120,44 +120,22 @@ namespace BloodBankITI.Controllers
                             {
                                 id =
                                 "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
-=======
-                    if (Int32.Parse(count) > 0)
-                    {
-                        return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                    "(label class='')طلبك تم ارساله الى عدد " + count +
-                                    " متبرع, تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم_(&label)(a  href=' http_&&localhost_7508&Home&RequestsResults&" + needer_id + "&" + n.Fname + n.Lname + "')(&a) (br)(br)(label class='') لو بتستخدم تطبيق الموبايل استخدم الكود ده " + needer_id + "_" + n.Fname + n.Lname + "(&label)(br)(br)(label)وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده (a  href=' http_&&localhost_7508&Home&RequestsResults&InsertPost')(&a) "
->>>>>>> origin/master
                             });
                         }
                     }
-                    else
-<<<<<<< HEAD
-                        return RedirectToAction("FollowRequest",
-=======
-                    {
-                        return RedirectToAction("FollowRequest", "Home",
-                            new
-                            {
-                                id =
-                                    "(label)نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده (&label)(a class='btn waves-effect waves-light red darken-4' href=' http_&&localhost_7508&Home&RequestsResults&InsertPost+')(&a)"
-                            });
-                    }
-                }
+                    
                 else
+                {
                     return RedirectToAction("FollowRequest",
->>>>>>> origin/master
+
                         new
                         {
                             id = "(label)حدث خطأ .. من فضلك حاول لاحقا(&label)"
                         });
-<<<<<<< HEAD
+
             }
-=======
+
                 }
->>>>>>> origin/master
             return RedirectToAction("Index");
         }
 
