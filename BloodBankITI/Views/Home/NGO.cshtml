@@ -1,4 +1,4 @@
-﻿@model BloodBankITI.Models.NGO
+﻿@model BloodBankITI.Models.NGO_selectByID_Result
 
 @{
     ViewBag.Title = "title";
@@ -9,7 +9,7 @@
 <div class="render">
     <div class="row">
         <div class="panel-heading" style="background-color:darkgray;border:2px solid darkgray;">
-            <h5 class="panel-title" style="font-family:'Myriad عربي';position:center;color:black;">@Model.Name</h5>
+            <h5 class="panel-title" style="font-family:'Myriad عربي';color:black;">@Model.Name</h5>
         </div>
         <div class="" style="border:hidden;">
             <table class="table table-user-information">
@@ -23,15 +23,15 @@
                         <td>رقم التلفون</td>
                     </tr>
                     <tr>
-                        <td>@Model.City</td>
+                        <td>@Model.CityName</td>
                         <td>المدينة</td>
                     </tr>
                     <tr>
-                        <td>@Model.Website</td>
-                        <td>البريد الإلكتروني</td>
+                        <td><a href=@Model.Website >@Model.Website</a></td>
+                        <td>الموقع الإلكتروني</td>
                     </tr>
                     <tr>
-                        <td>@Model.Fb</td>
+                        <td><a href= @Model.Fb >@Model.Fb</a></td>
                         <td>الفيس بوك</td>
                     </tr>
                 </tbody>
