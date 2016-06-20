@@ -9,7 +9,7 @@
 <div class="render">
     <div class="panel panel-info" style="border:2px solid darkgray;">
         <div class="panel-heading" style="background-color:darkgray;border:2px solid darkgray;">
-            <h3 class="panel-title" style="font-family:'Myriad عربي';position:center;color:black;">الصفحة الشخصية</h3>
+            <h3 class="panel-title" style="font-family:'Myriad عربي';position:center;color:white;font-size:22px;">الصفحة الشخصية</h3>
         </div>
         <br />
 
@@ -30,7 +30,7 @@
                         <tbody>
                             <tr>
                                 <td>@(Model.Fname + " " + Model.Lname)</td>
-                                <td>:الإسم</td>
+                                <td>:الإســـــــــــــــم</td>
                             </tr>
                             <tr>
                                 <td>@Model.UserName</td>
@@ -38,14 +38,14 @@
                             </tr>
                             <tr>
                                 <td>@Model.Password</td>
-                                <td>:كلمة المرور</td>
+                                <td>:كلمــــة المـــرور</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <center style="margin-left:10px;">
                     @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    @Html.ActionLink("الرجوع للوحة التحكم  ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                 </center>
 
             </div>

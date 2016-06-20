@@ -26,8 +26,8 @@
                         <br /><br />
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="n.Email" style="text-align:right">
-                                <label class="right-align" for="email" style="font-family:'Myriad عربي';">البريد الالكترونى </label>
+                                <input id="last_name" type="text" class="validate" name="n.Email" style="text-align:right">
+                                <label class="right-align" for="email" style="font-family:'Myriad عربي';"> العنوان </label>
                             </div>
                         </div>
                         <div class="row">
@@ -40,7 +40,7 @@
                             <div class="input-field col s12">
                                 <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
-                                    <option value="NULL">إختــــر </option>
+                                    <option value="NULL">اختــــر </option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
                                         <option value=@item.BID>@item.Type</option>
@@ -52,7 +52,7 @@
                             <div class="input-field col s12">
                                 <label class="right-align" for="city" style="font-family:'Myriad عربي';">المدينة </label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
-                                    <option value="NULL"> إختــــر</option>
+                                    <option value="NULL"> اختــــر</option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
                                         <option value=@item.CID>@item.CityName</option>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <center>
-                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" style="font-family:'Myriad عربي';">ارسال</button>
+                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" style="font-family:'Myriad عربي';">إرسال</button>
                         </center>
                     </div>
                 </div>

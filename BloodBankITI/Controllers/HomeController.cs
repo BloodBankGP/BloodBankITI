@@ -489,13 +489,13 @@ namespace BloodBankITI.Controllers
         [HttpGet]
         public ActionResult NGO(int id)
         {
-            Models.NGO ngo = new NGO();
+            Models.NGO_selectByID_Result ngo = new NGO_selectByID_Result();
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.GetAsync("NgoByID/" + id).Result;
             if (response.IsSuccessStatusCode)
             {
-                ngo = response.Content.ReadAsAsync<NGO>().Result;
+                ngo = response.Content.ReadAsAsync<NGO_selectByID_Result>().Result;
             }
 
             return View(ngo);

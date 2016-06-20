@@ -1,4 +1,4 @@
-﻿@model BloodBankITI.Models.Partner
+﻿@model IEnumerable<BloodBankITI.Models.Cities_SelectAll_Result>
 @{
     ViewBag.Title = "PartnersInsert";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -23,20 +23,20 @@
 
 <div class="render">
     <div class="container white z-depth-5">
-        <div class="card-panel red darken-4"><h6>إضافة شركاء</h6></div>
+        <div class="card-panel red darken-4"><h5>إضافة شركاء</h5></div>
         <div  class="col s12">
             <form class="col s12" action="" method="post" novalidate="novalidate">
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="Partner.Name" value=@Model.Name style="text-align:right;">
+                            <input type="text" class="validate" name="Partner.Name" style="text-align:right;">
                             <label class="right-align" for="Partner.Name"> الإسم </label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="Partner.Address" value=@Model.Address style="text-align:right;">
+                            <input type="text" class="validate" name="Partner.Address" style="text-align:right;">
                             <label class="right-align" for="Partner.Address">العنوان</label>
                         </div>
                     </div>
