@@ -7,12 +7,14 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <h2>عرض الإحصائيات</h2>
+   <br />
+    <h4>عرض الإحصائيات</h4>
+    <hr />
     @*<p>@Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics")</p>
         <p>@Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics")</p>*@
 
     <center>
-        <p style="text-align:center;">@Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics",null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-        <p style="text-align:center;">@Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics",null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-    </center>
+        @Html.ActionLink("عرض الإحصائيات الكلية", "AllStatistics",null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("عرض إحصائيات اليوم", "TodayStatistics",null, new { @class = "btn waves-effect waves-light red darken-4" })
+     </center>
 </div>

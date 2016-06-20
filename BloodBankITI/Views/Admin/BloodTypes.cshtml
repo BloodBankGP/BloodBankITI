@@ -7,9 +7,9 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render" style="width:1200px;margin-top:50px;">
-    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;margin-top:80px;margin-right:130px;"> فصائل الدم</h4>
-        <br />
-        <br />
+    <h4 style="font-size:35px; color:black; font-family:'Myriad عربي'; text-align:right;margin-top:80px;margin-right:130px;"> فصائل الدم</h4>
+        <hr />
+        
     
         @foreach (var b in Model)
         {
@@ -21,7 +21,6 @@
      
     <br />
         <p style="text-align: center;margin-top:650px;">
-            @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+            @Html.ActionLink("العودة للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
 
-            @*@Html.ActionLink("Back to Home", "Index")*@
 </div>

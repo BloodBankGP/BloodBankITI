@@ -6,42 +6,35 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;">الإحصائيات الكلية</h4>
-
+    <h4>الإحصائيات الكلية</h4>
+    <hr />
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover" style="background-color:wheat;margin-right:inherit; width:850px;">
             <tr >
                 
-                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">تاريخ التحليل</td>
-                
-                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">اسم المعمل</td>
-                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">اسم المتبرع</td>
-                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">فصيلةالدم</td>
-                <td style="font-size:25px;color:firebrick; font-family:'Myriad عربي'">مسلسل</td>
+                <td>تاريخ التحليل</td>
+                <td>اسم المعمل</td>
+                <td>اسم المتبرع</td>
+                <td>فصيلةالدم</td>
+                <td>مسلسل</td>
             </tr>
 
             @foreach (var s in Model)
             {
                 <tr>
-                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@s.Insert_Date</td>
-                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@s.Name</td>
-                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@(s.Fname + " " + s.Lname)</td>
-                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@s.Type</td>
-                    <td style="text-align:center;font-family:'Myriad عربي';font-size:20px;">@s.SID</td>
+                    <td>@s.Insert_Date</td>
+                    <td>@s.Name</td>
+                    <td>@(s.Fname + " " + s.Lname)</td>
+                    <td>@s.Type</td>
+                    <td>@s.SID</td>
                 </tr>
             }
         </table>
         </div>
 
     <center>
-        <p style="text-align:left;margin-left: 256px; margin-bottom:359px;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        <p style="text-align:left;margin-left: 256px; margin-bottom:359px;">@Html.ActionLink("العودة للوحة التحكم ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
         @Html.ActionLink("العودة للإحصائيات", "PartnersStatistics", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
     </center>
-    @*<a href="http://localhost:7508/Admin/Index"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>*@
-    @*<a href="http://localhost:7508/Admin/PartnersStatistics"><button class="btn waves-effect waves-light red darken-4" type="submit" name="action">العودة للإحصائيات</button></a>*@
-
-
-        @*<p>@Html.ActionLink("العودة للإحصائيات", "PartnersStatistics")</p>
-
-        <p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
+   
     </div>
