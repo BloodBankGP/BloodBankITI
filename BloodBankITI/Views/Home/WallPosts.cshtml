@@ -6,7 +6,7 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <div class="container white z-depth-2" style="height:auto; width:800px;">
+    <div class="container white z-depth-2" style="height:auto; width:700px;">
         <div class="card-panel grey darken-1"><h4 style="font-family:'Myriad عربي'; color:#ffffff;"> المشاركات</h4></div>
         
            
@@ -20,17 +20,11 @@
             <br />
             <div id="post">
                 <label style="text-align:right">@(post.post.Name)</label><br /><br />
-                <p>  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p>
-                <p style="font-family:Myriad عربي">@(  " من  " + post.post.CityName)</p><br />
-                <p>@(   post.post.Type + " فصيلة الدم  ")</p><br />
-                <p>@(  "  رقم التليفون  " + post.post.Phone)</p><br />
-                @*<label>@post.post.Name </label> <br /><br />*@
-                @*<p>  @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = post.post.PID })</p>*@
-                @*<label>@post.post.Type</label><br /><br />*@
-                @*<label>@post.post.CityName</label><br /><br />*@
-                @*<label>@post.post.Phone</label><br /><br />*@
-                <p style="text-align:left;color:black;">@post.post.Insert_date</p>
-                <p>@post.post.Post</p>
+                <p> @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM/yyyy"), "GetPostByID", new { id = post.post.PID })</p>
+                <label style="color:black;font-family:Myriad عربي;">,<small>@("من  " + post.post.CityName + "  ")</small></label>
+                <label style="color:black;">,<small>@("   " + post.post.Type + "فصيلة الدم  ") </small></label>
+                <label style="color:black;"><small>@(" رقم التلفون  " + post.post.Phone + "   ")</small></label><br /><br />
+                <label>@post.post.Post</label><br />
             </div>
             <hr />
             <div class="fb-share-button" data-href="http://localhost:7508/home/GetPostByID/1" data-layout="button_count" data-mobile-iframe="false"></div>

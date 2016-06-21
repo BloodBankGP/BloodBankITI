@@ -8,11 +8,12 @@
 <div class="render">
     <div class="container white z-depth-2" style="height:auto; width:800px;">
         <div id="post">
-            <label>@Model.post.Name</label><br /><br />
-            <p> @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = Model.post.PID })</p>
-
+            <label style="color:brown;">@(Model.post.Name )</label><br /><br />
+            <p> @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM/yyyy"), "GetPostByID", new { id = Model.post.PID })</p>
+            <label style="color:black;">,<small>@("من  "+Model.post.CityName+ "  ")</small></label>
+            <label style="color:black;">,<small>@("   " + Model.post.Type + "فصيلة الدم  ") </small></label>
+            <label style="color:black;"><small>@(" رقم التلفون  "+Model.post.Phone + "   ")</small></label><br /><br /> 
             <p>@Model.post.Post</p>
-
         </div>
         <div class="outset">
             <label style="font-size:20px;">الردود</label>

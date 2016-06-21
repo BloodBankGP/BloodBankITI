@@ -7,7 +7,7 @@
 
 <div class="render">
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h4> إضافة مشاركة </h4></div>
+        <div class="card-panel red darken-4"><h5> إضافة مشاركة </h5></div>
         <div id="register" class="col s12">
             <form action="" method="POST">
                 <input type="hidden" name="Post.Periodic" value=1 />
@@ -23,10 +23,12 @@
                         <label class="right-align">التعليق   </label>
                     </div>
                 </div>
-                <div class="row" style="float:right;">
+                <div class="row" >
                     <div class="input-field col s12">
-                        <label class="mdl-select__label" style="margin-left:215px;">  إختــــر فصيلة الدم  </label><br />
                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <label class="right-align" style="margin-right:-240px;">فصيلة الدم</label>
+                        </div>
+                        <div dir="rtl">
                             <select name="Post.BID" class="mdl-select__input">
                                 <option value="NULL">إختـــــر </option>
                                 @foreach (var d in Model.BloodTypesResults)
@@ -34,13 +36,15 @@
                                     <option value=@d.BID>@d.Type</option>
                                 }
                             </select>
+                            </div>
                         </div>
-                    </div>
                 </div>
-                <div class="row" style="float:right;">
+                <div class="row">
                     <div class="input-field col s12">
-                        <label class="mdl-select__label" style="margin-left:270px;">    المدينة  </label><br />
                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                            <label class="right-align" style="margin-right:-240px;">المدينة</label>
+                        </div>
+                        <div dir="rtl">
                             <select name="Post.CID" class="mdl-select__input">
                                 <option value="NULL">إختـــــر </option>
                                 @foreach (var d in Model.CitiesSelectAllResults)
