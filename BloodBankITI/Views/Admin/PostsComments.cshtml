@@ -61,24 +61,22 @@ else
 }
 
 <div class="render">
-    <h3>مشاركات الحائط </h3>
-    <hr />
+    <div class="container white z-depth-2" style="height:auto; width:700px;">
+        <div class="card-panel grey darken-1"><h4 style="font-family:'Myriad عربي'; color:#ffffff;"> مشاركات الحائط </h4></div>
         @foreach (var post in Model)
         {
             <div class="outset">
                 <label style="text-align:right">@(post.post.Name)</label><br /><br />
-                <p style="font-family:Myriad عربي">@(  " من  " + post.post.CityName)</p><br />
-                <p>@(   post.post.Type + " فصيلة الدم  ")</p><br />
-                <p>@(  "  رقم التليفون  " + post.post.Phone)</p><br />
-
+                <p> @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM/yyyy"), "GetPostByID", new { id = post.post.PID })</p>
+                <label style="color:black;font-family:Myriad عربي;">،<small>@("من  " + post.post.CityName + "  ")</small></label>
+                <label style="color:black;">،<small>@("   " + post.post.Type + "فصيلة الدم  ") </small></label>
+                <label style="color:black;"><small>@(" رقم التلفون  " + post.post.Phone + "   ")</small></label><br /><br />
                 <label>@post.post.Post</label><br />
-                <p style="text-align:left;color:black;">@post.post.Insert_date</p>
-
+                @*<p style="text-align:left;color:black;">@post.post.Insert_date</p>*@
             </div>
             <br />
             <p style="text-align:left;">@Html.ActionLink("حذف", "DeletePost", new { PID = post.post.PID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
             <hr />
-            <h3>التعليقات </h3>
             foreach (var comment in post.comments)
             {
                 @*<p>@(comment.Name + ": " + comment.Comment)</p>*@
@@ -89,7 +87,7 @@ else
                 <p style="text-align:left;">@Html.ActionLink("حذف", "DeleteComment", new { CID = comment.ID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
             }
         }
-        <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index",null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+        <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
 
-
-</div>
+        </div>
+    </div>

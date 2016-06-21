@@ -1163,16 +1163,6 @@
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="Boolean" Name="Status" Nullable="true" />
   </ComplexType>
-  <ComplexType Name="Posts_GetPostByID_Result">
-    <Property Type="Int32" Name="PID" Nullable="false" />
-    <Property Type="String" Name="Post" Nullable="false" />
-    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
-    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="BID" Nullable="false" />
-    <Property Type="Int32" Name="CID" Nullable="false" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-    <Property Type="Boolean" Name="Periodic" Nullable="false" />
-  </ComplexType>
   <ComplexType Name="posts_SelectAll_Result">
     <Property Type="Int32" Name="PID" Nullable="false" />
     <Property Type="String" Name="Post" Nullable="false" />
@@ -1678,5 +1668,17 @@
     <Property Type="String" Name="LocationName" Nullable="false" />
     <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Posts_GetPostByID_Result">
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="Post" Nullable="false" />
+    <Property Type="DateTime" Name="Insert_date" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="BID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Periodic" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>
