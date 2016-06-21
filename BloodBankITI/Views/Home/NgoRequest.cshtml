@@ -16,7 +16,7 @@
 
     <div class="render">
         <div class="container white z-depth-2" style="height:inherit;">
-            <div class="card-panel #b71c1c red darken-4"><h4 style="color:aliceblue;"> تسجيل الجمعيات الخيرية </h4>  </div>
+            <div class="card-panel #b71c1c red darken-4"><h5 style="font-family: Myriad عربي;"> تسجيل الجمعيات الخيرية </h5>  </div>
 
             <div id="register" class="col s12">
 
@@ -44,11 +44,11 @@
                         </div>
 
                         <div class="row">
-                            <label style="color:red; margin-right:20px;font-size:14px" for="CID"> المدينة </label>
+                            <label style="color:black; margin-right:20px;font-size:14px" for="CID"> المدينة </label>
                             <div class="input-field col s12">
                                 <div dir="rtl">
                                     <select class="mdl-select__input" name="NGO.CID" id="CitiesID">
-                                        <option value="NULL">Not Set</option>
+                                        <option value="NULL"> اختـــر </option>
                                         @foreach (var item in Model)
                                         {
                                             <option value=@item.CID>@item.CityName</option>

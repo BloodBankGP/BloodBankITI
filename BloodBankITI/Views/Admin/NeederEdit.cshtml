@@ -5,8 +5,8 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <div class="container white z-depth-2">
-        <div class="card-panel red darken-4"><h6> تعديل بيانات المحتاجين للتبرع </h6></div>
+    <div class="container white z-depth-2" style="height:auto;">
+        <div class="card-panel red darken-4"><h5> تعديل بيانات المحتاجين للتبرع </h5></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
@@ -14,11 +14,13 @@
                         <input type="hidden" name="needer.NID" value=@Model.Needer.NID />
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input id="first_name" name="needer.Fname" value=@Model.Needer.Fname type="text" class="validate" style="text-align:left;" />
                             <label class="right-align" for="first_name">الاسم الاول </label>
                         </div>
-                        <div class="input-field col s6">
+                     </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input id="last_name" type="text" class="validate" name="needer.Lname" value=@Model.Needer.Lname style="text-align:left">
                             <label class="right-align" for="last_name">الاسم الاخير </label>
                         </div>
@@ -33,7 +35,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">فصيلة الدم</label>
+                                <label for="CitiesID" style="text-align:right;margin-right:-155px;">فصيلة الدم</label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="Needer.BID">
@@ -50,11 +52,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="CitiesID" style="text-align:right; width:460px;">المدينة</label>
+                                <label for="CitiesID" style="text-align:right;margin-right:-155px;">المدينة</label>
                             </div>           
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="Needer.CID" id="CitiesID">
-                                    <option value="0">Not Set</option>
+                                    <option value="0">اخـــــتر </option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
 
@@ -64,13 +66,15 @@
                             </div>
                         </div>
                     </div>
+                 
                     <center>
                         @Html.ActionLink("إلغاء", "Needers", null, new { @class = "btn waves-effect waves-light red darken-4" })
                         <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
                     </center>
                 </div>
+              
             </form>
-
+          
         </div>
     </div>
 </div>

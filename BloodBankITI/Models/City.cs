@@ -16,7 +16,6 @@ namespace BloodBankITI.Models
     {
         public City()
         {
-            this.Donors = new HashSet<Donor>();
             this.Emergencies = new HashSet<Emergency>();
             this.Hospitals = new HashSet<Hospital>();
             this.Locations = new HashSet<Location>();
@@ -24,6 +23,7 @@ namespace BloodBankITI.Models
             this.NGOes = new HashSet<NGO>();
             this.Posts = new HashSet<Post>();
             this.Partners = new HashSet<Partner>();
+            this.Donors = new HashSet<Donor>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
@@ -31,7 +31,6 @@ namespace BloodBankITI.Models
         public string CityName { get; set; }
         public string Logo { get; set; }
     
-        public virtual ICollection<Donor> Donors { get; set; }
         public virtual ICollection<Emergency> Emergencies { get; set; }
         public virtual ICollection<Hospital> Hospitals { get; set; }
         public virtual ICollection<Location> Locations { get; set; }
@@ -39,6 +38,7 @@ namespace BloodBankITI.Models
         public virtual ICollection<NGO> NGOes { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Partner> Partners { get; set; }
+        public virtual ICollection<Donor> Donors { get; set; }
         public virtual ICollection<Needer_Donor> Needer_Donor { get; set; }
     }
 }

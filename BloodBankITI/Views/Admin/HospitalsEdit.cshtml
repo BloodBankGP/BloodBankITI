@@ -7,7 +7,7 @@
 <div class="render" style="margin-top:33px; height:850px;">
     <div class="container white z-depth-2" style="height:800px;">
         <div class="card-panel #b71c1c red darken-4">
-            <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:center;">تعديل المستشفى</h4>
+            <h5>تعديل المستشفى</h5>
         </div>
 
         <div id="register" class="col s12" style="margin-top: -31px;">
@@ -37,7 +37,7 @@
                 <div class="row" dir="rtl">
                     <div class="input-field col s12">
                         <p style="font-family:'Myriad عربي';font-size:20px; float:right;">العنوان</p>
-                        <input type="text" value=@Model.Hospital.Address name="Hospital.Address" />
+                        <input type="text" value=@(Model.Hospital.Address) name="Hospital.Address" />
                     </div>
                 </div>
 
@@ -61,12 +61,13 @@
                         </select>
                     </div>
                 </div>
-                <input type="submit" value="حفظ"  class="btn waves-effect waves-light red darken-4 " style="margin-top: 48px;margin-left: 192px;" />
-            </form>
+                <br /><br />
+                <center>
+                      @Html.ActionLink("إلغاء", "Hospitals", null, new { @class = "btn waves-effect waves-light red darken-4" })
 
-
-            <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إلغاء", "Hospitals", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-            @*@Html.ActionLink("إلغاء", "Hospitals")*@
+                    <input type="submit" value="حفظ" class="btn waves-effect waves-light red darken-4 " />
+                </center>
+                    </form>
 
         </div>
     </div>

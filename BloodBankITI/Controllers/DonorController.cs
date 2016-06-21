@@ -125,31 +125,31 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpGet]
-        public ActionResult AcceptRequest(int nid , int did)
+        public ActionResult AcceptRequest(int id)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("DonorAcceptRequest/"+did+"/"+nid,"").Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("DonorAcceptRequest/" + Session["UserId"].ToString() + "/" + id, "").Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Requests", new { id = did });
+                return RedirectToAction("Requests");
             }
             else
-                return RedirectToAction("Requests", new { id = did });
+                return RedirectToAction("Requests");
         }
 
         [HttpGet]
-        public ActionResult CancelRequest(int nid, int did)
+        public ActionResult CancelRequest(int id)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("DonorCancelRequest/" + did + "/" + nid,"").Result;
+            HttpResponseMessage response = client.PostAsJsonAsync("DonorCancelRequest/" + Session["UserId"].ToString() + "/" + id, "").Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Requests", new { id = did });
+                return RedirectToAction("Requests");
             }
             else
-                return RedirectToAction("Requests", new { id = did });
+                return RedirectToAction("Requests");
         }
 
     }

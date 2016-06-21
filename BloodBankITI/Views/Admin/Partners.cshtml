@@ -4,40 +4,6 @@
     ViewBag.Title = "Partners";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-@*<div class="render">
-    <h2>View All Partners</h2>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
-            <tr>
-
-                <th> الرقم المسلسل </th>
-                <th> الاسم  </th>
-                <th> Address </th>
-                <th> Status </th>
-                <th> Edit </th>
-
-
-            </tr>
-
-            @foreach (var a in Model)
-            {
-                <tr>
-                    <td>@(a.PAID) </td>
-                    <td>@(a.Name) </td>
-                    <td>@(a.Address) </td>
-                    <td>@(a.Status) </td>
-
-
-                    <td> @Html.ActionLink("Edit", "PartnersEdit", new { id = a.PAID })</td>
-
-                </tr>
-            }
-
-        </table>
-    </div>
-    @Html.ActionLink("Insert New", "PartnersInsert")
-    @Html.ActionLink("Back To Home", "Index")
-</div>*@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
@@ -68,9 +34,10 @@
             </table>
         </div>
         <center>
-            @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+            @Html.ActionLink("العودة للوحة التحكم ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
             @Html.ActionLink("إضافة شريك جديد", "PartnersInsert", null, new { @class = "btn waves-effect waves-light red darken-4" })
         </center>
 
     </div>
+    <div style="margin-bottom:35px;" ></div>
 </div>

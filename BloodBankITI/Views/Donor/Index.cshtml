@@ -6,11 +6,13 @@
 
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
-<div class="render" style="height:271px;">
-    <h4 style="font-family: Myriad عربي;">الصفحة الرئيسية</h4>
+<div class="render">
+    <h4 >الصفحة الرئيسية</h4>
     <hr />
     <center>
         @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
         @Html.ActionLink("عرض المحتاجين للتبرع", "Requests", null, new { @class = "btn waves-effect waves-light red darken-4" })
     </center>
+    <div style="margin-bottom:181px;"></div>
+
 </div>

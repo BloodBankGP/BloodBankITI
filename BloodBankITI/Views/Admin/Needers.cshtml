@@ -5,11 +5,11 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    <h3 style="font-family:Myriad عربي;">عرض المحتاجين للتبرع بالدم</h3>
+    <h4 style="font-family:Myriad عربي;">عرض المحتاجين للتبرع بالدم</h4>
     <hr />
 
     <div class="table-responsive">
-        <table class="table table-striped" style="background-color:wheat;margin-right:inherit; width:800px;">
+        <table class="table table-striped" style="background-color:wheat;margin-left:-150px;">
             <tr>
                 <th> حذف</th>
                 <th>تعديل</th>
@@ -40,5 +40,7 @@
             }
             </table>
         </div>            
-    <p style="text-align:center;">@Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-    </div>
+    <center>
+        @Html.ActionLink("العودة للوحة التحكم ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
+         </div>

@@ -465,7 +465,15 @@ namespace BloodBankITI.Controllers
             return RedirectToAction("Ngo");
         }
 
-
+        [HttpGet]
+        public ActionResult NGORequests()
+        {
+            if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            return View(db.NotApprovedNGO().ToList());
+        }
 
 
         //Partners
