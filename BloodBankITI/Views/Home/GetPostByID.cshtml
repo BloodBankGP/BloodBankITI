@@ -6,58 +6,64 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <div id="post" class="outset">
-        <label>@Model.post.Name</label><br /><br />
-        <p> @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = Model.post.PID })</p>
+    <div class="container white z-depth-2" style="height:auto; width:800px;">
+        <div id="post">
+            <label>@Model.post.Name</label><br /><br />
+            <p> @Html.ActionLink(@Model.post.Insert_date.Value.ToString("dd/MMM"), "GetPostByID", new { id = Model.post.PID })</p>
 
-        <p>@Model.post.Post</p>
-    </div>
+            <p>@Model.post.Post</p>
 
-    <div id="Comments">
-        @foreach (var comment in Model.comments)
-        {
-            <label>@comment.Name</label><br />
-            <p>@comment.Comment</p>
-        }
-    </div>
-
-    <div id="insertComment">
-        @*<h6>Insert Comment</h6>*@
-        <form action="InsertComment" method="post">
-
-            <input type="hidden" name="comment.Post_ID" value=@Model.post.PID.ToString()>
-            @*<label name="comment.Post_ID" value=@Model.post.PID.ToString()></label>*@
-
-            @if (Session["UserName"] != null)
+        </div>
+        <div class="outset">
+            <label style="font-size:20px;">الردود</label>
+            <br /><br />
+            @foreach (var comment in Model.comments)
             {
-                @Session["UserName"].ToString()
-                <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
-                @*<label name="comment.Name" value=@Session["UserName"].ToString() > </label>*@
-
+                <label>@comment.Name</label><br />
+                <p>@comment.Comment</p>
             }
-            else
+        </div>
+        <br /><br />
+        <div class="comment">
+            @*<h6>Insert Comment</h6>*@
+            <form action="/Home/InsertComment" method="post">
+
+                <input type="hidden" name="comment.Post_ID" value=@Model.post.PID.ToString()>
+                @*<label name="comment.Post_ID" value=@Model.post.PID.ToString()></label>*@
+
+                @if (Session["UserName"] != null)
             {
-                @*@("Name :")   <input type="text" name="comment.Name" />*@
+                    @Session["UserName"].ToString()
+                    <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                    @*<label name="comment.Name" value=@Session["UserName"].ToString() > </label>*@
+
+                }
+                else
+                {
+                    @*@("Name :")   <input type="text" name="comment.Name" />*@
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;">
+                            <label class="right-align"> الاسم  </label>
+                        </div>
+                    </div>
+                }
+                @*<input type="text" name="comment.Comment" />
+                <input type="submit" value="Insert" />*@
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;">
-                        <label class="right-align"> الاسم  </label>
+                        <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align:right;">
+                        <label class="right-align">التعليق </label>
                     </div>
                 </div>
-            }
-            @*<input type="text" name="comment.Comment" />
-            <input type="submit" value="Insert" />*@
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate" name="NGO.Address" style="text-align:right;">
-                    <label class="right-align"> التعليق  </label>
-                </div>
-            </div>
-            <center>
-                   @Html.ActionLink("العودة للمشاركات", "WallPosts", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
-           </center>
-                   </form>
+                <br />
+                <center>
+                    @Html.ActionLink("العودة للمشاركات", "WallPosts", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">تعليق </button>
+                </center>
+            </form>
+            <br /><br />
 
+        </div>
+        </div>
     </div>
-</div>

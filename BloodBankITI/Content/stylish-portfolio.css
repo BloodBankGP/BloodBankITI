@@ -878,20 +878,30 @@ footer{
 
  /*postcomments*/
  div.outset {
-     border-style: outset;
+    
      padding:15px;
-     background-color:antiquewhite;
+     background-color:#ebe6e6;
  }
-
  #post label{
     font-size:24px;   
 }
  #C-omments label{
-         font-size:15px;
-         border-style: outset;
-     padding:15px;
-     background-color:antiquewhite;   
+         font-size:15px; 
  }
+ /*div#C-omments
+ {
+     border-style: outset;
+     padding:15px;
+     background-color:#f7eded;
+
+ }*/
+ div.comment
+ {
+     border:2px solid rgba(0,0,0, 0.12);
+     padding:15px;
+     background-color:#fff;  
+ }
+
  #sname {
        font-size:15px;
        font-family: Myriad عربي;
