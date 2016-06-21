@@ -5,6 +5,10 @@
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
 
 <div class="render">
     <div class="container white z-depth-2" style="height:auto;">
@@ -21,7 +25,7 @@
             <div class="form-container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left">
+                        <input id="last_name" type="text" class="validate" name="ngo.Name" style="text-align:left">
                         <label class="right-align" for="last_name">الاسم   </label>
                     </div>
                 </div>
@@ -103,7 +107,11 @@
 </div>
 
 <script>
-    
+    var name = '@Html.Encode(Model.ngo.Name).ToString()'
+    $(document).ready(function () {
+        $('#last_name').val(name)
+
+    });
     function check() {
         if ($('#password2').val() != $('#password1').val()) {
             $('#PasswordMessage').text("Doesn't Match");
