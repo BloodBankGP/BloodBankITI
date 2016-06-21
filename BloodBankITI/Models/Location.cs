@@ -11,6 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Location
     {
@@ -19,8 +20,11 @@ namespace BloodBankITI.Models
             this.Donors = new HashSet<Donor>();
         }
     
+        [Required]
         public int LID { get; set; }
+        [Required]
         public Nullable<int> CID { get; set; }
+        [Required]
         public string LocationName { get; set; }
     
         public virtual City City { get; set; }

@@ -11,13 +11,19 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class PartnersStatestic
     {
+        [Required]
         public int SID { get; set; }
+        [Required]
         public Nullable<System.DateTime> Insert_Date { get; set; }
+        [Required]
         public int PID { get; set; }
+        [Required]
         public int DID { get; set; }
+        [Required]
         public Nullable<int> BID { get; set; }
     
         public virtual BloodType BloodType { get; set; }

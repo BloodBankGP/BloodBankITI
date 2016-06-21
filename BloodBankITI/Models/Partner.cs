@@ -11,6 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Partner
     {
@@ -19,11 +20,15 @@ namespace BloodBankITI.Models
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Donors = new HashSet<Donor>();
         }
-    
+
+        [Required]
         public int PAID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Address { get; set; }
         public Nullable<bool> Status { get; set; }
+        [Required]
         public Nullable<int> CID { get; set; }
     
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }

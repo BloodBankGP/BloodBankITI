@@ -11,10 +11,13 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Day
     {
+        [Required]
         public int DayID { get; set; }
+        [Required]
         public string Day1 { get; set; }
     }
 }

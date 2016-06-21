@@ -11,12 +11,16 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Comments
     {
+        [Required]
         public int ID { get; set; }
         public Nullable<int> Post_ID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Comment { get; set; }
     
         public virtual Post Post { get; set; }

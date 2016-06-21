@@ -11,6 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Needer
     {
@@ -19,12 +20,21 @@ namespace BloodBankITI.Models
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
     
+        [Required]
         public int NID { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         public string Fname { get; set; }
+        [Required]
         public string Lname { get; set; }
+        [Required]
         public int BID { get; set; }
+        [Required]
         public int CID { get; set; }
+        [Required]
+        [Phone]
         public string Phone { get; set; }
     
         public virtual BloodType BloodType { get; set; }

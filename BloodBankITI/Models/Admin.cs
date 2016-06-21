@@ -11,12 +11,17 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Admin
     {
+        [Required]
         public int AID { get; set; }
+        [Required]
         public string Fname { get; set; }
+        [Required]
         public string Lname { get; set; }
+        [Required]
         public bool Status { get; set; }
         public string Picture { get; set; }
     }

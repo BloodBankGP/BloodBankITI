@@ -11,13 +11,21 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Hospital
     {
+    
+        [Required]
         public int HID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public Nullable<int> CID { get; set; }
+        [Required]
+        [Phone]
         public string Phone { get; set; }
+        [Required]
         public string Address { get; set; }
     
         public virtual City City { get; set; }

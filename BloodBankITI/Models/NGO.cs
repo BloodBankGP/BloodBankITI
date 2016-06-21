@@ -11,17 +11,28 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class NGO
     {
+        [Required]
         public int NID { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public int CID { get; set; }
+        [Required]
+        [Phone]
         public string Phone { get; set; }
+        [Required]
         public bool Approved { get; set; }
         public bool Status { get; set; }
         public string Address { get; set; }
+        [Required]
+        [Url]
         public string Fb { get; set; }
+        [Required]
+        [Url]
         public string Website { get; set; }
     
         public virtual City City { get; set; }

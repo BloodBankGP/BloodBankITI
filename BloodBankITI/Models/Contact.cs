@@ -11,15 +11,24 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Contact
     {
+        [Required]
         public int ID { get; set; }
+        [Required]
         public string FName { get; set; }
+        [Required]
         public string LName { get; set; }
+        [Required]
         public Nullable<int> Age { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         public string Msg { get; set; }
     }
 }

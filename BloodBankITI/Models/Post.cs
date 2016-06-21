@@ -11,6 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Post
     {
@@ -18,13 +19,21 @@ namespace BloodBankITI.Models
         {
             this.Comments = new HashSet<Comments>();
         }
-    
+
+        [Required]        
         public int PID { get; set; }
+        [Required]
         public string Post1 { get; set; }
+        [Required]
         public Nullable<System.DateTime> Insert_date { get; set; }
+        [Required]
+        [Phone]
         public string Phone { get; set; }
+        [Required]
         public int BID { get; set; }
+        [Required]
         public int CID { get; set; }
+        [Required]
         public string Name { get; set; }
         public bool Periodic { get; set; }
     
