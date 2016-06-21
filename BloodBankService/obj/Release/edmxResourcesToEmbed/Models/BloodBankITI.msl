@@ -874,6 +874,8 @@
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
