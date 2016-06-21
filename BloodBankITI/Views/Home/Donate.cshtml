@@ -3,6 +3,65 @@
     ViewBag.Title = "Donate";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+
+    @*<div style="float:left;">
+         <label style="margin-left:10px">@Session["UserName"]</label>
+
+        </div>*@
+}
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <head>
     <!-- Material Design Lite -->
@@ -13,18 +72,25 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-
+    <style>
+      #usernameerror{
+          text-align:left;
+          float:left;
+          color:brown;
+      }
+    </style>
 
 </head>
 
 <div class="render">
-    <div style=" margin-right:150px; float:right; font-size:20px;">&nbsp;لو عايز تتبرع اعرف معلومات أكتر عن التبرع
-
-        <a href="/home/info">من هنا</a>
+    <div style="margin-right:150px; float:right; font-size:20px;font-family:'Myriad عربي';">&nbsp;@*لو عايز تتبرع اعرف معلومات أكتر عن التبرع*@ قبل ما تسجل بياناتك اعرف معلومات عن التبرع بالدم
+        <a href="/home/info">من هنا</a><br />
+     <p style="float:right; font-size:20px;font-family:'Myriad عربي';">واعرف ازاى هتسجل <a href="/home/about">من هنا</a></p>
+        
     </div>
-    <br />
+    <br /><br /><br />
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h4> لو عايز تتبرع </h4></div>
+        <div class="card-panel red darken-4"><h5> لو عايز تتبرع </h5></div>
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
@@ -50,7 +116,7 @@
                             <br />
                             <p>
                                 <input class="with-gap" name="Donor.DonorGender" type="radio" id="Male" value="male" />
-                                <label for="Male">ذكر</label>
+                                <label for="Male" style="color:brown;">ذكر</label>
                             </p>
                             <p>
                                 <input class="with-gap" name="Donor.DonorGender" type="radio" id="Female" value="female" />
@@ -76,7 +142,7 @@
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="Donor.BID">
-                                    <option value="NULL">لا أعرف فصيلة دمك</option>
+                                    <option value="NULL">لا أعرف فصيلة دمى </option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
 
@@ -89,21 +155,7 @@
                         </div>
 
                      </div>
-                    <div class="card">
-                        <h4 style="font-family:'Myriad عربي'; color:brown;"> لو مش عارف فصيلة دمي اعمل ايه؟</h4>
-                        <p style="font-family:'Myriad عربي'; text-align:right; ">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا اختار المعمل بعد تسجيل بياناتك <a href="/home/selectPartner">من هنا</a></p>
-                     
-                    </div>
-                    @*<ul>
-                        <li>
-                            <input type="checkbox" checked>
-                            <i></i>
-                            <h4 style="font-family:'Myriad عربي'"> لو مش عارف فصيلة دمي اعمل ايه؟</h4>
-                            <p style="font-family:'Myriad عربي'">&nbsp;  تقدر تعرف فصيلة دمك عن طريق انك تحدد اي معمل وهو هيعرفك فصيلة الدم مجانا ,اختار المعمل بعد تسجيل بياناتك <a href="/home/selectPartner">من هنا</a></p>
-                        </li>
-                    </ul>*@
-
-
+                   
 
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -138,9 +190,10 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <input type="date" class="validate" name="Donor.DonationDate" " />
-                                        <label class="right-align" for="DonationDate">تاريخ التبرع </label>
+                                    <div class="input-field col s6">
+                                        <label class="right-align" for="DonationDate">تاريخ آخر لتبرع   </label><br />
+
+                                        <input type="date" class="validate" name="Donor.DonationDate" /><br /><br />
                                         @Html.ValidationMessageFor(model => model.Donor.LID)
                                     </div>
                                 </div>
@@ -148,7 +201,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="Username" type="text" oninput="checkusername()" class="validate" name="Donor.UserName" style="text-align:right;" />
-                            <label class="right-align" for="last_name">  اسم المستخدم</label><label id="usernameerror"></label>
+                            <label class="right-align" for="last_name">  اسم المستخدم</label> <br /><label id="usernameerror"></label>
                             @Html.ValidationMessageFor(model => model.Login.UserName)
                         </div>
                     </div>
@@ -187,9 +240,9 @@
                 success: function (data) {
 
                     if (data == 1)
-                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم مستخدم<label>");
+                        $('#usernameerror').html("<label>هذا الاسم مستخدم<label>");
                     else {
-                        $('#usernameerror').html("<label style='text-align:right;'>هذا الاسم متاح<label>");
+                        $('#usernameerror').html("<label>هذا الاسم متاح<label>");
                     }
                 },
                 error: function (e) {
@@ -203,11 +256,11 @@
         var Password = $('#Password').val();
         var Password2 = $('#Password2').val();
         if (Password == Password2) {
-            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور متطابقة<label>");
+            $('#passworderror').html("<label>كلمة المرور متطابقة<label>");
         }
         else
         {
-            $('#passworderror').html("<label style='text-align:right;'>كلمة المرور غير متطابقة<label>");
+            $('#passworderror').html("<label>كلمة المرور غير متطابقة<label>");
         }
     }
 

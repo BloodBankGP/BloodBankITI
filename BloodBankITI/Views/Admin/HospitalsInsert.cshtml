@@ -4,50 +4,112 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 
 
 <div class="render" style="margin-top: 26px; height:850px;">
     <div class="container white z-depth-2" style="height:800px;">
         <div class="card-panel #b71c1c red darken-4">
-            <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:center;">إضافة مستشفى</h4>
+            <h5>إضافة مستشفى</h5>
         </div>
+    <br />
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
-                <div class="row" dir="rtl">
+                <div class="row">
                     <div class="input-field col s12">
-                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">الإسم</p>
-                        <input type="text" name="Hospital.Name" style="float:right; " /><br />
+                        <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم </label>
+                        <input type="text" name="Hospital.Name" class="right-align" />
                     </div>
                 </div>
-                <div class="row" dir="rtl">
+                <div class="row">
                     <div class="input-field col s12">
-                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">التليفون</p>
-
-                        <input type="text" name="Hospital.Phone" style="float:right; " /><br />
+                        <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">رقم الهاتف  </label>
+                        <input type="number" name="Hospital.Phone" class="right-align" />
                     </div>
                 </div>
-                <div class="row" dir="rtl">
+                <div class="row">
                     <div class="input-field col s12">
-                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">العنوان</p>
-
-                        <input type="text" name="Hospital.Address" style="float:right; " /><br />
+                        <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">   العوان  </label>
+                        <input type="text" name="Hospital.Address" class="right-align" />
                     </div>
                 </div>
+
                 <div class="row" dir="rtl">
                     <div class="input-field col s12">
-                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">المدينة</p></div></div>
+                        <p style="font-family:'Myriad عربي';font-size:20px; float:right;">المدينة</p>
+                    </div>
+                </div>
 
-                            <select name="Hospital.CID" class="mdl-select__input" dir="rtl">
-                                <option value="null">إختر مدينة</option>
-                                @foreach (var item in Model.CitiesSelectAllResults)
-                                {
+                <select name="Hospital.CID" class="mdl-select__input" dir="rtl">
+                    <option value="null">إختر مدينة</option>
+                    @foreach (var item in Model.CitiesSelectAllResults)
+                    {
 
-                                    <option value=@item.CID>@item.CityName</option>
-                                }
-                            </select>
-            <input type="submit" value="إدخال"  class="btn waves-effect waves-light red darken-4 " style="margin-top: 48px;margin-left: 192px;"/>
+                        <option value=@item.CID>@item.CityName</option>
+                    }
+                </select>
+                <br /><br /><br /><br />
+
+                <center>
+                    @Html.ActionLink("إلغاء", "Hospitals", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <input type="submit" value="إدخال" class="btn waves-effect waves-light red darken-4 " />
+                </center>
             </form>
-            <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إلغاء", "Hospitals", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>  
-            @*@Html.ActionLink("إالغاء", "Hospitals")*@
+
+
         </div>
-        </div></div>
+        </div>
+</div>

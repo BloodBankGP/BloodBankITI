@@ -1,14 +1,98 @@
-﻿@model BloodBankITI.Models.Post
+﻿@model BloodBankITI.Models.Needer
 @{
     ViewBag.Title = "FollowRequest";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
 
-<h2>FollowRequest</h2>
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+
+    @*<div style="float:left;">
+         <label style="margin-left:10px">@Session["UserName"]</label>
+
+        </div>*@
+}
+<div class="render">
+<h2>تابع الردود على طلبك </h2>
+    <hr />
+
+    @if (Model.CID > 0)
+    {
+        <label>
+            طلبك تم ارساله الى عدد  @Model.CID متبرع 
+        </label>
+<br />
+  <p style="font-family: Myriad عربي;">  تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم</p>
 
 
 
-@Html.Raw(@Model.Post1.Replace('_', ':').Replace('&', '/').Replace('(', '<').Replace(')', '>').Replace('*', ','))
 
+<a href='http://localhost:7508/Home/requestsResults/@(Model.NID + "/" + @Model.Fname + @Model.Lname)'>http://localhost:7508/Home/requestsResults/@Model.NID/@Model.Fname@Model.Lname </a> <br><br>
 
+<label> لو بتستخدم تطبيق الموبايل استخدم الكود ده  </label><br><br>
+        <p style="color:brown;margin-right:200px;">@(Model.NID + "_" + Model.Fname + Model.Lname)</p>
 
+<label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده </label> <br /><br />
+    <a href='http://localhost:7508/Home/InsertPost'>http://localhost:7508/Home/RequestsResults/InsertPost</a>
+    
+}                                                                 
+
+else if ( Model.CID == 0)
+{
+    <label>نعتذر لا يوجد متبرعين لدينا بنفس فصيلة الدم المطلوبة,ولكن يمكنك ان تشارك طلبك مع زوار الموقع من اللينك ده </label><a class="btn waves-effect waves-light red darken-4" href=" http://localhost:7508/Home/InsertPost"></a>
+
+    <label>او يمكنك التواصل مع احدى الجميعيات الخيرية من اللينك ده </label><a class="btn waves-effect waves-light red darken-4" href=" http://localhost:7508/Home/ngos"></a>
+}
+
+</div>
+<div style="margin-bottom:125px;"></div>

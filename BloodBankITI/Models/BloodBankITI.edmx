@@ -2203,16 +2203,6 @@
           <Property Type="String" Name="Address" Nullable="true" />
           <Property Type="Boolean" Name="Status" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="Posts_GetPostByID_Result">
-          <Property Type="Int32" Name="PID" Nullable="false" />
-          <Property Type="String" Name="Post" Nullable="false" />
-          <Property Type="DateTime" Name="Insert_date" Nullable="true" />
-          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="BID" Nullable="false" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
-          <Property Type="Boolean" Name="Periodic" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="posts_SelectAll_Result">
           <Property Type="Int32" Name="PID" Nullable="false" />
           <Property Type="String" Name="Post" Nullable="false" />
@@ -2538,23 +2528,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="donor_SelectByDID_Result">
-          <Property Type="Int32" Name="DID" Nullable="false" />
-          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="BID" Nullable="true" />
-          <Property Type="Int32" Name="CID" Nullable="false" />
-          <Property Type="Int32" Name="LID" Nullable="false" />
-          <Property Type="Boolean" Name="Status" Nullable="false" />
-          <Property Type="Boolean" Name="Pending" Nullable="false" />
-          <Property Type="DateTime" Name="DonationDate" Nullable="true" />
-          <Property Type="Int32" Name="PAID" Nullable="true" />
-          <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="CityName" Nullable="false" />
-          <Property Type="String" Name="LocationName" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="Donors_select_Result">
           <Property Type="Int32" Name="DID" Nullable="false" />
           <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
@@ -2716,6 +2689,37 @@
           <Property Type="String" Name="Picture" Nullable="true" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="donor_SelectByDID_Result">
+          <Property Type="Int32" Name="DID" Nullable="false" />
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DonorGender" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="true" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="LID" Nullable="false" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="Pending" Nullable="false" />
+          <Property Type="DateTime" Name="DonationDate" Nullable="true" />
+          <Property Type="Int32" Name="PAID" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="LocationName" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Posts_GetPostByID_Result">
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="String" Name="Post" Nullable="false" />
+          <Property Type="DateTime" Name="Insert_date" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Periodic" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="10" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3003,6 +3007,8 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3390,6 +3396,8 @@
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

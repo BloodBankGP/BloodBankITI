@@ -5,12 +5,79 @@
 }
 
 <link href="~/Content/materialize.css" rel="stylesheet" />
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
 
-<div class="render" style="height:271px;">
-    <h4 style="font-family: Myriad عربي;">الصفحة الرئيسية</h4>
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }  
+}
+<div class="render">
+    <h4 > لوحة التحكم </h4>
     <hr />
+   
+
+    <br /><br />
     <center>
-        @Html.ActionLink("عرض الصفحة الشخصية", "ViewProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
-        @Html.ActionLink("عرض المحتاجين للتبرع", "Requests", null, new { @class = "btn waves-effect waves-light red darken-4" })
-    </center>
+        @*@Html.ActionLink("", "ViewProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })*@
+        @*@Html.ActionLink("عرض المحتاجين للتبرع", "Requests", null, new { @class = "btn waves-effect waves-light red darken-4" })*@
+        <a href='@Url.Action("ViewProfile", "Donor")' title="عرض الصفحة الشخصية" style="text-decoration:none;">
+            <img src='@Url.Content("~/img/resume.png")' width="100" height="100"/>
+        </a>
+        &nbsp;    &nbsp;    &nbsp;   &nbsp;    &nbsp;    &nbsp;   &nbsp;    &nbsp;    &nbsp;
+        &nbsp;    &nbsp;    &nbsp;   &nbsp;    &nbsp;    &nbsp;   &nbsp;    &nbsp;    &nbsp;
+        <a href='@Url.Action("Requests", "Donor")' title="عرض المحتاجين للتبرع" style="text-decoration:none;">
+            <img src='@Url.Content("~/img/blood requests.png")' width="100" height="100" />
+        </a>
+
+     </center>
+    <div style="margin-bottom:181px;"></div>
+
 </div>

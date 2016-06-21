@@ -4,14 +4,73 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+
+    @*<div style="float:left;">
+         <label style="margin-left:10px">@Session["UserName"]</label>
+
+        </div>*@
+}
 <!-- Compiled and minified CSS -->
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
 
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel #b71c1c red darken-4"><h5 style="color:aliceblue;text-align:center;font-family:'Myriad عربي';">انا محتاج دم</h5>  </div>
+        <div class="card-panel #b71c1c red darken-4"><h5>انا محتاج دم</h5>  </div>
         <div id="register" class="col s12">
-            <form class="col s12" action="" method="post"">
+            <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
                        
@@ -26,8 +85,8 @@
                         <br /><br />
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email" type="email" class="validate" name="n.Email" style="text-align:right">
-                                <label class="right-align" for="email" style="font-family:'Myriad عربي';">البريد الالكترونى </label>
+                                <input id="last_name" type="text" class="validate" name="n.Email" style="text-align:right">
+                                <label class="right-align" for="email" style="font-family:'Myriad عربي';"> مكان تواجد الحالة  </label>
                             </div>
                         </div>
                         <div class="row">
@@ -40,7 +99,7 @@
                             <div class="input-field col s12">
                                 <label class="right-align" for="bloodId" style="font-family:'Myriad عربي';">نوع الدم</label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.BID" style="text-align:right;">
-                                    <option value="NULL">إختــــر </option>
+                                    <option value="NULL">اختــــر </option>
                                     @foreach (var item in Model.BloodTypesResults)
                                     {
                                         <option value=@item.BID>@item.Type</option>
@@ -52,7 +111,7 @@
                             <div class="input-field col s12">
                                 <label class="right-align" for="city" style="font-family:'Myriad عربي';">المدينة </label><br /><br />
                                 <select class="mdl-select__input" id="professsion" name="n.CID" style="text-align:right;">
-                                    <option value="NULL"> إختــــر</option>
+                                    <option value="NULL"> اختــــر</option>
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
                                         <option value=@item.CID>@item.CityName</option>
@@ -61,7 +120,7 @@
                             </div>
                         </div>
                         <center>
-                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" style="font-family:'Myriad عربي';">ارسال</button>
+                            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" style="font-family:'Myriad عربي';">إرسال</button>
                         </center>
                     </div>
                 </div>

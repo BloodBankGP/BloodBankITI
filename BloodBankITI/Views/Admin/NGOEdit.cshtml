@@ -4,6 +4,60 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 <div class="render">
     <div class="container white z-depth-5" style="height:800px;">
         <div class="card-panel red darken-4"><h5>تعديل معلومات الجمعيات الخيرية</h5></div>
@@ -12,19 +66,19 @@
                 <div class="form-container">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input type="hidden" class="validate" name="ngo.NID" value=@Model.ngo.NID style="text-align:right">
+                            <input type="hidden" class="validate" name="ngo.NID" value=@Model.ngo.NID style="text-align:left">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:right;">
+                            <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left;">
                             <label class="right-align" for="ngo.Name">الاسم </label>
                         </div>
                     </div>
                      
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:right;">
+                            <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:left;">
                             <label class="right-align" for="ngo.Phone">رقم التلفون </label>
                         </div>
                     </div>   
@@ -36,11 +90,9 @@
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="ngo.CID" id="CitiesID">
-                                    <option value="0">Not Set</option>
+
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
-
-
                                         if (item.CID == Model.ngo.CID)
                                         {
                                             <option value=@item.CID selected="selected">@item.CityName</option>
@@ -57,42 +109,19 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:right;">
+                            <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left;">
                             <label class="right-align" for="ngo.Address">العنوان </label>
                         </div>
                     </div>   
                         
 
-                    @*<div class="row">
-                        <div class="input-field col s12">
-                            <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label class="right-align" for="Message" style="text-align:right; width:460px;">الحالة</label>
-                            </div>
-
                  
-                            <div dir="rtl">
-                                <select class="mdl-select__input" id="professsion" name="ngo.status">
-                                    @if (@Model.ngo.Status == true)
-                                    {
-                                        <option selected value="1">True</option>
-                                        <option value="0"> False </option>
-                                    }
-                                    else
-                                    {
-                                        <option value="1">True</option>
-                                        <option selected value="0"> False </option>
-                                    }
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>*@
 
 
                     <div class="row" >
                         <div class="input-field col s12" >
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="Message" style="margin-right:-160px;">الموافقة</label>
+                                <label for="Message" style="margin-right:-160px;"> مفعّل؟؟ </label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="ngo.approved">

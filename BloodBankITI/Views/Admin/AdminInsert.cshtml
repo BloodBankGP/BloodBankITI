@@ -2,70 +2,99 @@
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
 
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
-    
-        @*<h2 style="color:brown;">أضف مشرف جديد</h2>
-
-
-        <form action="" method="POST">
-            <div class="form-group">
-                First Name: <input type="text" name="Admin.Fname" />
-            </div>
-            <div class="form-group">
-                Last Name: <input type="text" name="Admin.Lname" />
-            </div>
-            <div class="form-group">
-                UserName: <input type="text" name="Login.Username" />
-            </div>
-            <div class="form-group">
-                Password: <input type="text" name="Login.Password" />
-            </div>
-
-            <input type="submit" value="Insert" />
-        </form>
-
-        @Html.ActionLink("Cancel", "AdminsView")*@
 
     <div class="container white z-depth-2">
-        <div class="card-panel #b71c1c red darken-4"><h5 style="color:white;text-align:center;">أضف مشرف جديد</h5>  </div>
+        <div class="card-panel #b71c1c red darken-4"><h5>أضف مشرف جديد</h5>  </div>
        
         <div id="register" class="col s12">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
-                            <label class="right-align" for="last_name">الاسم الثانى  </label>
-                        </div>
-                        <div class="input-field col s6">
+                        <div class="row">
+                        <div class="input-field col s12">
                             <input id="last_name" name="Fname" type="text" class="validate" style="text-align:right;">
                             <label class="right-align" for="first_name">الاسم الاول</label>
                         </div>
-                        <br /><br />
+                      </div>
+                        <div class="row">
+                        <div class="input-field col s12">
+                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
+                            <label class="right-align" for="last_name">الاسم الثانى  </label>
+                        </div>
+                    </div> 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email" type="text" class="validate" name="Username" style="text-align:right">
+                                <input  type="text" class="validate" name="Username" style="text-align:right">
                                 <label class="right-align" for="email">اسم المستخدم  </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="email-confirm" type="password" class="validate" name="Password" style="text-align:right;">
+                                <input  type="password" class="validate" name="Password" style="text-align:right;">
                                 <label class="right-align" for="phone">رمز الدخول </label>
                             </div>
                         </div>
-                        <br /><br />
                      
                         <center>
-                            <button class="btn waves-effect waves-light red darken-4" type="reset" name="action">إلغاء</button>
+                            @Html.ActionLink("إالغاء", "AdminsView", null, new { @class = "btn waves-effect waves-light red darken-4" })
                             <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">إضافة</button>
-                            
-                                
                          </center>
-                    </div>
-                </div>
+              </div>          
             </form>
         </div>
     </div>
