@@ -3,31 +3,84 @@
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
 
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 <div class="render">
 
     <h2 style="font-family:'Myriad عربي'; color:black; text-align:center;"> عن التبرع بالدم </h2>
     <ul>
-     <li>
+     @*<li>
            <input type="checkbox" checked >
             <i></i>
             <h2 style="font-family:'Myriad عربي'"> ماهو التبرع بالدم؟</h2>
             <p style="font-family:'Myriad عربي'">التبرع بالدم هو سحب كمية من دم المتبرع تقدر بحوالي ( 450مل ) أي بنسبة ( 8% ) من دم الإنسان الطبيعي وهذه العملية تستغرق أقل من ربع ساعة وهي مهمة لتلبية الحاجة المستمرة للدم </p>
-        </li>
-        <li>
+        </li>*@
+        @*<li>
             <input type="checkbox" checked >
             <i></i>
             <h2 style="font-family:'Myriad عربي'">ليه بنتبرع؟</h2>
             <p style="font-family:'Myriad عربي'">  عملاً بقوله تعالى: ( ومن أحياها فكأنما أحيا الناس جميعاً)
                 في كل سنة يحتاج آلاف بل ملايين المرضى إلى عملية نقل الدم أو أحد مشتقاته
            </p>
-        </li>
+        </li>*@
         <li>
             <input type="checkbox" checked >
             <i></i>
-            <h2 style="font-family:'Myriad عربي'">فوائد التبرع بالدم</h2>
-            <p style="font-family:'Myriad عربي'">تنشيط الدورة الدموية, حيث يتم تنشيط نخاع العظم لإنتاج خلايا الدم المختلفة بعد التبرع بالدم </p>
-            <p style="font-family:'Myriad عربي'">التقليل من احتمال الإصابة بأمراض القلب وانسداد الشرايين لأن التبرع بالدم يقلل نسبة الحديد في الدم والتي ثبت علمياً أن زيادة نسبة الحديد تزيد من نسبة الإصابة من هذه الأمراض</p>
+            <h2 style="font-family:'Myriad عربي';font-size:22px;">فوائد التبرع بالدم</h2>
+            <p style="font-family:'Myriad عربي'">تنشيط الدورة الدموية؛ حيث يتم تنشيط نخاع العظم لإنتاج خلايا الدم المختلفة بعد التبرع بالدم </p>
+            <p style="font-family:'Myriad عربي'">التقليل من احتمال الإصابة بأمراض القلب وانسداد الشرايين، لأن التبرع بالدم يقلل نسبة الحديد في الدم والتي ثبت علميًا أن زيادة نسبة الحديد تزيد من نسبة الإصابة بهذه الأمراض</p>
             <p style="font-family:'Myriad عربي'">يتم التأكد عند التبرع بالدم من سلامة المتبرع بعد إجراء الكشف الطبي عليه من قبل الطبيب المختص </p>
             <p style="font-family:'Myriad عربي'">الشعور بالراحة النفسية لما يقوم به المتبرع من عمل جليل لما فيه من أجر وثواب </p>
             <p style="font-family:'Myriad عربي'">استخدام التبرع بالدم كوسيلة لعلاج بعض الأمراض </p>
@@ -35,20 +88,33 @@
             <li>
                 <input type="checkbox" checked>
                 <i></i>
-                <h2 style="font-family:'Myriad عربي'"> تقدر تتبرع فين ؟</h2>
-                <p style="font-family:'Myriad عربي'">يمكن التبرع بالدم في بنوك الدم والمستشفيات والمراكز المتخصصة </p>
+                <h2 style="font-family:'Myriad عربي';font-size:22px;"> تقدر تتبرع فين؟</h2>
+                <p style="font-family:'Myriad عربي'"> في بنوك الدم والمستشفيات والمراكز المتخصصة </p>
             </li>
         <li>
             <input type="checkbox" checked>
             <i></i>
-            <h2 style="font-family:'Myriad عربي'"> الحالات التي يمنع فيها التبرع بالدم؟ </h2>
-            <p style="font-family:'Myriad عربي'">الشخص الذي أجريت له عملية نقل دم أو أجريت له عملية جراحية لفترة أقل من أثنى عشرا شهرا </p>
-            <p style="font-family:'Myriad عربي'">الشخص المصاب لأحد الأمراض المعدية والتي ثبت أنها تنقل عن طريق نقل الدم الملوث بجرثومة المرض كالايدز أو التهاب الكبدي الفيروسي والزهري والملا ريا...الخ</p>
-            <p style="font-family:'Myriad عربي'"> الشخص المصاب بأحد الأمراض المزمنة كالسرطان والقلب والصرع وكذلك الشخص المصاب بالسكري الذي يحتاج إلى الأنسولين في علاجه</p>
-            <p style="font-family:'Myriad عربي'">الشخص المصاب بأحد أمراض الدم كفقر الدم والثلاسيميا ...الخ, كذلك المصاب بأمراض الحساسية كالربو أو الحساسية من الأدوية</p>
+            <h2 style="font-family:'Myriad عربي';font-size:22px;"> مين ميقدرش يتبرع؟ </h2>
+            <p style="font-family:'Myriad عربي'">من أجرى عملية نقل دم أو أُجريت له عملية جراحية لفترة أقل من اثنى عشر شهرًا </p>
+            <p style="font-family:'Myriad عربي'">المصاب بالأحد الأمراض المعدية والتي ثبت أنها تنتقل عن طريق نقل الدم الملوث بجرثومة المرض، كالإيدز أو الإلتهاب الكبدي الفيروسي والزهري والملا ريا...إلخ</p>
+            <p style="font-family:'Myriad عربي'"> المصاب بأحد الأمراض المزمنة كالسرطان والقلب والصرع وكذلك الشخص المصاب بالسكري الذي يحتاج إلى الأنسولين في علاجه</p>
+            <p style="font-family:'Myriad عربي'">الشخص المصاب بأحد أمراض الدم كفقر الدم والثلاسيميا ...إلخ، كذلك المصاب بأمراض الحساسية كالربو أو الحساسية من الأدوية</p>
         </li>
 
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2 style="font-family:'Myriad عربي';font-size:22px;"> تقدر تتبرع كل قد ايه؟</h2>
+            <p style="font-family:'Myriad عربي'">الولد يقدر يتبرع كل ۳ شهور والبنت تقدر تتبرع كل ٤ شهور </p>
+        </li>
 
+        <li>
+            <input type="checkbox" checked>
+            <i></i>
+            <h2 style="font-family:'Myriad عربي';font-size:22px;"> التبرع بالدم ممكن يؤذيني؟</h2>
+            <p style="font-family:'Myriad عربي'">لا .. لأن جسمك بيعوض كمية الدم اللي فقدها خلال ساعات، وأغلب الناس بيكملوا أنشطتهم العادية بعد التبرع </p>
+            <p style="font-family:'Myriad عربي'">نادرًا ما تحدث بعض الأعراض؛ مثل الدوخة أو القيء، وتزول تلقائيا بعد فترة وجيزة </p>
+        </li>
         </ul>
 
 </div>

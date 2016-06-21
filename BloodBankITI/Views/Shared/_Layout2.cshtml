@@ -17,7 +17,7 @@
     <!-- Custom Fonts -->
     <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="icon" href="~/img/blood-drop.png">
+    <link rel="icon" href="~/img/blood.png">
     <!-- Compiled and minified CSS -->
     @*<link href="~/Content/materialize.css" rel="stylesheet" />*@
     @*<link href="~/Content/materialize.min.css" rel="stylesheet" />*@
@@ -34,7 +34,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+  
 </head>
 <body>
     <!-- Navigation -->
@@ -67,6 +67,7 @@
            <a href="/home/wallposts"> المشاركات والتعليقات </a>
            <a href="/home/NGOs"> الجمعيات الخيرية </a>
            <a href="/home/info">  معلومات عن التبرع </a>
+           <a href="/home/about"> ازاي أستخدم الموقع؟  </a>
            <a href="/home/contact"> تواصل معنا  </a>
            @if (Session["UserId"] != null && Session["UserName"] != null)
            {
@@ -93,78 +94,84 @@
     @RenderBody()
     <br />
     <br />
-    <!-- Footer -->
-    <footer>
-        <div class="icon center-block" >
-            <a href="https://www.facebook.com/dammak7ayah" style="text-decoration:none;"><span class="fa fa-facebook fa-2x" ></span></a>
-            <a href="https://twitter.com/dammak_7ayah"> <span class="fa fa-twitter fa-2x"></span></a>
-            <span class="fa fa-youtube fa-2x"></span>
-            <br><br>
-            <h6>Copyright @@2016 www.damak7ayah.com. All rights reserved.</h6>
-            <br><br>
-        </div>
-    </footer>
-    <!-- jQuery -->
 
-    <script src="~/js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
+   
 
-    <script src="~/js/bootstrap.min.js"></script>
-    <!-- Custom Theme JavaScript -->
 
-    <script src="~/js/materialize.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    @*<script src="~/js/forms.js"></script>*@
+        <!-- Footer -->
+        <footer>
+            <div class="icon center-block">
+                <a href="https://www.facebook.com/dammak7ayah" style="text-decoration:none;"><span class="fa fa-facebook fa-2x"></span></a>
+                <a href="https://twitter.com/dammak_7ayah"> <span class="fa fa-twitter fa-2x"></span></a>
+                <span class="fa fa-youtube fa-2x"></span>
+                <br><br>
+                <h6>Copyright @@2016 www.damak7ayah.com. All rights reserved.</h6>
+                <br><br>
+            </div>
+        </footer>
+        <!-- jQuery -->
+      
 
-    <script>
-    //// Closes the sidebar menu
-    //$("#menu-close").click(function(e) {
-    //    e.preventDefault();
-    //    $("#sidebar-wrapper").toggleClass("active");
-    //});
+        <script src="~/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
 
-    //// Opens the sidebar menu
-    //$("#menu-toggle").click(function(e) {
-    //    e.preventDefault();
-    //    $("#sidebar-wrapper").toggleClass("active");
-    //});
+        <script src="~/js/bootstrap.min.js"></script>
+        <!-- Custom Theme JavaScript -->
 
-    //// Scrolls to the selected menu item on the page
-    //$(function() {
-    //    $('a[href*=#]:not([href=#])').click(function() {
-    //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+        <script src="~/js/materialize.min.js"></script>
+        <!-- Compiled and minified JavaScript -->
+        @*<script src="~/js/forms.js"></script>*@
 
-    //            var target = $(this.hash);
-    //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //            if (target.length) {
-    //                $('html,body').animate({
-    //                    scrollTop: target.offset().top
-    //                }, 1000);
-    //                return false;
-    //            }
-    //        }
-    //    });
-    //});
-    </script>
-    <script>
+        <script>
+            //// Closes the sidebar menu
+            //$("#menu-close").click(function(e) {
+            //    e.preventDefault();
+            //    $("#sidebar-wrapper").toggleClass("active");
+            //});
 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "200px";
-            document.getElementById("main").style.marginLeft = "200px";
-        }
+            //// Opens the sidebar menu
+            //$("#menu-toggle").click(function(e) {
+            //    e.preventDefault();
+            //    $("#sidebar-wrapper").toggleClass("active");
+            //});
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('.mdb-select').material_select();
-        });
-    </script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+            //// Scrolls to the selected menu item on the page
+            //$(function() {
+            //    $('a[href*=#]:not([href=#])').click(function() {
+            //        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+            //            var target = $(this.hash);
+            //            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            //            if (target.length) {
+            //                $('html,body').animate({
+            //                    scrollTop: target.offset().top
+            //                }, 1000);
+            //                return false;
+            //            }
+            //        }
+            //    });
+            //});
+        </script>
+        <script>
+
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "200px";
+                document.getElementById("main").style.marginLeft = "200px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.mdb-select').material_select();
+            });
+        </script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        </body>
 </html>

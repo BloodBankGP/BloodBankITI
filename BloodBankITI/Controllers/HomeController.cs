@@ -486,5 +486,12 @@ namespace BloodBankITI.Controllers
             return View(ngo);
 
         }
+
+        //About website
+        [HttpGet]
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

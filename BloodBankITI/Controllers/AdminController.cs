@@ -475,6 +475,12 @@ namespace BloodBankITI.Controllers
             return View(db.NotApprovedNGO().ToList());
         }
 
+        [HttpGet]
+        public ActionResult NGOApprove(int id)
+        {
+            db.ApproveNGO(id);
+            return RedirectToAction("NGORequests");
+        }
 
         //Partners
         [HttpGet]
