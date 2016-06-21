@@ -75,7 +75,7 @@ else
     }
 }
 <div class="render">
-    <div class="container white z-depth-5">
+    <div class="container white z-depth-5" style="height:500px;">
         <div class="card-panel red darken-4"><h5>إضافة شركاء</h5></div>
         <div  class="col s12">
             <form class="col s12" action="" method="post" novalidate="novalidate">
@@ -94,9 +94,9 @@ else
                         </div>
                     </div>
 
-                    <center>
-                        @*<a href="http://localhost:7508/admin/Partners"><button class="btn waves-effect waves-light red darken-4" type="reset" name="action">الرجوع للرئيسية</button></a>*@
-                        @Html.ActionLink("الرجوع الى الصفحة الرئيسية", "Partners", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    <center> 
+                        @Html.ActionLink("الرجوع الى الشركاء", "Partners", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                        <button class="btn waves-effect waves-light red darken-4" type="submit">إضافة </button>
                      </center>
                 </div>
             </form>

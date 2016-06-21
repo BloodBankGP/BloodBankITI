@@ -79,7 +79,7 @@ else
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:left;">
-                            <label class="right-align" for="ngo.Phone">رقم التلفون </label>
+                            <label class="right-align" for="ngo.Phone">رقم التليفون </label>
                         </div>
                     </div>   
        
@@ -121,7 +121,7 @@ else
                     <div class="row" >
                         <div class="input-field col s12" >
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="Message" style="margin-right:-160px;"> مفعّل؟؟ </label>
+                                <label for="Message" style="margin-right:-160px;"> مفعّل </label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" id="professsion" name="ngo.approved">
@@ -142,6 +142,7 @@ else
                     </div>
                         
                     <center>
+                        @Html.ActionLink("إلغاء", "Ngo", null, new { @class = "btn waves-effect waves-light red darken-4" })
                         <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
                     </center>
                  
