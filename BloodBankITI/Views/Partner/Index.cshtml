@@ -68,16 +68,18 @@ else
             <tr>
                 <th> فصيلة الدم</th>
                 <th> رقم المتبرع</th>
-                <th>الاسم الثانى  </th>
-                <th>الاسم الاول   </th>
+                <th>الاسم الثاني   </th>
+                <th>الاسم الأول   </th>
+                
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
                     <td>@Html.ActionLink("إدخال فصيلة الدم", "Edit", new { Id = item.DID })</td>
                     <td>@item.DID</td>
-                    <td>@item.Fname</td>
+                   
                     <td>@item.Lname</td>
+                    <td>@item.Fname</td>
                 </tr>
             }
         </table>
