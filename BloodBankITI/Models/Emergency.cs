@@ -11,11 +11,16 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Emergency
     {
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int DayID { get; set; }
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [RegularExpression("null", ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> HID { get; set; }
     
         public virtual City City { get; set; }

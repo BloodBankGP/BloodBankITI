@@ -33,16 +33,19 @@ table .th_style
 }
 /*header logo */
 #headerlogo {
-   float: left;
+    float: left;
     position: absolute;
-    width: 124px;
-    height: 120px;
-    background: url('../img/logonew.png');
+    width: 170px;
+    height: 170px;
+    background: url(../img/logonew.png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    margin-right: 40.84em !important;
-    margin-top: -4em !important;
+    margin-left: 0em;
+    margin-top: -6em!important;
+    margin-bottom: 7em!important;
+    
+   
 }
 
 
@@ -219,6 +222,7 @@ table .th_style
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    margin-left: -60px;
 }
 
 /* About */
@@ -360,7 +364,7 @@ footer , #fixedbar ,#layoutone{
     /*align-content:center;*/
 }
 
-span {
+span1 {
 	border: 0px solid;
 	border-radius: 50%;
 	color: #fff;
@@ -678,7 +682,7 @@ h4
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #ba7d7d;
+    color: brown;
 }
 
 .closebtn {
@@ -884,10 +888,7 @@ footer{
     font-size:24px;   
 }
  #C-omments label{
-         font-size:15px;
-         border-style: outset;
-     padding:15px;
-     background-color:antiquewhite;   
+         font-size:15px;   
  }
  #sname {
        font-size:15px;
@@ -911,15 +912,6 @@ footer{
   center{
     font-family: Myriad عربي;
   }
-
-  /*INDEX username*/
-  .user{
-       margin-left:10px;
-       float:left;
-       font-size:25px;
-       margin-top:-30px;
-  }
-
 
 
 

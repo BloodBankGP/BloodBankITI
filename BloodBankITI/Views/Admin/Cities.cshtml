@@ -5,27 +5,90 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 <div class="render">
-    <h4 style="font-size:45px; color:white; font-family:'Myriad عربي'; text-align:right;">المدن والمناطق</h4>
+
+    <h4>المدن والمناطق</h4>
+    <hr /><br />
+    
 
     @foreach (var city in Model)
     {
-        <h3 style="text-align:right;">@city.city.CityName</h3> <img src=@city.city.Logo style="margin-top:-110px;"/>
+        <h5 style="text-align:right;color:brown;">@city.city.CityName</h5> <img src=@city.city.Logo style="margin-top:-65px; width:100px;height:100px;"/>
 
         foreach (var loc in city.locations)
         {
-            <p  >
-                @loc.LocationName
-            </p>
+            <table>
+                <tr>
+                   <td style="float:right;font-size:18px;"> 
+                       <ul style="margin-right:50px;margin-top:-30px;"><li>@loc.LocationName</li></ul> 
+                    </td>
+                </tr> </table>
         }
-        <br />
         @*<p>@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID })</p>*@
-        <p style="text-align: left;margin-top: -34px;margin-left: 353px;">@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+        <p style="text-align: left;margin-top: -34px;float:left;">@Html.ActionLink("إدخال منطقة جديدة", "InsertLocation", new { CID = city.city.CID }, new { @class = "btn waves-effect waves-light red darken-4" })</p>
+        <hr />
     }
-    <br /><br />
-    <p style="text-align: left;margin-top: -34px;margin-left: 20px;">@Html.ActionLink("إدخال مدينة جديدة", "InsertCity", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
-    <p style="text-align: left;margin-top: -46px;margin-left: -170px;">@Html.ActionLink("العودة للوحة التحكم   ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })</p>
     
+    <br /><br />
+    <center>
+        
+        @Html.ActionLink("إدخال مدينة جديدة", "InsertCity", null, new { @class = "btn waves-effect waves-light red darken-4" })
+        @Html.ActionLink("العودة للوحة التحكم   ", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+    </center>
     @*<p>@Html.ActionLink("إدخال مدينة جديدة", "InsertCity")</p>
     <p>@Html.ActionLink("العودة للصفحة الرئيسية", "Index")</p>*@
 </div>

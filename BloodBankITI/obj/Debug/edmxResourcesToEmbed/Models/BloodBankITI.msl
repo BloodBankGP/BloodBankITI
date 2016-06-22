@@ -281,6 +281,8 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="CityName" ColumnName="CityName" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -668,6 +670,8 @@
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Periodic" ColumnName="Periodic" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

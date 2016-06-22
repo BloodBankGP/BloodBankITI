@@ -19,53 +19,60 @@ namespace BloodBankITI.Controllers
         {
 
 
-           
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string UserName , string Password)
+        public ActionResult Index(string UserName, string Password)
         {
-            CheckLogin_Result login = new CheckLogin_Result();
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.GetAsync("CheckLogin/" + UserName+"/"+Password).Result;
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                login = response.Content.ReadAsAsync<CheckLogin_Result>().Result;
-
-            }
-
-            if (login != null)
-            {
-                Session["UserId"] = login.UID;
-                Session["UserName"] = login.UserName;
-                Session["UserType"] = login.UTID;
-
-                switch (login.UTID)
+                CheckLogin_Result login = new CheckLogin_Result();
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.GetAsync("CheckLogin/" + UserName + "/" + Password).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    case 1:
-                        Session["Fname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Fname;
-                        Session["Lname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Lname;
-                        break;
-                    case 2:
-                        Session["Fname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Fname;
-                        Session["Lname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Lname;
-                        break;
-                    case 3:
-                        Session["Fname"] = db.NGOes.Where(a => a.NID == login.UID).FirstOrDefault().Name;
-                        break;
-                    case 4:
-                        Session["Fname"] = db.Partners.Where(a => a.PAID == login.UID).FirstOrDefault().Name;
-                        break;
+                    login = response.Content.ReadAsAsync<CheckLogin_Result>().Result;
+
                 }
 
+                if (login != null)
+                {
+                    Session["UserId"] = login.UID;
+                    Session["UserName"] = login.UserName;
+                    Session["UserType"] = login.UTID;
 
-                return RedirectToAction("Index", "Home");
+                    switch (login.UTID)
+                    {
+                        case 1:
+                            Session["Fname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Fname;
+                            Session["Lname"] = db.Admins.Where(a => a.AID == login.UID).FirstOrDefault().Lname;
+                            break;
+                        case 2:
+                            Session["Fname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Fname;
+                            Session["Lname"] = db.Donors.Where(a => a.DID == login.UID).FirstOrDefault().Lname;
+                            break;
+                        case 3:
+                            Session["Fname"] = db.NGOes.Where(a => a.NID == login.UID).FirstOrDefault().Name;
+                            break;
+                        case 4:
+                            Session["Fname"] = db.Partners.Where(a => a.PAID == login.UID).FirstOrDefault().Name;
+                            break;
+                    }
+
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
         }
-
     }
 }

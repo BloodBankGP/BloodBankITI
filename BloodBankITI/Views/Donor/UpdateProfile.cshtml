@@ -9,10 +9,64 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
+
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 <link href="~/Content/materialize.css" rel="stylesheet" />
 <div class="render">
     <div class="container white z-depth-2" style="height:auto;">
-        <div class="card-panel red darken-4"><h4> تعديل بيانات المتبرع </h4></div>
+        <div class="card-panel red darken-4"><h5 > تعديل بيانات المتبرع </h5></div>
         <div id="register">
             <form class="col s12" action="" method="post">
                 <div class="form-container">
@@ -25,12 +79,14 @@
                         <div class="input-field col s12">
                             <input id="first_name" type="text" value="@Model.Donor.Fname" name="Donor.Fname" class="validate" />
                             <label class="right-align" for="first_name">الاسم الأول </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="last_name" class="validate" type="text" value="@Model.Donor.Lname" name="Donor.Lname" />
                             <label class="right-align" for="last_name">الاسم الأخير </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Lname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     
@@ -93,6 +149,7 @@
                                         }
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Donor.CID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -115,6 +172,7 @@
                                         }
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Donor.LID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -122,6 +180,7 @@
                         <div class="input-field col s12">
                             <input type="number" value="@Model.Donor.Phone" name="Donor.Phone" class="validate"  />
                             <label class="right-align" for="Phone"> رقم التلفون </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -138,6 +197,7 @@
                         <div class="input-field col s12">
                             <input type="password" name="donor.password" id="password1" value=@Model.Donor.Password />
                             <label class="right-align">كلمة المرور </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -145,11 +205,12 @@
                         <div class="input-field col s12">
                             <input type="password" name="donor.password" id="password2" oninput="check()" value=@Model.Donor.Password /> 
                                 <label class="right-align">إعادة كلمة المرور </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <center>
                         <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
-                        @Html.ActionLink("العودة للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                        @Html.ActionLink("الرجوع للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                     </center>
                     </div>
                 </form>

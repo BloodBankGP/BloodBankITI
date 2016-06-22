@@ -66,18 +66,24 @@ namespace BloodBankITI.Controllers
         [System.Web.Mvc.HttpPost]
         public ActionResult Edit(donor_SelectByDID_Result donor)
         {
-           
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/"+donor.BID+"/"+donor.DID+"","").Result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-              return  RedirectToAction("Index");
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("insertBloodType/" + donor.BID + "/" + donor.DID + "", "").Result;
 
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+
+                }
+
+                return RedirectToAction("Edit", new { id = donor.DID });
             }
-
-            return RedirectToAction("Edit", new { id = donor.DID });
+            else
+            {
+                return RedirectToAction("Edit", new { id = donor.DID });
+            }
         }
 
         ////Statistics

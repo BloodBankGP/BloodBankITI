@@ -4,7 +4,60 @@
     ViewBag.Title = "ViewProfile";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<br /><br /><br />
+@if (Session["UserId"] == null && Session["UserName"] == null)
+            {
+    <form style="margin-left:10px; margin-top:-35px;">
+        <a href="/Login/Index" style="text-decoration:none;">
+            <img src="~/img/signin.png" height="30" width="30" title="تسجيل الدخول" />
 
+        </a>
+        &nbsp;
+        <a href="/Home/Register" style="text-decoration:none;">
+            <img src="~/img/add-user.png" height="35" width="35" title="إنشاء حساب" />
+
+        </a>
+    </form>
+}
+else
+{
+    switch (Session["UserType"].ToString())
+    {
+        case "1":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/admin/index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "2":
+            <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+            </a>
+            <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
+                @(Session["Fname"] + " " + Session["Lname"])
+            </a>
+            break;
+        case "3":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/ngo/index" class="user" style="text-decoration:none;color:black;font-size:20px;">   @(Session["Fname"])  </a>
+
+            break;
+        case "4":
+
+            <a href="/home/logout" class="user" style="text-decoration:none;">
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
+            </a>
+            <a href="/partner/index" class="user" style="text-decoration:none;color:black;font-size:20px;"> @(Session["Fname"]) </a>
+
+            break;
+    }
+}
 @*<h2>ViewProfile</h2>
 
 Name: @(Model.Fname + " " + Model.Lname) <br />
@@ -40,7 +93,7 @@ Password: @Model.Password <br/>
 <div class="render">
     <div class="panel panel-info" style="border:2px solid darkgray;">
         <div class="panel-heading" style="background-color:darkgray;border:2px solid darkgray;">
-            <h3 class="panel-title" style="font-family:'Myriad عربي';position:center;color:black;">الصفحة الشخصية</h3>
+            <h3 class="panel-title" style="font-family:'Myriad عربي';position:center;color:white;font-size:22px;">الصفحة الشخصية</h3>
         </div>
         <br />
 
@@ -67,14 +120,15 @@ Password: @Model.Password <br/>
                                 <td>@Model.DonorGender</td>
                                 <td>:النوع</td>
                             </tr>
-                            <tr>
-                                <td>@if (Model.DonationDate != null)
-                                    {
-                                        @Model.DonationDate <br />
-                                    }
-                                </td>
-                                <td>:تاريخ اخر تبرع</td>
-                            </tr>
+                           
+                                @if (Model.DonationDate != null)
+                                {
+                                    <tr>
+                                        <td>@Model.DonationDate</td>
+                                        <td>:تاريخ آخر تبرع</td>
+                                    </tr>
+                                }
+
                             <tr>
                                 <td>@Model.Type</td>
                                 <td>:فصيلة الدم</td>
@@ -96,13 +150,14 @@ Password: @Model.Password <br/>
                 </div>
                 <center style="margin-left:10px;">
                     @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    @Html.ActionLink("الرجوع للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                     @if (Model.DonationDate == null)
                     {
                         using (Html.BeginForm("UpdateDonationDate", "Donor", FormMethod.Post, new { id = @Model.DID }))
                         {
+                            <br /><br /><br />
                             <input type="hidden" value=@Model.DID name="Donor.DID" />
-                            <input type="submit" value="I Donated Today" />
+                            <input type="submit" value="إتبرعت النهارده  " class="btn waves-effect waves-light red darken-4" style="float:left;" />
                         }
                     }
                 </center>
