@@ -150,7 +150,7 @@ Password: @Model.Password <br/>
                 </div>
                 <center style="margin-left:10px;">
                     @Html.ActionLink("تعديل الصفحة الشخصية", "UpdateProfile", null, new { @class = "btn waves-effect waves-light red darken-4" })
-                    @Html.ActionLink("الرجوع للصفحة الرئيسية", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
+                    @Html.ActionLink("الرجوع للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                     @if (Model.DonationDate == null)
                     {
                         using (Html.BeginForm("UpdateDonationDate", "Donor", FormMethod.Post, new { id = @Model.DID }))

@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/Content/materialize.css" rel="stylesheet" />
+
 <br /><br /><br />
 @if (Session["UserId"] == null && Session["UserName"] == null)
             {
@@ -159,11 +160,11 @@ else
     
     function check() {
         if ($('#password2').val() != $('#password1').val()) {
-            $('#PasswordMessage').text("Doesn't Match");
+            $('#PasswordMessage').html("<label>كلمة المرور غير متطابقة<label>");
 
 
         } else
-            $('#PasswordMessage').text("done");
+            $('#PasswordMessage').html("<label>كلمة المرور متطابقة<label>");
 
     };
 </script>
