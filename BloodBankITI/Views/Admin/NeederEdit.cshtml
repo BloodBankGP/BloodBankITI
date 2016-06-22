@@ -71,12 +71,14 @@ else
                         <div class="input-field col s12">
                             <input id="first_name" name="needer.Fname" value=@Model.Needer.Fname type="text" class="validate" style="text-align:left;" />
                             <label class="right-align" for="first_name">الاسم الاول </label>
+                            @Html.ValidationMessageFor(a => a.Needer.Fname, "", new { @class = "text-danger" })
                         </div>
                      </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="last_name" type="text" class="validate" name="needer.Lname" value=@Model.Needer.Lname style="text-align:left">
                             <label class="right-align" for="last_name">الاسم الاخير </label>
+                            @Html.ValidationMessageFor(a => a.Needer.Lname, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -84,6 +86,7 @@ else
                         <div class="input-field col s12">
                             <input type="email" name="needer.Email" value=@Model.Needer.Email class="validate" style="text-align:left;" />
                             <label class="right-align"> البريد الإلكتروني </label>
+                            @Html.ValidationMessageFor(a => a.Needer.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
@@ -100,6 +103,7 @@ else
                                     }
 
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Needer.BID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -117,6 +121,7 @@ else
                                         <option value=@item.CID>@item.CityName</option>
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Needer.CID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

@@ -83,20 +83,26 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult Edit(NGO_selectByID_Result ngo)
         {
-
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("NGoUpdate/Ngo", ngo).Result;
-            string result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                result = "Done";
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("NGoUpdate/Ngo", ngo).Result;
+                string result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = "Done";
+                }
+                else
+                    result = "Failed to insert Ngo";
+
+                return RedirectToAction("Index");
             }
             else
-                result = "Failed to insert Ngo";
-
-            return RedirectToAction("Index");
+            {
+                return View();
+            }
         }
     }
 }

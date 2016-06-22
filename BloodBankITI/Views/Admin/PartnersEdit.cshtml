@@ -73,12 +73,14 @@ else
                         <div class="input-field col s12">
                             <input type="text" class="validate" name="Partner.Name" value=@Model.partnersSelectResult.Name style="text-align:right;">
                             <label class="right-align" for="Partner.Name">الاسم </label>
+                            @Html.ValidationMessageFor(a => a.partnersSelectResult.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" class="validate" name="Partner.Address" value=@Model.partnersSelectResult.Address style="text-align:right;">
                             <label class="right-align" for="Partner.Address">العنوان</label>
+                            @Html.ValidationMessageFor(a => a.partnersSelectResult.Address, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -86,6 +88,7 @@ else
                         <div class="input-field col s12">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
                                 <label class="right-align" for="Message" style="text-align:right; width:460px;">الحالة</label>
+                                @Html.ValidationMessageFor(a => a.partnersSelectResult.Status, "", new { @class = "text-danger" })
                             </div>
 
 
@@ -103,6 +106,7 @@ else
                                     }
 
                                 </select>
+                                @Html.ValidationMessageFor(a => a.partnersSelectResult.Status, "", new { @class = "text-danger" })
                             </div>
                         </div>
                    </div>

@@ -11,6 +11,7 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class UserType
     {
@@ -18,8 +19,10 @@ namespace BloodBankITI.Models
         {
             this.Logins = new HashSet<Login>();
         }
-    
+
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Type { get; set; }
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UTID { get; set; }
     
         public virtual ICollection<Login> Logins { get; set; }

@@ -68,7 +68,7 @@ else
             <form class="col s12" action="" method="post">
                 <div class="row" dir="rtl">
                     <div class="input-field col s12">
-                      <p style="font-family:'Myriad عربي';font-size:20px; float:right;" >المدينة</p>  <input type="text" value="@Model.emergency.CityName" style="float:right; " /><br />
+                      <p style="font-family:'Myriad عربي';font-size:20px; float:right;" >المدينة</p>  <input disabled type="text" value="@Model.emergency.CityName" style="float:right; " /><br />
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ else
 
                     <div class="row" dir="rtl">
                         <div class="input-field col s12" style="float:right;">
-                            <p style="font-family:'Myriad عربي';font-size:20px; float:right;"> اليوم </p><input type="text" value=@Model.emergency.Day name="emergency." style="float:right; " /><br />
+                            <p style="font-family:'Myriad عربي';font-size:20px; float:right;"> اليوم </p><input disabled type="text" value=@Model.emergency.Day name="emergency." style="float:right; " /><br />
                         </div>
                     </div>
                     <input type="hidden" value=@Model.emergency.DayID name="emergency.DayID" style="float:right; " />
@@ -102,6 +102,7 @@ else
                                 }
                             }
                         </select>
+                        @Html.ValidationMessageFor(a => a.emergency.HID, "", new { @class = "text-danger" })
                     </div>
                     <center>
                         @Html.ActionLink("إلغاء", "Emergency", null, new { @class = "btn waves-effect waves-light red darken-4" })

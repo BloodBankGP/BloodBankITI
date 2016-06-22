@@ -11,12 +11,19 @@ namespace BloodBankITI.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Login
     {
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [MinLength(4,ErrorMessage="«”„ «·„” Œœ„ ÌÃ» «‰ ÌﬂÊ‰ 4 Õ—Ê› ⁄ «·«ﬁ·")]
         public string UserName { get; set; }
+        [Required(ErrorMessage="Â–« «·Õﬁ· „ÿ·Ê»")]
+        [MinLength(6,ErrorMessage="ﬂÊœ «·„—Ê— ÌÃ» «‰ ÌﬂÊ‰ 6 Õ—Ê› ⁄ «·√ﬁ·")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UID { get; set; }
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UTID { get; set; }
         public bool Status { get; set; }
     
