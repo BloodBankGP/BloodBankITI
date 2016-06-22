@@ -79,21 +79,21 @@ else
                     <div class="form-container">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="first_name" type="text" class="validate" name="NGO.Name" style="text-align:right">
+                                <input id="first_name" type="text" class="validate" name="NGO.Name" style="text-align:right" required>
                                 <label class="right-align">الاسم  </label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="phone" type="number" class="validate" pattern="-?[0-9]*(\.[0-9]+)?" name="NGO.Phone" style="text-align:right;">
+                                <input id="phone" type="number" class="validate" pattern="-?[0-9]*(\.[0-9]+)?" name="NGO.Phone" style="text-align:right;" required>
                                 <label class="right-align" for="phone">رقم التليفون </label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="address" type="text" class="validate" name="NGO.Address" style="text-align:right;">
+                                <input id="address" type="text" class="validate" name="NGO.Address" style="text-align:right;" required>
                                 <label class="right-align"> العنوان  </label>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ else
                             <label style="color:black; margin-right:20px;font-size:14px" for="CID"> المدينة </label>
                             <div class="input-field col s12">
                                 <div dir="rtl">
-                                    <select class="mdl-select__input" name="NGO.CID" id="CitiesID">
+                                    <select class="mdl-select__input" name="NGO.CID" id="CitiesID" required>
                                         <option value="NULL"> اختـــر </option>
                                         @foreach (var item in Model)
                                         {
@@ -115,19 +115,19 @@ else
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="Username" type="text" oninput="checkusername()" class="validate" name="NGO.UserName" style="text-align:right">
+                                <input id="Username" type="text" oninput="checkusername()" class="validate" name="NGO.UserName" style="text-align:right" required>
                                 <label class="right-align" for="Username"> اسم المستخدم  </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="Password1" type="password" class="validate" name="NGO.Password" style="text-align:right">
+                                <input id="Password1" type="password" class="validate" name="NGO.Password" style="text-align:right" required>
                                 <label class="right-align" for="Password"> كلمة المرور </label>
                             </div>
                         </div>
                         <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="Password2" type="password" oninput="check()" class="validate" name="NGO.Password" style="text-align:right">
+                                    <input id="Password2" type="password" oninput="check()" class="validate" name="NGO.Password" style="text-align:right" required>
                                     <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                                 </div>
                             </div>

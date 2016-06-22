@@ -72,7 +72,7 @@ else
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="text" name="UserType.Type" value=@Model.Type>
+                    <input type="text" name="UserType.Type" value=@Model.Type required="" />
                     <label class="right-align"> نوع المستخدم  </label>
                     @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
                 </div>

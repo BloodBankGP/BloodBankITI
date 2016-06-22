@@ -35,7 +35,7 @@ table .th_style
 #headerlogo {
     float: left;
     position: absolute;
-    width: 170px;
+    width: 176px;
     height: 170px;
     background: url(../img/logonew.png);
     -webkit-background-size: cover;
@@ -364,7 +364,7 @@ footer , #fixedbar ,#layoutone{
     /*align-content:center;*/
 }
 
-span1 {
+span {
 	border: 0px solid;
 	border-radius: 50%;
 	color: #fff;
@@ -682,7 +682,7 @@ h4
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: brown;
+    color: #e68383;
 }
 
 .closebtn {

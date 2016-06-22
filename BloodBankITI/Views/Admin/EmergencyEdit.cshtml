@@ -68,7 +68,7 @@ else
             <form class="col s12" action="" method="post">
                 <div class="row" dir="rtl">
                     <div class="input-field col s12">
-                      <p style="font-family:'Myriad عربي';font-size:20px; float:right;" >المدينة</p>  <input disabled type="text" value="@Model.emergency.CityName" style="float:right; " /><br />
+                      <p style="font-family:'Myriad عربي';font-size:20px; float:right;" >المدينة</p>  <input disabled type="text" value=@Model.emergency.CityName style="float:right; " required /><br />
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ else
 
                     <div class="row" dir="rtl">
                         <div class="input-field col s12" style="float:right;">
-                            <p style="font-family:'Myriad عربي';font-size:20px; float:right;"> اليوم </p><input disabled type="text" value=@Model.emergency.Day name="emergency." style="float:right; " /><br />
+                            <p style="font-family:'Myriad عربي';font-size:20px; float:right;"> اليوم </p><input disabled type="text" value=@Model.emergency.Day name="emergency." style="float:right; " required /><br />
                         </div>
                     </div>
                     <input type="hidden" value=@Model.emergency.DayID name="emergency.DayID" style="float:right; " />
@@ -88,17 +88,17 @@ else
 
                         <p style="font-family:'Myriad عربي';font-size:20px; float:right;">المستشفى</p>
 
-                        <select name="emergency.HID" class="mdl-select__input">
+                        <select name="emergency.HID" class="mdl-select__input" required>
                             <option value="null">اختر مستشفى</option>
                             @foreach (var item in Model.Hospitals)
                             {
                                 if (item.HID == Model.emergency.HID)
                                 {
-                            <option selected value=@item.HID>@item.Name</option>
+                                    <option selected value=@item.HID>@item.Name</option>
                                 }
                                 else
                                 {
-                            <option value=@item.HID>@item.Name</option>
+                                    <option value=@item.HID>@item.Name</option>
                                 }
                             }
                         </select>
