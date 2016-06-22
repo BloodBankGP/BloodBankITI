@@ -750,6 +750,7 @@
     <Content Include="img\donorr.jpg" />
     <Content Include="img\download.jpg" />
     <Content Include="img\elAml.jpg" />
+    <Content Include="img\error .jpg" />
     <Content Include="img\facebook-logo.png" />
     <Content Include="img\favicon-16x16.png" />
     <Content Include="img\favicon-32x32.png" />
@@ -772,6 +773,8 @@
     <Content Include="img\mstile-310x150.png" />
     <Content Include="img\mstile-310x310.png" />
     <Content Include="img\mstile-70x70.png" />
+    <Content Include="img\Needer .jpg" />
+    <Content Include="img\NGO  design.jpg" />
     <Content Include="img\NGO.png" />
     <Content Include="img\person_icon.jpg" />
     <Content Include="img\profilee.png" />
@@ -782,6 +785,7 @@
     <Content Include="img\signin.png" />
     <Content Include="img\sona3.jpg" />
     <Content Include="img\thanks.jpg" />
+    <Content Include="img\thanku.jpg" />
     <Content Include="img\user.png" />
     <Content Include="img\writepost.png" />
     <Content Include="img\القناة.png" />
