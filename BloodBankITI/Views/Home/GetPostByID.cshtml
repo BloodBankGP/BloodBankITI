@@ -97,7 +97,7 @@ else
                     @*@("Name :")   <input type="text" name="comment.Name" />*@
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;">
+                            <input id="first_name" type="text" class="validate" name="comment.Name" style="text-align:right;" required>
                             <label class="right-align"> الاسم  </label>
                             @Html.ValidationMessageFor(a => a.post.Post, "", new { @class = "text-danger" })
                         </div>
@@ -107,7 +107,7 @@ else
                 <input type="submit" value="Insert" />*@
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align:right;">
+                        <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align:right;" required>
                         <label class="right-align">التعليق </label>
                         @Html.ValidationMessageFor(a => a.post.Post, "", new { @class = "text-danger" })
                     </div>

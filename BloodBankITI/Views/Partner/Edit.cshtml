@@ -85,22 +85,22 @@ else
                 <div class="row">
                     <div class="input-field col s12">
                         <input disabled value=@Model.Donor.DID  id="disabled" type="text" name="Donor.DID"  style="text-align:left">
-                        <input value=@Model.Donor.DID  type="hidden" name="Donor.DID"  style="text-align:left">
+                        <input value=@Model.Donor.DID  type="hidden" name="Donor.DID"  style="text-align:left" required />
                         <label>رقم المتبرع</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input disabled value="@Model.Donor.Fname" id="disabled" type="text" name="Donor.Fname" style="text-align:left">
-                        <input value="@Model.Donor.Fname" type="hidden" name="Donor.Fname" style="text-align:left">
+                        <input disabled value=@Model.Donor.Fname id="disabled" type="text" name="Donor.Fname" style="text-align:left">
+                        <input value=@Model.Donor.Fname type="hidden" name="Donor.Fname" style="text-align:left" required />
                         <label> الاسم الاول </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input disabled value="@Model.Donor.Lname" id="disabled" type="text"  name="Donor.Lname" style="text-align:left">
-                        <input value="@Model.Donor.Lname" type="hidden" name="Donor.Lname" style="text-align:left">
+                        <input disabled value=@Model.Donor.Lname id="disabled" type="text"  name="Donor.Lname" style="text-align:left">
+                        <input value=@Model.Donor.Lname type="hidden" name="Donor.Lname" style="text-align:left" required />
                          <label> الاسم الثانى</label>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ else
                             <label  style="margin-right:-170px;">نوع فصيلة الدم  </label>
                         </div>
                         <div dir="rtl">
-                            <select class="mdl-select__input"  name="Donor.BID">
+                            <select class="mdl-select__input"  name="Donor.BID" required>
                                 <option value="0">إختـــر ... </option>
 
                                 @foreach (var item in Model.BloodTypesResults)
