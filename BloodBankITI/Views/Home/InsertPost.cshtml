@@ -22,7 +22,7 @@
                     <div class="input-field col s12">
                         <input type="text" class="validate" name="Post.post1" style="text-align:right" required>
                         <label class="right-align">التعليق   </label>
-                        @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
+                        @*@Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
                 <div class="row" >
@@ -31,8 +31,8 @@
                             <label class="right-align" style="margin-right:-240px;">فصيلة الدم</label>
                         </div>
                         <div dir="rtl">
-                            <select name="Post.BID" class="mdl-select__input" required>
-                                <option value="NULL">إختـــــر </option>
+                            <select name="Post.BID" class="mdl-select__input">
+                                <option value="NULL">اختـــــر </option>
                                 @foreach (var d in Model.BloodTypesResults)
                                 {
                                     <option value=@d.BID>@d.Type</option>
@@ -48,7 +48,7 @@
                         </div>
                         <div dir="rtl">
                             <select name="Post.CID" class="mdl-select__input" required>
-                                <option value="NULL">إختـــــر </option>
+                                <option value="NULL">اختـــــر </option>
                                 @foreach (var d in Model.CitiesSelectAllResults)
                                 {
                                     <option value=@d.CID>@d.CityName</option>

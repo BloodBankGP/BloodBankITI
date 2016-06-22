@@ -267,8 +267,6 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertPost(Post post)
         {
-            if (ModelState.IsValid)
-            {
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
                 HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
@@ -282,12 +280,8 @@ namespace BloodBankITI.Controllers
                     result = "Failed to insert Post";
 
                 return RedirectToAction("WallPosts");
-            }
-            else
-            {
-                return View();
-            }
         }
+
         [HttpGet]
         public ActionResult EmergencyToDay()
         {

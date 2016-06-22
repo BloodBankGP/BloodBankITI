@@ -2693,7 +2693,7 @@ ul li {
 
 .z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-  color:#ddd;
+  color:#ddd !important;
 }
 
 .z-depth-2 {
