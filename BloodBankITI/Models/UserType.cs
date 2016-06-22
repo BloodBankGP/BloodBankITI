@@ -20,9 +20,9 @@ namespace BloodBankITI.Models
             this.Logins = new HashSet<Login>();
         }
 
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Type { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UTID { get; set; }
     
         public virtual ICollection<Login> Logins { get; set; }

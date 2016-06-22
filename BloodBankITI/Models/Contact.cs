@@ -15,20 +15,20 @@ namespace BloodBankITI.Models
     
     public partial class Contact
     {
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int ID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string FName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string LName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> Age { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string City { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [EmailAddress(ErrorMessage="„‰ ›÷·ﬂ «œŒ· «·√Ì„Ì· «·’ÕÌÕ")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Msg { get; set; }
     }
 }

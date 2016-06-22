@@ -15,15 +15,15 @@ namespace BloodBankITI.Models
     
     public partial class Login
     {
-        [Required]
-        [MinLength(4)]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [MinLength(4,ErrorMessage="«”„ «·„” Œœ„ ÌÃ» «‰ ÌﬂÊ‰ 4 Õ—Ê› ⁄ «·«ﬁ·")]
         public string UserName { get; set; }
-        [Required]
-        [MinLength(6)]
+        [Required(ErrorMessage="Â–« «·Õﬁ· „ÿ·Ê»")]
+        [MinLength(6,ErrorMessage="ﬂÊœ «·„—Ê— ÌÃ» «‰ ÌﬂÊ‰ 6 Õ—Ê› ⁄ «·√ﬁ·")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int UTID { get; set; }
         public bool Status { get; set; }
     

@@ -84,8 +84,10 @@ namespace BloodBankITI.Controllers
             return View(donor);
         }
 
-        [HttpPost]
-        public ActionResult AskForBlood(Needer n)
+    [HttpPost]
+    public ActionResult AskForBlood(Needer n)
+    {
+        if (ModelState.IsValid)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
@@ -93,29 +95,34 @@ namespace BloodBankITI.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                
-                    string needer_id = response.Content.ReadAsStringAsync().Result;
 
-                    response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
+                string needer_id = response.Content.ReadAsStringAsync().Result;
 
-                    if (response.IsSuccessStatusCode)
+                response = client.PostAsJsonAsync("AskForBlood/" + n.CID + "/" + n.BID + "/" + needer_id, "").Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string count = response.Content.ReadAsStringAsync().Result;
+
+
+
+                    return RedirectToAction("FollowRequest", "Home",
+                    new
                     {
-                        string count = response.Content.ReadAsStringAsync().Result;
-
-
-
-                        return RedirectToAction("FollowRequest", "Home",
-                        new
-                        {
-                            id = needer_id,
-                            count = count,
-                            fname = n.Fname,
-                            lname = n.Lname
-                        });
-                    }
+                        id = needer_id,
+                        count = count,
+                        fname = n.Fname,
+                        lname = n.Lname
+                    });
                 }
+            }
             return RedirectToAction("Index");
         }
+        else
+        {
+            return View();
+        }
+    }
 
         public ActionResult FollowRequest(int id, int count, string fname, string lname)
         {
@@ -171,21 +178,28 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertComment (Comments comment)
+        public ActionResult InsertComment(Comments comment)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("ALLCommentPerPost/comment", comment).Result;
-            string result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                result = "Done";
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("ALLCommentPerPost/comment", comment).Result;
+                string result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = "Done";
+                }
+                else
+                    result = "Failed to insert comment";
+
+                return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
             }
             else
-                result = "Failed to insert comment";
-
-            return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
+            {
+                return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
+            }
         }
 
         [HttpGet]
@@ -253,19 +267,26 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertPost(Post post)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
-            string result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                result = "Done";
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("CreatePost/post", post).Result;
+                string result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = "Done";
+                }
+                else
+                    result = "Failed to insert Post";
+
+                return RedirectToAction("WallPosts");
             }
             else
-                result = "Failed to insert Post";
-
-            return RedirectToAction("WallPosts");
+            {
+                return View();
+            }
         }
         [HttpGet]
         public ActionResult EmergencyToDay()
@@ -298,21 +319,28 @@ namespace BloodBankITI.Controllers
         }
 
         [HttpPost]
-        public ActionResult NgoRequest (NGO_selectByID_Result ngo)
+        public ActionResult NgoRequest(NGO_selectByID_Result ngo)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("NgoRequest/ngo", ngo).Result;
-            string result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                result = "Done";
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("NgoRequest/ngo", ngo).Result;
+                string result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    result = "Done";
+                }
+                else
+                    result = "Failed to insert NGO";
+
+                return RedirectToAction("Index");
             }
             else
-                result = "Failed to insert NGO";
-
-            return RedirectToAction("Index");
+            {
+                return View();
+            }
         }
 
             [HttpGet]
@@ -353,25 +381,30 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult Donate(donor_SelectByDID_Result donor)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
-            string result;
-
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                result = "Done";  
-                string id = response.Content.ReadAsStringAsync().Result;
-                if (donor.BID == null)
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
+                string result;
+
+                if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("selectPartner", new { id = Int32.Parse(id) });
+                    result = "Done";
+                    string id = response.Content.ReadAsStringAsync().Result;
+                    if (donor.BID == null)
+                    {
+                        return RedirectToAction("selectPartner", new { id = Int32.Parse(id) });
+                    }
                 }
+                else
+                    result = "Failed to insert Donor";
+
+
+                return RedirectToAction("Index");
             }
             else
-                result = "Failed to insert Donor";
-            
-
-            return RedirectToAction("Index");
+                return View();
         }
 
        [HttpGet] 
@@ -409,45 +442,55 @@ namespace BloodBankITI.Controllers
             
         }
 
-        [HttpPost]
-        public ActionResult selectPartner(donor_SelectByDID_Result  donor) 
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donorupdatepartner/donor", donor).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                PartnersStatestic partnersStatestic = new PartnersStatestic()
-                {
-                    PID = Int32.Parse(donor.PAID.ToString()),
-                    DID = donor.DID,
-                    BID = null,
-                    Insert_Date = null
+       [HttpPost]
+       public ActionResult selectPartner(donor_SelectByDID_Result donor)
+       {
+           if (ModelState.IsValid)
+           {
+               HttpClient client = new HttpClient();
+               client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+               HttpResponseMessage response = client.PostAsJsonAsync("donorupdatepartner/donor", donor).Result;
+               if (response.IsSuccessStatusCode)
+               {
+                   PartnersStatestic partnersStatestic = new PartnersStatestic()
+                   {
+                       PID = Int32.Parse(donor.PAID.ToString()),
+                       DID = donor.DID,
+                       BID = null,
+                       Insert_Date = null
 
-                };
+                   };
 
-                response = client.PostAsJsonAsync("PartnersStatesticInsert/PartnersStatestic", partnersStatestic).Result;
+                   response = client.PostAsJsonAsync("PartnersStatesticInsert/PartnersStatestic", partnersStatestic).Result;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    return RedirectToAction("selectPartner", new { id = donor.DID });
-                }
-            }
-            else
-                return RedirectToAction("selectPartner", new { id = donor.DID });    
-        }
+                   if (response.IsSuccessStatusCode)
+                   {
+                       return RedirectToAction("Index");
+                   }
+                   else
+                   {
+                       return RedirectToAction("selectPartner", new { id = donor.DID });
+                   }
+               }
+               else
+                   return RedirectToAction("selectPartner", new { id = donor.DID });
+           }
+           else
+               return RedirectToAction("selectPartner", new { id = donor.DID });
+       }
 
         //Contact Us
-        [HttpPost]
-        public ActionResult Contact(Contact contact)
-        {
-            db.ContactInsert(contact.FName, contact.LName, contact.Age, contact.City, contact.Email, contact.Msg);
-            return RedirectToAction("Thanks");
-        }
+       [HttpPost]
+       public ActionResult Contact(Contact contact)
+       {
+           if (ModelState.IsValid)
+           {
+               db.ContactInsert(contact.FName, contact.LName, contact.Age, contact.City, contact.Email, contact.Msg);
+               return RedirectToAction("Thanks");
+           }
+           else
+               return View();
+       }
 
         [HttpGet]
         public ActionResult Thanks()

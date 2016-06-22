@@ -1,4 +1,4 @@
-﻿
+﻿@model BloodBankITI.Models.Contact
 @{
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout2.cshtml";
@@ -73,24 +73,28 @@ else
                         <div class="input-field col s12">
                             <input id="first_name" name="Contact.Fname" type="text" class="validate" style="text-align:right;">
                             <label class="right-align" for="first_name">الاسم الأول </label>
+                            @Html.ValidationMessageFor(a => a.FName, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="last_name" type="text" class="validate" name="Contact.Lname" style="text-align:right">
                             <label class="right-align" for="last_name">الاسم الأخير </label>
+                            @Html.ValidationMessageFor(a => a.LName, "", new { @class = "text-danger" })
                         </div>
                    </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="number" class="validate" name="Contact.Age" style="text-align:right;">
                                 <label class="right-align" for="Age">العمر </label>
+                                @Html.ValidationMessageFor(a => a.Age, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" class="validate" name="Contact.City" style="text-align:right;" />
                                 <label class="right-align" for="City"> المدينة </label>
+                                @Html.ValidationMessageFor(a => a.City, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -98,6 +102,7 @@ else
                             <div class="input-field col s12">
                                 <input type="email" class="validate" name="Contact.Email" style="text-align:right;" />
                                 <label class="right-align" for="Email"> البريد الإلكتروني </label>
+                                @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
 

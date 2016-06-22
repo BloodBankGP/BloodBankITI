@@ -15,13 +15,13 @@ namespace BloodBankITI.Models
     
     public partial class Admin
     {
-        [Required]
+        [Required(ErrorMessage="Â–« «·Õﬁ· „ÿ·Ê»")]
         public int AID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Fname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Lname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public bool Status { get; set; }
         public string Picture { get; set; }
     }

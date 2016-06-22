@@ -20,22 +20,22 @@ namespace BloodBankITI.Models
             this.PartnersStatestics = new HashSet<PartnersStatestic>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
-    
-        [Required]
+
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int DID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Fname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Lname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string DonorGender { get; set; }
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Phone(ErrorMessage="„‰ ›÷·ﬂ «œŒ· —ﬁ„ Â« › ’ÕÌÕ")]
         public string Phone { get; set; }
         public Nullable<int> BID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int LID { get; set; }
         public bool Status { get; set; }
         public bool Pending { get; set; }

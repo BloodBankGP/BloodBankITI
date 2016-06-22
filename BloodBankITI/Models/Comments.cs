@@ -15,12 +15,12 @@ namespace BloodBankITI.Models
     
     public partial class Comments
     {
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int ID { get; set; }
         public Nullable<int> Post_ID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Comment { get; set; }
     
         public virtual Post Post { get; set; }

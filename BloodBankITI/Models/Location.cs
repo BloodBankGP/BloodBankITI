@@ -19,12 +19,12 @@ namespace BloodBankITI.Models
         {
             this.Donors = new HashSet<Donor>();
         }
-    
-        [Required]
+
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int LID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> CID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string LocationName { get; set; }
     
         public virtual City City { get; set; }

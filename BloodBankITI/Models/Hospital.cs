@@ -15,17 +15,17 @@ namespace BloodBankITI.Models
     
     public partial class Hospital
     {
-    
-        [Required]
+
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int HID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> CID { get; set; }
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Phone(ErrorMessage = "„‰ ›÷·ﬂ «œŒ· —ﬁ„ Â« › ’ÕÌÕ")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Address { get; set; }
     
         public virtual City City { get; set; }

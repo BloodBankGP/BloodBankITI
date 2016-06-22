@@ -20,20 +20,20 @@ namespace BloodBankITI.Models
             this.Comments = new HashSet<Comments>();
         }
 
-        [Required]        
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]        
         public int PID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Post1 { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<System.DateTime> Insert_date { get; set; }
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Phone(ErrorMessage = "„‰ ›÷·ﬂ «œŒ· —ﬁ„ Â« › ’ÕÌÕ")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int BID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Name { get; set; }
         public bool Periodic { get; set; }
     

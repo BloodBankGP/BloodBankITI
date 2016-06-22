@@ -21,14 +21,14 @@ namespace BloodBankITI.Models
             this.Donors = new HashSet<Donor>();
         }
 
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int PAID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Address { get; set; }
         public Nullable<bool> Status { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> CID { get; set; }
     
         public virtual ICollection<PartnersStatestic> PartnersStatestics { get; set; }

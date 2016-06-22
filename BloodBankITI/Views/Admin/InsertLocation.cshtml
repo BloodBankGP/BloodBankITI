@@ -74,6 +74,7 @@ else
                     <div class="input-field col s12">
                         <input type="text" name="Location.LocationName" class="validate" style="text-align:right" />
                         <label class="right-align">اسم المنطقة  </label>
+                        @Html.ValidationMessage("LocationName", new { @class = "text-danger" })
                     </div>
                 </div>
                 <center>

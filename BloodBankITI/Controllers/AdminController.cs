@@ -48,8 +48,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(Admin admin, Login login)
         {
-            db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                db.Admins_update(admin.AID, admin.Fname, admin.Lname, login.UserName, login.Password, admin.Picture);
+                return View("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -84,8 +91,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult AdminInsert(Admin admin, Login login)
         {
-            db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password,admin.Picture);
-            return RedirectToAction("AdminsView");
+            if (ModelState.IsValid)
+            {
+                db.Admins_insert(admin.Fname, admin.Lname, login.UserName, login.Password, admin.Picture);
+                return RedirectToAction("AdminsView");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -135,8 +149,13 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertCity(City City)
         {
-            db.Cities_InsertCity(City.CityName, City.Logo);
-            return RedirectToAction("Cities");
+            if (ModelState.IsValid)
+            {
+                db.Cities_InsertCity(City.CityName, City.Logo);
+                return RedirectToAction("Cities");
+            }
+            else
+                return View();
         }
 
         [HttpGet]
@@ -152,8 +171,13 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertLocation(Location Location, int CID)
         {
-            db.Locations_InsertLocation(CID, Location.LocationName);
-            return RedirectToAction("Cities");
+            if (ModelState.IsValid)
+            {
+                db.Locations_InsertLocation(CID, Location.LocationName);
+                return RedirectToAction("Cities");
+            }
+            else
+            return View(CID);
         }
 
         //Posts and Comments
@@ -248,8 +272,13 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult EmergencyEdit(Emergency emergency)
         {
-            db.EmergencyUpdate(emergency.DayID, emergency.CID, emergency.HID);
-            return RedirectToAction("Emergency");
+            if (ModelState.IsValid)
+            {
+                db.EmergencyUpdate(emergency.DayID, emergency.CID, emergency.HID);
+                return RedirectToAction("Emergency");
+            }
+            else
+                return RedirectToAction("EmergencyEdit", new { did = emergency.DayID, cid = emergency.CID });
         }
 
         [HttpGet]
@@ -284,8 +313,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult HospitalsEdit(Hospital hospital)
         {
-            db.Hospitals_UpdateHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address, hospital.HID);
-            return RedirectToAction("Hospitals");
+            if (ModelState.IsValid)
+            {
+                db.Hospitals_UpdateHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address, hospital.HID);
+                return RedirectToAction("Hospitals");
+            }
+            else
+            {
+                return RedirectToAction("HospitalsEdit", new { id = hospital.HID });
+            }
         }
 
         [HttpGet]
@@ -309,8 +345,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult HospitalsInsert(Hospital hospital)
         {
-            db.Hospitals_InsertHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address);
-            return RedirectToAction("Hospitals");
+            if (ModelState.IsValid)
+            {
+                db.Hospitals_InsertHospital(hospital.Name, hospital.CID, hospital.Phone, hospital.Address);
+                return RedirectToAction("Hospitals");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
@@ -384,8 +427,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult NeederEdit(Needer needer)
         {
-            db.Update_Needer(needer.Email, needer.Fname, needer.Lname, needer.BID, needer.CID, needer.NID);
-            return RedirectToAction("Needers");
+            if (ModelState.IsValid)
+            {
+                db.Update_Needer(needer.Email, needer.Fname, needer.Lname, needer.BID, needer.CID, needer.NID);
+                return RedirectToAction("Needers");
+            }
+            else
+            {
+                return RedirectToAction("NeederEdit", new {id = needer.NID });
+            }
         }
 
         public ActionResult NeederDelete(int id)
@@ -452,10 +502,17 @@ namespace BloodBankITI.Controllers
         public ActionResult NGOEdit(NGO ngo)
 
         {
-            db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address,ngo.Status,ngo.Approved,ngo.Fb,ngo.Website);
-            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.NGOUPDATEADMIN(ngo.NID, ngo.Name, ngo.CID, ngo.Phone, ngo.Address, ngo.Status, ngo.Approved, ngo.Fb, ngo.Website);
+                db.SaveChanges();
 
-           return RedirectToAction("Ngo");
+                return RedirectToAction("Ngo");
+            }
+            else
+            {
+                return RedirectToAction("NGOEdit", new { id = ngo.NID });
+            }
         }
         
 
@@ -519,9 +576,16 @@ namespace BloodBankITI.Controllers
 
         public ActionResult PartnersEdit(Partner Partner)
         {
-            db.Partners_update(Partner.PAID,Partner.Name, Partner.Address,Partner.Status, Partner.CID);
+            if (ModelState.IsValid)
+            {
+                db.Partners_update(Partner.PAID, Partner.Name, Partner.Address, Partner.Status, Partner.CID);
 
-            return RedirectToAction("Partners");
+                return RedirectToAction("Partners");
+            }
+            else
+            {
+                return RedirectToAction("PartnersEdit", new { id = Partner.PAID });
+            }
         }
 
         [HttpGet]
@@ -540,9 +604,16 @@ namespace BloodBankITI.Controllers
 
         public ActionResult PartnersInsert(Partner partner)
         {
-            db.Partners_insert( partner.Name, partner.Address, partner.CID);
+            if (ModelState.IsValid)
+            {
+                db.Partners_insert(partner.Name, partner.Address, partner.CID);
 
-            return RedirectToAction("Partners");
+                return RedirectToAction("Partners");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -589,8 +660,15 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UserTypesInsert(UserType userType)
         {
-            db.UserType_insert(userType.Type);
-            return RedirectToAction("UserTypesView");
+            if (ModelState.IsValid)
+            {
+                db.UserType_insert(userType.Type);
+                return RedirectToAction("UserTypesView");
+            }
+            else
+            {
+                return View();
+            }
         }
 
 
@@ -618,9 +696,16 @@ namespace BloodBankITI.Controllers
 
         public ActionResult UserTypesEdit(UserType userType)
         {
-            db.UserType_update(userType.Type, userType.UTID);
+            if (ModelState.IsValid)
+            {
+                db.UserType_update(userType.Type, userType.UTID);
 
-            return RedirectToAction("UserTypesView");
+                return RedirectToAction("UserTypesView");
+            }
+            else
+            {
+                return RedirectToAction("UserTypesEdit", new { id = userType.UTID });
+            }
         }
 
 

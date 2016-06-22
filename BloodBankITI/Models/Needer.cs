@@ -19,22 +19,22 @@ namespace BloodBankITI.Models
         {
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
-    
-        [Required]
+
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int NID { get; set; }
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [EmailAddress(ErrorMessage = "„‰ ›÷·ﬂ «œŒ· «·√Ì„Ì· «·’ÕÌÕ")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Fname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Lname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int BID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Phone(ErrorMessage = "„‰ ›÷·ﬂ «œŒ· —ﬁ„ Â« › ’ÕÌÕ")]
         public string Phone { get; set; }
     
         public virtual BloodType BloodType { get; set; }

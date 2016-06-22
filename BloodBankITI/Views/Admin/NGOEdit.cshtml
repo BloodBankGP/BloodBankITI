@@ -73,6 +73,7 @@ else
                         <div class="input-field col s12">
                             <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left;">
                             <label class="right-align" for="ngo.Name">الاسم </label>
+                            @Html.ValidationMessageFor(a => a.ngo.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
                      
@@ -80,6 +81,7 @@ else
                         <div class="input-field col s12">
                             <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:left;">
                             <label class="right-align" for="ngo.Phone">رقم التليفون </label>
+                            @Html.ValidationMessageFor(a => a.ngo.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>   
        
@@ -103,6 +105,7 @@ else
                                         }
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.ngo.CID, "", new { @class = "text-danger" })
                             </div>
                          </div>
                     </div>   
@@ -111,6 +114,7 @@ else
                         <div class="input-field col s12">
                             <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left;">
                             <label class="right-align" for="ngo.Address">العنوان </label>
+                            @Html.ValidationMessageFor(a => a.ngo.Address, "", new { @class = "text-danger" })
                         </div>
                     </div>   
                         
@@ -137,6 +141,7 @@ else
                                     }
                                 </select>
 
+                                @Html.ValidationMessageFor(a => a.ngo.Approved, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>

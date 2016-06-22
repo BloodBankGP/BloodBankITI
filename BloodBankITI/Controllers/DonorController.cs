@@ -88,26 +88,38 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult UpdateProfile(donor_SelectByDID_Result donor)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("donorupdate/donor", donor).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewProfile");
+                }
+                else
+                    return RedirectToAction("UpdateProfile");
             }
             else
+            {
                 return RedirectToAction("UpdateProfile");
+            }
         }
 
         [HttpPost]
         public ActionResult UpdateDonationDate(Donor donor)
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
-            HttpResponseMessage response = client.PostAsJsonAsync("updatePending/donor", donor).Result;
-            if (response.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
+                HttpResponseMessage response = client.PostAsJsonAsync("updatePending/donor", donor).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ViewProfile");
+                }
+                else
+                    return RedirectToAction("UpdateProfile");
             }
             else
                 return RedirectToAction("UpdateProfile");

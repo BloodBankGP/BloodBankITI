@@ -15,11 +15,12 @@ namespace BloodBankITI.Models
     
     public partial class Emergency
     {
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int DayID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [RegularExpression("null", ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public Nullable<int> HID { get; set; }
     
         public virtual City City { get; set; }

@@ -79,12 +79,14 @@ else
                         <div class="input-field col s12">
                             <input id="first_name" type="text" value="@Model.Donor.Fname" name="Donor.Fname" class="validate" />
                             <label class="right-align" for="first_name">الاسم الأول </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="last_name" class="validate" type="text" value="@Model.Donor.Lname" name="Donor.Lname" />
                             <label class="right-align" for="last_name">الاسم الأخير </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Lname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     
@@ -147,6 +149,7 @@ else
                                         }
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Donor.CID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -169,6 +172,7 @@ else
                                         }
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(a => a.Donor.LID, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -176,6 +180,7 @@ else
                         <div class="input-field col s12">
                             <input type="number" value="@Model.Donor.Phone" name="Donor.Phone" class="validate"  />
                             <label class="right-align" for="Phone"> رقم التلفون </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -192,6 +197,7 @@ else
                         <div class="input-field col s12">
                             <input type="password" name="donor.password" id="password1" value=@Model.Donor.Password />
                             <label class="right-align">كلمة المرور </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -199,6 +205,7 @@ else
                         <div class="input-field col s12">
                             <input type="password" name="donor.password" id="password2" oninput="check()" value=@Model.Donor.Password /> 
                                 <label class="right-align">إعادة كلمة المرور </label>
+                            @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <center>

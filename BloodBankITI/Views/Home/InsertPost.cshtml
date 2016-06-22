@@ -15,12 +15,14 @@
                     <div class="input-field col s12">
                         <input type="text" class="validate" name="Post.Name" style="text-align:right">
                         <label class="right-align">الاسم   </label>
+                        @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input type="text" class="validate" name="Post.post1" style="text-align:right">
                         <label class="right-align">التعليق   </label>
+                        @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="row" >

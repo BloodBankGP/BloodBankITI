@@ -24,9 +24,9 @@ namespace BloodBankITI.Models
             this.Donors = new HashSet<Donor>();
             this.Needer_Donor = new HashSet<Needer_Donor>();
         }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int BID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Type { get; set; }
         public string Logo { get; set; }
     

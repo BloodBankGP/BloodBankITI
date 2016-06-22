@@ -15,9 +15,9 @@ namespace BloodBankITI.Models
     
     public partial class Day
     {
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int DayID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Day1 { get; set; }
     }
 }

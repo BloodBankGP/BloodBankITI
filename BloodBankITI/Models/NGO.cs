@@ -15,24 +15,24 @@ namespace BloodBankITI.Models
     
     public partial class NGO
     {
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int NID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public int CID { get; set; }
-        [Required]
-        [Phone]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Phone(ErrorMessage = "„‰ ›÷·ﬂ «œŒ· —ﬁ„ Â« › ’ÕÌÕ")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
         public bool Approved { get; set; }
         public bool Status { get; set; }
         public string Address { get; set; }
-        [Required]
-        [Url]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Url(ErrorMessage="Â–« «··Ì‰ﬂ €Ì— ’ÕÌÕ")]
         public string Fb { get; set; }
-        [Required]
-        [Url]
+        [Required(ErrorMessage = "Â–« «·Õﬁ· „ÿ·Ê»")]
+        [Url(ErrorMessage = "Â–« «··Ì‰ﬂ €Ì— ’ÕÌÕ")]
         public string Website { get; set; }
     
         public virtual City City { get; set; }
