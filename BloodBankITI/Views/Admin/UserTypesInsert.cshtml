@@ -68,7 +68,7 @@ else
             <div class="form-container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input  type="text" name="UserType.Type" class="validate" style="text-align:left">
+                        <input  type="text" name="UserType.Type" class="validate" style="text-align:left" required>
                         <label class="right-align" for="last_name"> النوع   </label>
                         @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
                     </div>

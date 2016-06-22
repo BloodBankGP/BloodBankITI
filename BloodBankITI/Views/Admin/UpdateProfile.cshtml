@@ -69,28 +69,28 @@ else
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="last_name" type="text" class="validate" name="Admin.Fname" value=@Model.Fname style="text-align:left;">
+                            <input id="last_name" type="text" class="validate" name="Admin.Fname" value=@Model.Fname style="text-align:left;" required>
                             <label class="right-align" for="first_name">الاسم الاول</label>
                             @Html.ValidationMessageFor(a => a.Fname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="last_name" type="text" class="validate" name="Admin.Lname" value=@Model.Lname style="text-align:left">
+                            <input id="last_name" type="text" class="validate" name="Admin.Lname" value=@Model.Lname style="text-align:left" required />
                             <label class="right-align" for="last_name">الاسم الثانى  </label>
                             @Html.ValidationMessageFor(a => a.Lname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="text" class="validate" name="Login.UserName" value=@Model.UserName style="text-align:left;">
+                            <input id="password" type="text" class="validate" name="Login.UserName" value=@Model.UserName style="text-align:left;" required>
                             <label class="right-align" for="bloodId"> اسم المستخدم </label>
                             @Html.ValidationMessageFor(a => a.UserName, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password-confirm" type="password" class="validate" name="Login.Password" value=@Model.Password style="text-align:left;">
+                            <input id="password-confirm" type="password" class="validate" name="Login.Password" value=@Model.Password style="text-align:left;" required>
                             <label class="right-align" for="city">كلمة المرور </label>
                             @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
                         </div>

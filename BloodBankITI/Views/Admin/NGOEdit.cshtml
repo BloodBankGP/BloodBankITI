@@ -71,7 +71,7 @@ else
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left;">
+                            <input type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left;" required>
                             <label class="right-align" for="ngo.Name">الاسم </label>
                             @Html.ValidationMessageFor(a => a.ngo.Name, "", new { @class = "text-danger" })
                         </div>
@@ -79,7 +79,7 @@ else
                      
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:left;">
+                            <input type="number" class="validate" name="ngo.Phone" value=@Model.ngo.Phone style="text-align:left;" required>
                             <label class="right-align" for="ngo.Phone">رقم التليفون </label>
                             @Html.ValidationMessageFor(a => a.ngo.Phone, "", new { @class = "text-danger" })
                         </div>
@@ -91,7 +91,7 @@ else
                                 <label for="CitiesID" style="margin-right:-160px;">المدينة</label>
                             </div>
                             <div dir="rtl">
-                                <select class="mdl-select__input" name="ngo.CID" id="CitiesID">
+                                <select class="mdl-select__input" name="ngo.CID" id="CitiesID" required>
 
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
@@ -112,7 +112,7 @@ else
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left;">
+                            <input type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left;" required>
                             <label class="right-align" for="ngo.Address">العنوان </label>
                             @Html.ValidationMessageFor(a => a.ngo.Address, "", new { @class = "text-danger" })
                         </div>
@@ -128,7 +128,7 @@ else
                                 <label for="Message" style="margin-right:-160px;"> مفعّل </label>
                             </div>
                             <div dir="rtl">
-                                <select class="mdl-select__input" id="professsion" name="ngo.approved">
+                                <select class="mdl-select__input" id="professsion" name="ngo.approved" required>
                                     @if (@Model.ngo.Approved == true)
                                     {
                                         <option selected value="1">True</option>
