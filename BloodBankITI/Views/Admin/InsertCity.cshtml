@@ -60,9 +60,9 @@ else
 <div class="render">
     <h4 style="font-size:45px; color:black; font-family:'Myriad عربي'; text-align:right;">إضافة مدينة جديدة</h4>
     <form action="" method="POST">
-        City Name: <input type="text" name="City.CityName" /><br />
+        City Name: <input type="text" name="City.CityName" required /><br />
         @Html.ValidationMessageFor(a => a.CityName, "", new { @class = "text-danger" })
-        City Logo Link: <input type="text" name="City.Logo" />
+        City Logo Link: <input type="text" name="City.Logo" required />
         @Html.ValidationMessageFor(a => a.Logo, "", new { @class = "text-danger" })
 
         <input type="submit" value="Insert" />
