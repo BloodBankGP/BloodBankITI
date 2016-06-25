@@ -203,7 +203,7 @@ else
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="password" name="donor.password" id="password2" required oninput="check()" value=@Model.Donor.Password /> 
+                            <input type="password" name="donor.password" id="password2" required oninput="check()" value=@Model.Donor.Password /> <label id="PasswordMessage"></label>
                                 <label class="right-align">إعادة كلمة المرور </label>
                             @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>

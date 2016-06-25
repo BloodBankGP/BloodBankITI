@@ -87,8 +87,7 @@ namespace BloodBankITI.Controllers
     [HttpPost]
     public ActionResult AskForBlood(Needer n)
     {
-        if (ModelState.IsValid)
-        {
+       
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
             HttpResponseMessage response = client.PostAsJsonAsync("insertNeeder/n", n).Result;
@@ -117,11 +116,7 @@ namespace BloodBankITI.Controllers
                 }
             }
             return RedirectToAction("Index");
-        }
-        else
-        {
-            return View();
-        }
+       
     }
 
         public ActionResult FollowRequest(int id, int count, string fname, string lname)
@@ -180,8 +175,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult InsertComment(Comments comment)
         {
-            if (ModelState.IsValid)
-            {
+            
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
                 HttpResponseMessage response = client.PostAsJsonAsync("ALLCommentPerPost/comment", comment).Result;
@@ -195,11 +189,7 @@ namespace BloodBankITI.Controllers
                     result = "Failed to insert comment";
 
                 return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
-            }
-            else
-            {
-                return RedirectToAction("GetPostByID", new { id = comment.Post_ID });
-            }
+            
         }
 
         [HttpGet]
@@ -375,8 +365,7 @@ namespace BloodBankITI.Controllers
         [HttpPost]
         public ActionResult Donate(donor_SelectByDID_Result donor)
         {
-            if (ModelState.IsValid)
-            {
+           
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
                 HttpResponseMessage response = client.PostAsJsonAsync("donor_insert/donor", donor).Result;
@@ -396,9 +385,7 @@ namespace BloodBankITI.Controllers
 
 
                 return RedirectToAction("Index");
-            }
-            else
-                return View();
+            
         }
 
        [HttpGet] 
@@ -439,8 +426,7 @@ namespace BloodBankITI.Controllers
        [HttpPost]
        public ActionResult selectPartner(donor_SelectByDID_Result donor)
        {
-           if (ModelState.IsValid)
-           {
+          
                HttpClient client = new HttpClient();
                client.BaseAddress = new Uri("http://www.bloodservice.somee.com/Home/");
                HttpResponseMessage response = client.PostAsJsonAsync("donorupdatepartner/donor", donor).Result;
@@ -468,22 +454,17 @@ namespace BloodBankITI.Controllers
                }
                else
                    return RedirectToAction("selectPartner", new { id = donor.DID });
-           }
-           else
-               return RedirectToAction("selectPartner", new { id = donor.DID });
+           
        }
 
         //Contact Us
        [HttpPost]
        public ActionResult Contact(Contact contact)
        {
-           if (ModelState.IsValid)
-           {
+           
                db.ContactInsert(contact.FName, contact.LName, contact.Age, contact.City, contact.Email, contact.Msg);
                return RedirectToAction("Thanks");
-           }
-           else
-               return View();
+           
        }
 
         [HttpGet]
