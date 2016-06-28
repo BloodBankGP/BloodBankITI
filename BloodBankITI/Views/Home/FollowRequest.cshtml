@@ -68,9 +68,9 @@ else
 
     @if (Model.CID > 0)
     {
-        <label>
-            طلبك تم ارساله الى عدد  @Model.CID متبرع 
-        </label>
+        <h3 style="color: chocolate">
+            تم إرسال طلبك إلى  @Model.CID متبرعين 
+        </h3>
 <br />
   <p style="font-family: Myriad عربي;">  تابع من هنا عشان تعرف المتبرعين اللى قبلوا طلبك وتعرف بياناتهم</p>
 
@@ -79,10 +79,10 @@ else
 
 <a href='http://localhost:7508/Home/requestsResults/@(Model.NID + "/" + @Model.Fname + @Model.Lname)'>http://localhost:7508/Home/requestsResults/@Model.NID/@Model.Fname@Model.Lname </a> <br><br>
 
-<label> لو بتستخدم تطبيق الموبايل استخدم الكود ده  </label><br><br>
-        <p style="color:brown;margin-right:200px;">@(Model.NID + "_" + Model.Fname + Model.Lname)</p>
+<p> لو بتستخدم تطبيق الموبايل استخدم الكود ده  </p><br>
+        <label style="margin-right:750px; color:cornflowerblue">@(Model.NID + "_" + Model.Fname + Model.Lname)</label><br/>
 
-<label>وممكن من هنا تشارك طلبك مع زوار الموقع من اللينك ده </label> <br /><br />
+<br/><p>وممكن من هنا تشارك طلبك مع زوار الموقع </p> <br />
     <a href='http://localhost:7508/Home/InsertPost'>http://localhost:7508/Home/RequestsResults/InsertPost</a>
     
 }                                                                 
