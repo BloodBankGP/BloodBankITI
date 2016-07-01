@@ -71,19 +71,19 @@ else
                 <div class="row">
                     <div class="input-field col s12">
                         <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">الاسم </label>
-                        <input type="text" name="Hospital.Name" class="right-align" />
+                        <input type="text" name="Hospital.Name" class="right-align" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">رقم الهاتف  </label>
-                        <input type="number" name="Hospital.Phone" class="right-align" />
+                        <input type="number" name="Hospital.Phone" class="right-align" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <label class="right-align" for="first_name" style="font-family:'Myriad عربي';">   العنوان  </label>
-                        <input type="text" name="Hospital.Address" class="right-align" />
+                        <input type="text" name="Hospital.Address" class="right-align" required />
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@ else
                     </div>
                 </div>
 
-                <select name="Hospital.CID" class="mdl-select__input" dir="rtl">
+                <select name="Hospital.CID" class="mdl-select__input" dir="rtl" required>
                     <option value="null">إختر مدينة</option>
                     @foreach (var item in Model.CitiesSelectAllResults)
                     {

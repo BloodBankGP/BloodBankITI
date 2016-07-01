@@ -39,7 +39,7 @@ else
             break;
         case "2":
             <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
-                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
             </a>
             <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
                 @(Session["Fname"] + " " + Session["Lname"])
@@ -95,7 +95,7 @@ else
         var result= "";
         $.each(data, function (index, requests) {
             //result += "<div>"+ requests.Fname+" "+requests.Lname+" له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br> تليفون : "+requests.Phone+" <br> بريد إلكتروني : "+requests.Email+" <br> تاريخ طلب التبرع : "+requests.AskDate+"<br><form action='/Donor/AcceptRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' value='قبول' ></form><br><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' value='رفض' ></form></div>";
-            result += "<div class='outset'><label style='text-align:right'>"+ requests.Fname+" "+requests.Lname+"</label><br /><br /><p>له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br /><p>رقم التليفون :" + requests.Phone + "</p><p>"+ requests.Email +":بريد إلكتروني "+ "</p><p>"+ requests.AskDate+" :تاريخ طلب التبرع  "+ "<br><center><form action='/Donor/AcceptRequest/"+ requests.NID +"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='قبول' /></form></br><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='رفض' /></form></center></div><br><br>";
+            result += "<div class='outset'><label style='text-align:right'>"+ requests.Fname+" "+requests.Lname+"</label><br /><br /><p>له نفس فصيلة دمك ويحتاج إلى التبرع ويمكنك التواصل معه <br /><p>رقم التليفون :" + requests.Phone + "</p><p>"+ requests.Email +":العنوان"+ "</p><p>"+ requests.AskDate+" :تاريخ طلب التبرع  "+ "<br><center><form action='/Donor/AcceptRequest/"+ requests.NID +"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='قبول' /></form></br><form action='/Donor/CancelRequest/"+requests.NID+"/"+model+"' method='get'><input type='submit' class = 'btn waves-effect waves-light red darken-4' value='رفض' /></form></center></div><br><br>";
             });
         $('#requests').html(result);
 

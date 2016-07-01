@@ -33,7 +33,7 @@ else
             break;
         case "2":
             <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
-                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
             </a>
             <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
                 @(Session["Fname"] + " " + Session["Lname"])
@@ -68,28 +68,28 @@ else
                 <div class="form-container">
                         <div class="row">
                         <div class="input-field col s12">
-                            <input id="first_name" name="Fname" type="text" class="validate" style="text-align:right;">
+                            <input id="first_name" name="Fname" type="text" class="validate" style="text-align:right;" required>
                             <label class="right-align" for="first_name">الاسم الاول</label>
                             @Html.ValidationMessageFor(a => a.Fname, "", new { @class = "text-danger" })
                         </div>
                       </div>
                         <div class="row">
                         <div class="input-field col s12">
-                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right">
+                            <input id="last_name" type="text" class="validate" name="Lname" style="text-align:right" required>
                             <label class="right-align" for="last_name">الاسم الثانى  </label>
                             @Html.ValidationMessageFor(a => a.Lname, "", new { @class = "text-danger" })
                         </div>
                     </div> 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input  id="username" type="text" class="validate" name="Username" style="text-align:right">
+                                <input id="username" type="text" class="validate" name="Username" style="text-align:right" required>
                                 <label class="right-align" for="email">اسم المستخدم  </label>
                                 @Html.ValidationMessageFor(a => a.UserName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="Password"  type="password" class="validate" name="Password" style="text-align:right;">
+                                <input id="Password" type="password" class="validate" name="Password" style="text-align:right;" required>
                                 <label class="right-align" for="Password">رمز الدخول </label>
                                 @Html.ValidationMessageFor(a => a.Password,"", new { @class = "text-danger" })
                             </div>

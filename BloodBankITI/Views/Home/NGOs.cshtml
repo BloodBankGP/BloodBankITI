@@ -40,7 +40,7 @@ else
             break;
         case "2":
             <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
-                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج"/>
             </a>
             <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
                 @(Session["Fname"] + " " + Session["Lname"])
@@ -78,7 +78,7 @@ else
                                 <label class="right-align" for="Message" style="text-align:right; width:460px;">اختر مدينة</label>
                             </div>
                             <div dir="rtl">
-                                <select class="mdl-select__input" name="City.CID" id="CitiesID">
+                                <select class="mdl-select__input" name="City.CID" id="CitiesID" required>
                                     <option value="0">اختر مدينة</option>
                                     @foreach (var city in Model)
                                     {

@@ -75,14 +75,14 @@ else
             <div class="form-container">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left">
+                        <input id="last_name" required type="text" class="validate" name="ngo.Name" value=@Model.ngo.Name style="text-align:left">
                         <label class="right-align" for="last_name">الاسم   </label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email-confirm" type="tel" value=@Model.ngo.Phone class="validate" name="ngo.Phone" style="text-align:left;">
+                        <input id="email-confirm" required type="tel" value=@Model.ngo.Phone class="validate" name="ngo.Phone" style="text-align:left;">
                         <label class="right-align" for="phone">رقم التليفون </label>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ else
                     <div class="input-field col s12">
                         <label class="mdl-select__label" for="professsion" style="margin-left:250px;">  المدينة </label><br />
                         <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                            <select name="ngo.CID" id="CitiesID" class="mdl-select__input">
+                            <select name="ngo.CID" required id="CitiesID" class="mdl-select__input">
                                 <option value="0">Not Set</option>
                                 @foreach (var item in Model.CitiesSelectAllResults)
                                 {
@@ -111,8 +111,8 @@ else
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="last_name" type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left">
-                        <label class="right-align" for="last_name">العنوان    </label>
+                        <input required type="text" class="validate" name="ngo.Address" value=@Model.ngo.Address style="text-align:left">
+                        <label class="right-align">العنوان    </label>
                     </div>
                 </div>
 
@@ -139,11 +139,11 @@ else
 
            
                 <div class="input-field col s12">
-                    <input type="password" id="password1" value=@Model.ngo.Password class="validate" name="ngo.Password" style="text-align: left">
+                    <input type="password" required id="password1" value=@Model.ngo.Password class="validate" name="ngo.Password" style="text-align: left">
                     <label class="right-align" for="Password"> كلمة المرور </label>
                 </div>
                 <div class="input-field col s12">
-                    <input type="password" id="password2" value=@Model.ngo.Password class="validate" name="ngo.Password" oninput="check()" style="text-align: left"><label id="PasswordMessage"></label>
+                    <input type="password" required id="password2" value=@Model.ngo.Password class="validate" name="ngo.Password" oninput="check()" style="text-align: left"><label id="PasswordMessage"></label>
                     <label class="right-align" for="Password"> تأكيد كلمة المرور </label>
                 </div>
             </div>

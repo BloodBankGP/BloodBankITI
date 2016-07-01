@@ -6,41 +6,42 @@
 <link href="~/Content/materialize.css" rel="stylesheet" />
 
 <div class="render">
-    <div class="container white z-depth-2" style="height:auto; width:700px;">
-        <div class="card-panel grey darken-1"><h4 style="font-family:'Myriad عربي'; color:#ffffff;"> المشاركات</h4></div>
-        
-           
-        <a href='@Url.Action("InsertPost", "home")' title="إضافة مشاركة " style="text-decoration:none;">
-            <img src='@Url.Content("~/img/writepost.png")' />
-          
+    <div class="container white z-depth-2" style="height: auto; width: 700px;">
+        <div class="card-panel grey darken-1"><h4 style="font-family: 'Myriad عربي'; color: #ffffff;"> المشاركات</h4>
+        </div>
+
+
+        <a href='@Url.Action("InsertPost", "home")' title="إضافة مشاركة " style="text-decoration: none;">
+            <img src='@Url.Content("~/img/writepost.png")'/>
+
         </a>
 
         @foreach (var post in Model)
         {
-            <br />
+            <br/>
             <div id="post">
-                <label style="text-align:right">@(post.post.Name)</label><br /><br />
-                <p> @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM/yyyy"), "GetPostByID", new { id = post.post.PID })</p>
-                <label style="color:black;font-family:Myriad عربي;">،<small>@("من  " + post.post.CityName + "  ")</small></label>
-                <label style="color:black;">،<small>@("   " + post.post.Type + "فصيلة الدم  ") </small></label>
-                <label style="color:black;"><small>@(" رقم التلفون  " + post.post.Phone + "   ")</small></label><br /><br />
-                <label>@post.post.Post</label><br />
+                <label style="text-align: right">@(post.post.Name)</label><br/><br/>
+                <p> @Html.ActionLink(@post.post.Insert_date.Value.ToString("dd/MMM/yyyy"), "GetPostByID", new {id = post.post.PID})</p>
+                <label style="color: black; font-family: Myriad عربي;">،<small>@("من  " + post.post.CityName + "  ")</small></label>
+                <label style="color: black;">،<small>@("   " + post.post.Type + "فصيلة الدم  ") </small></label>
+                <label style="color: black;"><small>@(" رقم التليفون  " + post.post.Phone + "   ")</small></label><br/><br/>
+                <label>@post.post.Post</label><br/>
             </div>
-            <hr />
+            <hr/>
             <div class="fb-share-button" data-href="http://localhost:7508/home/GetPostByID/1" data-layout="button_count" data-mobile-iframe="false"></div>
 
             <div class="outset">
-                <label style="font-size:20px;">الردود</label>
-                <br /><br />
+                <label style="font-size: 20px;">الردود</label>
+                <br/><br/>
                 @foreach (var comment in post.comments)
                 {
-                    <label>  @comment.Name</label><br />
-                    <p>  @comment.Comment</p>
+                    <label> @comment.Name</label><br/>
+                    <p> @comment.Comment</p>
                     <hr>
                 }
 
             </div>
-            <br />
+            <br/>
             <div class="comment">
                 @*<h6>Insert Comment</h6>*@
                 <form action="InsertComment" method="post">
@@ -50,9 +51,9 @@
 
 
                     @if (Session["UserName"] != null)
-                {
+                    {
                         @Session["UserName"].ToString()
-                        <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString() />
+                        <input type="hidden" name="comment.Name" value=@Session["UserName"].ToString()/>
                         @*<label style="color:brown;" name="comment.Name" value=@Session["UserName"].ToString() > </label>*@
                     }
                     else
@@ -60,15 +61,15 @@
                         @*@("Name :")   <input type="text" name="comment.Name" />*@
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="first_name" type="text" class="validate" name="Comment.Name" style="text-align:right;">
-                                <label class="right-align"> الاسم  </label>
+                                <input id="first_name" type="text" class="validate" name="Comment.Name" style="text-align: right;" required>
+                                <label class="right-align"> الاسم </label>
                             </div>
                         </div>
                     }
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align:right;">
-                            <label class="right-align"> التعليق  </label>
+                            <input id="first_name" type="text" class="validate" name="Comment.comment" style="text-align: right;" required>
+                            <label class="right-align"> التعليق </label>
                         </div>
                     </div>
                     @*<input type="text" name="comment.Comment" />*@
@@ -77,11 +78,13 @@
 
                 </form>
 
-                <br />
+                <br/>
 
-            </div>        <hr />
+            </div>
+            <hr/>
 
-            <br />
+            <br/>
         }
     </div>
 </div>
+    <div style="margin-bottom: 150px;" ></div>

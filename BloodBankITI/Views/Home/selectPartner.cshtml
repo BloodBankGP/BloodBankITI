@@ -35,7 +35,7 @@ else
             break;
         case "2":
             <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
-                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
             </a>
             <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
                 @(Session["Fname"] + " " + Session["Lname"])
@@ -64,7 +64,7 @@ else
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script></head>
 <div class="render">
-    <h4 style="font-family:'Myriad عربي';color:brown;" >اختر أحد المعامل لإجراء تحليل معرفة فصيلة الدم برقم مسلسل @Model.donor.DID</h4>
+    <h4 style="font-family:'Myriad عربي';color:brown;" >اختر أحد المعامل لإجراء تحليل معرفة فصيلة دمك "مجانًا" برقم مسلسل @Model.donor.DID</h4>
     <hr />
 
 
@@ -76,7 +76,7 @@ else
                 <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 </div>
                 <div dir="rtl">
-                    <select class="mdl-select__input" name="Donor.PAID" id="PartnerId">
+                    <select class="mdl-select__input" name="Donor.PAID" id="PartnerId" required>
                         <option value="0" selected="">اختـــــر</option>
                         @foreach (var item in Model.partnerSelectByCity)
                         {

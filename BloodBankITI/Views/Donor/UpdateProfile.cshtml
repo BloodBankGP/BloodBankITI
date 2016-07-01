@@ -39,7 +39,7 @@ else
             break;
         case "2":
             <a href="/home/logout" class="user" style="text-decoration:none;color:black;font-size:20px;">
-                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" style="left:25%;position:relative;" />
+                <img src="~/img/logout.png" width="35" height="35" title="تسجيل الخروج" />
             </a>
             <a href="/donor/Index" class="user" style="text-decoration:none;color:black;font-size:20px;">
                 @(Session["Fname"] + " " + Session["Lname"])
@@ -71,20 +71,20 @@ else
             <form class="col s12" action="" method="post">
                 <div class="form-container">
                     <div class="row">
-                        <input type="hidden" value="@Model.Donor.DID" name="Donor.DID" />
-                        <input type="hidden" value="@Model.Donor.DonationDate" name="Donor.DonationDate" />
-                        <input type="hidden" value="@Model.Donor.DonorGender" name="Donor.DonorGender" />
+                        <input type="hidden" value=@Model.Donor.DID name="Donor.DID" />
+                        <input type="hidden" value=@Model.Donor.DonationDate name="Donor.DonationDate" />
+                        <input type="hidden" value=@Model.Donor.DonorGender name="Donor.DonorGender" />
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="first_name" type="text" value="@Model.Donor.Fname" name="Donor.Fname" class="validate" />
+                            <input required id="first_name" type="text" value= @Model.Donor.Fname name="Donor.Fname" class="validate" />
                             <label class="right-align" for="first_name">الاسم الأول </label>
                             @Html.ValidationMessageFor(a => a.Donor.Fname, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="last_name" class="validate" type="text" value="@Model.Donor.Lname" name="Donor.Lname" />
+                            <input id="last_name" required class="validate" type="text" value= @Model.Donor.Lname name="Donor.Lname" />
                             <label class="right-align" for="last_name">الاسم الأخير </label>
                             @Html.ValidationMessageFor(a => a.Donor.Lname, "", new { @class = "text-danger" })
                         </div>
@@ -126,7 +126,7 @@ else
 
                             <input value=@Model.Donor.BID type="hidden" name="Donor.BID" >
                             <input value=@Model.Donor.DID type="hidden" name="Donor.DID" >
-                            <label> :فصيلة الدم </label>
+                            <label>فصيلة الدم </label>
                             <input disabled value=@Model.Donor.Type id="disabled" type="text" name="Donor.DID" style="text-align:left">
                         </div>
                    </div>
@@ -136,7 +136,7 @@ else
                                 <label for="CitiesID" style="text-align:right;margin-right:-150px;">المدينة</label>
                             </div>
                             <div dir="rtl">
-                                <select class="mdl-select__input" name="Donor.CID" id="CitiesID">
+                                <select required class="mdl-select__input" name="Donor.CID" id="CitiesID">
                                     @foreach (var item in Model.CitiesSelectAllResults)
                                     {
                                         if (Model.Donor.CID == item.CID)
@@ -156,7 +156,7 @@ else
                     <div class="row">
                         <div class="input-field col s12 ">
                             <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                                <label for="LID" style="text-align:right; margin-right:-150px;">المنطقة</label>
+                                <label for="LID" required style="text-align:right; margin-right:-150px;">المنطقة</label>
                             </div>
                             <div dir="rtl">
                                 <select class="mdl-select__input" name="Donor.LID" id="locationID">
@@ -178,7 +178,7 @@ else
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="number" value="@Model.Donor.Phone" name="Donor.Phone" class="validate"  />
+                            <input type="number" required value= @Model.Donor.Phone name="Donor.Phone" class="validate"  />
                             <label class="right-align" for="Phone"> رقم التلفون </label>
                             @Html.ValidationMessageFor(a => a.Donor.Phone, "", new { @class = "text-danger" })
                         </div>
@@ -203,13 +203,13 @@ else
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="password" name="donor.password" id="password2" oninput="check()" value=@Model.Donor.Password /> 
+                            <input type="password" name="donor.password" id="password2" required oninput="check()" value=@Model.Donor.Password /> <label id="PasswordMessage"></label>
                                 <label class="right-align">إعادة كلمة المرور </label>
                             @Html.ValidationMessageFor(a => a.Donor.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <center>
-                        <button class="btn waves-effect waves-light red darken-4" type="submit" name="action">موافق</button>
+                        <button class="btn waves-effect waves-light red darken-4" required type="submit" name="action">موافق</button>
                         @Html.ActionLink("الرجوع للوحة التحكم", "Index", null, new { @class = "btn waves-effect waves-light red darken-4" })
                     </center>
                     </div>
